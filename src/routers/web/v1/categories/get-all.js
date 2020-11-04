@@ -4,7 +4,7 @@ import statusCodes from '../../../utils/statusCodes';
 
 export default async (req, res) => {
   try {
-    const categories = await Controllers.category.findAll(req.params.restaurantId);
+    const categories = await Controllers.category.findAll(req.params.restaurantId, req.headers['accept-language']);
 
     return res.status(statusCodes.OK).send(categories);
   } catch (error) {

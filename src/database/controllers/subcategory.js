@@ -4,36 +4,52 @@ export default class Subcategory {
   constructor(connection) {
     this.model = connection.subcategory;
     this.modelI18n = connection.subcategory_i18n;
+    this.categoryModel = connection.category;
   }
 
   /**
    * Find by id
    * @param {number} id
+   * @param {string} language
    */
-  async findById(id) {
+  async findById(id, language) {
     return this.model.findOne({
       where: {
         id: {
           [Op.eq]: id,
         },
       },
+      include: [{
+        model: this.modelI18n,
+        where: {
+          lang_code: {
+            [Op.eq]: language,
+          },
+        },
+      }],
     });
   }
 
   /**
    * Find all
    * @param {number} categoryId
+   * @param {string} language
    */
-  async findAll(categoryId) {
+  async findAll(categoryId, language) {
     return this.model.findAll({
       where: {
         categoryId: {
           [Op.eq]: categoryId,
         },
       },
-      order: [
-        ['id', 'ASC'],
-      ],
+      include: [{
+        model: this.modelI18n,
+        where: {
+          lang_code: {
+            [Op.eq]: language,
+          },
+        },
+      }],
     });
   }
 

@@ -9,6 +9,29 @@ export default class Category {
   /**
    * Find by id
    * @param {number} id
+   * @param {string} language
+   */
+  async findById(id, language) {
+    return this.model.findOne({
+      where: {
+        id: {
+          [Op.eq]: id,
+        },
+      },
+      include: [{
+        model: this.modelI18n,
+        where: {
+          lang_code: {
+            [Op.eq]: language,
+          },
+        },
+      }],
+    });
+  }
+
+  /**
+   * Find by id and restaurant
+   * @param {number} id
    * @param {number} restaurantId
    */
   async findByIdAndRestaurantId(id, restaurantId) {
@@ -27,17 +50,23 @@ export default class Category {
   /**
    * Find all
    * @param {number} restaurantId
+   * @param {string} language
    */
-  async findAll(restaurantId) {
+  async findAll(restaurantId, language) {
     return this.model.findAll({
       where: {
         restaurantId: {
           [Op.eq]: restaurantId,
         },
       },
-      order: [
-        ['id', 'ASC'],
-      ],
+      include: [{
+        model: this.modelI18n,
+        where: {
+          lang_code: {
+            [Op.eq]: language,
+          },
+        },
+      }],
     });
   }
 

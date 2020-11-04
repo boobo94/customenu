@@ -23,17 +23,23 @@ export default class Product {
   /**
    * Find all
    * @param {number} subcategoryId
+   * @param {string} language
    */
-  async findAll(subcategoryId) {
+  async findAll(subcategoryId, language) {
     return this.model.findAll({
       where: {
         subcategoryId: {
           [Op.eq]: subcategoryId,
         },
       },
-      order: [
-        ['id', 'ASC'],
-      ],
+      include: [{
+        model: this.modelI18n,
+        where: {
+          lang_code: {
+            [Op.eq]: language,
+          },
+        },
+      }],
     });
   }
 

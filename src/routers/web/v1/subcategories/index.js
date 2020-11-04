@@ -1,18 +1,15 @@
 import { Router } from 'express';
-import subcategoriesRouter from '../subcategories';
 import webAuthorization from '../../../middleware/web-authorization';
 import getAll from './get-all';
 import getOne from './get';
-import { getCategory } from './validator';
+import { getSubcategory } from './validator';
 
 export default Router({ mergeParams: true })
   .get('/',
     webAuthorization,
     getAll)
 
-  .get('/:categoryId',
+  .get('/:subcategoryId',
     webAuthorization,
-    getCategory,
-    getOne)
-
-  .use('/:categoryId/subcategories', subcategoriesRouter);
+    getSubcategory,
+    getOne);
