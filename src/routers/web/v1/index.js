@@ -1,6 +1,8 @@
 import { Router } from 'express';
 
-import categories from './categories';
+import restaurantRouter from './restaurant';
+import categoryRouter from './categories';
 
 export default Router({ mergeParams: true })
-  .use('/categories', categories);
+  .use('/', restaurantRouter)
+  .use('/categories', categoryRouter);

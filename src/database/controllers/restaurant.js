@@ -10,13 +10,21 @@ export default class Restaurant {
    * Find by id
    * @param {number} id
    */
-  async findById(id) {
+  async findById(id, language) {
     return this.model.findOne({
       where: {
         id: {
           [Op.eq]: id,
         },
       },
+      include: [{
+        model: this.modelI18n,
+        where: {
+          lang_code: {
+            [Op.eq]: language,
+          },
+        },
+      }],
     });
   }
 
