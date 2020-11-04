@@ -11,6 +11,8 @@ export default async (req, res, next) => {
     if (!restaurant) {
       return res.status(statusCodes.UNAUTHORIZED).send({ error: errors.UNAUTHORIZED });
     }
+
+    req.params.restaurantId = restaurant.id; // set restaurantId on req.params
   } catch (err) {
     return res.status(statusCodes.UNAUTHORIZED).send({ error: errors.UNAUTHORIZED });
   }
