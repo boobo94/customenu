@@ -1,0 +1,49 @@
+{
+  "name": "digital-menu-ws",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/server.js",
+  "scripts": {
+    "build": "babel src -d dist --copy-files",
+    "deploy": "bash ./scripts/deploy-local.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/boobo94/digital-menu-ws.git"
+  },
+  "author": "Bogdan Alexandru Militaru",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/boobo94/digital-menu-ws/issues"
+  },
+  "homepage": "https://github.com/boobo94/digital-menu-ws#readme",
+  "dependencies": {
+    "@babel/runtime": "^7.10.2",
+    "bcrypt": "^5.0.0",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "express": "^4.17.1",
+    "express-validator": "^6.5.0",
+    "i18n": "^0.10.0",
+    "jsonwebtoken": "^8.5.1",
+    "pg": "^8.2.1",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^5.21.13",
+    "uuid": "^8.1.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.10.1",
+    "@babel/core": "^7.10.2",
+    "@babel/node": "^7.10.1",
+    "@babel/plugin-transform-runtime": "^7.10.1",
+    "@babel/polyfill": "^7.10.1",
+    "@babel/preset-env": "^7.10.2",
+    "@babel/preset-flow": "^7.10.1",
+    "eslint": "^7.2.0",
+    "eslint-config-airbnb": "^18.1.0",
+    "eslint-plugin-import": "^2.21.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.20.0",
+    "sequelize-cli": "^5.5.1"
+  }
+}
