@@ -4,7 +4,10 @@ import statusCodes from '../../../utils/statusCodes';
 
 export default async (req, res) => {
   try {
-    const category = await Controllers.category.findById(req.params.categoryId);
+    const category = await Controllers.category.findByIdAndRestaurantId(
+      req.params.categoryId,
+      req.params.restaurantId,
+    );
     if (!category) {
       return res.status(statusCodes.NOT_FOUND).send({ error: errors.RESOURCE_NOT_FOUND });
     }

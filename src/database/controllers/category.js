@@ -9,12 +9,16 @@ export default class Category {
   /**
    * Find by id
    * @param {number} id
+   * @param {number} restaurantId
    */
-  async findById(id) {
+  async findByIdAndRestaurantId(id, restaurantId) {
     return this.model.findOne({
       where: {
         id: {
           [Op.eq]: id,
+        },
+        restaurantId: {
+          [Op.eq]: restaurantId,
         },
       },
     });
