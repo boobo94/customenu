@@ -5,6 +5,7 @@ export default class Subcategory {
     this.model = connection.subcategory;
     this.modelI18n = connection.subcategory_i18n;
     this.categoryModel = connection.category;
+    this.restaurantModel = connection.restaurant;
   }
 
   /**
@@ -27,6 +28,34 @@ export default class Subcategory {
           },
         },
       }],
+    });
+  }
+
+  async findByIdWithCategoryAndRestaurant(id, categoryId, language) {
+    return this.model.findOne({
+      where: {
+        id: {
+          [Op.eq]: id,
+        },
+      },
+      include: [
+        {
+          model: this.modelI18n,
+          where: {
+            lang_code: {
+              [Op.eq]: language,
+            },
+          },
+        },
+        {
+          model: this.categoryModel,
+          where: {
+            id: {
+              [Op.eq]: categoryId,
+            },
+          },
+        },
+      ],
     });
   }
 
