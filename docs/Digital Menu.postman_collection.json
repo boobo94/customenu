@@ -1,0 +1,465 @@
+{
+	"info": {
+		"_postman_id": "7f4a558b-f315-44ac-939e-bac8a1058e10",
+		"name": "Digital Menu",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "web",
+			"item": [
+				{
+					"name": "v1",
+					"item": [
+						{
+							"name": "restaurants",
+							"item": [
+								{
+									"name": "Get one",
+									"request": {
+										"auth": {
+											"type": "apikey",
+											"apikey": [
+												{
+													"key": "value",
+													"value": "abc",
+													"type": "string"
+												},
+												{
+													"key": "key",
+													"value": "authorization",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept-Language",
+												"value": "en",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{BASE_URL}}/web/v1/:restaurant/",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"web",
+												"v1",
+												":restaurant",
+												""
+											],
+											"variable": [
+												{
+													"key": "restaurant",
+													"value": "demo",
+													"type": "string"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "categories",
+							"item": [
+								{
+									"name": "Get all",
+									"request": {
+										"auth": {
+											"type": "apikey",
+											"apikey": [
+												{
+													"key": "value",
+													"value": "abc",
+													"type": "string"
+												},
+												{
+													"key": "key",
+													"value": "authorization",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept-Language",
+												"value": "ro",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{BASE_URL}}/web/v1/:restaurant/categories",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"web",
+												"v1",
+												":restaurant",
+												"categories"
+											],
+											"variable": [
+												{
+													"key": "restaurant",
+													"value": "demo"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get one",
+									"request": {
+										"auth": {
+											"type": "apikey",
+											"apikey": [
+												{
+													"key": "value",
+													"value": "abc",
+													"type": "string"
+												},
+												{
+													"key": "key",
+													"value": "authorization",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept-Language",
+												"value": "en",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{BASE_URL}}/web/v1/:restaurant/categories/:categoryId",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"web",
+												"v1",
+												":restaurant",
+												"categories",
+												":categoryId"
+											],
+											"variable": [
+												{
+													"key": "restaurant",
+													"value": "demo"
+												},
+												{
+													"key": "categoryId",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "subcategories",
+							"item": [
+								{
+									"name": "Get all",
+									"request": {
+										"auth": {
+											"type": "apikey",
+											"apikey": [
+												{
+													"key": "value",
+													"value": "abc",
+													"type": "string"
+												},
+												{
+													"key": "key",
+													"value": "authorization",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept-Language",
+												"value": "ro",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{BASE_URL}}/web/v1/:restaurant/categories/:categoryId/subcategories",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"web",
+												"v1",
+												":restaurant",
+												"categories",
+												":categoryId",
+												"subcategories"
+											],
+											"variable": [
+												{
+													"key": "restaurant",
+													"value": "demo"
+												},
+												{
+													"key": "categoryId",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get one",
+									"request": {
+										"auth": {
+											"type": "apikey",
+											"apikey": [
+												{
+													"key": "value",
+													"value": "abc",
+													"type": "string"
+												},
+												{
+													"key": "key",
+													"value": "authorization",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept-Language",
+												"value": "ro",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{BASE_URL}}/web/v1/:restaurant/categories/:categoryId/subcategories/:subcategoryId",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"web",
+												"v1",
+												":restaurant",
+												"categories",
+												":categoryId",
+												"subcategories",
+												":subcategoryId"
+											],
+											"variable": [
+												{
+													"key": "restaurant",
+													"value": "demo"
+												},
+												{
+													"key": "categoryId",
+													"value": "2"
+												},
+												{
+													"key": "subcategoryId",
+													"value": "2"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "products",
+							"item": [
+								{
+									"name": "Get all",
+									"request": {
+										"auth": {
+											"type": "apikey",
+											"apikey": [
+												{
+													"key": "value",
+													"value": "abc",
+													"type": "string"
+												},
+												{
+													"key": "key",
+													"value": "authorization",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept-Language",
+												"value": "ro",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{BASE_URL}}/web/v1/:restaurant/categories/:categoryId/subcategories/:subcategoryId/products",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"web",
+												"v1",
+												":restaurant",
+												"categories",
+												":categoryId",
+												"subcategories",
+												":subcategoryId",
+												"products"
+											],
+											"variable": [
+												{
+													"key": "restaurant",
+													"value": "demo"
+												},
+												{
+													"key": "categoryId",
+													"value": "2"
+												},
+												{
+													"key": "subcategoryId",
+													"value": "2"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get one",
+									"request": {
+										"auth": {
+											"type": "apikey",
+											"apikey": [
+												{
+													"key": "value",
+													"value": "abc",
+													"type": "string"
+												},
+												{
+													"key": "key",
+													"value": "authorization",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept-Language",
+												"value": "ro",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{BASE_URL}}/web/v1/:restaurant/categories/:categoryId/subcategories/:subcategoryId/products/:productId",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"web",
+												"v1",
+												":restaurant",
+												"categories",
+												":categoryId",
+												"subcategories",
+												":subcategoryId",
+												"products",
+												":productId"
+											],
+											"variable": [
+												{
+													"key": "restaurant",
+													"value": "demo",
+													"type": "string"
+												},
+												{
+													"key": "categoryId",
+													"value": "2",
+													"type": "string"
+												},
+												{
+													"key": "subcategoryId",
+													"value": "2",
+													"type": "string"
+												},
+												{
+													"key": "productId",
+													"value": "2",
+													"type": "string"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "a3a96636-7cef-472e-984c-7042e8417f71",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "202f767b-ca0e-4b17-9990-672d88108e97",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "fe379155-3c7d-4a85-96f9-1ef4e1518dd8",
+			"key": "BASE_URL",
+			"value": ""
+		}
+	],
+	"protocolProfileBehavior": {}
+}
