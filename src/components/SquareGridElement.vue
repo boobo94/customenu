@@ -6,10 +6,10 @@
 export default {
   name: 'SquareGridElement',
   props: {
-      name: String,
-      image: String
-  }
-}
+    name: String,
+    image: String,
+  },
+};
 </script>
 
 <style scoped>

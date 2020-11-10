@@ -1,23 +1,25 @@
 <template>
-  <p>List all products</p>
+  <div>
+    <p>List all products</p>
 
-  <ProductInList v-bind="product" />
+    <ProductInList v-bind="product" />
+  </div>
 </template>
 
 <script>
-import ProductInList from '@/components/ProductInList.vue'
+import ProductInList from '@/components/ProductInList.vue';
 
 export default {
   name: 'Products',
   components: {
-    ProductInList
+    ProductInList,
   },
   data() {
     return {
       product: {
-        name: "food",
-      }
-    }
-  }
-}
+        name: 'food',
+      },
+    };
+  },
+};
 </script>

@@ -7,7 +7,7 @@
 
 <script>
 export default {
-  name: "Navigation",
+  name: 'Navigation',
   props: {},
   methods: {},
 };

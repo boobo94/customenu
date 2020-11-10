@@ -1,13 +1,23 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import Home from '../views/Home.vue'
-import RestaurantView from '../views/RestaurantView.vue'
-import Categories from '../views/Categories.vue'
-import Subcategories from '../views/Subcategories.vue'
-import ProductView from '../views/ProductView.vue'
-import Products from '../views/Products.vue'
-import Product from '../views/Product.vue'
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+
+import Home from '../views/Home.vue';
+import About from '../views/About.vue';
+import RestaurantView from '../views/RestaurantView.vue';
+import Categories from '../views/Categories.vue';
+import Subcategories from '../views/Subcategories.vue';
+import ProductView from '../views/ProductView.vue';
+import Products from '../views/Products.vue';
+import Product from '../views/Product.vue';
+
+Vue.use(VueRouter);
 
 const routes = [
+  {
+    path: '/about',
+    name: 'About',
+    component: About,
+  },
   {
     path: '/:restaurantUrl',
     component: RestaurantView,
@@ -15,17 +25,17 @@ const routes = [
       {
         path: '',
         name: 'Home',
-        component: Home
+        component: Home,
       },
       {
         path: 'categories',
         name: 'Categories',
-        component: Categories
+        component: Categories,
       },
       {
         path: 'subcategories',
         name: 'Subcategories',
-        component: Subcategories
+        component: Subcategories,
       },
       {
         path: 'products',
@@ -40,24 +50,14 @@ const routes = [
             path: ':id',
             name: 'Product',
             component: Product,
-          }
-        ]
+          },
+        ],
       },
-    ]
+    ],
   },
-  {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  }
-]
+];
 
-const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
-  routes
-})
-
-export default router
+export default new VueRouter({
+  mode: 'history',
+  routes,
+});

@@ -3,20 +3,20 @@
 </template>
 
 <script>
-import SquareGridElement from '@/components/SquareGridElement.vue'
+import SquareGridElement from '@/components/SquareGridElement.vue';
 
 export default {
   name: 'Categories',
   components: {
-    SquareGridElement
+    SquareGridElement,
   },
   data() {
     return {
       test: {
         id: 1,
-        name: "food",
-      }
-    }
-  }
-}
+        name: 'food',
+      },
+    };
+  },
+};
 </script>

@@ -6,13 +6,13 @@
 export default {
   name: 'ProductInList',
   props: {
-      name: String,
-      image: String,
-      description: String,
-      price: Number,
-      weight: Number
-  }
-}
+    name: String,
+    image: String,
+    description: String,
+    price: Number,
+    weight: Number,
+  },
+};
 </script>
 
 <style scoped>
