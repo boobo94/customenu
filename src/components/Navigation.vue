@@ -1,8 +1,13 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
+  <v-app-bar app color="primary" dark>
+    <div>Back</div>
+
+    <v-spacer></v-spacer>
+
+    <div>Logo</div>
+
+    <v-spacer></v-spacer>
+  </v-app-bar>
 </template>
 
 <script>
