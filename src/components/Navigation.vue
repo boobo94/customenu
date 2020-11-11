@@ -12,6 +12,9 @@
     <div>Meniul Digital</div>
 
     <v-spacer></v-spacer>
+
+    <div class="empty-button-size"></div>
+
   </v-app-bar>
 </template>
 
@@ -31,5 +34,8 @@ export default {
 </script>
 
 <style scoped>
-/* Define styles here */
+.empty-button-size {
+  width: 48px;
+  height: 48px;
+}
 </style>
