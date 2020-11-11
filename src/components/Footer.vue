@@ -1,5 +1,5 @@
 <template>
-  <v-footer padless="false">
+  <v-footer padless>
       <v-card
         flat
         tile
