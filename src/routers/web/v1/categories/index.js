@@ -15,4 +15,4 @@ export default Router({ mergeParams: true })
     getCategory,
     getOne)
 
-  .use('/:categoryId/subcategories', subcategoriesRouter);
+  .use('/:categoryId/subcategories', webAuthorization, subcategoriesRouter);

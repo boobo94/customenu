@@ -6,7 +6,6 @@ export default async (req, res, next) => {
   try {
     const restaurant = await Controllers.restaurant.findByRestaurantAndToken(
       req.params.restaurant,
-      req.headers.authorization,
     );
     if (!restaurant) {
       return res.status(statusCodes.UNAUTHORIZED).send({ error: errors.UNAUTHORIZED });

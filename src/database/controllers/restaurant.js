@@ -29,18 +29,14 @@ export default class Restaurant {
   }
 
   /**
-   * Find app by id and auth token
+   * Find app by id
    * @param {number} shortUrl The url of restaurant
-   * @param {string} authToken The authorization token
    */
-  async findByRestaurantAndToken(shortUrl, authToken) {
+  async findByRestaurantAndToken(shortUrl) {
     return this.model.findOne({
       where: {
         shortUrl: {
           [Op.eq]: shortUrl,
-        },
-        authToken: {
-          [Op.eq]: authToken,
         },
       },
     });
