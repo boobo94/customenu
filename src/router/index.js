@@ -27,7 +27,7 @@ const routes = [
         component: Categories,
       },
       {
-        path: 'subcategories',
+        path: ':categoryId/subcategories',
         name: 'Subcategories',
         component: Subcategories,
       },

@@ -17,7 +17,9 @@
         v-for="element in elements"
         :key="element.id"
       >
-        <SquareGridElement v-bind="element" />
+        <div @click="goto(element.id)">
+          <SquareGridElement v-bind="element" />
+        </div>
       </v-col>
     </v-row>
   </v-container>
@@ -46,6 +48,12 @@ export default {
 
     this.isLoading = false;
     this.elements = data;
+  },
+
+  methods: {
+    goto(categoryId) {
+      this.$router.push({ name: 'Subcategories', params: { categoryId } });
+    },
   },
 };
 </script>
