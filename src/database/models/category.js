@@ -1,6 +1,10 @@
 // eslint-disable-next-line no-unused-vars
 export default (sequelize, DataTypes) => {
-  const category = sequelize.define('category', { }, {});
+  const category = sequelize.define('category', {
+    image: {
+      type: DataTypes.STRING,
+    },
+  }, {});
   category.associate = (models) => {
     // associations can be defined here
     category.belongsTo(models.restaurant);

@@ -6,7 +6,7 @@ const adapter = (categories) => categories.map((element) => {
   const response = {
     id: element.id,
     restaurantId: element.restaurantId,
-
+    image: element.image,
   };
 
   if (element.category_i18ns) {
