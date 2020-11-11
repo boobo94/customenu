@@ -1,5 +1,13 @@
 <template>
-  <p>This is my square grid {{name}}</p>
+  <v-card>
+    <v-img
+      :src="image"
+      class="white--text align-end"
+      gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
+    >
+      <v-card-title v-text="name"></v-card-title>
+    </v-img>
+  </v-card>
 </template>
 
 <script>
