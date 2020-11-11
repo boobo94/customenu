@@ -1,6 +1,14 @@
 <template>
   <v-container>
-    <v-row>
+    <v-row align="center" justify="center">
+      <v-progress-circular
+        v-if="isLoading"
+        indeterminate
+        color="primary"
+      ></v-progress-circular>
+    </v-row>
+
+    <v-row v-if="!isLoading">
       <v-col
         cols="12"
         sm="6"
@@ -9,7 +17,9 @@
         v-for="element in elements"
         :key="element.id"
       >
-        <ProductInList v-bind="element" />
+        <div @click="goto(element.id)">
+          <ProductInList v-bind="element" />
+        </div>
       </v-col>
     </v-row>
   </v-container>
@@ -17,6 +27,7 @@
 
 <script>
 import ProductInList from '@/components/ProductInList.vue';
+import axios from 'axios';
 
 export default {
   name: 'Products',
@@ -25,41 +36,29 @@ export default {
   },
   data() {
     return {
-      elements: [
-        {
-          id: 1,
-          name: 'product 1',
-          image: 'https://estonianworld.com/wp-content/uploads/2019/09/burger-king.jpg',
-          description: 'lorem ipsum',
-          price: 2.3,
-          weight: 23.45,
-        },
-        {
-          id: 2,
-          name: 'product 2',
-          image: 'https://www.citrusbits.com/wp-content/uploads/2017/04/burgerking-app-development-company.jpg',
-          description: 'lorem ipsum',
-          price: 2.3,
-          weight: 23.45,
-        },
-        {
-          id: 3,
-          name: 'product 3',
-          image: 'https://cdn.vuetifyjs.com/images/cards/house.jpg',
-          description: 'lorem ipsum',
-          price: 2.3,
-          weight: 23.45,
-        },
-        {
-          id: 4,
-          name: 'product 4',
-          image: 'https://cdn.vuetifyjs.com/images/cards/house.jpg',
-          description: 'lorem ipsum',
-          price: 2.3,
-          weight: 23.45,
-        },
-      ],
+      isLoading: true,
+      elements: [],
     };
+  },
+  async created() {
+    const { restaurantUrl, categoryId, subcategoryId } = this.$route.params;
+    const { data } = await axios.get(
+      `/web/v1/${restaurantUrl}/categories/${categoryId}/subcategories/${subcategoryId}/products`,
+    );
+
+    this.isLoading = false;
+    this.elements = data;
+  },
+  methods: {
+    goto(productId) {
+      const { restaurantUrl, categoryId, subcategoryId } = this.$route.params;
+      this.$router.push({
+        name: 'Product',
+        params: {
+          restaurantUrl, categoryId, subcategoryId, productId,
+        },
+      });
+    },
   },
 };
 </script>
