@@ -32,7 +32,7 @@ const routes = [
         component: Subcategories,
       },
       {
-        path: 'products',
+        path: ':categoryId/subcategories/:subcategoryId/products',
         component: ProductView,
         children: [
           {
