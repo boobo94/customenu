@@ -1,7 +1,22 @@
 <template>
   <v-container>
-    <v-row>
-      <v-col cols="6" sm="6" md="3" lg="2" v-for="element in elements" :key="element.id">
+    <v-row align="center" justify="center">
+      <v-progress-circular
+        v-if="isLoading"
+        indeterminate
+        color="primary"
+      ></v-progress-circular>
+    </v-row>
+
+    <v-row v-if="!isLoading">
+      <v-col
+        cols="6"
+        sm="6"
+        md="3"
+        lg="2"
+        v-for="element in elements"
+        :key="element.id"
+      >
         <SquareGridElement v-bind="element" />
       </v-col>
     </v-row>
@@ -19,34 +34,17 @@ export default {
   },
   data() {
     return {
-      elements: [
-        {
-          id: 1,
-          name: 'food',
-          image: 'https://cdn.vuetifyjs.com/images/cards/house.jpg',
-        },
-        {
-          id: 2,
-          name: 'drinks',
-          image: 'https://cdn.vuetifyjs.com/images/cards/house.jpg',
-        },
-        {
-          id: 3,
-          name: 'wine',
-          image: 'https://cdn.vuetifyjs.com/images/cards/house.jpg',
-        },
-        {
-          id: 4,
-          name: 'chips',
-          image: 'https://cdn.vuetifyjs.com/images/cards/house.jpg',
-        },
-      ],
+      isLoading: true,
+      elements: [],
     };
   },
 
   async created() {
-    const { data } = await axios.get(`/web/v1/${this.$route.params.restaurantUrl}/categories`);
+    const { data } = await axios.get(
+      `/web/v1/${this.$route.params.restaurantUrl}/categories`,
+    );
 
+    this.isLoading = false;
     this.elements = data;
   },
 };
