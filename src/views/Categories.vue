@@ -10,6 +10,7 @@
 
 <script>
 import SquareGridElement from '@/components/SquareGridElement.vue';
+import axios from 'axios';
 
 export default {
   name: 'Categories',
@@ -41,6 +42,12 @@ export default {
         },
       ],
     };
+  },
+
+  async created() {
+    const { data } = await axios.get(`/web/v1/${this.$route.params.restaurantUrl}/categories`);
+
+    this.elements = data;
   },
 };
 </script>
