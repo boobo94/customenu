@@ -1,6 +1,11 @@
 <template>
   <v-app-bar app color="primary" dark>
-    <div>Back</div>
+
+    <div @click="goBack" v-if="!isHomePage()">
+      <v-btn icon>
+        <v-icon>mdi-arrow-left</v-icon>
+      </v-btn>
+    </div>
 
     <v-spacer></v-spacer>
 
@@ -14,7 +19,14 @@
 export default {
   name: 'Navigation',
   props: {},
-  methods: {},
+  methods: {
+    goBack() {
+      this.$router.back();
+    },
+    isHomePage() {
+      return this.$route.name === 'Home';
+    },
+  },
 };
 </script>
 
