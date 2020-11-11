@@ -8,7 +8,7 @@ export default (sequelize, DataTypes) => {
       type: DataTypes.FLOAT,
       defaultValue: 0,
     },
-    photo: {
+    image: {
       type: DataTypes.STRING,
     },
   }, {});
