@@ -4,8 +4,8 @@
       <v-col
         cols="12"
         sm="6"
-        md="4"
-        lg="3"
+        md="6"
+        lg="4"
         v-for="element in elements"
         :key="element.id"
       >
