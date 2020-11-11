@@ -1,7 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
-import Home from '../views/Home.vue';
 import About from '../views/About.vue';
 import RestaurantView from '../views/RestaurantView.vue';
 import Categories from '../views/Categories.vue';
@@ -25,11 +24,6 @@ const routes = [
       {
         path: '',
         name: 'Home',
-        component: Home,
-      },
-      {
-        path: 'categories',
-        name: 'Categories',
         component: Categories,
       },
       {

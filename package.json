@@ -9,6 +9,7 @@
     "deploy": "bash ./scripts/deploy-local.sh"
   },
   "dependencies": {
+    "axios": "^0.21.0",
     "core-js": "^3.6.5",
     "vue": "^2.6.11",
     "vue-router": "^3.3.4",
