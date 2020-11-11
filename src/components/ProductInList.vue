@@ -10,8 +10,8 @@
           {{ name }}
         </v-list-item-title>
         <div class="overline">
-          <span><v-icon >mdi-cash-multiple</v-icon> {{ price }}RON </span>
-           <span><v-icon >mdi-weight-gram</v-icon> {{ weight }}g</span>
+          <span><v-icon>mdi-cash-multiple</v-icon> {{ price }}RON </span>
+          <span><v-icon>mdi-weight-gram</v-icon> {{ weight }}g</span>
         </div>
       </v-list-item-content>
     </v-list-item>
