@@ -9,7 +9,7 @@
 
     <v-spacer></v-spacer>
 
-    <div>Logo</div>
+    <div>Meniul Digital</div>
 
     <v-spacer></v-spacer>
   </v-app-bar>
