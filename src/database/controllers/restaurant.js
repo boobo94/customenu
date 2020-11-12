@@ -85,4 +85,19 @@ export default class Restaurant {
       transaction,
     });
   }
+
+  /**
+   * Find logo
+   * @param {number} id
+   */
+  async getMinimal(id) {
+    return this.model.findOne({
+      where: {
+        id: {
+          [Op.eq]: id,
+        },
+      },
+      attributes: ['id', 'logo', 'shortUrl'],
+    });
+  }
 }
