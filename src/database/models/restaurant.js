@@ -12,6 +12,24 @@ export default (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    email: {
+      type: DataTypes.STRING,
+    },
+    phone: {
+      type: DataTypes.STRING,
+    },
+    address: {
+      type: DataTypes.STRING,
+    },
+    instagramUrl: {
+      type: DataTypes.STRING,
+    },
+    facebookUrl: {
+      type: DataTypes.STRING,
+    },
+    youtubeUrl: {
+      type: DataTypes.STRING,
+    },
   }, {});
   restaurant.associate = (models) => {
     // associations can be defined here
