@@ -16,14 +16,6 @@
 <script>
 export default {
   name: 'Footer',
-  data: () => ({
-    icons: [
-      'mdi-home',
-      'mdi-email',
-      'mdi-calendar',
-      'mdi-delete',
-    ],
-  }),
 };
 </script>
 
