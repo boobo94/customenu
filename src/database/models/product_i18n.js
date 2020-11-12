@@ -4,7 +4,7 @@ export default (sequelize, DataTypes) => sequelize.define('product_i18n', {
     allowNull: false,
   },
   description: {
-    type: DataTypes.STRING,
+    type: DataTypes.TEXT,
   },
   lang_code: {
     type: DataTypes.STRING(2),
