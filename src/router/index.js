@@ -2,11 +2,20 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 
 import RouterView from '@/components/RouterView.vue';
+import Login from '@/views/auth/Login.vue';
 import ListCategories from '@/views/categories/List.vue';
+
+import middlewareIsLoggedIn from './middlewareIsLogged';
 
 Vue.use(VueRouter);
 
 const routes = [
+
+  {
+    path: '/login',
+    name: 'Login',
+    component: Login,
+  },
 
   {
     path: '/categories',
@@ -16,16 +25,19 @@ const routes = [
         path: '',
         name: 'List Categories',
         component: ListCategories,
+        beforeEnter: middlewareIsLoggedIn,
       },
       // {
       //   path: 'add',
       //   name: 'Add Category',
       //   component: AddCategoryComponent,
+      // beforeEnter: middlewareIsLoggedIn,
       // },
       // {
       //   path: ':categoryId/edit',
       //   name: 'Edit Category',
       //   component: EditCategoryComponent,
+      // beforeEnter: middlewareIsLoggedIn,
       // },
     ],
   },

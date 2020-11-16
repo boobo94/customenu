@@ -15,6 +15,7 @@
 <script>
 import Navigation from '@/components/Navigation.vue';
 import Footer from '@/components/Footer.vue';
+import axiosErrorInterceptor from '@/services/axiosService';
 
 export default {
   name: 'App',
@@ -26,5 +27,9 @@ export default {
   data: () => ({
     //
   }),
+  created() {
+    console.log('create interceptor');
+    axiosErrorInterceptor(this.$store, this.$router);
+  },
 };
 </script>
