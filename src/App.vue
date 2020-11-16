@@ -32,7 +32,6 @@ export default {
   },
   computed: {
     isLoggedIn() {
-      console.log(this.$store.getters['authModule/isLoggedIn']);
       return this.$store.getters['authModule/isLoggedIn'];
     },
   },
