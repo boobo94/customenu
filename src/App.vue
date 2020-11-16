@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <Navigation />
+    <Navigation v-if="isLoggedIn" />
 
     <v-main>
       <v-fade-transition mode="out-in">
@@ -8,7 +8,7 @@
       </v-fade-transition>
     </v-main>
 
-    <Footer />
+    <Footer v-if="isLoggedIn" />
   </v-app>
 </template>
 
@@ -28,8 +28,13 @@ export default {
     //
   }),
   created() {
-    console.log('create interceptor');
     axiosErrorInterceptor(this.$store, this.$router);
+  },
+  computed: {
+    isLoggedIn() {
+      console.log(this.$store.getters['authModule/isLoggedIn']);
+      return this.$store.getters['authModule/isLoggedIn'];
+    },
   },
 };
 </script>

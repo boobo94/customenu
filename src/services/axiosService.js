@@ -2,7 +2,6 @@ import axios from 'axios';
 import handleError from './error';
 
 export default function axiosErrorInterceptor(store, router) {
-  console.log('axios service');
   axios.interceptors.response.use(undefined, (err) => new Promise((resolve, reject) => {
     // eslint-disable-next-line no-underscore-dangle
     if (err.config && !err.config.__isRetryRequest && err.response.status === 401) {
