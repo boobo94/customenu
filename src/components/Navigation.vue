@@ -32,7 +32,7 @@
 
       <template v-slot:append>
         <div class="pa-2">
-          <v-btn block color="secondary"> Logout </v-btn>
+          <v-btn block color="secondary" @click="logout"> Logout </v-btn>
         </div>
         <div block>
           <LocaleSwitch />
@@ -87,6 +87,10 @@ export default {
     },
     isHomePage() {
       return this.$route.name === 'Home';
+    },
+    logout() {
+      this.$store.dispatch('authModule/logout');
+      this.$router.push({ name: 'Login' });
     },
   },
 };

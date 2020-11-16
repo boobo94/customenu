@@ -14,7 +14,7 @@ const routes = [
   {
     path: '',
     name: 'Home',
-    component: Login,
+    component: Login, // todo: set a homepage component
   },
 
   {
