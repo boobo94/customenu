@@ -22,7 +22,6 @@ export default async (req, res) => {
       refreshToken: admin.refreshToken,
     });
   } catch (error) {
-    console.log(error);
     return res.status(StatusCodes.SERVER_INTERNAL_ERROR).send({ error: errors.SERVER_ERROR });
   }
 };
