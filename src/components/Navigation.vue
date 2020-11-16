@@ -1,32 +1,63 @@
 <template>
-  <v-app-bar app color="primary" dark>
-    <router-link :to="{ name: 'Contact' }">
-      <v-btn icon>
-        <v-icon>mdi-silverware-fork-knife</v-icon>
-      </v-btn>
-    </router-link>
+  <div>
+    <v-navigation-drawer v-model="drawer" app fixed>
+      <v-list>
+        <v-list-item>
+          <v-list-item-content>
+            <v-list-item-title class="title">
+              <v-icon>mdi-account</v-icon>Admin
+            </v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
 
-    <div class="empty-button-size">
-      <v-btn icon @click="goBack" v-if="!isHomePage()">
-        <v-icon>mdi-arrow-left</v-icon>
-      </v-btn>
-    </div>
+        <v-divider></v-divider>
 
-    <v-spacer></v-spacer>
+        <template v-for="(item, index) in items">
+          <v-list-item
+            color="primary"
+            :key="index"
+            :href="item.href"
+            :to="{ name: item.href }"
+          >
+            <v-list-item-icon>
+              <v-icon>{{ item.icon }}</v-icon>
+            </v-list-item-icon>
 
-    <router-link :to="{ name: 'Home' }">
-      <img :src="restaurant.logo" :alt="restaurant.shortUrl" height="50" />
-    </router-link>
+            <v-list-item-content>
+              <v-list-item-title>{{ item.title }}</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </template>
+      </v-list>
 
-    <v-spacer></v-spacer>
+      <template v-slot:append>
+        <div class="pa-2">
+          <v-btn block color="secondary"> Logout </v-btn>
+        </div>
+        <div block>
+          <LocaleSwitch />
+        </div>
+      </template>
+    </v-navigation-drawer>
 
-    <LocaleSwitch />
-  </v-app-bar>
+    <v-app-bar app class="primary lighten-1">
+      <v-app-bar-nav-icon color="white" @click="drawer = !drawer"></v-app-bar-nav-icon>
+      <div class="empty-button-size">
+        <v-btn icon @click="goBack" v-if="!isHomePage()">
+          <v-icon color="white">mdi-arrow-left</v-icon>
+        </v-btn>
+      </div>
+      <v-toolbar-title class="white--text">Application</v-toolbar-title>
+
+      <!-- <v-spacer></v-spacer>
+
+      <LocaleSwitch /> -->
+    </v-app-bar>
+  </div>
 </template>
 
 <script>
 import LocaleSwitch from '@/components/LocaleSwitch.vue';
-import axios from 'axios';
 
 export default {
   name: 'Navigation',
@@ -36,19 +67,18 @@ export default {
   },
   data() {
     return {
-      restaurant: {
-        id: 0,
-        logo: 'Digital Menu',
-        shortUrl: '',
-      },
+      drawer: null,
+      items: [
+        {
+          href: 'List Categories',
+          router: true,
+          title: this.$t('CATEGORIES_TITLE'),
+          icon: 'mdi-shape',
+        },
+      ],
     };
   },
-  async created() {
-    const { restaurantUrl } = this.$route.params;
-    const { data } = await axios.get(`/web/v1/${restaurantUrl}/simple`);
-
-    this.restaurant = data;
-  },
+  created() {},
   methods: {
     goBack() {
       return window.history.length > 1
@@ -57,12 +87,6 @@ export default {
     },
     isHomePage() {
       return this.$route.name === 'Home';
-    },
-    gotoRestaurant() {
-      return this.$router.push({ name: 'Contact' });
-    },
-    gotoHome() {
-      return this.$router.push({ name: 'Home' });
     },
   },
 };

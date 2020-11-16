@@ -9,12 +9,34 @@ Vue.use(VueRouter);
 const routes = [
 
   {
-    path: 'categories',
+    path: '/categories',
     component: RouterView,
     children: [
       {
         path: '',
         name: 'List Categories',
+        component: ListCategories,
+      },
+      // {
+      //   path: 'add',
+      //   name: 'Add Category',
+      //   component: AddCategoryComponent,
+      // },
+      // {
+      //   path: ':categoryId/edit',
+      //   name: 'Edit Category',
+      //   component: EditCategoryComponent,
+      // },
+    ],
+  },
+
+  {
+    path: '/subcategories',
+    component: RouterView,
+    children: [
+      {
+        path: '',
+        name: 'List Subcategories',
         component: ListCategories,
       },
       // {

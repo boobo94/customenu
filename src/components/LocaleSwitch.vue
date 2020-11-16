@@ -1,15 +1,22 @@
 <template>
-  <v-select
-    v-model="$i18n.locale"
-    :items="languages"
-    menu-props="auto"
-    label="Select"
-    hide-details
-    prepend-icon="mdi-translate"
-    single-line
-    class="locale-switch"
-    @change="changeLanguage"
-  ></v-select>
+  <v-row>
+    <v-col cols="6">
+      <v-subheader> {{ $t("LANGUAGE") }}</v-subheader>
+    </v-col>
+
+    <v-col cols="6">
+      <v-select
+        v-model="$i18n.locale"
+        :items="languages"
+        menu-props="auto"
+        label="Select"
+        hide-details
+        prepend-icon="mdi-web"
+        single-line
+        @change="changeLanguage"
+      ></v-select>
+    </v-col>
+  </v-row>
 </template>
 
 <script>
