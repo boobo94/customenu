@@ -39,9 +39,8 @@ export default {
   },
 
   async created() {
-    const { data } = await axios.get(
-      `/web/v1/${this.$route.params.restaurantUrl}/categories`,
-    );
+    const { restaurantId } = this.$store.state.authModule;
+    const { data } = await axios.get(`/restaurants/${restaurantId}/categories`);
 
     this.isLoading = false;
     this.elements = data;

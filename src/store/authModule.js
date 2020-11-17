@@ -9,7 +9,7 @@ export default {
   state: {
     token: localStorage.getItem('auth_token') || null,
     refreshToken: localStorage.getItem('refresh_token') || null,
-    restaurantId: 0,
+    restaurantId: localStorage.getItem('restaurantId') || null,
   },
   mutations: {
     login(state, response) {
@@ -27,17 +27,19 @@ export default {
       try {
         const { data } = await axios.post(ROUTE_LOGIN, body);
 
-        const { token, refreshToken } = data;
+        const { token, refreshToken, restaurantId } = data;
         localStorage.setItem('auth_token', token);
         localStorage.setItem('refresh_token', refreshToken);
+        localStorage.setItem('restaurantId', restaurantId);
 
         // set the authorization header after login for axios
-        axios.defaults.headers.Authorization = `Bearer ${token}`;
+        axios.defaults.headers.authorization = `Bearer ${token}`;
 
         commit('login', data);
       } catch (e) {
         localStorage.removeItem('auth_token');
         localStorage.removeItem('refresh_token');
+        localStorage.removeItem('restaurantId');
         commit('logout');
         handleError(e);
       }
@@ -46,6 +48,7 @@ export default {
     logout({ commit }) {
       localStorage.removeItem('auth_token');
       localStorage.removeItem('refresh_token');
+      localStorage.removeItem('restaurantId');
       commit('logout');
     },
 
@@ -58,16 +61,19 @@ export default {
         if (data.error) {
           localStorage.removeItem('auth_token');
           localStorage.removeItem('refresh_token');
+          localStorage.removeItem('restaurantId');
         } else {
-          const { token, refreshToken } = data;
+          const { token, refreshToken, restaurantId } = data;
           localStorage.setItem('auth_token', token);
           localStorage.setItem('refresh_token', refreshToken);
+          localStorage.setItem('restaurantId', restaurantId);
 
           commit('login', data);
         }
       } catch (e) {
         localStorage.removeItem('auth_token');
         localStorage.removeItem('refresh_token');
+        localStorage.removeItem('restaurantId');
         commit('logout');
         handleError(e);
       }
