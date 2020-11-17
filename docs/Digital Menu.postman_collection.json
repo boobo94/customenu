@@ -54,7 +54,55 @@
 											"variable": [
 												{
 													"key": "restaurant",
-													"value": "demo",
+													"value": "test",
+													"type": "string"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get logo",
+									"request": {
+										"auth": {
+											"type": "apikey",
+											"apikey": [
+												{
+													"key": "value",
+													"value": "abc",
+													"type": "string"
+												},
+												{
+													"key": "key",
+													"value": "authorization",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept-Language",
+												"value": "en",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{BASE_URL}}/web/v1/:restaurant/logo",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"web",
+												"v1",
+												":restaurant",
+												"logo"
+											],
+											"variable": [
+												{
+													"key": "restaurant",
+													"value": "test",
 													"type": "string"
 												}
 											]
@@ -109,7 +157,7 @@
 											"variable": [
 												{
 													"key": "restaurant",
-													"value": "demo"
+													"value": "test"
 												}
 											]
 										}
@@ -217,7 +265,7 @@
 											"variable": [
 												{
 													"key": "restaurant",
-													"value": "demo"
+													"value": "test"
 												},
 												{
 													"key": "categoryId",
@@ -337,15 +385,15 @@
 											"variable": [
 												{
 													"key": "restaurant",
-													"value": "demo"
+													"value": "test"
 												},
 												{
 													"key": "categoryId",
-													"value": "2"
+													"value": "1"
 												},
 												{
 													"key": "subcategoryId",
-													"value": "2"
+													"value": "1"
 												}
 											]
 										}
@@ -430,6 +478,345 @@
 				}
 			],
 			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "admin",
+			"item": [
+				{
+					"name": "v1",
+					"item": [
+						{
+							"name": "auth",
+							"item": [
+								{
+									"name": "Login",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "c554795e-9079-4b4c-a168-e85dbb6dbf92",
+												"exec": [
+													"var data = pm.response.json();",
+													"pm.collectionVariables.set(\"ADMIN_AUTH_TOKEN\", data.token);",
+													"pm.collectionVariables.set(\"ADMIN_REFRESH_TOKEN\", data.refreshToken);"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "apikey",
+											"apikey": [
+												{
+													"key": "value",
+													"value": "abc",
+													"type": "string"
+												},
+												{
+													"key": "key",
+													"value": "authorization",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept-Language",
+												"value": "en",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"email\": \"admin@cmevo.com\",\n    \"password\": \"admin\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{BASE_URL}}/admin/v1/auth/login",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"admin",
+												"v1",
+												"auth",
+												"login"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "categories",
+							"item": [
+								{
+									"name": "Get all",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{ADMIN_AUTH_TOKEN}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept-Language",
+												"value": "ro",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{BASE_URL}}/admin/v1/restaurants/:restaurantId/categories",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"admin",
+												"v1",
+												"restaurants",
+												":restaurantId",
+												"categories"
+											],
+											"variable": [
+												{
+													"key": "restaurantId",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get one",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{ADMIN_AUTH_TOKEN}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept-Language",
+												"value": "en",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{BASE_URL}}/admin/v1/restaurants/:restaurantId/categories/:categoryId",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"admin",
+												"v1",
+												"restaurants",
+												":restaurantId",
+												"categories",
+												":categoryId"
+											],
+											"variable": [
+												{
+													"key": "restaurantId",
+													"value": "1"
+												},
+												{
+													"key": "categoryId",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Create",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{ADMIN_AUTH_TOKEN}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept-Language",
+												"type": "text",
+												"value": "en"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"image\": \"https://image.com/dsada.jpg\",\n    \"category_i18ns\": [\n        {\n            \"name\": \"Burgers1\",\n            \"lang_code\": \"en\"\n        },\n        {\n            \"name\": \"Burgeri1\",\n            \"lang_code\": \"ro\"\n        }\n    ]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{BASE_URL}}/admin/v1/restaurants/:restaurantId/categories",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"admin",
+												"v1",
+												"restaurants",
+												":restaurantId",
+												"categories"
+											],
+											"variable": [
+												{
+													"key": "restaurantId",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Update",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{ADMIN_AUTH_TOKEN}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept-Language",
+												"type": "text",
+												"value": "en"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"id\": 15,\n    \"image\": \"dsadads\",\n    \"category_i18ns\": [\n        {\n            \"id\": 22,\n            \"name\": \"Burgers update\",\n            \"lang_code\": \"en\",\n            \"categoryId\": 15,\n            \"updatedAt\": \"2020-11-17T20:21:48.741Z\",\n            \"createdAt\": \"2020-11-17T20:21:48.741Z\"\n        },\n        {\n            \"id\": 23,\n            \"name\": \"Burgeri update\",\n            \"lang_code\": \"ro\",\n            \"categoryId\": 15,\n            \"updatedAt\": \"2020-11-17T20:21:48.741Z\",\n            \"createdAt\": \"2020-11-17T20:21:48.741Z\"\n        }\n    ],\n    \"restaurantId\": 1,\n    \"updatedAt\": \"2020-11-17T20:21:48.731Z\",\n    \"createdAt\": \"2020-11-17T20:21:48.731Z\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{BASE_URL}}/admin/v1/restaurants/:restaurantId/categories/:categoryId",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"admin",
+												"v1",
+												"restaurants",
+												":restaurantId",
+												"categories",
+												":categoryId"
+											],
+											"variable": [
+												{
+													"key": "restaurantId",
+													"value": "1"
+												},
+												{
+													"key": "categoryId",
+													"value": "15"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{ADMIN_AUTH_TOKEN}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept-Language",
+												"type": "text",
+												"value": "en"
+											}
+										],
+										"url": {
+											"raw": "{{BASE_URL}}/admin/v1/restaurants/:restaurantId/categories/:categoryId",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"admin",
+												"v1",
+												"restaurants",
+												":restaurantId",
+												"categories",
+												":categoryId"
+											],
+											"variable": [
+												{
+													"key": "restaurantId",
+													"value": "1"
+												},
+												{
+													"key": "categoryId",
+													"value": "8"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
 		}
 	],
 	"event": [
@@ -456,8 +843,18 @@
 	],
 	"variable": [
 		{
-			"id": "fe379155-3c7d-4a85-96f9-1ef4e1518dd8",
+			"id": "a41e3fb6-9b67-484c-9957-1c8780b53912",
 			"key": "BASE_URL",
+			"value": ""
+		},
+		{
+			"id": "d74bf874-1f1e-4f75-8a66-3a4f19038827",
+			"key": "ADMIN_AUTH_TOKEN",
+			"value": ""
+		},
+		{
+			"id": "ba507f42-7c39-4aff-b44e-d29ebd92802c",
+			"key": "ADMIN_REFRESH_TOKEN",
 			"value": ""
 		}
 	],
