@@ -20,6 +20,7 @@ export default async (req, res) => {
     return res.status(StatusCodes.OK).send({
       token: GenerateJWT(admin.id, admin.restaurantId),
       refreshToken: admin.refreshToken,
+      restaurantId: admin.restaurantId,
     });
   } catch (error) {
     return res.status(StatusCodes.SERVER_INTERNAL_ERROR).send({ error: errors.SERVER_ERROR });
