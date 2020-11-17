@@ -3,17 +3,18 @@ function isValidEmail(email) {
   return re.test(email);
 }
 
-export const emailValidator = [
-  (email) => {
-    if (email.trim() === '') return 'Email-ul trebuie completat.';
-    if (!isValidEmail(email)) return 'Email-ul este invalid.';
-    return true;
-  },
-];
-
-export const passwordValidator = [
-  (password) => {
-    if (password.trim() === '') return 'Parola trebuie completata.';
-    return true;
-  },
-];
+export default (self) => ({
+  emailValidator: [
+    (email) => {
+      if (email.trim() === '') return self.$t('EMAIL_VALIDATOR_REQUIRED');
+      if (!isValidEmail(email)) return self.$t('EMAIL_VALIDATOR_VALID');
+      return true;
+    },
+  ],
+  passwordValidator: [
+    (password) => {
+      if (password.trim() === '') return self.$t('PASSWORD_VALIDATOR_REQUIRED');
+      return true;
+    },
+  ],
+});

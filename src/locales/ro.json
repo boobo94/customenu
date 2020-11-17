@@ -2,5 +2,11 @@
   "footer-logo": "Meniul Digital",
   "CATEGORIES_TITLE": "Categorii",
   "DASHBOARD_TITLE": "Dashboard",
+  "LOGIN_TITLE": "Logare",
+  "EMAIL_LABEL": "Email",
+  "EMAIL_VALIDATOR_REQUIRED": "Email-ul trebuie completat.",
+  "EMAIL_VALIDATOR_VALID": "Email-ul este invalid.",
+  "PASSWORD_VALIDATOR_REQUIRED": "Parola trebuie completata.",
+  "PASSWORD_LABEL": "Parola",
   "LANGUAGE": "Limba"
 }

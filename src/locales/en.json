@@ -2,6 +2,12 @@
   "footer-logo": "Digital Menu",
   "CATEGORIES_TITLE": "Categories",
   "DASHBOARD_TITLE": "Dashboard",
+  "LOGIN_TITLE": "Login",
+  "EMAIL_LABEL": "Email",
+  "EMAIL_VALIDATOR_REQUIRED": "The email is required",
+  "EMAIL_VALIDATOR_VALID": "The email is not valid",
+  "PASSWORD_VALIDATOR_REQUIRED": "The password is required",
+  "PASSWORD_LABEL": "Password",
   "LANGUAGE": "Language"
 
 }
