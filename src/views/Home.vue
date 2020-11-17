@@ -1,9 +1,8 @@
 <template>
   <v-container>
-    <v-row align="center" justify="center">
     <v-row>
       <v-col>
-        HOme
+        Home
       </v-col>
     </v-row>
   </v-container>

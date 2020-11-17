@@ -2,6 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 
 import RouterView from '@/components/RouterView.vue';
+import Home from '@/views/Home.vue';
 import Login from '@/views/auth/Login.vue';
 import ListCategories from '@/views/categories/List.vue';
 
@@ -14,7 +15,7 @@ const routes = [
   {
     path: '',
     name: 'Home',
-    component: Login, // todo: set a homepage component
+    component: Home,
   },
 
   {
