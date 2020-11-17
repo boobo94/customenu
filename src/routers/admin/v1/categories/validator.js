@@ -2,7 +2,7 @@ import { param } from 'express-validator';
 import checkErrors from '../../../validation/checkErrors';
 
 export const getCategory = [
-  param('categoryId')
+  param(['restaurantId', 'categoryId'])
     .not().isEmpty().withMessage('is required')
     .isInt()
     .withMessage('is int')

@@ -10,12 +10,13 @@ export default Router({ mergeParams: true })
   .get('/',
     adminAuthorization,
     validators.getCategories,
-    permissions.getCategories,
+    permissions.checkAccessToCategories,
     getAll)
 
   .get('/:categoryId',
     adminAuthorization,
     validators.getCategory,
+    permissions.checkAccessToCategories,
     getOne);
 
 // .use('/:categoryId/subcategories', webAuthorization, subcategoriesRouter);
