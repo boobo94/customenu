@@ -8,5 +8,7 @@
   "EMAIL_VALIDATOR_VALID": "Email-ul este invalid.",
   "PASSWORD_VALIDATOR_REQUIRED": "Parola trebuie completata.",
   "PASSWORD_LABEL": "Parola",
-  "LANGUAGE": "Limba"
+  "LANGUAGE": "Limba",
+  "DELETE_CONFIRMATION_QUESTION": "Sunteti sigur ca doriti sa stergeti?",
+  "DELETE_CONFIRMATION_CANCEL": "Inchide"
 }
