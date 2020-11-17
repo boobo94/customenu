@@ -1,5 +1,4 @@
 import axios from 'axios';
-import handleError from './error';
 
 export default function axiosErrorInterceptor(store, router) {
   axios.interceptors.response.use(undefined, (err) => new Promise((resolve, reject) => {
@@ -23,10 +22,13 @@ export default function axiosErrorInterceptor(store, router) {
         store.dispatch('authModule/logout');
         router.push({ path: '/login' });
       }
-    } else if (err.config && err.response.status >= 400 && err.response.data.error) {
-      // the server returned an error
-      handleError(err.response.data.error);
     }
-    reject(err);
+
+    // if the server respond with an error
+    if (err.response && err.response.data && err.response.data.error) {
+      return reject(err.response.data.error);
+    }
+
+    return reject(err);
   }));
 }
