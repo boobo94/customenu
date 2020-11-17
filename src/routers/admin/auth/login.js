@@ -18,7 +18,7 @@ export default async (req, res) => {
     }
 
     return res.status(StatusCodes.OK).send({
-      token: GenerateJWT(admin.id),
+      token: GenerateJWT(admin.id, admin.restaurantId),
       refreshToken: admin.refreshToken,
     });
   } catch (error) {

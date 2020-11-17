@@ -6,9 +6,10 @@ import errors from '../../locales/errors.json';
  * @param {number} userId
  * @returns {string}
  */
-export function GenerateJWT(userId) {
+export function GenerateJWT(userId, restaurantId) {
   return jwt.sign({
     userId,
+    restaurantId,
   },
   process.env.JWT_SECRET_KEY,
   {
