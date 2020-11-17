@@ -1,0 +1,97 @@
+<template>
+  <v-data-table
+    :headers="headers"
+    :items="elements"
+    class="elevation-1"
+    :loading="isLoading"
+  >
+    <template v-slot:top>
+      <v-toolbar flat>
+        <v-toolbar-title>{{ tableTitle }}</v-toolbar-title>
+        <v-spacer></v-spacer>
+        <v-btn fab dark color="blue">
+          <v-icon dark> mdi-plus </v-icon>
+        </v-btn>
+        <v-dialog v-model="dialogDelete" max-width="500px">
+          <v-card>
+            <v-card-title class="headline">{{
+              $t("DELETE_CONFIRMATION_QUESTION")
+            }}</v-card-title>
+            <v-card-actions>
+              <v-spacer></v-spacer>
+              <v-btn color="blue darken-1" text @click="closeDelete">{{
+                $t("DELETE_CONFIRMATION_CANCEL")
+              }}</v-btn>
+              <v-btn color="blue darken-1" text @click="deleteItemConfirm"
+                >OK</v-btn
+              >
+              <v-spacer></v-spacer>
+            </v-card-actions>
+          </v-card>
+        </v-dialog>
+      </v-toolbar>
+    </template>
+    <template v-slot:[`item.actions`]="{ item }">
+      <v-icon small class="mr-2" @click="editItem(item)"> mdi-pencil </v-icon>
+      <v-icon small @click="deleteItem(item)"> mdi-delete </v-icon>
+    </template>
+  </v-data-table>
+</template>
+
+<script>
+export default {
+  name: 'TableElements',
+  props: {
+    tableTitle: String,
+    elements: Array,
+    isLoading: Boolean,
+  },
+
+  data: () => ({
+    dialogDelete: false,
+    headers: [
+      {
+        text: '#',
+        align: 'start',
+        sortable: false,
+        value: 'id',
+      },
+      { text: 'Name', value: 'name' },
+      {
+        text: 'Actions', align: 'end', value: 'actions', sortable: false,
+      },
+    ],
+  }),
+
+  methods: {
+    editItem(item) {
+      console.log(item);
+    },
+
+    deleteItem(item) {
+      console.log(item);
+      this.dialogDelete = true;
+    },
+
+    deleteItemConfirm() {
+      this.closeDelete();
+    },
+
+    close() {
+      this.dialog = false;
+    },
+
+    closeDelete() {
+      this.dialogDelete = false;
+    },
+
+    save() {
+      this.close();
+    },
+  },
+};
+</script>
+
+<style scoped>
+/* Define styles here */
+</style>
