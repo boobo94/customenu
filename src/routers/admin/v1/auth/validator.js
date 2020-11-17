@@ -1,5 +1,5 @@
 import { body } from 'express-validator';
-import checkErrors from '../../validation/checkErrors';
+import checkErrors from '../../../validation/checkErrors';
 
 export const loginValidator = [
   body('email')

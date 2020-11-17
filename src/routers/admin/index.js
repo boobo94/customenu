@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import authRouter from './auth';
+import v1Router from './v1';
 
 export default Router()
-  .use('/auth', authRouter);
+  .use('/v1', v1Router);

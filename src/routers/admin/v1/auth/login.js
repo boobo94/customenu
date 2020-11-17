@@ -1,8 +1,8 @@
 import bcrypt from 'bcrypt';
-import StatusCodes from '../../utils/statusCodes';
-import errors from '../../../locales/errors.json';
-import { Controllers } from '../../../database';
-import { GenerateJWT } from '../../utils/jwt';
+import StatusCodes from '../../../utils/statusCodes';
+import errors from '../../../../locales/errors.json';
+import { Controllers } from '../../../../database';
+import { GenerateJWT } from '../../../utils/jwt';
 
 export default async (req, res) => {
   try {
