@@ -9,11 +9,13 @@ export default {
   state: {
     token: localStorage.getItem('auth_token') || null,
     refreshToken: localStorage.getItem('refresh_token') || null,
+    restaurantId: 0,
   },
   mutations: {
     login(state, response) {
       state.token = response.token;
       state.refreshToken = response.refreshToken;
+      state.restaurantId = response.restaurantId;
     },
     logout(state) {
       state.token = null;
