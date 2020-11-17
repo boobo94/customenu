@@ -18,6 +18,7 @@
             :key="index"
             :href="item.href"
             :to="{ name: item.href }"
+            exact
           >
             <v-list-item-icon>
               <v-icon>{{ item.icon }}</v-icon>
@@ -48,10 +49,6 @@
         </v-btn>
       </div>
       <v-toolbar-title class="white--text">Application</v-toolbar-title>
-
-      <!-- <v-spacer></v-spacer>
-
-      <LocaleSwitch /> -->
     </v-app-bar>
   </div>
 </template>
@@ -71,13 +68,11 @@ export default {
       items: [
         {
           href: 'Home',
-          router: true,
           title: this.$t('DASHBOARD_TITLE'),
           icon: 'mdi-desktop-mac-dashboard',
         },
         {
           href: 'List Categories',
-          router: true,
           title: this.$t('CATEGORIES_TITLE'),
           icon: 'mdi-shape',
         },
