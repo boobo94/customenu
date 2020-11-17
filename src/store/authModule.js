@@ -1,8 +1,8 @@
 import axios from 'axios';
 import handleError from '../services/error';
 
-const ROUTE_LOGIN = '/admin/auth/login';
-const ROUTE_REFRESH_TOKEN = '/admin/auth/refresh-token';
+const ROUTE_LOGIN = '/auth/login';
+const ROUTE_REFRESH_TOKEN = '/auth/refresh-token';
 
 export default {
   namespaced: true,
