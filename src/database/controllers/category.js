@@ -95,16 +95,50 @@ export default class Category {
   }
 
   /**
+   * Create
+   * @param {object} category
+   * @param {*} transaction
+   */
+  async createI18n(category, transaction) {
+    return this.model.create(category, {
+      transaction,
+    });
+  }
+
+  /**
    * Update
    * @param {object} category
    * @param {number} id
    * @param {Sequelize.Transaction} transaction
    */
   async update(category, id, transaction) {
+    if (category.category_i18ns) {
+      for (let index = 0; index < category.category_i18ns.length; index++) {
+        const categoryI18n = category.category_i18ns[index];
+
+        if (categoryI18n.id) {
+          await this.updateI18n(categoryI18n, transaction);
+        } else {
+          await this.createI18n(categoryI18n, transaction);
+        }
+      }
+    }
+
     return this.model.update(category, {
       where: {
         id: {
           [Op.eq]: id,
+        },
+      },
+      transaction,
+    });
+  }
+
+  async updateI18n(categoryI18n, transaction) {
+    return this.modelI18n.update(categoryI18n, {
+      where: {
+        id: {
+          [Op.eq]: categoryI18n.id,
         },
       },
       transaction,
