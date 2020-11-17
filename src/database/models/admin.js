@@ -13,4 +13,8 @@ export default (sequelize, DataTypes) => sequelize.define('admin', {
     type: DataTypes.STRING,
     defaultValue: uuid(),
   },
+  isActive: {
+    type: DataTypes.BOOLEAN,
+    defaultValue: false,
+  },
 });

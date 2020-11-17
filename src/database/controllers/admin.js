@@ -30,6 +30,9 @@ export default class Admin {
         email: {
           [Op.eq]: email,
         },
+        isActive: {
+          [Op.eq]: true,
+        },
       },
     });
   }
