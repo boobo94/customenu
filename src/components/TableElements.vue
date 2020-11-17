@@ -1,7 +1,7 @@
 <template>
   <v-data-table
     :headers="headers"
-    :items="elements"
+    :items="items"
     class="elevation-1"
     :loading="isLoading"
   >
@@ -58,10 +58,21 @@ export default {
       },
       { text: 'Name', value: 'name' },
       {
-        text: 'Actions', align: 'end', value: 'actions', sortable: false,
+        text: 'Actions',
+        align: 'end',
+        value: 'actions',
+        sortable: false,
       },
     ],
+    selectedItem: null,
+    items: [],
   }),
+
+  watch: {
+    elements(newValue) {
+      this.items = newValue;
+    },
+  },
 
   methods: {
     editItem(item) {
@@ -69,12 +80,15 @@ export default {
     },
 
     deleteItem(item) {
-      console.log(item);
       this.dialogDelete = true;
+      this.selectedItem = item;
     },
 
     deleteItemConfirm() {
       this.closeDelete();
+      this.items = this.items.filter(
+        (element) => element.id !== this.selectedItem.id,
+      );
     },
 
     close() {
