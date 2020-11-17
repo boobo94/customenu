@@ -29,6 +29,16 @@ export default class Category {
     });
   }
 
+  async findByIdSimple(id) {
+    return this.model.findOne({
+      where: {
+        id: {
+          [Op.eq]: id,
+        },
+      },
+    });
+  }
+
   /**
    * Find by id and restaurant
    * @param {number} id
