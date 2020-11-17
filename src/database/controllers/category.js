@@ -77,6 +77,9 @@ export default class Category {
    */
   async create(category, transaction) {
     return this.model.create(category, {
+      include: [{
+        model: this.modelI18n,
+      }],
       transaction,
     });
   }
