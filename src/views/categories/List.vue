@@ -1,24 +1,12 @@
 <template>
   <v-container>
-    <v-row align="center" justify="center">
-      <v-progress-circular
-        v-if="isLoading"
-        indeterminate
-        color="primary"
-      ></v-progress-circular>
-    </v-row>
-
-    <v-row v-if="!isLoading">
-      <v-col
-        cols="6"
-        sm="6"
-        md="3"
-        lg="2"
-        v-for="element in elements"
-        :key="element.id"
-      >
-        <div @click="goto(element.id)">
-        </div>
+    <v-row>
+      <v-col cols="12">
+        <TableElements
+          :tableTitle="$t('CATEGORIES_TITLE')"
+          :elements="elements"
+          :isLoading="isLoading"
+        />
       </v-col>
     </v-row>
   </v-container>
@@ -26,10 +14,12 @@
 
 <script>
 import axios from 'axios';
+import TableElements from '@/components/TableElements.vue';
 
 export default {
   name: 'Categories',
   components: {
+    TableElements,
   },
   data() {
     return {
