@@ -70,6 +70,12 @@ export default {
       drawer: null,
       items: [
         {
+          href: 'Home',
+          router: true,
+          title: this.$t('DASHBOARD_TITLE'),
+          icon: 'mdi-desktop-mac-dashboard',
+        },
+        {
           href: 'List Categories',
           router: true,
           title: this.$t('CATEGORIES_TITLE'),
