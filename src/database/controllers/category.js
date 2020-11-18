@@ -100,7 +100,18 @@ export default class Category {
    * @param {*} transaction
    */
   async createI18n(category, transaction) {
-    return this.model.create(category, {
+    return this.modelI18n.create(category, {
+      transaction,
+    });
+  }
+
+  async updateI18n(categoryI18n, transaction) {
+    return this.modelI18n.update(categoryI18n, {
+      where: {
+        id: {
+          [Op.eq]: categoryI18n.id,
+        },
+      },
       transaction,
     });
   }
@@ -119,6 +130,7 @@ export default class Category {
         if (categoryI18n.id) {
           await this.updateI18n(categoryI18n, transaction);
         } else {
+          categoryI18n.categoryId = id;
           await this.createI18n(categoryI18n, transaction);
         }
       }
@@ -128,17 +140,6 @@ export default class Category {
       where: {
         id: {
           [Op.eq]: id,
-        },
-      },
-      transaction,
-    });
-  }
-
-  async updateI18n(categoryI18n, transaction) {
-    return this.modelI18n.update(categoryI18n, {
-      where: {
-        id: {
-          [Op.eq]: categoryI18n.id,
         },
       },
       transaction,
