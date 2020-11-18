@@ -89,6 +89,9 @@ export default class Subcategory {
    */
   async create(subcategory, transaction) {
     return this.model.create(subcategory, {
+      include: [{
+        model: this.modelI18n,
+      }],
       transaction,
     });
   }
