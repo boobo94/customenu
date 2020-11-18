@@ -3,7 +3,7 @@
     <v-row>
       <v-col cols="12">
         <TableElements
-          :tableTitle="$t('CATEGORIES_TITLE')"
+          :tableTitle="$t('SUBCATEGORIES_TITLE')"
           :elements="elements"
           :isLoading="isLoading"
           :apiUrl="subcategoriesApiUrl"
