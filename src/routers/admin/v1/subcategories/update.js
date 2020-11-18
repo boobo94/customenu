@@ -7,14 +7,14 @@ export default async (req, res) => {
   const t = await transaction();
 
   try {
-    const category = await Controllers.category.findByIdSimple(req.params.categoryId);
-    if (!category) {
+    const entry = await Controllers.subcategory.findByIdAndCategorySimple(
+      req.params.subcategoryId, req.params.categoryId,
+    );
+    if (!entry) {
       return res.status(statusCodes.NOT_FOUND).send({ error: errors.RESOURCE_NOT_FOUND });
-    } if (category.restaurantId !== req.params.restaurantId) {
-      return res.status(statusCodes.FORBIDDEN).send({ error: errors.FORBIDDEN });
     }
 
-    await Controllers.category.update(req.body, req.params.categoryId, t);
+    await Controllers.subcategory.update(req.body, req.params.subcategoryId, t);
     t.commit();
 
     return res.status(statusCodes.NO_CONTENT).send();

@@ -103,12 +103,47 @@ export default class Subcategory {
   }
 
   /**
+   * Create
+   * @param {object} subcategory
+   * @param {*} transaction
+   */
+  async createI18n(subcategory, transaction) {
+    return this.modelI18n.create(subcategory, {
+      transaction,
+    });
+  }
+
+  async updateI18n(subcategoryI18n, transaction) {
+    return this.modelI18n.update(subcategoryI18n, {
+      where: {
+        id: {
+          [Op.eq]: subcategoryI18n.id,
+        },
+      },
+      transaction,
+    });
+  }
+
+  /**
    * Update
    * @param {object} subcategory
    * @param {number} id
    * @param {Sequelize.Transaction} transaction
    */
   async update(subcategory, id, transaction) {
+    if (subcategory.subcategory_i18ns) {
+      for (let index = 0; index < subcategory.subcategory_i18ns.length; index++) {
+        const subcategoryI18n = subcategory.subcategory_i18ns[index];
+
+        if (subcategoryI18n.id) {
+          await this.updateI18n(subcategoryI18n, transaction);
+        } else {
+          subcategoryI18n.subcategoryId = id;
+          await this.createI18n(subcategoryI18n, transaction);
+        }
+      }
+    }
+
     return this.model.update(subcategory, {
       where: {
         id: {
