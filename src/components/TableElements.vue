@@ -39,12 +39,15 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   name: 'TableElements',
   props: {
     tableTitle: String,
     elements: Array,
     isLoading: Boolean,
+    apiUrl: String,
   },
 
   data: () => ({
@@ -84,11 +87,13 @@ export default {
       this.selectedItem = item;
     },
 
-    deleteItemConfirm() {
-      this.closeDelete();
+    async deleteItemConfirm() {
+      await axios.delete(`${this.apiUrl}/${this.selectedItem.id}`);
+
       this.items = this.items.filter(
         (element) => element.id !== this.selectedItem.id,
       );
+      this.closeDelete();
     },
 
     close() {

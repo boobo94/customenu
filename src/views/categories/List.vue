@@ -6,6 +6,7 @@
           :tableTitle="$t('CATEGORIES_TITLE')"
           :elements="elements"
           :isLoading="isLoading"
+          :apiUrl="categoriesApiUrl"
         />
       </v-col>
     </v-row>
@@ -25,12 +26,14 @@ export default {
     return {
       isLoading: true,
       elements: [],
+      categoriesApiUrl: '',
     };
   },
 
   async created() {
     const { restaurantId } = this.$store.state.authModule;
-    const { data } = await axios.get(`/restaurants/${restaurantId}/categories`);
+    this.categoriesApiUrl = `/restaurants/${restaurantId}/categories`;
+    const { data } = await axios.get(this.categoriesApiUrl);
 
     this.isLoading = false;
     this.elements = data;
