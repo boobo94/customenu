@@ -3,7 +3,6 @@ import errors from '../../../../locales/errors.json';
 import { DecodeJWT } from '../../../utils/jwt';
 import { Controllers } from '../../../../database';
 
-// eslint-disable-next-line import/prefer-default-export
 export async function checkAccessToCategories(req, res, next) {
   try {
     const { restaurantId } = DecodeJWT(req.headers.authorization);
