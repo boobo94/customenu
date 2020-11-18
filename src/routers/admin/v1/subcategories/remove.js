@@ -4,12 +4,16 @@ import statusCodes from '../../../utils/statusCodes';
 
 export default async (req, res) => {
   try {
-    const subcategory = await Controllers.subcategory.findByIdAndCategory(req.params.subcategoryId, req.params.categoryId, req.headers['accept-language']);
-    if (!subcategory) {
+    const entry = await Controllers.subcategory.findByIdAndCategorySimple(
+      req.params.subcategoryId, req.params.categoryId,
+    );
+    if (!entry) {
       return res.status(statusCodes.NOT_FOUND).send({ error: errors.RESOURCE_NOT_FOUND });
     }
 
-    return res.status(statusCodes.OK).send(subcategory);
+    await Controllers.subcategory.delete(req.params.subcategoryId);
+
+    return res.status(statusCodes.NO_CONTENT).send();
   } catch (error) {
     return res.status(statusCodes.SERVER_INTERNAL_ERROR).send({ error: errors.SERVER_ERROR });
   }

@@ -4,8 +4,6 @@ export default class Subcategory {
   constructor(connection) {
     this.model = connection.subcategory;
     this.modelI18n = connection.subcategory_i18n;
-    this.categoryModel = connection.category;
-    this.restaurantModel = connection.restaurant;
   }
 
   /**
@@ -31,11 +29,14 @@ export default class Subcategory {
     });
   }
 
-  async findByIdWithCategoryAndRestaurant(id, categoryId, language) {
+  async findByIdAndCategory(id, categoryId, language) {
     return this.model.findOne({
       where: {
         id: {
           [Op.eq]: id,
+        },
+        categoryId: {
+          [Op.eq]: categoryId,
         },
       },
       include: [
@@ -47,15 +48,20 @@ export default class Subcategory {
             },
           },
         },
-        {
-          model: this.categoryModel,
-          where: {
-            id: {
-              [Op.eq]: categoryId,
-            },
-          },
-        },
       ],
+    });
+  }
+
+  async findByIdAndCategorySimple(id, categoryId) {
+    return this.model.findOne({
+      where: {
+        id: {
+          [Op.eq]: id,
+        },
+        categoryId: {
+          [Op.eq]: categoryId,
+        },
+      },
     });
   }
 
