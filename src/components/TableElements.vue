@@ -79,7 +79,7 @@ export default {
 
   methods: {
     editItem(item) {
-      console.log(item);
+      this.$router.push({ path: `${this.apiUrl}/${item.id}/edit` });
     },
 
     deleteItem(item) {
