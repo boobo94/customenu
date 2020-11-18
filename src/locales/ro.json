@@ -1,6 +1,7 @@
 {
   "footer-logo": "Meniul Digital",
   "CATEGORIES_TITLE": "Categorii",
+  "SUBCATEGORIES_TITLE": "Subcategorii",
   "DASHBOARD_TITLE": "Dashboard",
   "LOGIN_TITLE": "Logare",
   "EMAIL_LABEL": "Email",
@@ -10,5 +11,8 @@
   "PASSWORD_LABEL": "Parola",
   "LANGUAGE": "Limba",
   "DELETE_CONFIRMATION_QUESTION": "Sunteti sigur ca doriti sa stergeti?",
-  "DELETE_CONFIRMATION_CANCEL": "Inchide"
+  "DELETE_CONFIRMATION_CANCEL": "Inchide",
+  "NAME": "Nume",
+  "ACTIONS": "Actiuni"
+
 }

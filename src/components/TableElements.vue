@@ -9,7 +9,7 @@
       <v-toolbar flat>
         <v-toolbar-title>{{ tableTitle }}</v-toolbar-title>
         <v-spacer></v-spacer>
-        <v-btn fab dark color="blue">
+        <v-btn fab dark color="blue" @click="save">
           <v-icon dark> mdi-plus </v-icon>
         </v-btn>
         <v-dialog v-model="dialogDelete" max-width="500px">
@@ -32,6 +32,14 @@
       </v-toolbar>
     </template>
     <template v-slot:[`item.actions`]="{ item }">
+      <v-icon
+        v-if="showSubcategoryLink"
+        small
+        class="mr-3"
+        @click="gotoSubcategory(item)"
+      >
+        mdi-shape-outline
+      </v-icon>
       <v-icon small class="mr-2" @click="editItem(item)"> mdi-pencil </v-icon>
       <v-icon small @click="deleteItem(item)"> mdi-delete </v-icon>
     </template>
@@ -48,28 +56,32 @@ export default {
     elements: Array,
     isLoading: Boolean,
     apiUrl: String,
+    showSubcategoryLink: Boolean,
   },
 
-  data: () => ({
-    dialogDelete: false,
-    headers: [
-      {
-        text: '#',
-        align: 'start',
-        sortable: false,
-        value: 'id',
-      },
-      { text: 'Name', value: 'name' },
-      {
-        text: 'Actions',
-        align: 'end',
-        value: 'actions',
-        sortable: false,
-      },
-    ],
-    selectedItem: null,
-    items: [],
-  }),
+  data() {
+    return {
+      dialogDelete: false,
+      headers: [
+        {
+          text: '#',
+          align: 'start',
+          sortable: false,
+          value: 'id',
+        },
+        { text: this.$t('NAME'), value: 'name' },
+        {
+          text: this.$t('ACTIONS'),
+          align: 'center',
+          value: 'actions',
+          sortable: false,
+          width: 100,
+        },
+      ],
+      selectedItem: null,
+      items: [],
+    };
+  },
 
   watch: {
     elements(newValue) {
@@ -79,7 +91,7 @@ export default {
 
   methods: {
     editItem(item) {
-      this.$router.push({ path: `${this.apiUrl}/${item.id}/edit` });
+      this.$router.push({ path: `${this.$route.path}/${item.id}/edit` });
     },
 
     deleteItem(item) {
@@ -105,7 +117,11 @@ export default {
     },
 
     save() {
-      this.close();
+      this.$router.push({ path: `${this.$route.path}/save` });
+    },
+
+    gotoSubcategory(item) {
+      this.$router.push({ name: 'List Subcategories', params: { categoryId: item.id } });
     },
   },
 };

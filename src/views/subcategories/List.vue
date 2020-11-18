@@ -6,8 +6,7 @@
           :tableTitle="$t('CATEGORIES_TITLE')"
           :elements="elements"
           :isLoading="isLoading"
-          :apiUrl="categoriesApiUrl"
-          :showSubcategoryLink="showSubcategoryLink"
+          :apiUrl="subcategoriesApiUrl"
         />
       </v-col>
     </v-row>
@@ -19,7 +18,7 @@ import axios from 'axios';
 import TableElements from '@/components/TableElements.vue';
 
 export default {
-  name: 'Categories',
+  name: 'Subcategories',
   components: {
     TableElements,
   },
@@ -27,21 +26,22 @@ export default {
     return {
       isLoading: true,
       elements: [],
-      categoriesApiUrl: '',
-      showSubcategoryLink: true,
+      subcategoriesApiUrl: '',
     };
   },
 
   async created() {
     const { restaurantId } = this.$store.state.authModule;
-    this.categoriesApiUrl = `/restaurants/${restaurantId}/categories`;
-    const { data } = await axios.get(this.categoriesApiUrl);
+    const { categoryId } = this.$route.params;
+    this.subcategoriesApiUrl = `/restaurants/${restaurantId}/categories/${categoryId}/subcategories`;
+    const { data } = await axios.get(this.subcategoriesApiUrl);
 
     this.isLoading = false;
     this.elements = data;
   },
 
   methods: {
+
   },
 };
 </script>
