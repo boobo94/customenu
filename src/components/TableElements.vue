@@ -117,7 +117,7 @@ export default {
     },
 
     save() {
-      this.$router.push({ path: `${this.$route.path}/save` });
+      this.$router.push({ path: `${this.$route.path}/create` });
     },
 
     gotoSubcategory(item) {
