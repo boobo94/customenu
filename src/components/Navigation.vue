@@ -12,13 +12,22 @@
 
         <v-divider></v-divider>
 
+        <v-list-item color="primary" to="/" exact>
+          <v-list-item-icon>
+            <v-icon>mdi-desktop-mac-dashboard</v-icon>
+          </v-list-item-icon>
+
+          <v-list-item-content>
+            <v-list-item-title>{{ $t("DASHBOARD_TITLE") }}</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+
         <template v-for="(item, index) in items">
           <v-list-item
             color="primary"
             :key="index"
             :href="item.href"
             :to="{ name: item.href }"
-            exact
           >
             <v-list-item-icon>
               <v-icon>{{ item.icon }}</v-icon>
@@ -42,7 +51,10 @@
     </v-navigation-drawer>
 
     <v-app-bar app class="primary lighten-1">
-      <v-app-bar-nav-icon color="white" @click="drawer = !drawer"></v-app-bar-nav-icon>
+      <v-app-bar-nav-icon
+        color="white"
+        @click="drawer = !drawer"
+      ></v-app-bar-nav-icon>
       <div class="empty-button-size">
         <v-btn icon @click="goBack" v-if="!isHomePage()">
           <v-icon color="white">mdi-arrow-left</v-icon>
@@ -66,11 +78,6 @@ export default {
     return {
       drawer: null,
       items: [
-        {
-          href: 'Home',
-          title: this.$t('DASHBOARD_TITLE'),
-          icon: 'mdi-desktop-mac-dashboard',
-        },
         {
           href: 'List Categories',
           title: this.$t('CATEGORIES_TITLE'),
