@@ -7,6 +7,23 @@ export default class Category {
   }
 
   /**
+   * Find by id with i18n
+   * @param {number} id
+   */
+  async findByIdWithI18n(id) {
+    return this.model.findOne({
+      where: {
+        id: {
+          [Op.eq]: id,
+        },
+      },
+      include: [{
+        model: this.modelI18n,
+      }],
+    });
+  }
+
+  /**
    * Find by id
    * @param {number} id
    * @param {string} language
