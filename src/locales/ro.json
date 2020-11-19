@@ -14,6 +14,12 @@
   "DELETE_CONFIRMATION_QUESTION": "Sunteti sigur ca doriti sa stergeti?",
   "DELETE_CONFIRMATION_CANCEL": "Inchide",
   "NAME": "Nume",
-  "ACTIONS": "Actiuni"
+  "ACTIONS": "Actiuni",
+  "REQUIRED_NAME": "Numele este obligatoriu",
+  "REQUIRED_EMAIL": "E-mailul este obligatoriu",
+  "VALID_EMAIL": "E-mailul este valid",
+  "SUBMIT": "Trimite",
+  "LABEL_IMAGE": "Imagine"
+
 
 }

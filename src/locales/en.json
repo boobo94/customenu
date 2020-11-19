@@ -14,5 +14,11 @@
   "DELETE_CONFIRMATION_QUESTION": "Are you sure you want to delete this item?",
   "DELETE_CONFIRMATION_CANCEL": "Cancel",
   "NAME": "Name",
-  "ACTIONS": "Actions"
+  "ACTIONS": "Actions",
+  "REQUIRED_NAME": "Name is required",
+  "REQUIRED_EMAIL": "E-mail is required",
+  "VALID_EMAIL": "E-mail must be valid",
+  "SUBMIT": "Submit",
+  "LABEL_IMAGE": "Image file"
+
 }

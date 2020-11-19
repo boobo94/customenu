@@ -91,7 +91,7 @@ export default {
 
   methods: {
     editItem(item) {
-      this.$router.push({ path: `${this.$route.path}/${item.id}/edit` });
+      this.$router.push({ path: `${this.$route.path}${item.id}/edit` });
     },
 
     deleteItem(item) {
