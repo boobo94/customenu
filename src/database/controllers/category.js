@@ -77,6 +77,9 @@ export default class Category {
           },
         },
       }],
+      order: [
+        ['id', 'ASC'],
+      ],
     });
   }
 

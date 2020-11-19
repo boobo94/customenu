@@ -51,6 +51,9 @@ export default class Product {
           },
         },
       }],
+      order: [
+        ['id', 'ASC'],
+      ],
     });
   }
 
@@ -81,6 +84,9 @@ export default class Product {
             },
           },
         },
+      ],
+      order: [
+        ['id', 'ASC'],
       ],
     });
   }

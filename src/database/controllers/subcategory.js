@@ -86,6 +86,9 @@ export default class Subcategory {
           },
         },
       }],
+      order: [
+        ['id', 'ASC'],
+      ],
     });
   }
 
