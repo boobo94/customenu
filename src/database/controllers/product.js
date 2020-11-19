@@ -28,6 +28,42 @@ export default class Product {
     });
   }
 
+  async findByIdAndSubcategory(id, subcategoryId, language) {
+    return this.model.findOne({
+      where: {
+        id: {
+          [Op.eq]: id,
+        },
+        subcategoryId: {
+          [Op.eq]: subcategoryId,
+        },
+      },
+      include: [
+        {
+          model: this.modelI18n,
+          where: {
+            lang_code: {
+              [Op.eq]: language,
+            },
+          },
+        },
+      ],
+    });
+  }
+
+  async findByIdAndSubcategorySimple(id, subcategoryId) {
+    return this.model.findOne({
+      where: {
+        id: {
+          [Op.eq]: id,
+        },
+        subcategoryId: {
+          [Op.eq]: subcategoryId,
+        },
+      },
+    });
+  }
+
   /**
    * Find all
    * @param {number} subcategoryId
@@ -58,6 +94,31 @@ export default class Product {
    */
   async create(product, transaction) {
     return this.model.create(product, {
+      include: [{
+        model: this.modelI18n,
+      }],
+      transaction,
+    });
+  }
+
+  /**
+   * Create
+   * @param {object} subcategory
+   * @param {*} transaction
+   */
+  async createI18n(subcategory, transaction) {
+    return this.modelI18n.create(subcategory, {
+      transaction,
+    });
+  }
+
+  async updateI18n(subcategoryI18n, transaction) {
+    return this.modelI18n.update(subcategoryI18n, {
+      where: {
+        id: {
+          [Op.eq]: subcategoryI18n.id,
+        },
+      },
       transaction,
     });
   }
@@ -69,6 +130,19 @@ export default class Product {
    * @param {Sequelize.Transaction} transaction
    */
   async update(product, id, transaction) {
+    if (product.product_i18ns) {
+      for (let index = 0; index < product.product_i18ns.length; index++) {
+        const productI18n = product.product_i18ns[index];
+
+        if (productI18n.id) {
+          await this.updateI18n(productI18n, transaction);
+        } else {
+          productI18n.productId = id;
+          await this.createI18n(productI18n, transaction);
+        }
+      }
+    }
+
     return this.model.update(product, {
       where: {
         id: {

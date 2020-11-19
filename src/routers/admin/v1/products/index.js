@@ -1,6 +1,5 @@
 import { Router } from 'express';
 import adminAuthorization from '../../../middleware/admin-authorization';
-import productRouter from '../products';
 import * as validators from './validator';
 import * as permissions from './permissions';
 import getAll from './get-all';
@@ -12,7 +11,7 @@ import update from './update';
 export default Router({ mergeParams: true })
   .get('/',
     adminAuthorization,
-    validators.getSubcategories,
+    validators.getProducts,
     permissions.checkAccessToParentCategory,
     getAll)
 
@@ -22,22 +21,20 @@ export default Router({ mergeParams: true })
     permissions.checkAccessToParentCategory,
     create)
 
-  .put('/:subcategoryId',
+  .put('/:productId',
     adminAuthorization,
     validators.putValidator,
     permissions.checkAccessToParentCategory,
     update)
 
-  .get('/:subcategoryId',
+  .get('/:productId',
     adminAuthorization,
-    validators.getSubcategory,
+    validators.getProduct,
     permissions.checkAccessToParentCategory,
     getOne)
 
-  .delete('/:subcategoryId',
+  .delete('/:productId',
     adminAuthorization,
-    validators.getSubcategory,
+    validators.getProduct,
     permissions.checkAccessToParentCategory,
-    remove)
-
-  .use('/:subcategoryId/products', productRouter);
+    remove);
