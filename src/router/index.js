@@ -6,6 +6,7 @@ import Home from '@/views/Home.vue';
 import Login from '@/views/auth/Login.vue';
 import ListCategories from '@/views/categories/List.vue';
 import ListSubcategories from '@/views/subcategories/List.vue';
+import ListProducts from '@/views/products/List.vue';
 
 import middlewareIsLoggedIn from './middlewareIsLogged';
 
@@ -59,6 +60,31 @@ const routes = [
         path: '',
         name: 'List Categories',
         component: ListCategories,
+        beforeEnter: middlewareIsLoggedIn,
+      },
+      // {
+      //   path: 'add',
+      //   name: 'Add Category',
+      //   component: AddCategoryComponent,
+      // beforeEnter: middlewareIsLoggedIn,
+      // },
+      // {
+      //   path: ':categoryId/edit',
+      //   name: 'Edit Category',
+      //   component: EditCategoryComponent,
+      // beforeEnter: middlewareIsLoggedIn,
+      // },
+    ],
+  },
+
+  {
+    path: '/products',
+    component: RouterView,
+    children: [
+      {
+        path: '',
+        name: 'List Products',
+        component: ListProducts,
         beforeEnter: middlewareIsLoggedIn,
       },
       // {
