@@ -6,7 +6,6 @@ export default async (req, res) => {
   try {
     const newEntry = {
       ...req.body,
-      subcategoryId: req.params.subcategoryId,
     };
     const created = await Controllers.product.create(newEntry);
 

@@ -21,7 +21,7 @@ const adapter = (categories) => categories.map((element) => {
 
 export default async (req, res) => {
   try {
-    const products = await Controllers.product.findAll(req.params.subcategoryId, req.headers['accept-language']);
+    const products = await Controllers.product.findAllOfRestaurants(req.params.restaurantId, req.headers['accept-language']);
 
     return res.status(statusCodes.OK).send(adapter(products));
   } catch (error) {

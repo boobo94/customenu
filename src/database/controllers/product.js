@@ -4,6 +4,9 @@ export default class Product {
   constructor(connection) {
     this.model = connection.product;
     this.modelI18n = connection.product_i18n;
+    this.modelSubcategory = connection.subcategory;
+    this.modelCategory = connection.category;
+    this.modelRestaurant = connection.restaurant;
   }
 
   /**
@@ -28,42 +31,6 @@ export default class Product {
     });
   }
 
-  async findByIdAndSubcategory(id, subcategoryId, language) {
-    return this.model.findOne({
-      where: {
-        id: {
-          [Op.eq]: id,
-        },
-        subcategoryId: {
-          [Op.eq]: subcategoryId,
-        },
-      },
-      include: [
-        {
-          model: this.modelI18n,
-          where: {
-            lang_code: {
-              [Op.eq]: language,
-            },
-          },
-        },
-      ],
-    });
-  }
-
-  async findByIdAndSubcategorySimple(id, subcategoryId) {
-    return this.model.findOne({
-      where: {
-        id: {
-          [Op.eq]: id,
-        },
-        subcategoryId: {
-          [Op.eq]: subcategoryId,
-        },
-      },
-    });
-  }
-
   /**
    * Find all
    * @param {number} subcategoryId
@@ -84,6 +51,104 @@ export default class Product {
           },
         },
       }],
+    });
+  }
+
+  /**
+   * Find all
+   * @param {number} restaurantId
+   * @param {string} language
+   */
+  async findAllOfRestaurants(restaurantId, language) {
+    return this.model.findAll({
+      include: [
+        {
+          model: this.modelSubcategory,
+          include: [{
+            model: this.modelCategory,
+            where: {
+              restaurantId: {
+                [Op.eq]: restaurantId,
+              },
+            },
+          }],
+        },
+        {
+          model: this.modelI18n,
+          where: {
+            lang_code: {
+              [Op.eq]: language,
+            },
+          },
+        },
+      ],
+    });
+  }
+
+  /**
+   * Find one by id and restaurant id
+   * @param {number} id
+   * @param {number} restaurantId
+   * @param {string} language
+   */
+  async findOneOfRestaurantsById(id, restaurantId, language) {
+    return this.model.findOne({
+      where: {
+        id: {
+          [Op.eq]: id,
+        },
+      },
+      include: [
+        {
+          model: this.modelSubcategory,
+          include: [{
+            model: this.modelCategory,
+            where: {
+              restaurantId: {
+                [Op.eq]: restaurantId,
+              },
+            },
+          }],
+        },
+        {
+          model: this.modelI18n,
+          where: {
+            lang_code: {
+              [Op.eq]: language,
+            },
+          },
+        },
+      ],
+    });
+  }
+
+  /**
+   * Find one by id and restaurant id simple
+   * @param {number} id
+   * @param {number} restaurantId
+   * @param {string} language
+   */
+  async findOneOfRestaurantsByIdSimple(id, restaurantId) {
+    return this.model.findOne({
+      attributes: ['id'],
+      where: {
+        id: {
+          [Op.eq]: id,
+        },
+      },
+      include: [
+        {
+          model: this.modelSubcategory,
+          include: [{
+            model: this.modelCategory,
+            where: {
+              restaurantId: {
+                [Op.eq]: restaurantId,
+              },
+            },
+          }],
+        },
+      ],
     });
   }
 

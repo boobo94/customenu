@@ -7,8 +7,8 @@ export default async (req, res) => {
   const t = await transaction();
 
   try {
-    const entry = await Controllers.product.findByIdAndSubcategorySimple(
-      req.params.productId, req.params.subcategoryId,
+    const entry = await Controllers.product.findOneOfRestaurantsByIdSimple(
+      req.params.productId, req.params.restaurantId,
     );
     if (!entry) {
       return res.status(statusCodes.NOT_FOUND).send({ error: errors.RESOURCE_NOT_FOUND });

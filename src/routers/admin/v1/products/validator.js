@@ -2,7 +2,7 @@ import { body, param } from 'express-validator';
 import checkErrors from '../../../validation/checkErrors';
 
 export const getProduct = [
-  param(['restaurantId', 'categoryId', 'subcategoryId', 'productId'])
+  param(['restaurantId', 'productId'])
     .not().isEmpty().withMessage('is required')
     .isInt()
     .withMessage('is int')
@@ -12,7 +12,7 @@ export const getProduct = [
 ];
 
 export const getProducts = [
-  param(['restaurantId', 'categoryId', 'subcategoryId'])
+  param(['restaurantId'])
     .not().isEmpty().withMessage('is required')
     .isInt()
     .withMessage('is int')
@@ -22,7 +22,13 @@ export const getProducts = [
 ];
 
 export const postValidator = [
-  param(['restaurantId', 'categoryId', 'subcategoryId'])
+  param(['restaurantId'])
+    .not().isEmpty().withMessage('is required')
+    .isInt()
+    .withMessage('is int')
+    .toInt(),
+
+  body(['subcategoryId'])
     .not().isEmpty().withMessage('is required')
     .isInt()
     .withMessage('is int')
@@ -42,7 +48,7 @@ export const postValidator = [
 ];
 
 export const putValidator = [
-  param(['restaurantId', 'categoryId', 'subcategoryId', 'productId'])
+  param(['restaurantId', 'productId'])
     .not().isEmpty().withMessage('is required')
     .isInt()
     .withMessage('is int')

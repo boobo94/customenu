@@ -4,7 +4,7 @@ import statusCodes from '../../../utils/statusCodes';
 
 export default async (req, res) => {
   try {
-    const product = await Controllers.product.findByIdAndSubcategory(req.params.productId, req.params.subcategoryId, req.headers['accept-language']);
+    const product = await Controllers.product.findOneOfRestaurantsById(req.params.productId, req.params.restaurantId, req.headers['accept-language']);
     if (!product) {
       return res.status(statusCodes.NOT_FOUND).send({ error: errors.RESOURCE_NOT_FOUND });
     }

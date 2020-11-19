@@ -1,6 +1,5 @@
 import { Router } from 'express';
 import adminAuthorization from '../../../middleware/admin-authorization';
-import productRouter from '../products';
 import * as validators from './validator';
 import * as permissions from './permissions';
 import getAll from './get-all';
@@ -38,6 +37,4 @@ export default Router({ mergeParams: true })
     adminAuthorization,
     validators.getSubcategory,
     permissions.checkAccessToParentCategory,
-    remove)
-
-  .use('/:subcategoryId/products', productRouter);
+    remove);

@@ -12,29 +12,29 @@ export default Router({ mergeParams: true })
   .get('/',
     adminAuthorization,
     validators.getProducts,
-    permissions.checkAccessToParentCategory,
+    permissions.checkAccessToProductsOfRestaurant,
     getAll)
+
+  .get('/:productId',
+    adminAuthorization,
+    validators.getProduct,
+    permissions.checkAccessToProductsOfRestaurant,
+    getOne)
 
   .post('/',
     adminAuthorization,
     validators.postValidator,
-    permissions.checkAccessToParentCategory,
+    permissions.checkAccessToProductsOfRestaurant,
     create)
 
   .put('/:productId',
     adminAuthorization,
     validators.putValidator,
-    permissions.checkAccessToParentCategory,
+    permissions.checkAccessToProductsOfRestaurant,
     update)
-
-  .get('/:productId',
-    adminAuthorization,
-    validators.getProduct,
-    permissions.checkAccessToParentCategory,
-    getOne)
 
   .delete('/:productId',
     adminAuthorization,
     validators.getProduct,
-    permissions.checkAccessToParentCategory,
+    permissions.checkAccessToProductsOfRestaurant,
     remove);
