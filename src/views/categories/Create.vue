@@ -22,9 +22,7 @@ export default {
       valid: true,
       category: {
         image: '',
-        category_i18ns: [
-
-        ],
+        category_i18ns: [],
       },
     };
   },

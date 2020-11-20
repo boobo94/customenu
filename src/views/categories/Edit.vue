@@ -22,17 +22,9 @@ export default {
       valid: true,
       category: {
         image: '',
-        category_i18ns: [
-          {
-            name: '',
-            lang_code: 'ro',
-          },
-          {
-            name: '',
-            lang_code: 'en',
-          },
-        ],
+        category_i18ns: [],
       },
+      apiUrl: '',
     };
   },
 
@@ -40,20 +32,15 @@ export default {
     const { restaurantId } = this.$store.state.authModule;
     const { categoryId } = this.$route.params;
 
-    this.categoriesApiUrl = `/restaurants/${restaurantId}/categories/${categoryId}`;
-    const { data } = await axios.get(this.categoriesApiUrl);
+    this.apiUrl = `/restaurants/${restaurantId}/categories/${categoryId}`;
+    const { data } = await axios.get(this.apiUrl);
 
     this.category = data;
   },
 
   methods: {
     async validate() {
-      const { restaurantId } = this.$store.state.authModule;
-      const { categoryId } = this.$route.params;
-      await axios.put(
-        `/restaurants/${restaurantId}/categories/${categoryId}`,
-        this.category,
-      );
+      await axios.put(this.apiUrl, this.category);
     },
   },
 };
