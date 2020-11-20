@@ -23,20 +23,24 @@ export default {
       category: {
         image: '',
         category_i18ns: [
-          {
-            name: '',
-            lang_code: 'ro',
-          },
-          {
-            name: '',
-            lang_code: 'en',
-          },
+
         ],
       },
     };
   },
 
+  created() {
+    this.populateLanguages();
+  },
+
   methods: {
+    populateLanguages() {
+      const { languages } = this.$store.state.authModule;
+      this.category.category_i18ns = languages.map((language) => ({
+        lang_code: language,
+        name: '',
+      }));
+    },
     async validate() {
       const { restaurantId } = this.$store.state.authModule;
       await axios.post(

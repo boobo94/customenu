@@ -10,6 +10,7 @@ export default {
     token: localStorage.getItem('auth_token') || null,
     refreshToken: localStorage.getItem('refresh_token') || null,
     restaurantId: localStorage.getItem('restaurantId') || null,
+    languages: ['en', 'ro'], // todo: get this from restaurant
   },
   mutations: {
     login(state, response) {
