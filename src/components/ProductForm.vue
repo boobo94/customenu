@@ -125,8 +125,10 @@ export default {
   watch: {
     productProp() {
       this.product = this.productProp;
-      this.selectedSubcategory = { id: this.productProp.subcategoryId };
-      this.selectedCategory = { id: this.productProp.subcategory.categoryId };
+      if (this.productProp.subcategory) {
+        this.selectedSubcategory = { id: this.productProp.subcategoryId };
+        this.selectedCategory = { id: this.productProp.subcategory.categoryId };
+      }
     },
     selectedCategory() {
       this.populateSubcategories();
