@@ -103,8 +103,8 @@ export default {
   },
   data() {
     return {
-      product: this.productProp,
       valid: true,
+      product: this.productProp,
       selectedCategory: null,
       selectedSubcategory: null,
       categories: [],
@@ -113,8 +113,6 @@ export default {
     };
   },
 
-  mounted() {
-  },
   async created() {
     const { restaurantId } = this.$store.state.authModule;
     const { data } = await axios.get(`/restaurants/${restaurantId}/categories`);
