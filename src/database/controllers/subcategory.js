@@ -30,6 +30,23 @@ export default class Subcategory {
     });
   }
 
+  /**
+   * Find by id with i18n
+   * @param {number} id
+   */
+  async findByIdWithI18n(id) {
+    return this.model.findOne({
+      where: {
+        id: {
+          [Op.eq]: id,
+        },
+      },
+      include: [{
+        model: this.modelI18n,
+      }],
+    });
+  }
+
   async findByIdAndCategory(id, categoryId, language) {
     return this.model.findOne({
       where: {
