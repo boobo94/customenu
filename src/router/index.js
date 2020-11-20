@@ -11,9 +11,11 @@ import EditCategory from '@/views/categories/Edit.vue';
 
 import ListSubcategories from '@/views/subcategories/List.vue';
 import CreateSubcategory from '@/views/subcategories/Create.vue';
-import EditSubcategoryComponent from '@/views/subcategories/Edit.vue';
+import EditSubcategory from '@/views/subcategories/Edit.vue';
 
 import ListProducts from '@/views/products/List.vue';
+import CreateProduct from '@/views/products/Create.vue';
+import EditProduct from '@/views/products/Edit.vue';
 
 import middlewareIsLoggedIn from './middlewareIsLogged';
 
@@ -53,7 +55,7 @@ const routes = [
       {
         path: ':subcategoryId/edit',
         name: 'Edit Subcategory',
-        component: EditSubcategoryComponent,
+        component: EditSubcategory,
         beforeEnter: middlewareIsLoggedIn,
       },
     ],
@@ -94,18 +96,18 @@ const routes = [
         component: ListProducts,
         beforeEnter: middlewareIsLoggedIn,
       },
-      // {
-      //   path: 'add',
-      //   name: 'Add Category',
-      //   component: AddCategoryComponent,
-      // beforeEnter: middlewareIsLoggedIn,
-      // },
-      // {
-      //   path: ':categoryId/edit',
-      //   name: 'Edit Category',
-      //   component: EditCategoryComponent,
-      // beforeEnter: middlewareIsLoggedIn,
-      // },
+      {
+        path: 'create',
+        name: 'Add Product',
+        component: CreateProduct,
+        beforeEnter: middlewareIsLoggedIn,
+      },
+      {
+        path: ':productId/edit',
+        name: 'Edit create',
+        component: EditProduct,
+        beforeEnter: middlewareIsLoggedIn,
+      },
     ],
   },
 
