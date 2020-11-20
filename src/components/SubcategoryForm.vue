@@ -49,14 +49,21 @@
 export default {
   name: 'SubcategoryForm',
   props: {
-    subcategory: Object,
+    subcategoryProp: Object,
     submit: Function,
   },
   data() {
     return {
       valid: true,
+      subcategory: this.subcategoryProp,
       nameRules: [(v) => !!v || this.$t('REQUIRED_NAME')],
     };
+  },
+
+  watch: {
+    subcategoryProp() {
+      this.subcategory = this.subcategoryProp;
+    },
   },
 
   methods: {

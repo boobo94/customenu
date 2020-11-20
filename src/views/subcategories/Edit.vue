@@ -2,7 +2,7 @@
   <v-container>
     <v-row>
       <v-col cols="12">
-        <SubcategoryForm :subcategory="subcategory" :submit="validate" />
+        <SubcategoryForm :subcategoryProp="subcategory" :submit="validate" />
       </v-col>
     </v-row>
   </v-container>
