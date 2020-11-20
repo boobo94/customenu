@@ -1,0 +1,129 @@
+<template>
+  <v-form ref="form" v-model="valid" lazy-validation>
+    <v-select
+      v-model="selectedCategory"
+      :hint="product.name"
+      :items="categories"
+      item-text="name"
+      item-value="id"
+      label="Select"
+      persistent-hint
+      return-object
+      single-line
+    ></v-select>
+
+    <v-select
+      v-model="selectedSubcategory"
+      :hint="product.name"
+      :items="subcategories"
+      item-text="name"
+      item-value="id"
+      label="Select"
+      persistent-hint
+      return-object
+      single-line
+      :rules="[(v) => !!v || 'Item is required']"
+    ></v-select>
+
+    <v-file-input
+      show-size
+      counter
+      :label="$t('LABEL_IMAGE')"
+      accept="image/png, image/jpeg, image/bmp"
+      prepend-icon="mdi-camera"
+    ></v-file-input>
+
+    <div
+      class="previous mt-10"
+      v-for="(productI18n, counter) in product.product_i18ns"
+      v-bind:key="counter"
+    >
+      <v-card class="mx-auto mb-5" outlined>
+        <v-card-actions>
+          <div class="overline">
+            {{ $t("LANGUAGE") }} {{ productI18n.lang_code }}
+          </div>
+        </v-card-actions>
+
+        <v-list-item>
+          <v-list-item-content>
+            <v-row>
+              <v-col cols="12">
+                <v-text-field
+                  v-model="productI18n.name"
+                  :counter="255"
+                  :label="$t('NAME')"
+                  :rules="requiredRules"
+                  required
+                ></v-text-field>
+                <v-textarea
+                  v-model="productI18n.description"
+                  :counter="255"
+                  :label="$t('DESCRIPTION')"
+                  :rules="requiredRules"
+                  required
+                ></v-textarea>
+              </v-col>
+            </v-row>
+          </v-list-item-content>
+        </v-list-item>
+      </v-card>
+    </div>
+
+    <v-btn :disabled="!valid" color="info" class="mr-4" @click="validate">
+      {{ $t("SUBMIT") }}
+    </v-btn>
+  </v-form>
+</template>
+
+<script>
+import axios from 'axios';
+
+export default {
+  name: 'productForm',
+  props: {
+    product: Object,
+    submit: Function,
+  },
+  data() {
+    return {
+      valid: true,
+      selectedCategory: null,
+      selectedSubcategory: null,
+      categories: [],
+      subcategories: [],
+      requiredRules: [(v) => !!v || this.$t('REQUIRED_NAME')],
+    };
+  },
+
+  async created() {
+    const { restaurantId } = this.$store.state.authModule;
+    const { data } = await axios.get(`/restaurants/${restaurantId}/categories`);
+
+    this.categories = data;
+  },
+
+  watch: {
+    selectedCategory() {
+      this.populateSubcategories();
+    },
+  },
+
+  methods: {
+    async validate() {
+      if (this.$refs.form.validate()) {
+        // eslint-disable-next-line vue/no-mutating-props
+        this.product.subcategoryId = this.selectedSubcategory.id;
+        this.submit();
+      }
+    },
+
+    async populateSubcategories() {
+      const { restaurantId } = this.$store.state.authModule;
+      const { data } = await axios.get(`/restaurants/${restaurantId}/categories/${this.selectedCategory.id}/subcategories`);
+
+      this.subcategories = data;
+    },
+  },
+};
+</script>
