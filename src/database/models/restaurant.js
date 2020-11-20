@@ -30,6 +30,12 @@ export default (sequelize, DataTypes) => {
     youtubeUrl: {
       type: DataTypes.STRING,
     },
+    logo: {
+      type: DataTypes.STRING,
+    },
+    languages: {
+      type: DataTypes.ARRAY(DataTypes.STRING(2)),
+    },
   }, {});
   restaurant.associate = (models) => {
     // associations can be defined here

@@ -43,6 +43,21 @@ export default class Restaurant {
   }
 
   /**
+   * Get languages of restaurant
+   * @param {number} id
+   */
+  async getLanguages(id) {
+    return this.model.findOne({
+      where: {
+        id: {
+          [Op.eq]: id,
+        },
+      },
+      attributes: ['languages'],
+    });
+  }
+
+  /**
    * Create
    * @param {object} restaurant
    * @param {*} transaction
