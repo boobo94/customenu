@@ -46,6 +46,7 @@ export default {
         `/restaurants/${restaurantId}/categories/${categoryId}/subcategories`,
         this.subcategory,
       );
+      this.$router.go(-1);
     },
   },
 };

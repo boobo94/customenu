@@ -46,6 +46,7 @@ export default {
         `/restaurants/${restaurantId}/products`,
         this.product,
       );
+      this.$router.go(-1);
     },
   },
 };

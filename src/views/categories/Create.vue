@@ -45,6 +45,7 @@ export default {
         `/restaurants/${restaurantId}/categories`,
         this.category,
       );
+      this.$router.go(-1);
     },
   },
 };
