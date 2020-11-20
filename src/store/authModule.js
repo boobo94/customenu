@@ -10,7 +10,7 @@ export default {
     token: localStorage.getItem('auth_token') || null,
     refreshToken: localStorage.getItem('refresh_token') || null,
     restaurantId: localStorage.getItem('restaurantId') || null,
-    languages: ['en', 'ro'], // todo: get this from restaurant
+    languages: [],
   },
   mutations: {
     login(state, response) {
@@ -21,6 +21,9 @@ export default {
     logout(state) {
       state.token = null;
       state.refreshToken = null;
+    },
+    changeLanguages(state, languages) {
+      state.languages = languages;
     },
   },
   actions: {
@@ -76,6 +79,16 @@ export default {
         localStorage.removeItem('refresh_token');
         localStorage.removeItem('restaurantId');
         commit('logout');
+        handleError(e);
+      }
+    },
+
+    async  setLanguages({ commit, state }) {
+      try {
+        const { data } = await axios.get(`/restaurants/${state.restaurantId}/languages`);
+
+        commit('changeLanguages', data);
+      } catch (e) {
         handleError(e);
       }
     },

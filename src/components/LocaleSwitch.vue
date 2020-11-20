@@ -25,8 +25,20 @@ import axios from 'axios';
 export default {
   name: 'locale-switch',
   data() {
-    return { languages: ['en', 'ro'] };
+    return {
+    };
   },
+
+  created() {
+    this.$store.dispatch('authModule/setLanguages');
+  },
+
+  computed: {
+    languages() {
+      return this.$store.state.authModule.languages;
+    },
+  },
+
   methods: {
     changeLanguage(value) {
       axios.defaults.headers['accept-language'] = value;
