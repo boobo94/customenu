@@ -25,6 +25,22 @@
       :rules="[(v) => !!v || 'Item is required']"
     ></v-select>
 
+    <v-text-field
+      v-model="product.weight"
+      :counter="255"
+      :label="$t('WEIGHT')"
+      :rules="requiredRules"
+      required
+    ></v-text-field>
+
+    <v-text-field
+      v-model="product.price"
+      :counter="255"
+      :label="$t('PRICE')"
+      :rules="requiredRules"
+      required
+    ></v-text-field>
+
     <v-file-input
       show-size
       counter
@@ -82,11 +98,12 @@ import axios from 'axios';
 export default {
   name: 'productForm',
   props: {
-    product: Object,
+    productProp: Object,
     submit: Function,
   },
   data() {
     return {
+      product: this.productProp,
       valid: true,
       selectedCategory: null,
       selectedSubcategory: null,
@@ -96,6 +113,8 @@ export default {
     };
   },
 
+  mounted() {
+  },
   async created() {
     const { restaurantId } = this.$store.state.authModule;
     const { data } = await axios.get(`/restaurants/${restaurantId}/categories`);
@@ -104,6 +123,9 @@ export default {
   },
 
   watch: {
+    productProp() {
+      this.product = this.productProp;
+    },
     selectedCategory() {
       this.populateSubcategories();
     },
@@ -112,15 +134,17 @@ export default {
   methods: {
     async validate() {
       if (this.$refs.form.validate()) {
-        // eslint-disable-next-line vue/no-mutating-props
         this.product.subcategoryId = this.selectedSubcategory.id;
+
         this.submit();
       }
     },
 
     async populateSubcategories() {
       const { restaurantId } = this.$store.state.authModule;
-      const { data } = await axios.get(`/restaurants/${restaurantId}/categories/${this.selectedCategory.id}/subcategories`);
+      const { data } = await axios.get(
+        `/restaurants/${restaurantId}/categories/${this.selectedCategory.id}/subcategories`,
+      );
 
       this.subcategories = data;
     },

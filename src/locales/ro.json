@@ -15,6 +15,8 @@
   "DELETE_CONFIRMATION_CANCEL": "Inchide",
   "NAME": "Nume",
   "DESCRIPTION": "Descriere",
+  "WEIGHT": "Greutate",
+  "PRICE": "Pret",
   "ACTIONS": "Actiuni",
   "REQUIRED_NAME": "Numele este obligatoriu",
   "REQUIRED_EMAIL": "E-mailul este obligatoriu",

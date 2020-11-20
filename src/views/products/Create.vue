@@ -2,7 +2,7 @@
   <v-container>
     <v-row>
       <v-col cols="12">
-        <ProductForm :product="product" :submit="validate" />
+        <ProductForm :productProp="product" :submit="validate" />
       </v-col>
     </v-row>
   </v-container>
