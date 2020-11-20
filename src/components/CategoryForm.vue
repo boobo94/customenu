@@ -49,14 +49,22 @@
 export default {
   name: 'CategoryForm',
   props: {
-    category: Object,
+    categoryProp: Object,
     submit: Function,
   },
+
   data() {
     return {
       valid: true,
+      category: this.categoryProp,
       nameRules: [(v) => !!v || this.$t('REQUIRED_NAME')],
     };
+  },
+
+  watch: {
+    categoryProp() {
+      this.category = this.categoryProp;
+    },
   },
 
   methods: {
