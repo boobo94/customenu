@@ -13,16 +13,21 @@ export default class Product {
    * Find by id with i18n
    * @param {number} id
    */
-  async findByIdWithI18n(id) {
+  async findByIdWithI18nAndSubcategory(id) {
     return this.model.findOne({
       where: {
         id: {
           [Op.eq]: id,
         },
       },
-      include: [{
-        model: this.modelI18n,
-      }],
+      include: [
+        {
+          model: this.modelSubcategory,
+          attributes: ['categoryId'],
+        },
+        {
+          model: this.modelI18n,
+        }],
     });
   }
 
