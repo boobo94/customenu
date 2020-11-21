@@ -24,3 +24,19 @@ export const refreshTokenValidator = [
 
   checkErrors,
 ];
+
+export const updateAdmin = [
+  body('email')
+    .not().isEmpty().withMessage('is required')
+    .isString()
+    .withMessage('should be string')
+    .isEmail()
+    .withMessage('should have a valid email format'),
+
+  body('password')
+    .not().isEmpty().withMessage('is required')
+    .isString()
+    .withMessage('should be string'),
+
+  checkErrors,
+];
