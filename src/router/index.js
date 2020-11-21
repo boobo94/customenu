@@ -4,6 +4,7 @@ import VueRouter from 'vue-router';
 import RouterView from '@/components/RouterView.vue';
 import Home from '@/views/Home.vue';
 import Login from '@/views/auth/Login.vue';
+import EditAdmin from '@/views/auth/EditAdmin.vue';
 
 import EditRestaurant from '@/views/restaurant/Edit.vue';
 
@@ -36,6 +37,12 @@ const routes = [
     path: '/login',
     name: 'Login',
     component: Login,
+  },
+
+  {
+    path: '/profile',
+    name: 'Edit Admin',
+    component: EditAdmin,
   },
 
   {

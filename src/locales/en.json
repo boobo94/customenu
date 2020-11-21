@@ -5,6 +5,7 @@
   "PRODUCTS_TITLE": "Products",
   "DASHBOARD_TITLE": "Dashboard",
   "RESTAURANT_TITLE": "Restaurant",
+  "ADMIN_TITLE": "Administration",
   "LOGIN_TITLE": "Login",
   "EMAIL_LABEL": "Email",
   "EMAIL_VALIDATOR_REQUIRED": "The email is required",

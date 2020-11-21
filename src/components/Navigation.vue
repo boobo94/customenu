@@ -93,6 +93,11 @@ export default {
           title: this.$t('RESTAURANT_TITLE'),
           icon: 'mdi-food',
         },
+        {
+          href: 'Edit Admin',
+          title: this.$t('ADMIN_TITLE'),
+          icon: 'mdi-account-cog',
+        },
       ],
     };
   },
