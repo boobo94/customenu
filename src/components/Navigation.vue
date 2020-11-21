@@ -4,9 +4,7 @@
       <v-list>
         <v-list-item>
           <v-list-item-content>
-            <v-list-item-title class="title">
-              <v-icon>mdi-account</v-icon>Admin
-            </v-list-item-title>
+            <v-list-item-title class="title"> Admin </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
 
