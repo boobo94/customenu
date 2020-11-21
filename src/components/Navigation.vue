@@ -88,6 +88,11 @@ export default {
           title: this.$t('PRODUCTS_TITLE'),
           icon: 'mdi-store',
         },
+        {
+          href: 'Edit Restaurant',
+          title: this.$t('RESTAURANT_TITLE'),
+          icon: 'mdi-food',
+        },
       ],
     };
   },
