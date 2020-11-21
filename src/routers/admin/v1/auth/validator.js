@@ -34,7 +34,7 @@ export const updateAdmin = [
     .withMessage('should have a valid email format'),
 
   body('password')
-    .not().isEmpty().withMessage('is required')
+    .optional()
     .isString()
     .withMessage('should be string'),
 
