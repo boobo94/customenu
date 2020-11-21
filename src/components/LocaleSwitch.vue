@@ -1,4 +1,5 @@
 <template>
+ <v-responsive max-width="81">
   <v-select
     v-model="$i18n.locale"
     :items="languages"
@@ -7,9 +8,9 @@
     hide-details
     prepend-icon="mdi-translate"
     single-line
-    class="locale-switch"
     @change="changeLanguage"
   ></v-select>
+   </v-responsive>
 </template>
 
 <script>
@@ -32,7 +33,4 @@ export default {
 </script>
 
 <style scoped>
-.locale-switch {
-  width: 48px;
-}
 </style>
