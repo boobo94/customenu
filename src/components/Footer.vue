@@ -3,7 +3,7 @@
     <v-card flat tile width="100%" class="primary lighten-1 text-center">
       <v-card-text class="white--text">
         {{ new Date().getFullYear() }} —
-        <strong>{{ $t("footer-logo") }}</strong>
+        <strong>{{ $t("FOOTER_LOGO") }}</strong>
       </v-card-text>
     </v-card>
   </v-footer>

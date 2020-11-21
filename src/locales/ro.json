@@ -1,5 +1,5 @@
 {
-  "footer-logo": "Meniul Digital",
+  "FOOTER_LOGO": "Digital Menu dezvoltat de Cmevo Digital",
   "CATEGORIES_TITLE": "Categorii",
   "SUBCATEGORIES_TITLE": "Subcategorii",
   "PRODUCTS_TITLE": "Produse",
@@ -35,5 +35,7 @@
   "LABEL_YOUTUBE_URL": "Youtube Profile",
   "SELECT_LANGUAGE": "Selecteaza Limbile",
   "SELECT_LANGUAGE_HINT": "Limbile in care vor fi aparea in meniu produsele",
-  "CLOSE": "Inchide"
+  "CLOSE": "Inchide",
+  "SUCCESS_OPERATION": "Operatia a fost efectuata cu succes"
+
 }

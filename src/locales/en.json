@@ -1,5 +1,5 @@
 {
-  "footer-logo": "Digital Menu",
+  "FOOTER_LOGO": "Digital Menu powered by Cmevo Digital",
   "CATEGORIES_TITLE": "Categories",
   "SUBCATEGORIES_TITLE": "Subcategories",
   "PRODUCTS_TITLE": "Products",
@@ -35,6 +35,7 @@
   "LABEL_YOUTUBE_URL": "Youtube Profile",
   "SELECT_LANGUAGE": "Select Languages",
   "SELECT_LANGUAGE_HINT": "The languages within the products will appear in the menu",
-  "CLOSE": "Close"
+  "CLOSE": "Close",
+  "SUCCESS_OPERATION": "Operation succeeded"
 
 }
