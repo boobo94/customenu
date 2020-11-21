@@ -128,6 +128,7 @@ export default {
         this.selectedSubcategory = { id: this.productProp.subcategoryId };
         this.selectedCategory = { id: this.productProp.subcategory.categoryId };
       }
+      this.populateLanguages();
     },
     selectedCategory() {
       this.populateSubcategories();
@@ -151,6 +152,19 @@ export default {
       );
 
       this.subcategories = data;
+    },
+
+    populateLanguages() {
+      const { languages } = this.$store.state.authModule;
+      languages.forEach((language) => {
+        if (!this.product.product_i18ns.some((el) => el.lang_code === language)) {
+          this.product.product_i18ns.push({
+            lang_code: language,
+            name: '',
+            description: '',
+          });
+        }
+      });
     },
   },
 };

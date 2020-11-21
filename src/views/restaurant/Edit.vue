@@ -153,6 +153,7 @@ export default {
     const { data } = await axios.get(this.apiUrl);
 
     this.restaurant = data;
+    this.populateLanguages();
   },
 
   methods: {
@@ -162,6 +163,20 @@ export default {
         EventBus.$emit('success', this.$t('SUCCESS_OPERATION'));
         this.$store.dispatch('authModule/setLanguages');
       }
+    },
+
+    populateLanguages() {
+      const { languages } = this.$store.state.authModule;
+      languages.forEach((language) => {
+        if (!this.restaurant.restaurant_i18ns.some((el) => el.lang_code === language)) {
+          this.restaurant.restaurant_i18ns.push({
+            lang_code: language,
+            name: '',
+            description: '',
+            allergens: '',
+          });
+        }
+      });
     },
   },
 };

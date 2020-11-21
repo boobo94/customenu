@@ -65,6 +65,7 @@ export default {
   watch: {
     categoryProp() {
       this.category = this.categoryProp;
+      this.populateLanguages();
     },
   },
 
@@ -74,6 +75,18 @@ export default {
         this.submit();
         EventBus.$emit('success', this.$t('SUCCESS_OPERATION'));
       }
+    },
+
+    populateLanguages() {
+      const { languages } = this.$store.state.authModule;
+      languages.forEach((language) => {
+        if (!this.category.category_i18ns.some((el) => el.lang_code === language)) {
+          this.category.category_i18ns.push({
+            lang_code: language,
+            name: '',
+          });
+        }
+      });
     },
   },
 };
