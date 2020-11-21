@@ -10,8 +10,11 @@ export default async (req, res) => {
 
     const updatedEntry = {
       email: req.body.email,
-      password: await bcrypt.hash(req.body.password, Number(process.env.BCRYPT_SALT)),
     };
+    if (req.body.password) {
+      updatedEntry.password = await bcrypt.hash(req.body.password, Number(process.env.BCRYPT_SALT));
+    }
+
     await Controllers.admin.update(updatedEntry, userId);
 
     return res.status(statusCodes.NO_CONTENT).send();
