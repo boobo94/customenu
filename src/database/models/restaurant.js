@@ -4,10 +4,6 @@ export default (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    authToken: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
     currency: {
       type: DataTypes.STRING,
       allowNull: false,
