@@ -4,6 +4,7 @@
   "SUBCATEGORIES_TITLE": "Subcategories",
   "PRODUCTS_TITLE": "Products",
   "DASHBOARD_TITLE": "Dashboard",
+  "RESTAURANT_TITLE": "Restaurant",
   "LOGIN_TITLE": "Login",
   "EMAIL_LABEL": "Email",
   "EMAIL_VALIDATOR_REQUIRED": "The email is required",
@@ -22,6 +23,13 @@
   "REQUIRED_EMAIL": "E-mail is required",
   "VALID_EMAIL": "E-mail must be valid",
   "SUBMIT": "Submit",
-  "LABEL_IMAGE": "Image file"
-
+  "LABEL_IMAGE": "Image file",
+  "LABEL_LOGO": "Logo",
+  "LABEL_ALLERGENS":"Allergens",
+  "CURRENCY":"Currency",
+  "PHONE": "Phone",
+  "LABEL_ADDRESS": "Address",
+  "LABEL_INSTAGRAM_URL": "Instagram Profile",
+  "LABEL_FACEBOOK_URL": "Facebook Profile",
+  "LABEL_YOUTUBE_URL": "Youtube Profile"
 }

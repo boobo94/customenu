@@ -4,6 +4,7 @@
   "SUBCATEGORIES_TITLE": "Subcategorii",
   "PRODUCTS_TITLE": "Produse",
   "DASHBOARD_TITLE": "Dashboard",
+  "RESTAURANT_TITLE": "Restaurant",
   "LOGIN_TITLE": "Logare",
   "EMAIL_LABEL": "Email",
   "EMAIL_VALIDATOR_REQUIRED": "Email-ul trebuie completat.",
@@ -22,7 +23,14 @@
   "REQUIRED_EMAIL": "E-mailul este obligatoriu",
   "VALID_EMAIL": "E-mailul este valid",
   "SUBMIT": "Trimite",
-  "LABEL_IMAGE": "Imagine"
-
+  "LABEL_IMAGE": "Imagine",
+  "LABEL_LOGO": "Logo",
+  "LABEL_ALLERGENS":"Allergens",
+  "CURRENCY":"Currency",
+  "PHONE": "Telefon",
+  "LABEL_ADDRESS": "Address",
+  "LABEL_INSTAGRAM_URL": "Instagram Profile",
+  "LABEL_FACEBOOK_URL": "Facebook Profile",
+  "LABEL_YOUTUBE_URL": "Youtube Profile"
 
 }
