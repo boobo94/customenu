@@ -18,6 +18,7 @@
                     name="email"
                     prepend-icon="mdi-account"
                     type="email"
+                    v-on:keyup.enter="submit"
                   >
                   </v-text-field>
 
@@ -28,6 +29,7 @@
                     name="user.password"
                     prepend-icon="mdi-lock"
                     type="password"
+                    v-on:keyup.enter="submit"
                   ></v-text-field>
                 </v-form>
               </v-card-text>
