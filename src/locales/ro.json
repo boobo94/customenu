@@ -31,6 +31,7 @@
   "LABEL_ADDRESS": "Address",
   "LABEL_INSTAGRAM_URL": "Instagram Profile",
   "LABEL_FACEBOOK_URL": "Facebook Profile",
-  "LABEL_YOUTUBE_URL": "Youtube Profile"
-
+  "LABEL_YOUTUBE_URL": "Youtube Profile",
+  "SELECT_LANGUAGE": "Selecteaza Limbile",
+  "SELECT_LANGUAGE_HINT": "Limbile in care vor fi aparea in meniu produsele"
 }
