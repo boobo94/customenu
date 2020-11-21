@@ -29,6 +29,23 @@ export default class Restaurant {
   }
 
   /**
+   * Find by id with i18n
+   * @param {number} id
+   */
+  async findByIdWithI18n(id) {
+    return this.model.findOne({
+      where: {
+        id: {
+          [Op.eq]: id,
+        },
+      },
+      include: [{
+        model: this.modelI18n,
+      }],
+    });
+  }
+
+  /**
    * Find app by id
    * @param {number} shortUrl The url of restaurant
    */
@@ -64,6 +81,31 @@ export default class Restaurant {
    */
   async create(restaurant, transaction) {
     return this.model.create(restaurant, {
+      include: [{
+        model: this.modelI18n,
+      }],
+      transaction,
+    });
+  }
+
+  /**
+   * Create
+   * @param {object} entry
+   * @param {*} transaction
+   */
+  async createI18n(entry, transaction) {
+    return this.modelI18n.create(entry, {
+      transaction,
+    });
+  }
+
+  async updateI18n(entry18n, transaction) {
+    return this.modelI18n.update(entry18n, {
+      where: {
+        id: {
+          [Op.eq]: entry18n.id,
+        },
+      },
       transaction,
     });
   }
@@ -75,6 +117,19 @@ export default class Restaurant {
    * @param {Sequelize.Transaction} transaction
    */
   async update(restaurant, id, transaction) {
+    if (restaurant.restaurant_i18ns) {
+      for (let index = 0; index < restaurant.restaurant_i18ns.length; index++) {
+        const restaurantI18n = restaurant.restaurant_i18ns[index];
+
+        if (restaurantI18n.id) {
+          await this.updateI18n(restaurantI18n, transaction);
+        } else {
+          restaurantI18n.restaurantId = id;
+          await this.createI18n(restaurantI18n, transaction);
+        }
+      }
+    }
+
     return this.model.update(restaurant, {
       where: {
         id: {

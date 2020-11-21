@@ -4,13 +4,9 @@ import * as validators from './validator';
 import * as permissions from './permissions';
 import getOne from './get';
 import getLanguages from './get-languages';
+import update from './update';
 
 export default Router({ mergeParams: true })
-// .get('/',
-//   adminAuthorization,
-//   validators.getSubcategories,
-//   permissions.checkAccessToParentCategory,
-//   getAll)
 
   .get('/:restaurantId',
     adminAuthorization,
@@ -22,22 +18,10 @@ export default Router({ mergeParams: true })
     adminAuthorization,
     validators.getRestaurant,
     permissions.checkAccessToRestaurant,
-    getLanguages);
+    getLanguages)
 
-// .post('/',
-//   adminAuthorization,
-//   validators.postValidator,
-//   permissions.checkAccessToParentCategory,
-//   create)
-
-// .put('/:restaurantId',
-//   adminAuthorization,
-//   validators.putValidator,
-//   permissions.checkAccessToParentCategory,
-//   update)
-
-// .delete('/:restaurantId',
-//   adminAuthorization,
-//   validators.getSubcategory,
-//   permissions.checkAccessToParentCategory,
-//   remove);
+  .put('/:restaurantId',
+    adminAuthorization,
+    validators.putValidator,
+    permissions.checkAccessToRestaurant,
+    update);
