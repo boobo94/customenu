@@ -1,5 +1,4 @@
 import axios from 'axios';
-import handleError from '../services/error';
 
 const ROUTE_LOGIN = '/auth/login';
 const ROUTE_REFRESH_TOKEN = '/auth/refresh-token';
@@ -45,7 +44,6 @@ export default {
         localStorage.removeItem('refresh_token');
         localStorage.removeItem('restaurantId');
         commit('logout');
-        handleError(e);
       }
     },
 
@@ -79,18 +77,13 @@ export default {
         localStorage.removeItem('refresh_token');
         localStorage.removeItem('restaurantId');
         commit('logout');
-        handleError(e);
       }
     },
 
     async  setLanguages({ commit, state }) {
-      try {
-        const { data } = await axios.get(`/restaurants/${state.restaurantId}/languages`);
+      const { data } = await axios.get(`/restaurants/${state.restaurantId}/languages`);
 
-        commit('changeLanguages', data);
-      } catch (e) {
-        handleError(e);
-      }
+      commit('changeLanguages', data);
     },
   },
   getters: {

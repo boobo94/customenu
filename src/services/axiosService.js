@@ -1,4 +1,5 @@
 import axios from 'axios';
+import handleError from './error';
 
 export default function axiosErrorInterceptor(store, router) {
   axios.interceptors.response.use(undefined, (err) => new Promise((resolve, reject) => {
@@ -20,12 +21,15 @@ export default function axiosErrorInterceptor(store, router) {
           .catch((error) => reject(error));
       } else {
         store.dispatch('authModule/logout');
-        router.push({ path: '/login' });
+        if (router.currentRoute.name !== 'Login') {
+          router.push({ path: '/login' });
+        }
       }
     }
 
     // if the server respond with an error
     if (err.response && err.response.data && err.response.data.error) {
+      handleError(err.response.data.error);
       return reject(err.response.data.error);
     }
 
