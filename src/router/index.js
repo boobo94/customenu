@@ -5,6 +5,8 @@ import RouterView from '@/components/RouterView.vue';
 import Home from '@/views/Home.vue';
 import Login from '@/views/auth/Login.vue';
 
+import EditRestaurant from '@/views/restaurant/Edit.vue';
+
 import ListCategories from '@/views/categories/List.vue';
 import CreateCategory from '@/views/categories/Create.vue';
 import EditCategory from '@/views/categories/Edit.vue';
@@ -34,6 +36,13 @@ const routes = [
     path: '/login',
     name: 'Login',
     component: Login,
+  },
+
+  {
+    path: '/restaurant',
+    name: 'Edit Restaurant',
+    component: EditRestaurant,
+    beforeEnter: middlewareIsLoggedIn,
   },
 
   {
