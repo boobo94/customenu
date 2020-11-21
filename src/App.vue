@@ -1,5 +1,6 @@
 <template>
   <v-app>
+    <Notification />
     <Navigation v-if="isLoggedIn" />
 
     <v-main>
@@ -13,6 +14,7 @@
 </template>
 
 <script>
+import Notification from '@/components/notifications/Notification.vue';
 import Navigation from '@/components/Navigation.vue';
 import Footer from '@/components/Footer.vue';
 import axiosErrorInterceptor from '@/services/axiosService';
@@ -20,13 +22,11 @@ import axiosErrorInterceptor from '@/services/axiosService';
 export default {
   name: 'App',
   components: {
+    Notification,
     Navigation,
     Footer,
   },
 
-  data: () => ({
-    //
-  }),
   created() {
     axiosErrorInterceptor(this.$store, this.$router);
   },

@@ -34,6 +34,7 @@
   "LABEL_FACEBOOK_URL": "Facebook Profile",
   "LABEL_YOUTUBE_URL": "Youtube Profile",
   "SELECT_LANGUAGE": "Select Languages",
-  "SELECT_LANGUAGE_HINT": "The languages within the products will appear in the menu"
+  "SELECT_LANGUAGE_HINT": "The languages within the products will appear in the menu",
+  "CLOSE": "Close"
 
 }

@@ -34,5 +34,6 @@
   "LABEL_FACEBOOK_URL": "Facebook Profile",
   "LABEL_YOUTUBE_URL": "Youtube Profile",
   "SELECT_LANGUAGE": "Selecteaza Limbile",
-  "SELECT_LANGUAGE_HINT": "Limbile in care vor fi aparea in meniu produsele"
+  "SELECT_LANGUAGE_HINT": "Limbile in care vor fi aparea in meniu produsele",
+  "CLOSE": "Inchide"
 }
