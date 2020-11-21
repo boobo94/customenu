@@ -7,7 +7,7 @@ export default (sequelize, DataTypes) => sequelize.define('restaurant_i18n', {
     type: DataTypes.TEXT,
   },
   allergens: {
-    type: DataTypes.STRING,
+    type: DataTypes.TEXT,
   },
   lang_code: {
     type: DataTypes.STRING(2),
