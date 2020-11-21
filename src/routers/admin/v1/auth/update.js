@@ -16,7 +16,6 @@ export default async (req, res) => {
 
     return res.status(statusCodes.NO_CONTENT).send();
   } catch (error) {
-    console.log(error);
     return res.status(statusCodes.SERVER_INTERNAL_ERROR).send({ error: errors.SERVER_ERROR });
   }
 };
