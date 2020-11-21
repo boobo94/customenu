@@ -45,6 +45,7 @@
 </template>
 
 <script>
+import EventBus from './notifications/EventBus';
 
 export default {
   name: 'SubcategoryForm',
@@ -70,6 +71,7 @@ export default {
     async validate() {
       if (this.$refs.form.validate()) {
         this.submit();
+        EventBus.$emit('success', this.$t('SUCCESS_OPERATION'));
       }
     },
   },

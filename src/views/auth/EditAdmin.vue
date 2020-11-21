@@ -33,6 +33,7 @@
 <script>
 import axios from 'axios';
 import validators from './validators';
+import EventBus from '../../components/notifications/EventBus';
 
 export default {
   name: 'EditAdmin',
@@ -58,6 +59,7 @@ export default {
     async validate() {
       if (this.$refs.form.validate()) {
         await axios.put(this.apiUrl, this.admin);
+        EventBus.$emit('success', this.$t('SUCCESS_OPERATION'));
         this.$store.dispatch('authModule/setLanguages');
       }
     },
