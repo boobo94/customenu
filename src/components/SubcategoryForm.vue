@@ -6,7 +6,15 @@
       :label="$t('LABEL_IMAGE')"
       accept="image/png, image/jpeg, image/bmp"
       prepend-icon="mdi-camera"
+      @change="convertToBase64"
     ></v-file-input>
+
+    <v-img
+      v-if="subcategory.image"
+      max-height="150"
+      max-width="250"
+      :src="subcategory.image"
+    ></v-img>
 
     <div
       class="previous mt-10"
@@ -79,13 +87,25 @@ export default {
     populateLanguages() {
       const { languages } = this.$store.state.authModule;
       languages.forEach((language) => {
-        if (!this.subcategory.subcategory_i18ns.some((el) => el.lang_code === language)) {
+        if (
+          !this.subcategory.subcategory_i18ns.some(
+            (el) => el.lang_code === language,
+          )
+        ) {
           this.subcategory.subcategory_i18ns.push({
             lang_code: language,
             name: '',
           });
         }
       });
+    },
+
+    convertToBase64(file) {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = (e) => {
+        this.category.file = e.target.result.toString();
+      };
     },
   },
 };

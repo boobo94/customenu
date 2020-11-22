@@ -47,7 +47,15 @@
       :label="$t('LABEL_IMAGE')"
       accept="image/png, image/jpeg, image/bmp"
       prepend-icon="mdi-camera"
+      @change="convertToBase64"
     ></v-file-input>
+
+    <v-img
+      v-if="product.image"
+      max-height="150"
+      max-width="250"
+      :src="product.image"
+    ></v-img>
 
     <div
       class="previous mt-10"
@@ -154,10 +162,20 @@ export default {
       this.subcategories = data;
     },
 
+    convertToBase64(file) {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = (e) => {
+        this.category.file = e.target.result.toString();
+      };
+    },
+
     populateLanguages() {
       const { languages } = this.$store.state.authModule;
       languages.forEach((language) => {
-        if (!this.product.product_i18ns.some((el) => el.lang_code === language)) {
+        if (
+          !this.product.product_i18ns.some((el) => el.lang_code === language)
+        ) {
           this.product.product_i18ns.push({
             lang_code: language,
             name: '',

@@ -15,7 +15,15 @@
             :label="$t('LABEL_LOGO')"
             accept="image/png, image/jpeg, image/bmp"
             prepend-icon="mdi-camera"
+            @change="convertToBase64"
           ></v-file-input>
+
+          <v-img
+            v-if="restaurant.logo"
+            max-height="150"
+            max-width="250"
+            :src="restaurant.logo"
+          ></v-img>
 
           <v-text-field
             v-model="restaurant.currency"
@@ -165,10 +173,22 @@ export default {
       }
     },
 
+    convertToBase64(file) {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = (e) => {
+        this.category.file = e.target.result.toString();
+      };
+    },
+
     populateLanguages() {
       const { languages } = this.$store.state.authModule;
       languages.forEach((language) => {
-        if (!this.restaurant.restaurant_i18ns.some((el) => el.lang_code === language)) {
+        if (
+          !this.restaurant.restaurant_i18ns.some(
+            (el) => el.lang_code === language,
+          )
+        ) {
           this.restaurant.restaurant_i18ns.push({
             lang_code: language,
             name: '',
