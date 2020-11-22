@@ -33,7 +33,7 @@ export const postValidator = [
     .isString()
     .withMessage('is string'),
 
-  body('image')
+  body('file')
     .optional()
     .isString()
     .withMessage('is string'),
@@ -48,9 +48,10 @@ export const putValidator = [
     .withMessage('is int')
     .toInt(),
 
-  body(['image'])
+  body('file')
     .optional()
-    .isString().withMessage('is string'),
+    .isString()
+    .withMessage('is string'),
 
   body(['category_i18ns.*.name', 'category_i18ns.*.lang_code'])
     .optional()

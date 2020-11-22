@@ -11,6 +11,8 @@ export default async (req, res) => {
       return res.status(statusCodes.NOT_FOUND).send({ error: errors.RESOURCE_NOT_FOUND });
     }
 
+    // todo: delete file if exists
+
     await Controllers.product.delete(req.params.productId);
 
     return res.status(statusCodes.NO_CONTENT).send();

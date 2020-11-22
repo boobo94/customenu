@@ -19,9 +19,10 @@ export const putValidator = [
     .withMessage('is int')
     .toInt(),
 
-  body(['logo'])
+  body('file')
     .optional()
-    .isString().withMessage('is string'),
+    .isString()
+    .withMessage('is string'),
 
   body(['currency', 'email', 'phone', 'address', 'instagramUrl', 'facebookUrl', 'youtubeUrl'])
     .optional()

@@ -14,6 +14,11 @@ export default async (req, res) => {
       return res.status(statusCodes.NOT_FOUND).send({ error: errors.RESOURCE_NOT_FOUND });
     }
 
+    if (req.body.file) {
+      // todo: upload file
+      // req.body.image = URL
+    }
+
     await Controllers.subcategory.update(req.body, req.params.subcategoryId, t);
     t.commit();
 

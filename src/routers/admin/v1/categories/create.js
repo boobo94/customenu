@@ -8,6 +8,11 @@ export default async (req, res) => {
       ...req.body,
       restaurantId: req.params.restaurantId,
     };
+
+    if (req.body.file) {
+      // todo: upload file
+      // newCategory.image = URL
+    }
     const created = await Controllers.category.create(newCategory);
 
     return res.status(statusCodes.OK).send(created);

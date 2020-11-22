@@ -7,6 +7,12 @@ export default async (req, res) => {
     const newEntry = {
       ...req.body,
     };
+
+    if (req.body.file) {
+      // todo: upload file
+      // newEntry.image = URL
+    }
+
     const created = await Controllers.product.create(newEntry);
 
     return res.status(statusCodes.OK).send(created);

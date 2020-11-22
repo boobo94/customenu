@@ -14,6 +14,11 @@ export default async (req, res) => {
       return res.status(statusCodes.FORBIDDEN).send({ error: errors.FORBIDDEN });
     }
 
+    if (req.body.file) {
+      // todo: upload file
+      // req.body.image = URL
+    }
+
     await Controllers.category.update(req.body, req.params.categoryId, t);
     t.commit();
 
