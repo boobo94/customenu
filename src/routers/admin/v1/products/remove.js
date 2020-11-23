@@ -1,6 +1,7 @@
-import { Controllers } from '../../../../database';
 import errors from '../../../../locales/errors.json';
 import statusCodes from '../../../utils/statusCodes';
+import { Controllers } from '../../../../database';
+import { deleteFile } from '../../../../services/object-storage';
 
 export default async (req, res) => {
   try {
@@ -11,7 +12,10 @@ export default async (req, res) => {
       return res.status(statusCodes.NOT_FOUND).send({ error: errors.RESOURCE_NOT_FOUND });
     }
 
-    // todo: delete file if exists
+    // delete image
+    if (entry.image) {
+      await deleteFile(entry.image);
+    }
 
     await Controllers.product.delete(req.params.productId);
 

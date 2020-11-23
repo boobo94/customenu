@@ -1,7 +1,8 @@
-import { Controllers } from '../../../../database';
-import { transaction } from '../../../../database/utils/transaction';
 import errors from '../../../../locales/errors.json';
 import statusCodes from '../../../utils/statusCodes';
+import * as storageService from '../../../../services/object-storage';
+import { Controllers } from '../../../../database';
+import { transaction } from '../../../../database/utils/transaction';
 
 export default async (req, res) => {
   const t = await transaction();
@@ -15,8 +16,9 @@ export default async (req, res) => {
     }
 
     if (req.body.file) {
-      // todo: upload file
-      // req.body.image = URL
+      await storageService.deleteFile(entry.image);
+      const path = `restaurant-${req.params.restaurantId}/products`;
+      req.body.image = await storageService.uploadFile(req.body.file, path);
     }
 
     await Controllers.product.update(req.body, req.params.productId, t);

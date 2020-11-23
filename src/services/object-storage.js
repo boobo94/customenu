@@ -20,7 +20,7 @@ export async function uploadFile(base64, path = '') {
 
   const params = {
     Bucket: process.env.LINODE_OBJECT_BUCKET,
-    Key: `${path}.${extension}`, // type is not required
+    Key: `${path}/${new Date().getTime()}.${extension}`,
     Body: base64Data,
     ACL: 'public-read',
     ContentEncoding: 'base64',

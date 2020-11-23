@@ -1,6 +1,7 @@
-import { Controllers } from '../../../../database';
 import errors from '../../../../locales/errors.json';
 import statusCodes from '../../../utils/statusCodes';
+import { Controllers } from '../../../../database';
+import { uploadFile } from '../../../../services/object-storage';
 
 export default async (req, res) => {
   try {
@@ -10,9 +11,10 @@ export default async (req, res) => {
     };
 
     if (req.body.file) {
-      // todo: upload file
-      // newCategory.image = URL
+      const path = `restaurant-${req.params.restaurantId}/categories`;
+      newCategory.image = await uploadFile(req.body.file, path);
     }
+
     const created = await Controllers.category.create(newCategory);
 
     return res.status(statusCodes.OK).send(created);
