@@ -177,7 +177,7 @@ export default {
       const reader = new FileReader();
       reader.readAsDataURL(file);
       reader.onload = (e) => {
-        this.category.file = e.target.result.toString();
+        this.restaurant.file = e.target.result.toString();
       };
     },
 

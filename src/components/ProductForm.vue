@@ -166,7 +166,7 @@ export default {
       const reader = new FileReader();
       reader.readAsDataURL(file);
       reader.onload = (e) => {
-        this.category.file = e.target.result.toString();
+        this.product.file = e.target.result.toString();
       };
     },
 
