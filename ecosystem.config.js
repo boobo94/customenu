@@ -27,6 +27,13 @@ module.exports = {
       APP_PORT: 8000,
       BCRYPT_SALT: 9,
       JWT_SECRET_KEY: 'qKNWpC5h',
+
+      // linode object bucket
+      LINODE_OBJECT_STORAGE_ENDPOINT: 'eu-central-1.linodeobjects.com',
+      LINODE_OBJECT_STORAGE_REGION: 'eu-central-1',
+      LINODE_OBJECT_STORAGE_ACCESS_KEY_ID: 'EM60Z23VK1RAZVIZ7OLE',
+      LINODE_OBJECT_STORAGE_SECRET_ACCESS_KEY: '45WY2BzY6GK6BG6RZXTWouGdlAe2wS9MXP5SzhCA',
+      LINODE_OBJECT_BUCKET: 'digital-menu',
     },
     env_production: {
       NODE_ENV: 'production',
