@@ -6,7 +6,7 @@ ssh-add ~/.ssh/id_rsa
 
 # get last updates
 cd /root/digital-menu-admin
-git pull origin master
+git pull origin main
 
 # install dependencies
 npm i
