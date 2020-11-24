@@ -12,6 +12,6 @@ git pull origin master
 npm i
 
 # create build
-npm run build:prod
+npm run build
 # copy build in www folder
 cp -r ./dist/* /var/www/digital-menu-admin
