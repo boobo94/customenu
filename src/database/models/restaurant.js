@@ -8,6 +8,9 @@ export default (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    qr_code: {
+      type: DataTypes.STRING,
+    },
     email: {
       type: DataTypes.STRING,
     },

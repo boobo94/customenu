@@ -18,6 +18,10 @@ export default (sequelize, DataTypes) => {
       type: DataTypes.BOOLEAN,
       defaultValue: false,
     },
+    type: {
+      type: DataTypes.STRING,
+      defaultValue: 'default', // values: default, root
+    },
   });
 
   admin.associate = (models) => {

@@ -1,6 +1,8 @@
 import { Credentials } from 'aws-sdk';
 import S3 from 'aws-sdk/clients/s3';
 
+const bucketKey = process.env.NODE_ENV === 'development' ? `${process.env.NODE_ENV}/` : '';
+
 const s3Client = new S3({
   region: process.env.LINODE_OBJECT_STORAGE_REGION,
   endpoint: process.env.LINODE_OBJECT_STORAGE_ENDPOINT,
@@ -20,7 +22,7 @@ export async function uploadFile(base64, path = '') {
 
   const params = {
     Bucket: process.env.LINODE_OBJECT_BUCKET,
-    Key: `${path}/${new Date().getTime()}.${extension}`,
+    Key: `${bucketKey}${path}/${new Date().getTime()}.${extension}`,
     Body: base64Data,
     ACL: 'public-read',
     ContentEncoding: 'base64',

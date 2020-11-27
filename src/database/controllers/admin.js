@@ -11,7 +11,7 @@ export default class Admin {
    */
   async findOne(id) {
     return this.model.findOne({
-      attributes: ['id', 'email', 'restaurantId', 'createdAt', 'updatedAt'],
+      attributes: ['id', 'email', 'restaurantId', 'type', 'createdAt', 'updatedAt'],
       where: {
         id: {
           [Op.eq]: id,

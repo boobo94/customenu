@@ -21,6 +21,8 @@ module.exports = {
       BCRYPT_SALT: 9,
       JWT_SECRET_KEY: 'qKNWpC5h',
 
+      APP_URL: 'https://app.customenu.ro/',
+
       // database
       DB_USERNAME: 'digital_menu_user',
       DB_PASSWORD: 'Hakj5KPs',
