@@ -13,7 +13,7 @@ export default async (req, res) => {
       ...req.body,
     };
 
-    const created = await Controllers.restaurant.create(newEntry);
+    const created = await Controllers.restaurant.create(newEntry, t);
 
     const path = `restaurant-${created.id}`;
     if (req.body.file) {
@@ -24,8 +24,11 @@ export default async (req, res) => {
       errorCorrectionLevel: 'H',
       width: 300,
     });
-    created.qr_code = await uploadFile(qrCodeFile, path);
-    await Controllers.restaurant.update(created, created.id, t);
+    const qrCodeUrl = await uploadFile(qrCodeFile, path);
+    created.qr_code = qrCodeUrl;
+    await Controllers.restaurant.update({
+      qr_code: qrCodeUrl,
+    }, created.id, t);
 
     t.commit();
 
