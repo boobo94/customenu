@@ -38,7 +38,7 @@ export default {
     return {
       restaurant: {
         id: 0,
-        logo: 'Digital Menu',
+        logo: 'Customenu',
         shortUrl: '',
       },
     };
