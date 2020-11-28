@@ -116,6 +116,19 @@
             </v-card>
           </div>
 
+          <div>
+            <v-img
+              contain
+              max-height="250"
+              max-width="250"
+              :src="restaurant.qr_code"
+            ></v-img>
+
+            <v-btn icon large>
+              <v-icon>mdi-download</v-icon>
+            </v-btn>
+          </div>
+
           <v-btn :disabled="!valid" color="info" class="mr-4" @click="validate">
             {{ $t("SUBMIT") }}
           </v-btn>
@@ -149,6 +162,7 @@ export default {
         facebookUrl: '',
         youtubeUrl: '',
         restaurant_i18ns: [],
+        qr_code: '',
       },
       apiUrl: '',
     };
