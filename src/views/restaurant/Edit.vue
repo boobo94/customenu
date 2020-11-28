@@ -124,7 +124,7 @@
               :src="restaurant.qr_code"
             ></v-img>
 
-            <v-btn icon large>
+            <v-btn icon large @click="downloadImage(restaurant.qr_code)">
               <v-icon>mdi-download</v-icon>
             </v-btn>
           </div>
@@ -141,6 +141,7 @@
 <script>
 import axios from 'axios';
 import LanguageSelector from '@/components/LanguageSelector.vue';
+import { saveAs } from 'file-saver';
 import validators from './validators';
 import EventBus from '../../components/notifications/EventBus';
 
@@ -193,6 +194,11 @@ export default {
       reader.onload = (e) => {
         this.restaurant.file = e.target.result.toString();
       };
+    },
+
+    downloadImage(url) {
+      const fileName = url.split('/');
+      saveAs(url, fileName[fileName.length - 1]);
     },
 
     populateLanguages() {
