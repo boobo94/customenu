@@ -6,6 +6,7 @@ ssh-add ~/.ssh/id_rsa
 
 # get last updates
 cd /root/digital-menu-app
+git reset --hard origin/main
 git pull origin main
 
 # install dependencies
