@@ -36,6 +36,6 @@
   "SELECT_LANGUAGE": "Selecteaza Limbile",
   "SELECT_LANGUAGE_HINT": "Limbile in care vor fi aparea in meniu produsele",
   "CLOSE": "Inchide",
-  "SUCCESS_OPERATION": "Operatia a fost efectuata cu succes"
-
+  "SUCCESS_OPERATION": "Operatia a fost efectuata cu succes",
+  "QR_CODE_LABEL": "Puteți descărca codul QR pentru restaurantul dvs. apăsând butonul portocaliu de mai jos."
 }

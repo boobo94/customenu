@@ -116,18 +116,26 @@
             </v-card>
           </div>
 
-          <div>
-            <v-img
-              contain
-              max-height="250"
-              max-width="250"
-              :src="restaurant.qr_code"
-            ></v-img>
+          <v-card max-width="250" class="mb-10">
+            <v-img max-height="250" max-width="250" :src="restaurant.qr_code">
+            </v-img>
 
-            <v-btn icon large @click="downloadImage(restaurant.qr_code)">
-              <v-icon>mdi-download</v-icon>
-            </v-btn>
-          </div>
+            <v-card-subtitle class="pb-0">
+              {{ $t("QR_CODE_LABEL") }}</v-card-subtitle
+            >
+
+            <v-card-actions>
+              <v-spacer></v-spacer>
+              <v-btn
+                icon
+                large
+                color="orange"
+                @click="downloadImage(restaurant.qr_code)"
+              >
+                <v-icon>mdi-download</v-icon>
+              </v-btn>
+            </v-card-actions>
+          </v-card>
 
           <v-btn :disabled="!valid" color="info" class="mr-4" @click="validate">
             {{ $t("SUBMIT") }}
