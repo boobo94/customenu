@@ -1,12 +1,11 @@
 <template>
- <v-responsive max-width="82">
+ <v-responsive max-width="85">
   <v-select
     v-model="$i18n.locale"
     :items="languages"
     menu-props="auto"
     label="Select"
     hide-details
-    prepend-icon="mdi-translate"
     single-line
     @change="changeLanguage"
   ></v-select>
