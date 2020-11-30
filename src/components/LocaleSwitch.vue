@@ -1,5 +1,5 @@
 <template>
- <v-responsive max-width="85">
+ <v-responsive max-width="50">
   <v-select
     v-model="$i18n.locale"
     :items="languages"
