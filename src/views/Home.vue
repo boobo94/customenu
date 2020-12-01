@@ -2,7 +2,7 @@
   <v-container>
     <v-row>
       <v-col>
-        Home
+        {{$t("WELCOME")}}
       </v-col>
     </v-row>
   </v-container>

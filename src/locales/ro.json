@@ -1,4 +1,5 @@
 {
+  "WELCOME": "Bun venit la Customenu",
   "FOOTER_LOGO": "Customenu dezvoltat de Cmevo Digital",
   "CATEGORIES_TITLE": "Categorii",
   "SUBCATEGORIES_TITLE": "Subcategorii",
@@ -26,8 +27,8 @@
   "SUBMIT": "Trimite",
   "LABEL_IMAGE": "Imagine",
   "LABEL_LOGO": "Logo",
-  "LABEL_ALLERGENS":"Allergens",
-  "CURRENCY":"Currency",
+  "LABEL_ALLERGENS": "Allergens",
+  "CURRENCY": "Currency",
   "PHONE": "Telefon",
   "LABEL_ADDRESS": "Address",
   "LABEL_INSTAGRAM_URL": "Instagram Profile",

@@ -1,4 +1,5 @@
 {
+  "WELCOME": "Welcome to Customenu",
   "FOOTER_LOGO": "Customenu powered by Cmevo Digital",
   "CATEGORIES_TITLE": "Categories",
   "SUBCATEGORIES_TITLE": "Subcategories",
@@ -26,8 +27,8 @@
   "SUBMIT": "Submit",
   "LABEL_IMAGE": "Image file",
   "LABEL_LOGO": "Logo",
-  "LABEL_ALLERGENS":"Allergens",
-  "CURRENCY":"Currency",
+  "LABEL_ALLERGENS": "Allergens",
+  "CURRENCY": "Currency",
   "PHONE": "Phone",
   "LABEL_ADDRESS": "Address",
   "LABEL_INSTAGRAM_URL": "Instagram Profile",
@@ -38,5 +39,4 @@
   "CLOSE": "Close",
   "SUCCESS_OPERATION": "Operation succeeded",
   "QR_CODE_LABEL": "You can download the QR Code for your restaurant by pressing the orange button below."
-
 }
