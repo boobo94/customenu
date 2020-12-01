@@ -23,7 +23,7 @@ export async function checkAccessToProduct(req, res, next) {
     );
     if (!product) {
       return res.status(statusCodes.NOT_FOUND).send({ error: errors.RESOURCE_NOT_FOUND });
-    } if (product.restaurantId !== req.params.restaurantId) {
+    } if (product.subcategory.category.restaurantId !== req.params.restaurantId) {
       return res.status(statusCodes.FORBIDDEN).send({ error: errors.FORBIDDEN });
     }
   } catch (err) {
