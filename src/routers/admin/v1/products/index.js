@@ -18,7 +18,7 @@ export default Router({ mergeParams: true })
   .get('/:productId',
     adminAuthorization,
     validators.getProduct,
-    permissions.checkAccessToProductsOfRestaurant,
+    permissions.checkAccessToProduct,
     getOne)
 
   .post('/',
@@ -30,11 +30,11 @@ export default Router({ mergeParams: true })
   .put('/:productId',
     adminAuthorization,
     validators.putValidator,
-    permissions.checkAccessToProductsOfRestaurant,
+    permissions.checkAccessToProduct,
     update)
 
   .delete('/:productId',
     adminAuthorization,
     validators.getProduct,
-    permissions.checkAccessToProductsOfRestaurant,
+    permissions.checkAccessToProduct,
     remove);
