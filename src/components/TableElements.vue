@@ -35,12 +35,12 @@
       <v-icon
         v-if="showSubcategoryLink"
         small
-        class="mr-3"
+        class="mr-2"
         @click="gotoSubcategory(item)"
       >
         mdi-shape-outline
-      </v-icon>
-      <v-icon small class="mr-2" @click="editItem(item)"> mdi-pencil </v-icon>
+      </v-icon>|
+      <v-icon small class="ml-2 mr-2" @click="editItem(item)"> mdi-pencil </v-icon>
       <v-icon small @click="deleteItem(item)"> mdi-delete </v-icon>
     </template>
   </v-data-table>
@@ -75,7 +75,7 @@ export default {
           align: 'center',
           value: 'actions',
           sortable: false,
-          width: 100,
+          width: 200,
         },
       ],
       selectedItem: null,

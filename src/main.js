@@ -8,7 +8,7 @@ import store from './store';
 
 // setup axios
 
-const API_BASE_URL = process.env.NODE_ENV === 'production' ? 'https://api.customenu.ro' : 'http://127.0.0.1:8000';
+const API_BASE_URL = process.env.NODE_ENV !== 'production' ? 'https://api.customenu.ro' : 'http://127.0.0.1:8000';
 axios.defaults.baseURL = `${API_BASE_URL}/admin/v1`;
 axios.defaults.headers['accept-language'] = i18n.locale || 'en';
 axios.defaults.headers.authorization = localStorage.getItem('auth_token')

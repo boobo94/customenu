@@ -20,7 +20,7 @@
   "DESCRIPTION": "Descriere",
   "WEIGHT": "Greutate",
   "PRICE": "Pret",
-  "ACTIONS": "Actiuni",
+  "ACTIONS": "Subcategorii | Actiuni",
   "REQUIRED_NAME": "Numele este obligatoriu",
   "REQUIRED_EMAIL": "E-mailul este obligatoriu",
   "VALID_EMAIL": "E-mailul este valid",

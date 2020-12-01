@@ -20,7 +20,7 @@
   "DESCRIPTION": "Description",
   "WEIGHT": "Weight",
   "PRICE": "Price",
-  "ACTIONS": "Actions",
+  "ACTIONS": "Subcategories | Actions",
   "REQUIRED_NAME": "Name is required",
   "REQUIRED_EMAIL": "E-mail is required",
   "VALID_EMAIL": "E-mail must be valid",
