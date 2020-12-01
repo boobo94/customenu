@@ -96,6 +96,7 @@ export default class Product {
                 [Op.eq]: restaurantId,
               },
             },
+            required: false, // disable inner join and use left join
           }],
         },
         {
