@@ -4,6 +4,7 @@ import loginApi from './login';
 import refreshToken from './refresh-token';
 import update from './update';
 import get from './get';
+import { checkAccessToUpdateProfile } from './permissions';
 
 export default Router()
   .post('/login',
@@ -16,4 +17,5 @@ export default Router()
     get)
   .put('/profile',
     validators.updateAdmin,
+    checkAccessToUpdateProfile,
     update);
