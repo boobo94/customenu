@@ -96,8 +96,8 @@ export default class Product {
                 [Op.eq]: restaurantId,
               },
             },
-            required: false, // disable inner join and use left join
           }],
+          required: true, // use inner join
         },
         {
           model: this.modelI18n,
