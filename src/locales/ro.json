@@ -39,6 +39,10 @@
   "CLOSE": "Inchide",
   "SUCCESS_OPERATION": "Operatia a fost efectuata cu succes",
   "QR_CODE_LABEL": "Puteți descărca codul QR pentru restaurantul dvs. apăsând butonul portocaliu de mai jos.",
-  "REGISTER_TITLE": "Înregistrare"
-
+  "REGISTER_TITLE": "Înregistrare",
+  "LOGIN_LINK_LABEL":"În cazul în care aveți deja un cont",
+  "BACK_TITLE": "Înapoi",
+  "CONTINUE_TITLE": "Continuă",
+  "REGISTER_STEP_1_TITLE": "Cont",
+  "REGISTER_STEP_2_TITLE": "Informații restaurant"
 }
