@@ -34,6 +34,9 @@
                 </v-form>
               </v-card-text>
               <v-card-actions>
+                <router-link :to="{ name: 'Register' }"
+                  >{{ $t("REGISTER_TITLE") }}
+                </router-link>
                 <v-spacer></v-spacer>
                 <v-btn @click="submit" color="primary">{{
                   $t("LOGIN_TITLE")

@@ -38,5 +38,6 @@
   "SELECT_LANGUAGE_HINT": "The languages within the products will appear in the menu",
   "CLOSE": "Close",
   "SUCCESS_OPERATION": "Operation succeeded",
-  "QR_CODE_LABEL": "You can download the QR Code for your restaurant by pressing the orange button below."
+  "QR_CODE_LABEL": "You can download the QR Code for your restaurant by pressing the orange button below.",
+  "REGISTER_TITLE": "Register"
 }
