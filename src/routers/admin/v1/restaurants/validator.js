@@ -12,33 +12,6 @@ export const getRestaurant = [
   checkErrors,
 ];
 
-export const create = [
-  body('file')
-    .optional()
-    .isString()
-    .withMessage('is string'),
-
-  body(['currency', 'email', 'phone', 'address', 'instagramUrl', 'facebookUrl', 'youtubeUrl'])
-    .optional()
-    .isString().withMessage('is string'),
-
-  body(['languages'])
-    .not().isEmpty().withMessage('is required')
-    .isArray()
-    .withMessage('is array'),
-  body(['languages.*'])
-    .not().isEmpty().withMessage('is required')
-    .isString()
-    .withMessage('is string'),
-
-  body(['restaurant_i18ns.*.name', 'restaurant_i18ns.*.description', 'restaurant_i18ns.*.allergens', 'restaurant_i18ns.*.lang_code'])
-    .not().isEmpty().withMessage('is required')
-    .isString()
-    .withMessage('is string'),
-
-  checkErrors,
-];
-
 export const putValidator = [
   param(['restaurantId'])
     .not().isEmpty().withMessage('is required')
