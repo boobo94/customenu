@@ -8,22 +8,22 @@
               <v-toolbar-title>{{ $t("REGISTER_TITLE") }}</v-toolbar-title>
             </v-toolbar>
 
-            <v-form ref="form">
-              <v-stepper v-model="step">
-                <v-stepper-header>
-                  <v-stepper-step :complete="step > 1" step="1">
-                    {{ $t("REGISTER_STEP_1_TITLE") }}
-                  </v-stepper-step>
+            <v-stepper v-model="step">
+              <v-stepper-header>
+                <v-stepper-step :complete="step > 1" step="1">
+                  {{ $t("REGISTER_STEP_1_TITLE") }}
+                </v-stepper-step>
 
-                  <v-divider></v-divider>
+                <v-divider></v-divider>
 
-                  <v-stepper-step :complete="step > 2" step="2">
-                    {{ $t("REGISTER_STEP_2_TITLE") }}
-                  </v-stepper-step>
-                </v-stepper-header>
+                <v-stepper-step :complete="step > 2" step="2">
+                  {{ $t("REGISTER_STEP_2_TITLE") }}
+                </v-stepper-step>
+              </v-stepper-header>
 
-                <v-stepper-items>
-                  <!-- STEP 1 ACCOUNT -->
+              <v-stepper-items>
+                <!-- STEP 1 ACCOUNT -->
+                <v-form ref="formStep1">
                   <v-stepper-content step="1">
                     <v-text-field
                       v-model="user.email"
@@ -47,12 +47,14 @@
                       v-on:keyup.enter="submit"
                     ></v-text-field>
 
-                    <v-btn color="primary" @click="step = 2">
+                    <v-btn color="primary" @click="submit">
                       {{ $t("CONTINUE_TITLE") }}
                     </v-btn>
                   </v-stepper-content>
+                </v-form>
 
-                  <!-- STEP 2 RESTAURANT ACCOUNT -->
+                <!-- STEP 2 RESTAURANT ACCOUNT -->
+                <v-form ref="formStep2">
                   <v-stepper-content step="2">
                     <v-text-field
                       v-model="restaurant.shortUrl"
@@ -173,9 +175,9 @@
                       {{ $t("BACK_TITLE") }}
                     </v-btn>
                   </v-stepper-content>
-                </v-stepper-items>
-              </v-stepper>
-            </v-form>
+                </v-form>
+              </v-stepper-items>
+            </v-stepper>
           </v-col>
         </v-row>
         <v-row>
@@ -237,7 +239,9 @@ export default {
 
   methods: {
     async submit() {
-      if (this.$refs.form.validate()) {
+      if (this.step === 1 && this.$refs.formStep1.validate()) {
+        this.step = 2;
+      } else if (this.step === 2 && this.$refs.formStep2.validate()) {
         await axios.post('/auth/register', {
           restaurant: this.restaurant,
           admin: this.user,
