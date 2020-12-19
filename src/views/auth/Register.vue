@@ -23,6 +23,7 @@
                 </v-stepper-header>
 
                 <v-stepper-items>
+                  <!-- STEP 1 ACCOUNT -->
                   <v-stepper-content step="1">
                     <v-text-field
                       v-model="user.email"
@@ -51,12 +52,118 @@
                     </v-btn>
                   </v-stepper-content>
 
+                  <!-- STEP 2 RESTAURANT ACCOUNT -->
                   <v-stepper-content step="2">
-                    <v-card
-                      class="mb-12"
-                      color="grey lighten-1"
-                      height="200px"
-                    ></v-card>
+                    <v-text-field
+                      v-model="restaurant.shortUrl"
+                      :rules="validators.requiredRules"
+                      :label="$t('LABEL_URL')"
+                      :hint="$t('LABEL_URL_HINT')"
+                    ></v-text-field>
+
+                    <v-file-input
+                      show-size
+                      counter
+                      :label="$t('LABEL_LOGO')"
+                      accept="image/png, image/jpeg, image/bmp"
+                      prepend-icon="mdi-camera"
+                      @change="convertToBase64"
+                    ></v-file-input>
+
+                    <v-text-field
+                      v-model="restaurant.currency"
+                      :counter="255"
+                      :label="$t('CURRENCY')"
+                      :rules="validators.requiredRules"
+                      required
+                    ></v-text-field>
+
+                    <v-text-field
+                      v-model="restaurant.email"
+                      :counter="255"
+                      :label="$t('EMAIL_LABEL')"
+                    ></v-text-field>
+
+                    <v-text-field
+                      v-model="restaurant.phone"
+                      :counter="255"
+                      :label="$t('PHONE')"
+                    ></v-text-field>
+
+                    <v-text-field
+                      v-model="restaurant.address"
+                      :counter="255"
+                      :label="$t('LABEL_ADDRESS')"
+                    ></v-text-field>
+
+                    <v-text-field
+                      v-model="restaurant.instagramUrl"
+                      :counter="255"
+                      :label="$t('LABEL_INSTAGRAM_URL')"
+                    ></v-text-field>
+
+                    <v-text-field
+                      v-model="restaurant.facebookUrl"
+                      :counter="255"
+                      :label="$t('LABEL_FACEBOOK_URL')"
+                    ></v-text-field>
+
+                    <v-text-field
+                      v-model="restaurant.youtubeUrl"
+                      :counter="255"
+                      :label="$t('LABEL_YOUTUBE_URL')"
+                    ></v-text-field>
+
+                    <LanguageSelector
+                      v-bind:languagesProp="restaurant.languages"
+                      v-on:update:languagesProp="
+                        updateSelectedLanguages($event)
+                      "
+                    />
+
+                    <div
+                      class="previous mt-10"
+                      v-for="(
+                        restaurantI18n, counter
+                      ) in restaurant.restaurant_i18ns"
+                      v-bind:key="counter"
+                    >
+                      <v-card class="mx-auto mb-5" outlined>
+                        <v-card-actions>
+                          <div class="overline">
+                            {{ $t("LANGUAGE") }} {{ restaurantI18n.lang_code }}
+                          </div>
+                        </v-card-actions>
+
+                        <v-list-item>
+                          <v-list-item-content>
+                            <v-row>
+                              <v-col cols="12">
+                                <v-text-field
+                                  v-model="restaurantI18n.name"
+                                  :counter="255"
+                                  :label="$t('NAME')"
+                                  :rules="validators.requiredRules"
+                                  required
+                                ></v-text-field>
+                                <v-textarea
+                                  v-model="restaurantI18n.description"
+                                  :label="$t('DESCRIPTION')"
+                                  :rules="validators.requiredRules"
+                                  required
+                                ></v-textarea>
+                                <v-textarea
+                                  v-model="restaurantI18n.allergens"
+                                  :label="$t('LABEL_ALLERGENS')"
+                                  :rules="validators.requiredRules"
+                                  required
+                                ></v-textarea>
+                              </v-col>
+                            </v-row>
+                          </v-list-item-content>
+                        </v-list-item>
+                      </v-card>
+                    </div>
 
                     <v-btn color="primary" @click="submit">
                       {{ $t("REGISTER_TITLE") }}
@@ -69,46 +176,6 @@
                 </v-stepper-items>
               </v-stepper>
             </v-form>
-
-            <!-- <v-card class="elevation-12">
-              <v-toolbar color="primary" dark flat>
-                <v-toolbar-title>{{ $t("REGISTER_TITLE") }}</v-toolbar-title>
-              </v-toolbar>
-              <v-card-text>
-                <v-form ref="form">
-                  <v-text-field
-                    v-model="user.email"
-                    :rules="validators.emailValidator"
-                    @change="validators.emailValidator"
-                    :label="$t('EMAIL_LABEL')"
-                    name="email"
-                    prepend-icon="mdi-account"
-                    type="email"
-                    v-on:keyup.enter="submit"
-                  >
-                  </v-text-field>
-
-                  <v-text-field
-                    v-model="user.password"
-                    :rules="validators.passwordValidator"
-                    :label="$t('PASSWORD_LABEL')"
-                    name="user.password"
-                    prepend-icon="mdi-lock"
-                    type="password"
-                    v-on:keyup.enter="submit"
-                  ></v-text-field>
-                </v-form>
-              </v-card-text>
-              <v-card-actions>
-                <router-link :to="{ name: 'Login' }"
-                  >{{ $t("LOGIN_TITLE") }}
-                </router-link>
-                <v-spacer></v-spacer>
-                <v-btn @click="submit" color="primary">{{
-                  $t("REGISTER_TITLE")
-                }}</v-btn>
-              </v-card-actions>
-            </v-card> -->
           </v-col>
         </v-row>
         <v-row>
@@ -127,9 +194,16 @@
 </template>
 
 <script>
+import LanguageSelector from '@/components/LanguageSelector.vue';
+import axios from 'axios';
 import validators from './validators';
+import languages from '../../utils/languages';
 
 export default {
+  name: 'Register',
+  components: {
+    LanguageSelector,
+  },
   data() {
     return {
       validators: validators(this),
@@ -138,28 +212,69 @@ export default {
         email: '',
         password: '',
       },
+      languages,
       restaurant: {
         logo: '',
-        currency: '',
+        currency: 'ron',
         email: '',
         phone: '',
         instagramUrl: '',
         facebookUrl: '',
         youtubeUrl: '',
-        restaurant_i18ns: [],
+        languages: ['ro'],
+        restaurant_i18ns: [
+          {
+            lang_code: 'ro', // default
+            name: '',
+            description: '',
+            allergens: '',
+          },
+        ],
         qr_code: '',
       },
     };
   },
 
   methods: {
-    submit() {
-      alert('SUBMITED');
-      // if (this.$refs.form.validate()) {
-      //   this.$store.dispatch('authModule/register', this.user).then(() => {
-      //     this.$router.push({ path: '/' });
-      //   });
-      // }
+    async submit() {
+      if (this.$refs.form.validate()) {
+        await axios.post('/auth/register', {
+          restaurant: this.restaurant,
+          admin: this.user,
+        });
+        this.$router.push({ path: '/login' });
+      }
+    },
+
+    convertToBase64(file) {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = (e) => {
+        this.restaurant.file = e.target.result.toString();
+      };
+    },
+
+    updateSelectedLanguages(newLanguages) {
+      this.restaurant.languages = newLanguages;
+      // clear elements from translations
+      this.restaurant.restaurant_i18ns = this.restaurant.restaurant_i18ns.filter(
+        (element) => newLanguages.includes(element.lang_code),
+      );
+
+      newLanguages.forEach((language) => {
+        if (
+          !this.restaurant.restaurant_i18ns.some(
+            (el) => el.lang_code === language,
+          )
+        ) {
+          this.restaurant.restaurant_i18ns.push({
+            lang_code: language,
+            name: '',
+            description: '',
+            allergens: '',
+          });
+        }
+      });
     },
   },
 };

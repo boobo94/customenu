@@ -17,4 +17,5 @@ export default (self) => ({
       return true;
     },
   ],
+  requiredRules: [(v) => !!v || self.$t('REQUIRED_NAME')],
 });

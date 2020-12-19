@@ -28,14 +28,15 @@
   "LABEL_IMAGE": "Imagine",
   "LABEL_LOGO": "Logo",
   "LABEL_ALLERGENS": "Allergens",
-  "CURRENCY": "Currency",
+  "CURRENCY": "Moneda",
   "PHONE": "Telefon",
   "LABEL_ADDRESS": "Address",
   "LABEL_INSTAGRAM_URL": "Instagram Profile",
   "LABEL_FACEBOOK_URL": "Facebook Profile",
   "LABEL_YOUTUBE_URL": "Youtube Profile",
   "SELECT_LANGUAGE": "Selecteaza Limbile",
-  "SELECT_LANGUAGE_HINT": "Limbile in care vor fi aparea in meniu produsele",
+  "SELECT_LANGUAGE_HINT": "Limbile disponibile penru restaurant. Meniul va suporta toate aceste limbi",
+
   "CLOSE": "Inchide",
   "SUCCESS_OPERATION": "Operatia a fost efectuata cu succes",
   "QR_CODE_LABEL": "Puteți descărca codul QR pentru restaurantul dvs. apăsând butonul portocaliu de mai jos.",
@@ -44,5 +45,8 @@
   "BACK_TITLE": "Înapoi",
   "CONTINUE_TITLE": "Continuă",
   "REGISTER_STEP_1_TITLE": "Cont",
-  "REGISTER_STEP_2_TITLE": "Informații restaurant"
+  "REGISTER_STEP_2_TITLE": "Informații restaurant",
+  "LABEL_URL": "Link personalizat",
+  "LABEL_URL_HINT": "Meniul tău va avea un link personalizat.Poți utiliza numele restaurantului."
+
 }

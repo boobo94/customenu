@@ -35,15 +35,16 @@
   "LABEL_FACEBOOK_URL": "Facebook Profile",
   "LABEL_YOUTUBE_URL": "Youtube Profile",
   "SELECT_LANGUAGE": "Select Languages",
-  "SELECT_LANGUAGE_HINT": "The languages within the products will appear in the menu",
+  "SELECT_LANGUAGE_HINT": "The languages available for restaurants. The menu will support all these languages.",
   "CLOSE": "Close",
   "SUCCESS_OPERATION": "Operation succeeded",
   "QR_CODE_LABEL": "You can download the QR Code for your restaurant by pressing the orange button below.",
   "REGISTER_TITLE": "Register",
-  "LOGIN_LINK_LABEL":"If you already have an account ",
+  "LOGIN_LINK_LABEL": "If you already have an account ",
   "BACK_TITLE": "Back",
   "CONTINUE_TITLE": "Continuă",
   "REGISTER_STEP_1_TITLE": "Account",
-  "REGISTER_STEP_2_TITLE": "Restaurant Details"
-
+  "REGISTER_STEP_2_TITLE": "Restaurant Details",
+  "LABEL_URL": "Custom Link",
+  "LABEL_URL_HINT": "Your menu will have a customized url. You can use the name of your restaurant."
 }

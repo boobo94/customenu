@@ -72,6 +72,7 @@
           <LanguageSelector
             v-bind:languagesProp="restaurant.languages"
             v-on:update:languagesProp="restaurant.languages = $event"
+            :needsLanguages="true"
           />
 
           <div
