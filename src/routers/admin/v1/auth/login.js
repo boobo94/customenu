@@ -6,7 +6,7 @@ import { GenerateJWT } from '../../../utils/jwt';
 
 export default async (req, res) => {
   try {
-    const admin = await Controllers.admin.findByEmail(req.body.email);
+    const admin = await Controllers.admin.findActiveByEmail(req.body.email);
     if (!admin) {
       return res.status(StatusCodes.UNAUTHORIZED).send({ error: errors.UNAUTHORIZED });
     }

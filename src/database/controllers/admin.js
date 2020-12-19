@@ -21,6 +21,23 @@ export default class Admin {
   }
 
   /**
+   * Find active account by email
+   * @param {string} email
+   */
+  async findActiveByEmail(email) {
+    return this.model.findOne({
+      where: {
+        email: {
+          [Op.eq]: email,
+        },
+        isActive: {
+          [Op.eq]: true,
+        },
+      },
+    });
+  }
+
+  /**
    * Find by email
    * @param {string} email
    */
@@ -29,9 +46,6 @@ export default class Admin {
       where: {
         email: {
           [Op.eq]: email,
-        },
-        isActive: {
-          [Op.eq]: true,
         },
       },
     });
