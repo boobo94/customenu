@@ -18,4 +18,12 @@ export default (self) => ({
     },
   ],
   requiredRules: [(v) => !!v || self.$t('REQUIRED_NAME')],
+  shortUrlRules: [
+    (v) => !!v || self.$t('REQUIRED_NAME'),
+    (url) => {
+      if (!/^[a-zA-Z-]+$/.test(url)) return self.$t('URL_VALIDATOR_CHARACTERS_ALLOWED');
+      return true;
+    },
+
+  ],
 });

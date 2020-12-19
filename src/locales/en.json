@@ -46,5 +46,8 @@
   "REGISTER_STEP_1_TITLE": "Account",
   "REGISTER_STEP_2_TITLE": "Restaurant Details",
   "LABEL_URL": "Custom Link",
-  "LABEL_URL_HINT": "Your menu will have a customized url. You can use the name of your restaurant."
+  "LABEL_URL_HINT": "Your menu will have a customized url. You can use the name of your restaurant.",
+  "LABEL_URL_LINK": "The link of your menu: ",
+  "URL_VALIDATOR_CHARACTERS_ALLOWED": "The custom link can contains only characters, numbers and/or -"
+
 }

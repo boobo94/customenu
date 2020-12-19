@@ -9,6 +9,11 @@
             disabled
           ></v-text-field>
 
+          <p>
+            {{ $t("LABEL_URL_LINK") }}
+            <a :href="getAppLink" target="_blank">{{ getAppLink }}</a>
+          </p>
+
           <v-file-input
             show-size
             counter
@@ -186,6 +191,12 @@ export default {
 
     this.restaurant = data;
     this.populateLanguages();
+  },
+
+  computed: {
+    getAppLink() {
+      return `https://app.customenu.ro/${this.restaurant.shortUrl}`;
+    },
   },
 
   methods: {

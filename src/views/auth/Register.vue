@@ -58,10 +58,14 @@
                   <v-stepper-content step="2">
                     <v-text-field
                       v-model="restaurant.shortUrl"
-                      :rules="validators.requiredRules"
+                      :rules="validators.shortUrlRules"
                       :label="$t('LABEL_URL')"
                       :hint="$t('LABEL_URL_HINT')"
                     ></v-text-field>
+                    <p>
+                      {{ $t("LABEL_URL_LINK") }}
+                      <a :href="getAppLink" target="_blank">{{ getAppLink }}</a>
+                    </p>
 
                     <v-file-input
                       show-size
@@ -235,6 +239,13 @@ export default {
         qr_code: '',
       },
     };
+  },
+
+  computed: {
+    getAppLink() {
+      const restaurantPath = this.restaurant.shortUrl ? this.restaurant.shortUrl : ':link';
+      return `https://app.customenu.ro/${restaurantPath}`;
+    },
   },
 
   methods: {

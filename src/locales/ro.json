@@ -47,6 +47,9 @@
   "REGISTER_STEP_1_TITLE": "Cont",
   "REGISTER_STEP_2_TITLE": "Informații restaurant",
   "LABEL_URL": "Link personalizat",
-  "LABEL_URL_HINT": "Meniul tău va avea un link personalizat.Poți utiliza numele restaurantului."
+  "LABEL_URL_HINT": "Meniul tău va avea un link personalizat.Poți utiliza numele restaurantului.",
+  "LABEL_URL_LINK": "Link-ul pentru meniul tău",
+  "URL_VALIDATOR_CHARACTERS_ALLOWED": "Link-ul personalizat poate contine litere, cifre și/sau -"
+
 
 }
