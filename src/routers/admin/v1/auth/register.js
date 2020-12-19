@@ -28,8 +28,8 @@ export default async (req, res) => {
 
     // upload logo
     const path = `restaurant-${restaurantCreated.id}`;
-    if (req.body.file) {
-      restaurantCreated.logo = await uploadFile(req.body.file, path);
+    if (req.body.restaurant.file) {
+      restaurantCreated.logo = await uploadFile(req.body.restaurant.file, path);
     }
 
     // upload qr code
