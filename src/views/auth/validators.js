@@ -21,7 +21,7 @@ export default (self) => ({
   shortUrlRules: [
     (v) => !!v || self.$t('REQUIRED_NAME'),
     (url) => {
-      if (!/^[a-zA-Z-]+$/.test(url)) return self.$t('URL_VALIDATOR_CHARACTERS_ALLOWED');
+      if (!/^[a-zA-Z0-9-]+$/.test(url)) return self.$t('URL_VALIDATOR_CHARACTERS_ALLOWED');
       return true;
     },
 

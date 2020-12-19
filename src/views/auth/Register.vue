@@ -202,6 +202,7 @@
 <script>
 import LanguageSelector from '@/components/LanguageSelector.vue';
 import axios from 'axios';
+import EventBus from '@/components/notifications/EventBus';
 import validators from './validators';
 import languages from '../../utils/languages';
 
@@ -257,6 +258,7 @@ export default {
           restaurant: this.restaurant,
           admin: this.user,
         });
+        EventBus.$emit('success', this.$t('RESTAURANT_CREATED'));
         this.$router.push({ path: '/login' });
       }
     },
