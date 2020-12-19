@@ -18,5 +18,9 @@
   "SERVER_ERROR":{
     "code": 5,
     "message": "An error occurred, please try again or contact the support team."
+  },
+  "EMAIL_ALREADY_USED":{
+    "code": 5,
+    "message": "The email is already used."
   }
 }
