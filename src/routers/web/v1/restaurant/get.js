@@ -26,7 +26,6 @@ const adapter = (element) => {
 
 export default async (req, res) => {
   try {
-    console.log('params', req.params);
     const restaurant = await Controllers.restaurant.findById(req.params.restaurantId, req.headers['accept-language']);
     if (!restaurant) {
       return res.status(statusCodes.NOT_FOUND).send({ error: errors.RESOURCE_NOT_FOUND });
