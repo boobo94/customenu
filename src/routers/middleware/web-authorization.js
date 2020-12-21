@@ -11,6 +11,11 @@ export default async (req, res, next) => {
       return res.status(statusCodes.UNAUTHORIZED).send({ error: errors.UNAUTHORIZED });
     }
 
+    if (!req.headers['accept-language']) {
+      const [defaultLanguage] = restaurant.languages;
+      req.headers['accept-language'] = defaultLanguage;
+    }
+
     req.params.restaurantId = restaurant.id; // set restaurantId on req.params
   } catch (err) {
     return res.status(statusCodes.UNAUTHORIZED).send({ error: errors.UNAUTHORIZED });
