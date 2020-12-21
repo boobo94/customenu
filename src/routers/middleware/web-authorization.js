@@ -11,7 +11,8 @@ export default async (req, res, next) => {
       return res.status(statusCodes.UNAUTHORIZED).send({ error: errors.UNAUTHORIZED });
     }
 
-    if (!req.headers['accept-language']) {
+    // language was not set or the language set is not available for that restaurant
+    if (!req.headers['accept-language'] || !restaurant.languages.includes(req.headers['accept-language'])) {
       const [defaultLanguage] = restaurant.languages;
       req.headers['accept-language'] = defaultLanguage;
     }
