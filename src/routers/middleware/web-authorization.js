@@ -21,5 +21,7 @@ export default async (req, res, next) => {
     return res.status(statusCodes.UNAUTHORIZED).send({ error: errors.UNAUTHORIZED });
   }
 
+  console.log('params middleware', req.params);
+
   return next();
 };

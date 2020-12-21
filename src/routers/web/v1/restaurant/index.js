@@ -4,6 +4,5 @@ import getOne from './get';
 import oneSimple from './one-simple';
 
 export default Router({ mergeParams: true })
-  .use(webAuthorization)
-  .get('/', getOne)
-  .get('/simple', oneSimple);
+  .get('/', webAuthorization, getOne)
+  .get('/simple', webAuthorization, oneSimple);
