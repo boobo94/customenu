@@ -6,6 +6,7 @@ ssh-add ~/.ssh/id_rsa
 
 # get last updates
 cd /root/digital-menu-ws
+git reset --hard origin/master
 git pull origin master
 
 npm i
