@@ -167,7 +167,7 @@ export default class Restaurant {
           [Op.eq]: id,
         },
       },
-      attributes: ['id', 'logo', 'shortUrl'],
+      attributes: ['id', 'logo', 'shortUrl', 'languages'],
     });
   }
 }
