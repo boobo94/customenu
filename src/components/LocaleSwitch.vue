@@ -18,9 +18,33 @@ import axios from 'axios';
 export default {
   name: 'locale-switch',
   props: {
-    languages: Array,
+    languagesProp: Array,
+  },
+  data() {
+    return {
+      languages: this.languagesProp,
+    };
+  },
+  watch: {
+    languagesProp() {
+      this.languages = this.languagesProp;
+      if (!localStorage.getItem('language')) {
+        this.setLanguage();
+      }
+    },
+  },
+  created() {
+    // set the first one as default if not set
+    if (!localStorage.getItem('language')) {
+      this.setLanguage();
+    }
   },
   methods: {
+    setLanguage() {
+      const [defaultLanguage] = this.languages;
+      axios.defaults.headers['accept-language'] = defaultLanguage;
+      localStorage.setItem('language', defaultLanguage);
+    },
     changeLanguage(value) {
       axios.defaults.headers['accept-language'] = value;
       localStorage.setItem('language', value);

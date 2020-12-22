@@ -20,7 +20,7 @@
 
     <v-spacer></v-spacer>
 
-    <LocaleSwitch :languages="restaurant.languages"/>
+    <LocaleSwitch :languagesProp="restaurant.languages"/>
   </v-app-bar>
 </template>
 
@@ -40,6 +40,7 @@ export default {
         id: 0,
         logo: 'Customenu',
         shortUrl: '',
+        languages: [],
       },
     };
   },
