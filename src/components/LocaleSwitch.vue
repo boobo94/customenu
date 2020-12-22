@@ -43,8 +43,7 @@ export default {
     setLanguage() {
       const [defaultLanguage] = this.languages;
       if (defaultLanguage) {
-        axios.defaults.headers['accept-language'] = defaultLanguage;
-        localStorage.setItem('language', defaultLanguage);
+        this.changeLanguage(defaultLanguage);
       }
     },
     changeLanguage(value) {
