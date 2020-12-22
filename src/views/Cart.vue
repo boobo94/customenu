@@ -41,6 +41,9 @@ export default {
     this.elements = this.$store.state.cart.products;
   },
   methods: {
+    // todo: add quantity for products
+    // todo add delete all button sticky to bottom
+    // todo: calculate total in watch
     resetCart() {
       this.$store.dispatch('cart/reset');
       this.elements = this.$store.state.cart.products;
