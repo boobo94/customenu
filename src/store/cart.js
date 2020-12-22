@@ -14,7 +14,7 @@ export default {
   },
   mutations: {
     add(state, product) {
-      state.products = product;
+      state.products.push(product);
     },
     delete(state, index) {
       state.products.splice(index, 1);
