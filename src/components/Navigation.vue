@@ -20,7 +20,7 @@
 
     <v-spacer></v-spacer>
 
-    <LocaleSwitch />
+    <LocaleSwitch :languages="restaurant.languages"/>
   </v-app-bar>
 </template>
 

@@ -17,8 +17,8 @@ import axios from 'axios';
 
 export default {
   name: 'locale-switch',
-  data() {
-    return { languages: ['en', 'ro'] };
+  props: {
+    languages: Array,
   },
   methods: {
     changeLanguage(value) {
