@@ -13,7 +13,7 @@
         <v-col>
           <h1>{{ restaurant.name }}</h1>
           <p>{{ restaurant.description }}</p>
-          <h2>Allergens</h2>
+          <h2>{{$t("ALLERGENS_TITLE")}}</h2>
           <p>{{ restaurant.allergens }}</p>
 
           <div class="text-center links">
