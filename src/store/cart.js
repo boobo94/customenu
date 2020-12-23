@@ -19,7 +19,7 @@ export default {
   },
   actions: {
     add({ commit, state }, product) {
-      const productPosition = state.products.indexOf((element) => element.id === product.id);
+      const productPosition = state.products.findIndex((element) => element.id === product.id);
       if (productPosition === -1) { // not found, add it
         commit('add', {
           ...product,

@@ -15,6 +15,9 @@
         <v-list-item-title class="headline mb-1 pointer" @click="gotoProduct">
           {{ name }}
         </v-list-item-title>
+        <v-list-item-subtitle v-if="isCartPage">
+          x {{ quantity }} {{ $t("QUANTITY_LABEL") }}
+        </v-list-item-subtitle>
         <div class="overline">
           <span><v-icon>mdi-cash-multiple</v-icon> {{ price }}RON </span>
           <span><v-icon>mdi-weight-gram</v-icon> {{ weight }}g</span>
@@ -24,7 +27,7 @@
 
     <v-fab-transition>
       <v-btn
-        v-if="shouldDisplayAddButton"
+        v-if="!isCartPage"
         color="green"
         fab
         dark
@@ -37,7 +40,7 @@
         <v-icon>mdi-plus</v-icon>
       </v-btn>
       <v-btn
-        v-if="!shouldDisplayAddButton"
+        v-if="isCartPage"
         color="red"
         fab
         dark
@@ -63,10 +66,11 @@ export default {
     description: String,
     price: Number,
     weight: Number,
+    quantity: Number,
   },
   computed: {
-    shouldDisplayAddButton() {
-      return this.$router.currentRoute.name !== 'Cart';
+    isCartPage() {
+      return this.$router.currentRoute.name === 'Cart';
     },
   },
 

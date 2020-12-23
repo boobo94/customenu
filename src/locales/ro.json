@@ -3,5 +3,6 @@
   "ALLERGENS_TITLE": "Alergeni",
   "CART_TOTAL": "Total",
   "CART_DELETE_ALL": "Șterge coșul",
-  "CART_EMPTY_MESSAGE": "Coșul de cumpărături este gol."
+  "CART_EMPTY_MESSAGE": "Coșul de cumpărături este gol.",
+  "QUANTITY_LABEL": "buc"
 }
