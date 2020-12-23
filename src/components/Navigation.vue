@@ -20,7 +20,12 @@
 
     <v-spacer></v-spacer>
 
-    <LocaleSwitch :languagesProp="restaurant.languages"/>
+    <router-link :to="{ name: 'Cart' }">
+      <v-btn icon class="mr-2">
+        <v-icon>mdi-cart-variant</v-icon>
+      </v-btn>
+    </router-link>
+    <LocaleSwitch :languagesProp="restaurant.languages" />
   </v-app-bar>
 </template>
 
