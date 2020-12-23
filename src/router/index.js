@@ -2,6 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 
 import About from '../views/About.vue';
+import Cart from '../views/Cart.vue';
 import Contact from '../views/Contact.vue';
 import RestaurantView from '../views/RestaurantView.vue';
 import Categories from '../views/Categories.vue';
@@ -52,6 +53,11 @@ const routes = [
         path: 'contact',
         name: 'Contact',
         component: Contact,
+      },
+      {
+        path: 'cart',
+        name: 'Cart',
+        component: Cart,
       },
     ],
   },

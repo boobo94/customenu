@@ -9,14 +9,8 @@
     </v-row>
 
     <v-row v-if="!isLoading">
-      <v-col
-        cols="12"
-        v-for="element in elements"
-        :key="element.id"
-      >
-        <div @click="goto(element.id)">
-          <ProductInList v-bind="element" />
-        </div>
+      <v-col cols="12" v-for="element in elements" :key="element.id">
+        <ProductInList v-bind="element" />
       </v-col>
     </v-row>
   </v-container>
@@ -46,16 +40,6 @@ export default {
     this.isLoading = false;
     this.elements = data;
   },
-  methods: {
-    goto(productId) {
-      const { restaurantUrl, categoryId, subcategoryId } = this.$route.params;
-      this.$router.push({
-        name: 'Product',
-        params: {
-          restaurantUrl, categoryId, subcategoryId, productId,
-        },
-      });
-    },
-  },
+  methods: {},
 };
 </script>
