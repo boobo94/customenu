@@ -1,23 +1,28 @@
 <template>
   <v-container>
-    <v-row align="center" justify="center">
-      <v-progress-circular
-        v-if="isLoading"
-        indeterminate
-        color="primary"
-      ></v-progress-circular>
-    </v-row>
-
-    <v-row v-if="!isLoading">
-      <v-col cols="12" v-for="(element, index) in elements" :key="element.id">
-        <div>
-          <v-btn @click="removeFromCart(index)">Remove</v-btn>
-          <ProductInList v-bind="element" />
-        </div>
+    <v-row v-if="isCartEmpty">
+      <v-col cols="12">
+        <p class="text-center">{{ $t("CART_EMPTY_MESSAGE") }}</p>
       </v-col>
     </v-row>
     <v-row>
-      <v-btn @click="resetCart">Delete cart</v-btn>
+      <v-col cols="12" v-for="element in getProductsFromCart" :key="element.id">
+        <ProductInList v-bind="element" />
+      </v-col>
+    </v-row>
+    <v-row v-if="!isCartEmpty">
+      <v-col cols="8">
+        <p class="text-h6">{{ $t("CART_TOTAL") }}</p>
+      </v-col>
+      <v-col cols="4">
+        <p class="font-weight-bold">{{ totalPrice }} LEI</p>
+      </v-col>
+    </v-row>
+    <v-row class="mb-15" v-if="!isCartEmpty">
+      <v-btn @click="resetCart" block color="#F28700" class="white--text">
+        <v-icon dark> mdi-delete-empty </v-icon>
+        {{ $t("CART_DELETE_ALL") }}</v-btn
+      >
     </v-row>
   </v-container>
 </template>
@@ -30,27 +35,23 @@ export default {
   components: {
     ProductInList,
   },
-  data() {
-    return {
-      isLoading: true,
-      elements: [],
-    };
-  },
-  async created() {
-    this.isLoading = false;
-    this.elements = this.$store.state.cart.products;
+  computed: {
+    isCartEmpty() {
+      return this.$store.state.cart.products.length === 0;
+    },
+    getProductsFromCart() {
+      return this.$store.state.cart.products;
+    },
+    totalPrice() {
+      return this.$store.state.cart.products.reduce(
+        (acc, product) => acc + product.quantity * product.price,
+        0,
+      );
+    },
   },
   methods: {
-    // todo: add quantity for products
-    // todo add delete all button sticky to bottom
-    // todo: calculate total in watch
     resetCart() {
       this.$store.dispatch('cart/reset');
-      this.elements = this.$store.state.cart.products;
-    },
-    removeFromCart(index) {
-      this.$store.dispatch('cart/delete', index);
-      this.elements = this.$store.state.cart.products;
     },
   },
 };
