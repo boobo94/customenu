@@ -3,7 +3,7 @@
     <v-main>
       <v-container fluid>
         <v-row justify="center">
-          <img src="@/assets/logo.png" alt="Logo Customenu" width="200px" />
+          <img src="@/assets/logo.png" alt="Logo Customenu" height="140px" />
         </v-row>
         <v-row align="center" justify="center">
           <v-col cols="12" sm="8" md="4">
