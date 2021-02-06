@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import languages from '../utils/languages';
+import languages from '@/utils/languages';
 
 export default {
   name: 'locale-switch',
