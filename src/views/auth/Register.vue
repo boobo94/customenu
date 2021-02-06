@@ -1,7 +1,10 @@
 <template>
   <v-app>
     <v-main>
-      <v-container class="fill-height" fluid>
+      <v-container fluid>
+        <v-row justify="center">
+          <img src="@/assets/logo.png" alt="Logo Customenu" width="200px" />
+        </v-row>
         <v-row align="center" justify="center">
           <v-col cols="12" sm="8" md="4">
             <v-toolbar color="primary" dark flat>
@@ -194,6 +197,11 @@
             </p>
           </v-col>
         </v-row>
+        <v-row justify="center">
+          <a href="https://customenu.ro/" class="mt-5">{{
+            $t("BACK_TO_WEBSITE")
+          }}</a>
+        </v-row>
       </v-container>
     </v-main>
   </v-app>
@@ -244,7 +252,9 @@ export default {
 
   computed: {
     getAppLink() {
-      const restaurantPath = this.restaurant.shortUrl ? this.restaurant.shortUrl : ':link';
+      const restaurantPath = this.restaurant.shortUrl
+        ? this.restaurant.shortUrl
+        : ':link';
       return `https://app.customenu.ro/${restaurantPath}`;
     },
   },

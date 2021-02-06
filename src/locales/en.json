@@ -49,6 +49,6 @@
   "LABEL_URL_HINT": "Your menu will have a customized url. You can use the name of your restaurant.",
   "LABEL_URL_LINK": "The link of your menu: ",
   "URL_VALIDATOR_CHARACTERS_ALLOWED": "The custom link can contains only characters, numbers and/or -",
-  "RESTAURANT_CREATED": "The restaurant was created, you can login now"
-
+  "RESTAURANT_CREATED": "The restaurant was created, you can login now",
+  "BACK_TO_WEBSITE": "Go back to the website"
 }

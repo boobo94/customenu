@@ -50,7 +50,7 @@
   "LABEL_URL_HINT": "Meniul tău va avea un link personalizat.Poți utiliza numele restaurantului.",
   "LABEL_URL_LINK": "Link-ul pentru meniul tău",
   "URL_VALIDATOR_CHARACTERS_ALLOWED": "Link-ul personalizat poate contine litere, cifre și/sau -",
-  "RESTAURANT_CREATED": "Restaurantul a fost creat, acum te poți autentifica"
-
+  "RESTAURANT_CREATED": "Restaurantul a fost creat, acum te poți autentifica",
+  "BACK_TO_WEBSITE": "Întoarce-te la site"
 
 }
