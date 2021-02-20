@@ -76,7 +76,7 @@ export const register = [
     .isString()
     .withMessage('is string'),
 
-  body(['restaurant.restaurant_i18ns.*.name', 'restaurant.restaurant_i18ns.*.description', 'restaurant.restaurant_i18ns.*.allergens', 'restaurant.restaurant_i18ns.*.lang_code'])
+  body(['restaurant.restaurant_i18ns.*.name', 'restaurant.restaurant_i18ns.*.description', 'restaurant.restaurant_i18ns.*.lang_code'])
     .not().isEmpty().withMessage('is required')
     .isString()
     .withMessage('is string'),
