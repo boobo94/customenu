@@ -161,12 +161,6 @@
                                   :rules="validators.requiredRules"
                                   required
                                 ></v-textarea>
-                                <v-textarea
-                                  v-model="restaurantI18n.allergens"
-                                  :label="$t('LABEL_ALLERGENS')"
-                                  :rules="validators.requiredRules"
-                                  required
-                                ></v-textarea>
                               </v-col>
                             </v-row>
                           </v-list-item-content>

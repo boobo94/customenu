@@ -87,6 +87,13 @@
                   :rules="requiredRules"
                   required
                 ></v-textarea>
+                <v-textarea
+                  v-model="productI18n.allergens"
+                  :counter="255"
+                  :label="$t('LABEL_ALLERGENS')"
+                  :rules="requiredRules"
+                  required
+                ></v-textarea>
               </v-col>
             </v-row>
           </v-list-item-content>
