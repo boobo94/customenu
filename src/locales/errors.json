@@ -22,5 +22,9 @@
   "EMAIL_ALREADY_USED":{
     "code": 5,
     "message": "The email is already used."
+  },
+  "ERROR_SHORT_URL_UNIQUE":{
+    "code": 7,
+    "message": "The link is already taken, please use another value."
   }
 }

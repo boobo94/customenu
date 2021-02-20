@@ -3,6 +3,7 @@ export default (sequelize, DataTypes) => {
     shortUrl: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true,
     },
     currency: {
       type: DataTypes.STRING,

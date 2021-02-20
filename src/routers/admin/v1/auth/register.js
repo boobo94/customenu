@@ -51,6 +51,13 @@ export default async (req, res) => {
     return res.status(StatusCodes.NO_CONTENT).send();
   } catch (error) {
     await t.rollback();
+    // eslint-disable-next-line consistent-return
+    error.errors.forEach((e) => {
+      if (e.type === 'unique violation' && e.path === 'shortUrl') {
+        return res.status(StatusCodes.CONFLICT).send({ error: errors.ERROR_SHORT_URL_UNIQUE });
+      }
+    });
+
     return res.status(StatusCodes.SERVER_INTERNAL_ERROR).send({ error: errors.SERVER_ERROR });
   }
 };
