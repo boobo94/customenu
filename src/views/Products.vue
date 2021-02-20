@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container class="pb-15">
     <v-row align="center" justify="center">
       <v-progress-circular
         v-if="isLoading"
