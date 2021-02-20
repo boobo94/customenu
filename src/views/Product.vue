@@ -28,7 +28,7 @@
           {{ product.description }}
         </v-col>
       </v-row>
-      <v-row>
+      <v-row v-if="product.allergens">
         <v-col class="mt-2">
           <h3>{{ $t("ALLERGENS_TITLE") }}</h3>
           <p>{{ product.allergens }}</p>
