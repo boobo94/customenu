@@ -24,7 +24,15 @@
         </v-col>
       </v-row>
       <v-row>
-        <v-col>{{ product.description }}</v-col>
+        <v-col>
+          {{ product.description }}
+        </v-col>
+      </v-row>
+      <v-row>
+        <v-col class="mt-2">
+          <h3>{{ $t("ALLERGENS_TITLE") }}</h3>
+          <p>{{ product.allergens }}</p>
+        </v-col>
       </v-row>
     </template>
   </v-container>

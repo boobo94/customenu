@@ -13,8 +13,6 @@
         <v-col>
           <h1>{{ restaurant.name }}</h1>
           <p>{{ restaurant.description }}</p>
-          <h2>{{$t("ALLERGENS_TITLE")}}</h2>
-          <p>{{ restaurant.allergens }}</p>
 
           <div class="text-center links">
             <a v-if="restaurant.email" :href="mailto" class="mx-2">
@@ -83,7 +81,6 @@ export default {
         youtubeUrl: '',
         name: '',
         description: '',
-        allergens: '',
         logo: '',
       },
     };
