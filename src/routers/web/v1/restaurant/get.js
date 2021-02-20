@@ -18,7 +18,6 @@ const adapter = (element) => {
   if (element.restaurant_i18ns) {
     response.name = element.restaurant_i18ns[0].name;
     response.description = element.restaurant_i18ns[0].description;
-    response.allergens = element.restaurant_i18ns[0].allergens;
   }
 
   return response;

@@ -14,6 +14,7 @@ const adapter = (categories) => categories.map((element) => {
   if (element.product_i18ns) {
     response.name = element.product_i18ns[0].name;
     response.description = element.product_i18ns[0].description;
+    response.allergens = element.product_i18ns[0].allergens;
   }
 
   return response;

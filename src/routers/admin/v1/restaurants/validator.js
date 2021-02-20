@@ -1,7 +1,6 @@
 import { body, param } from 'express-validator';
 import checkErrors from '../../../validation/checkErrors';
 
-// eslint-disable-next-line import/prefer-default-export
 export const getRestaurant = [
   param(['restaurantId'])
     .not().isEmpty().withMessage('is required')
@@ -36,7 +35,7 @@ export const putValidator = [
     .isString()
     .withMessage('is string'),
 
-  body(['restaurant_i18ns.*.name', 'restaurant_i18ns.*.description', 'restaurant_i18ns.*.allergens', 'restaurant_i18ns.*.lang_code'])
+  body(['restaurant_i18ns.*.name', 'restaurant_i18ns.*.description', 'restaurant_i18ns.*.lang_code'])
     .optional()
     .isString().withMessage('is string'),
 

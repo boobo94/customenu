@@ -34,7 +34,7 @@ export const postValidator = [
     .withMessage('is int')
     .toInt(),
 
-  body(['product_i18ns.*.name', 'product_i18ns.*.lang_code'])
+  body(['product_i18ns.*.name', 'product_i18ns.*.description', 'product_i18ns.*.allergens', 'product_i18ns.*.lang_code'])
     .not().isEmpty().withMessage('is required')
     .isString()
     .withMessage('is string'),
@@ -59,7 +59,7 @@ export const putValidator = [
     .isString()
     .withMessage('is string'),
 
-  body(['product_i18ns.*.name', 'product_i18ns.*.lang_code'])
+  body(['product_i18ns.*.name', 'product_i18ns.*.description', 'product_i18ns.*.allergens', 'product_i18ns.*.lang_code'])
     .optional()
     .isString().withMessage('is string'),
 
