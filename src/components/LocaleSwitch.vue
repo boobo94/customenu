@@ -42,6 +42,14 @@ export default {
     },
   },
 
+  watch: {
+    languages() {
+      if (!localStorage.getItem('language')) {
+        this.setLanguage();
+      }
+    },
+  },
+
   methods: {
     setLanguage() {
       const [defaultLanguage] = this.languages;
