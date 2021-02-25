@@ -31,6 +31,9 @@ export default {
 
   created() {
     this.$store.dispatch('authModule/setLanguages');
+    if (!localStorage.getItem('language')) {
+      this.setLanguage();
+    }
   },
 
   computed: {
@@ -40,6 +43,12 @@ export default {
   },
 
   methods: {
+    setLanguage() {
+      const [defaultLanguage] = this.languages;
+      if (defaultLanguage) {
+        this.changeLanguage(defaultLanguage);
+      }
+    },
     changeLanguage(value) {
       axios.defaults.headers['accept-language'] = value;
       localStorage.setItem('language', value);
