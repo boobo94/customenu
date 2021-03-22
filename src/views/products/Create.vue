@@ -38,6 +38,7 @@ export default {
         lang_code: language,
         name: '',
         description: '',
+        allergens: '',
       }));
     },
     async validate() {
