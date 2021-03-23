@@ -1,8 +1,7 @@
 export default (sequelize, DataTypes) => {
   const product = sequelize.define('product', {
     weight: {
-      type: DataTypes.FLOAT,
-      defaultValue: 0,
+      type: DataTypes.STRING,
     },
     price: {
       type: DataTypes.FLOAT,
