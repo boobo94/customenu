@@ -25,7 +25,7 @@ export default {
       valid: true,
       product: {
         image: '',
-        weight: 0,
+        weight: '',
         price: 0,
         product_i18ns: [],
       },
