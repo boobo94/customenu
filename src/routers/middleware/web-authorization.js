@@ -1,10 +1,10 @@
 import statusCodes from '../utils/statusCodes';
 import errors from '../../locales/errors.json';
-import { Controllers } from '../../database';
+import { findByRestaurantAndToken } from '../../database/services/restaurant';
 
 export default async (req, res, next) => {
   try {
-    const restaurant = await Controllers.restaurant.findByRestaurantAndToken(
+    const restaurant = await findByRestaurantAndToken(
       req.params.restaurant,
     );
     if (!restaurant) {
