@@ -1,12 +1,12 @@
 version: '3'
 
 services:
-  digital_menu_db:
+  customenu_db:
     image: postgres
     restart: always
     environment:
       POSTGRES_PASSWORD: "Hakj5KPs"
-      POSTGRES_USER: digital_menu_user
-      POSTGRES_DB: digital_menu_db
+      POSTGRES_USER: customenu_user
+      POSTGRES_DB: customenu_db
     ports:
       - "5432:5432"
