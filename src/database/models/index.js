@@ -1,21 +1,23 @@
-const fs = require('fs');
-const path = require('path');
-const Sequelize = require('sequelize');
+import Sequelize from 'sequelize';
+import path from 'path';
+import fs from 'fs';
+import config from '../config/config';
 
-const basename = path.basename(__filename);
-
-// eslint-disable-next-line
-const config = require(__dirname + '/../config/config.js');
 const db = {};
 
-const sequelize = new Sequelize(config.database, config.username, config.password, config);
+const sequelize = new Sequelize(
+  config.DB_DATABASE,
+  config.DB_USERNAME,
+  config.DB_PASSWORD,
+  config,
+);
 
 fs
   .readdirSync(__dirname)
-  .filter((file) => (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js'))
+  .filter((file) => (file.indexOf('.') !== 0) && (file !== path.basename(__filename)) && (file.slice(-3) === '.js'))
   .forEach((file) => {
-    // eslint-disable-next-line dot-notation
-    const model = sequelize['import'](path.join(__dirname, file));
+    // eslint-disable-next-line import/no-dynamic-require, global-require
+    const model = require(path.join(__dirname, file)).default(sequelize);
     db[model.name] = model;
   });
 
@@ -28,4 +30,4 @@ Object.keys(db).forEach((modelName) => {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
-export default db;
+module.exports = db;

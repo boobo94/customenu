@@ -1,4 +1,6 @@
-export default (sequelize, DataTypes) => sequelize.define('category_i18n', {
+import { DataTypes } from 'sequelize';
+
+export default (sequelize) => sequelize.define('category_i18n', {
   name: {
     type: DataTypes.STRING,
     allowNull: false,

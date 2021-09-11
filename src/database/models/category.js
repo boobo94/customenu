@@ -1,5 +1,7 @@
+import { DataTypes } from 'sequelize';
+
 // eslint-disable-next-line no-unused-vars
-export default (sequelize, DataTypes) => {
+export default (sequelize) => {
   const category = sequelize.define('category', {
     image: {
       type: DataTypes.STRING,

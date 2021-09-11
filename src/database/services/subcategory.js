@@ -1,4 +1,6 @@
+// todo: remove this file
 import { Op } from 'sequelize';
+import { restaurant, restaurant_i18n } from '../models';
 
 export default class Subcategory {
   constructor(connection) {
