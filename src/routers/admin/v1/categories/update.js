@@ -1,14 +1,14 @@
 import errors from '../../../../locales/errors.json';
 import statusCodes from '../../../utils/statusCodes';
 import * as storageService from '../../../../services/object-storage';
-import { Controllers } from '../../../../database';
+import { findByIdSimple, update } from '../../../../database/services/category';
 import { transaction } from '../../../../database/utils/transaction';
 
 export default async (req, res) => {
   const t = await transaction();
 
   try {
-    const category = await Controllers.category.findByIdSimple(req.params.categoryId);
+    const category = await findByIdSimple(req.params.categoryId);
     if (!category) {
       return res.status(statusCodes.NOT_FOUND).send({ error: errors.RESOURCE_NOT_FOUND });
     } if (category.restaurantId !== req.params.restaurantId) {
@@ -21,7 +21,7 @@ export default async (req, res) => {
       req.body.image = await storageService.uploadFile(req.body.file, path);
     }
 
-    await Controllers.category.update(req.body, req.params.categoryId, t);
+    await update(req.body, req.params.categoryId, t);
     t.commit();
 
     return res.status(statusCodes.NO_CONTENT).send();

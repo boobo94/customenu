@@ -1,11 +1,11 @@
 import errors from '../../../../locales/errors.json';
 import statusCodes from '../../../utils/statusCodes';
-import { Controllers } from '../../../../database';
+import { findOneOfRestaurantsByIdSimple, remove } from '../../../../database/services/product';
 import { deleteFile } from '../../../../services/object-storage';
 
 export default async (req, res) => {
   try {
-    const entry = await Controllers.product.findOneOfRestaurantsByIdSimple(
+    const entry = await findOneOfRestaurantsByIdSimple(
       req.params.productId, req.params.restaurantId,
     );
     if (!entry) {
@@ -17,7 +17,7 @@ export default async (req, res) => {
       await deleteFile(entry.image);
     }
 
-    await Controllers.product.delete(req.params.productId);
+    await remove(req.params.productId);
 
     return res.status(statusCodes.NO_CONTENT).send();
   } catch (error) {

@@ -1,11 +1,11 @@
-import { Controllers } from '../../../../database';
+import { findAllOfRestaurants } from '../../../../database/services/product';
 import errors from '../../../../locales/errors.json';
 import statusCodes from '../../../utils/statusCodes';
 
 const adapter = (categories) => categories.map((element) => {
   const response = {
     id: element.id,
-    subcategoryId: element.subcategoryId,
+    categoryId: element.categoryId,
     image: element.image,
     weight: element.weight,
     price: element.price,
@@ -22,7 +22,7 @@ const adapter = (categories) => categories.map((element) => {
 
 export default async (req, res) => {
   try {
-    const products = await Controllers.product.findAllOfRestaurants(req.params.restaurantId, req.headers['accept-language']);
+    const products = await findAllOfRestaurants(req.params.restaurantId, req.headers['accept-language']);
 
     return res.status(statusCodes.OK).send(adapter(products));
   } catch (error) {

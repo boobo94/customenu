@@ -1,7 +1,7 @@
 import statusCodes from '../../../utils/statusCodes';
 import errors from '../../../../locales/errors.json';
 import { DecodeJWT } from '../../../utils/jwt';
-import { Controllers } from '../../../../database';
+import { findByIdSimple } from '../../../../database/services/category';
 
 export async function checkAccessToCategories(req, res, next) {
   try {
@@ -18,7 +18,7 @@ export async function checkAccessToCategories(req, res, next) {
 
 export async function checkAccessToDeleteCategory(req, res, next) {
   try {
-    const category = await Controllers.category.findByIdSimple(req.params.categoryId);
+    const category = await findByIdSimple(req.params.categoryId);
     if (!category) {
       return res.status(statusCodes.NOT_FOUND).send({ error: errors.RESOURCE_NOT_FOUND });
     } if (category.restaurantId !== req.params.restaurantId) {

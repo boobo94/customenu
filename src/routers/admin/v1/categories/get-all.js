@@ -1,4 +1,4 @@
-import { Controllers } from '../../../../database';
+import { findAll } from '../../../../database/services/category';
 import errors from '../../../../locales/errors.json';
 import statusCodes from '../../../utils/statusCodes';
 
@@ -18,7 +18,7 @@ const adapter = (categories) => categories.map((element) => {
 
 export default async (req, res) => {
   try {
-    const categories = await Controllers.category.findAll(req.params.restaurantId, req.headers['accept-language']);
+    const categories = await findAll(req.params.restaurantId, req.headers['accept-language']);
 
     return res.status(statusCodes.OK).send(adapter(categories));
   } catch (error) {

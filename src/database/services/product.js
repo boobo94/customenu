@@ -8,21 +8,16 @@ import {
    * Find by id with i18n
    * @param {number} id
    */
-export async function findByIdWithI18nAndSubcategory(id) {
+export async function findByIdWithI18n(id) {
   return product.findOne({
     where: {
       id: {
         [Op.eq]: id,
       },
     },
-    include: [
-      {
-        model: subcategory,
-        attributes: ['categoryId'],
-      },
-      {
-        model: product_i18n,
-      }],
+    include: [{
+      model: product_i18n,
+    }],
   });
 }
 
@@ -83,16 +78,12 @@ export async function findAllOfRestaurants(restaurantId, language) {
   return product.findAll({
     include: [
       {
-        model: subcategory,
-        include: [{
-          model: category,
-          where: {
-            restaurantId: {
-              [Op.eq]: restaurantId,
-            },
+        model: category,
+        where: {
+          restaurantId: {
+            [Op.eq]: restaurantId,
           },
-        }],
-        required: true, // use inner join
+        },
       },
       {
         model: product_i18n,
@@ -162,15 +153,12 @@ export async function findOneOfRestaurantsByIdSimple(id, restaurantId) {
     },
     include: [
       {
-        model: subcategory,
-        include: [{
-          model: category,
-          where: {
-            restaurantId: {
-              [Op.eq]: restaurantId,
-            },
+        model: category,
+        where: {
+          restaurantId: {
+            [Op.eq]: restaurantId,
           },
-        }],
+        },
       },
     ],
   });

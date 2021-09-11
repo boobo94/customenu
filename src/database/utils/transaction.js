@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/named
 import { sequelize } from '../models/index';
 
 /**
