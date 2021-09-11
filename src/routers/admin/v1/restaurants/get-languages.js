@@ -1,10 +1,10 @@
-import { Controllers } from '../../../../database';
+import { getLanguages } from '../../../../database/services/restaurant';
 import errors from '../../../../locales/errors.json';
 import statusCodes from '../../../utils/statusCodes';
 
 export default async (req, res) => {
   try {
-    const restaurant = await Controllers.restaurant.getLanguages(req.params.restaurantId);
+    const restaurant = await getLanguages(req.params.restaurantId);
     if (!restaurant) {
       return res.status(statusCodes.NOT_FOUND).send({ error: errors.RESOURCE_NOT_FOUND });
     }
