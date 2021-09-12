@@ -26,6 +26,7 @@ export default {
       product: {
         image: '',
         weight: '',
+        cookingTime: 0,
         price: 0,
         product_i18ns: [],
       },

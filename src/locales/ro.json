@@ -19,6 +19,7 @@
   "DESCRIPTION": "Descriere",
   "WEIGHT": "Greutate",
   "PRICE": "Pret",
+  "COOKING_TIME": "Timp de preparare",
   "ACTIONS": "Actiuni",
   "REQUIRED_NAME": "Numele este obligatoriu",
   "REQUIRED_EMAIL": "E-mailul este obligatoriu",

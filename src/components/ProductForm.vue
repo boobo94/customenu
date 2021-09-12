@@ -29,6 +29,12 @@
       required
     ></v-text-field>
 
+    <v-text-field
+      v-model="product.cookingTime"
+      :counter="255"
+      :label="$t('COOKING_TIME')"
+    ></v-text-field>
+
     <v-file-input
       show-size
       counter

@@ -19,6 +19,7 @@
   "DESCRIPTION": "Description",
   "WEIGHT": "Weight",
   "PRICE": "Price",
+  "COOKING_TIME": "Cooking Time",
   "ACTIONS": "Actions",
   "REQUIRED_NAME": "Name is required",
   "REQUIRED_EMAIL": "E-mail is required",
