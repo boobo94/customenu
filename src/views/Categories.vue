@@ -52,7 +52,11 @@ export default {
 
   methods: {
     goto(categoryId) {
-      this.$router.push({ name: 'Subcategories', params: { categoryId } });
+      const { restaurantUrl } = this.$route.params;
+      this.$router.push({
+        name: 'Products',
+        params: { restaurantUrl, categoryId },
+      });
     },
   },
 };

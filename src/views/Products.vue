@@ -32,9 +32,9 @@ export default {
     };
   },
   async created() {
-    const { restaurantUrl, categoryId, subcategoryId } = this.$route.params;
+    const { restaurantUrl, categoryId } = this.$route.params;
     const { data } = await axios.get(
-      `/web/v1/${restaurantUrl}/categories/${categoryId}/subcategories/${subcategoryId}/products`,
+      `/web/v1/${restaurantUrl}/categories/${categoryId}/products`,
     );
 
     this.isLoading = false;

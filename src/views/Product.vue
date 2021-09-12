@@ -54,11 +54,10 @@ export default {
     const {
       restaurantUrl,
       categoryId,
-      subcategoryId,
       productId,
     } = this.$route.params;
     const { data } = await axios.get(
-      `/web/v1/${restaurantUrl}/categories/${categoryId}/subcategories/${subcategoryId}/products/${productId}`,
+      `/web/v1/${restaurantUrl}/categories/${categoryId}/products/${productId}`,
     );
 
     this.isLoading = false;
