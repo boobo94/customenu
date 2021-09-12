@@ -1,10 +1,10 @@
-import { Controllers } from '../../../../database';
+import { getMinimal } from '../../../../database/services/restaurant';
 import errors from '../../../../locales/errors.json';
 import statusCodes from '../../../utils/statusCodes';
 
 export default async (req, res) => {
   try {
-    const restaurant = await Controllers.restaurant.getMinimal(req.params.restaurantId);
+    const restaurant = await getMinimal(req.params.restaurantId);
     if (!restaurant) {
       return res.status(statusCodes.NOT_FOUND).send({ error: errors.RESOURCE_NOT_FOUND });
     } if (restaurant.id !== req.params.restaurantId) {

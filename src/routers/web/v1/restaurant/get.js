@@ -1,4 +1,4 @@
-import { Controllers } from '../../../../database';
+import { findById } from '../../../../database/services/restaurant';
 import errors from '../../../../locales/errors.json';
 import statusCodes from '../../../utils/statusCodes';
 
@@ -25,7 +25,7 @@ const adapter = (element) => {
 
 export default async (req, res) => {
   try {
-    const restaurant = await Controllers.restaurant.findById(req.params.restaurantId, req.headers['accept-language']);
+    const restaurant = await findById(req.params.restaurantId, req.headers['accept-language']);
     if (!restaurant) {
       return res.status(statusCodes.NOT_FOUND).send({ error: errors.RESOURCE_NOT_FOUND });
     } if (restaurant.id !== req.params.restaurantId) {
