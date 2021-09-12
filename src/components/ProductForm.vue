@@ -1,7 +1,7 @@
 <template>
   <v-form ref="form" v-model="valid" lazy-validation>
     <v-select
-      v-model="selectedCategory"
+      v-model="product.categoryId"
       :hint="product.name"
       :items="categories"
       item-text="name"
@@ -10,19 +10,7 @@
       persistent-hint
       return-object
       single-line
-    ></v-select>
-
-    <v-select
-      v-model="selectedSubcategory"
-      :hint="product.name"
-      :items="subcategories"
-      item-text="name"
-      item-value="id"
-      label="Select"
-      persistent-hint
-      return-object
-      single-line
-      :rules="[(v) => !!v || 'Item is required']"
+      @change="selectCategory"
     ></v-select>
 
     <v-text-field
@@ -119,10 +107,7 @@ export default {
     return {
       valid: true,
       product: this.productProp,
-      selectedCategory: null,
-      selectedSubcategory: null,
       categories: [],
-      subcategories: [],
       requiredRules: [(v) => !!v || this.$t('REQUIRED_NAME')],
     };
   },
@@ -137,34 +122,20 @@ export default {
   watch: {
     productProp() {
       this.product = this.productProp;
-      if (this.productProp.subcategory) {
-        this.selectedSubcategory = { id: this.productProp.subcategoryId };
-        this.selectedCategory = { id: this.productProp.subcategory.categoryId };
-      }
       this.populateLanguages();
-    },
-    selectedCategory() {
-      this.populateSubcategories();
     },
   },
 
   methods: {
     async validate() {
       if (this.$refs.form.validate()) {
-        this.product.subcategoryId = this.selectedSubcategory.id;
-
         this.submit();
         EventBus.$emit('success', this.$t('SUCCESS_OPERATION'));
       }
     },
 
-    async populateSubcategories() {
-      const { restaurantId } = this.$store.state.authModule;
-      const { data } = await axios.get(
-        `/restaurants/${restaurantId}/categories/${this.selectedCategory.id}/subcategories`,
-      );
-
-      this.subcategories = data;
+    selectCategory(category) {
+      this.product.categoryId = category.id;
     },
 
     convertToBase64(file) {

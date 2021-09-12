@@ -32,14 +32,6 @@
       </v-toolbar>
     </template>
     <template v-slot:[`item.actions`]="{ item }">
-      <v-icon
-        v-if="showSubcategoryLink"
-        small
-        class="mr-2"
-        @click="gotoSubcategory(item)"
-      >
-        mdi-shape-outline
-      </v-icon>|
       <v-icon small class="ml-2 mr-2" @click="editItem(item)"> mdi-pencil </v-icon>
       <v-icon small @click="deleteItem(item)"> mdi-delete </v-icon>
     </template>
@@ -56,7 +48,6 @@ export default {
     elements: Array,
     isLoading: Boolean,
     apiUrl: String,
-    showSubcategoryLink: Boolean,
   },
 
   data() {
@@ -120,9 +111,6 @@ export default {
       this.$router.push({ path: `${this.$route.path}create` });
     },
 
-    gotoSubcategory(item) {
-      this.$router.push({ name: 'List Subcategories', params: { categoryId: item.id } });
-    },
   },
 };
 </script>

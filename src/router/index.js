@@ -13,10 +13,6 @@ import ListCategories from '@/views/categories/List.vue';
 import CreateCategory from '@/views/categories/Create.vue';
 import EditCategory from '@/views/categories/Edit.vue';
 
-import ListSubcategories from '@/views/subcategories/List.vue';
-import CreateSubcategory from '@/views/subcategories/Create.vue';
-import EditSubcategory from '@/views/subcategories/Edit.vue';
-
 import ListProducts from '@/views/products/List.vue';
 import CreateProduct from '@/views/products/Create.vue';
 import EditProduct from '@/views/products/Edit.vue';
@@ -57,31 +53,6 @@ const routes = [
     name: 'Edit Restaurant',
     component: EditRestaurant,
     beforeEnter: middlewareIsLoggedIn,
-  },
-
-  {
-    path: '/categories/:categoryId/subcategories',
-    component: RouterView,
-    children: [
-      {
-        path: '',
-        name: 'List Subcategories',
-        component: ListSubcategories,
-        beforeEnter: middlewareIsLoggedIn,
-      },
-      {
-        path: 'create',
-        name: 'Create Subcategory',
-        component: CreateSubcategory,
-        beforeEnter: middlewareIsLoggedIn,
-      },
-      {
-        path: ':subcategoryId/edit',
-        name: 'Edit Subcategory',
-        component: EditSubcategory,
-        beforeEnter: middlewareIsLoggedIn,
-      },
-    ],
   },
 
   {
