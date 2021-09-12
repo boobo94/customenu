@@ -91,14 +91,13 @@ export default {
     },
 
     gotoProduct() {
-      const { restaurantUrl, categoryId, subcategoryId } = this.$route.params;
+      const { restaurantUrl, categoryId } = this.$route.params;
       const productId = this.id;
       this.$router.push({
         name: 'Product',
         params: {
           restaurantUrl,
           categoryId,
-          subcategoryId,
           productId,
         },
       });

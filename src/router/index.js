@@ -6,7 +6,6 @@ import Cart from '../views/Cart.vue';
 import Contact from '../views/Contact.vue';
 import RestaurantView from '../views/RestaurantView.vue';
 import Categories from '../views/Categories.vue';
-import Subcategories from '../views/Subcategories.vue';
 import ProductView from '../views/ProductView.vue';
 import Products from '../views/Products.vue';
 import Product from '../views/Product.vue';
@@ -28,13 +27,9 @@ const routes = [
         name: 'Home',
         component: Categories,
       },
+
       {
-        path: ':categoryId/subcategories',
-        name: 'Subcategories',
-        component: Subcategories,
-      },
-      {
-        path: ':categoryId/subcategories/:subcategoryId/products',
+        path: ':categoryId/products',
         component: ProductView,
         children: [
           {
