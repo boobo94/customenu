@@ -10,6 +10,7 @@ const adapter = (element) => {
     weight: element.weight,
     price: element.price,
     categoryId: element.categoryId,
+    cookingTime: element.cookingTime,
   };
 
   if (element.product_i18ns) {

@@ -9,6 +9,10 @@ export default (sequelize) => {
       type: DataTypes.FLOAT,
       defaultValue: 0,
     },
+    cookingTime: {
+      type: DataTypes.FLOAT,
+      defaultValue: 0,
+    },
     image: {
       type: DataTypes.STRING,
     },
