@@ -21,6 +21,7 @@
         <div class="overline">
           <span><v-icon>mdi-cash-multiple</v-icon> {{ price }}RON </span>
           <span><v-icon>mdi-weight-gram</v-icon> {{ weight }}g</span>
+          <span><v-icon>mdi-timer-outline</v-icon> {{ cookingTime }}min</span>
         </div>
       </v-list-item-content>
     </v-list-item>
@@ -67,6 +68,7 @@ export default {
     price: Number,
     weight: Number,
     quantity: Number,
+    cookingTime: Number,
   },
   computed: {
     isCartPage() {

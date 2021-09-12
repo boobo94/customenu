@@ -21,6 +21,7 @@
         <v-col cols="4" md="2" class="text-end">
           <div><v-icon>mdi-cash-multiple</v-icon> {{ product.price }}RON</div>
           <div><v-icon>mdi-weight-gram</v-icon> {{ product.weight }}g</div>
+          <div><v-icon>mdi-timer-outline</v-icon> {{ product.cookingTime }}min</div>
         </v-col>
       </v-row>
       <v-row>
