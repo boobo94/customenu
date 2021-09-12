@@ -14,7 +14,7 @@ export function GenerateJWT(userId, restaurantId) {
   process.env.JWT_SECRET_KEY,
   {
     algorithm: 'HS256',
-    issuer: 'Digital Menu',
+    issuer: 'Customenu Menu',
     expiresIn: '1d',
     audience: 'ws app',
   });
