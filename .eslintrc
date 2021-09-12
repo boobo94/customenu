@@ -1,12 +1,4 @@
 {
-  "env": {
-    "browser": true,
-    "es6": true,
-    "node": true,
-  },
-  "extends": [
-    "airbnb"
-  ],
   "globals": {
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly"
@@ -17,7 +9,8 @@
   },
   "rules": {
     "no-underscore-dangle": 0,
-    "no-plusplus": 0,
-    "no-await-in-loop": 0
+    "no-plusplus": [2, { "allowForLoopAfterthoughts": true }],
+    "no-await-in-loop": "off",
+    "import/named": "off"
   }
 }

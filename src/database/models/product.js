@@ -1,4 +1,6 @@
-export default (sequelize, DataTypes) => {
+import { DataTypes } from 'sequelize';
+
+export default (sequelize) => {
   const product = sequelize.define('product', {
     weight: {
       type: DataTypes.STRING,
@@ -13,7 +15,7 @@ export default (sequelize, DataTypes) => {
   }, {});
   product.associate = (models) => {
     // associations can be defined here
-    product.belongsTo(models.subcategory);
+    product.belongsTo(models.category);
     product.hasMany(models.product_i18n, {
       onDelete: 'CASCADE',
     });

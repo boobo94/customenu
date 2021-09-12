@@ -1,6 +1,6 @@
 import errors from '../../../../locales/errors.json';
 import statusCodes from '../../../utils/statusCodes';
-import { Controllers } from '../../../../database';
+import { create } from '../../../../database/services/product';
 import { uploadFile } from '../../../../services/object-storage';
 
 export default async (req, res) => {
@@ -14,7 +14,7 @@ export default async (req, res) => {
       newEntry.image = await uploadFile(req.body.file, path);
     }
 
-    const created = await Controllers.product.create(newEntry);
+    const created = await create(newEntry);
 
     return res.status(statusCodes.OK).send(created);
   } catch (error) {

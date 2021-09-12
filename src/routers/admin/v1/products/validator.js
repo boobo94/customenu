@@ -28,7 +28,7 @@ export const postValidator = [
     .withMessage('is int')
     .toInt(),
 
-  body(['subcategoryId'])
+  body(['categoryId'])
     .not().isEmpty().withMessage('is required')
     .isInt()
     .withMessage('is int')

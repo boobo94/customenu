@@ -1,7 +1,7 @@
 import statusCodes from '../../../utils/statusCodes';
 import errors from '../../../../locales/errors.json';
 import { DecodeJWT } from '../../../utils/jwt';
-import { Controllers } from '../../../../database';
+import { findOneOfRestaurantsByIdSimple } from '../../../../database/services/product';
 
 export async function checkAccessToProductsOfRestaurant(req, res, next) {
   try {
@@ -18,14 +18,14 @@ export async function checkAccessToProductsOfRestaurant(req, res, next) {
 
 export async function checkAccessToProduct(req, res, next) {
   try {
-    const product = await Controllers.product.findOneOfRestaurantsByIdSimple(
+    const product = await findOneOfRestaurantsByIdSimple(
       req.params.productId, req.params.restaurantId,
     );
     if (!product) {
       return res.status(statusCodes.NOT_FOUND).send({ error: errors.RESOURCE_NOT_FOUND });
-    } if (!(product.subcategory
-      && product.subcategory.category
-      && product.subcategory.category.restaurantId === req.params.restaurantId)) {
+    }
+    if (!(product.category
+      && product.category.restaurantId === req.params.restaurantId)) {
       return res.status(statusCodes.FORBIDDEN).send({ error: errors.FORBIDDEN });
     }
   } catch (err) {

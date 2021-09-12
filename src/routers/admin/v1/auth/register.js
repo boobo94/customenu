@@ -2,7 +2,8 @@ import bcrypt from 'bcrypt';
 import * as qrcode from 'qrcode';
 import StatusCodes from '../../../utils/statusCodes';
 import errors from '../../../../locales/errors.json';
-import { Controllers } from '../../../../database';
+import { findByEmail, create as createAdmin } from '../../../../database/services/admin';
+import { create as createRestaurant, update as updateRestaurant } from '../../../../database/services/restaurant';
 import { uploadFile } from '../../../../services/object-storage';
 import { transaction } from '../../../../database/utils/transaction';
 
@@ -10,16 +11,16 @@ export default async (req, res) => {
   const t = await transaction();
 
   try {
-    const admin = await Controllers.admin.findByEmail(req.body.admin.email);
+    const admin = await findByEmail(req.body.admin.email);
     if (admin) {
       return res.status(StatusCodes.CONFLICT).send({ error: errors.EMAIL_ALREADY_USED });
     }
 
     // create restaurant
-    const restaurantCreated = await Controllers.restaurant.create(req.body.restaurant, t);
+    const restaurantCreated = await createRestaurant(req.body.restaurant, t);
 
     // attach admin
-    await Controllers.admin.create({
+    await createAdmin({
       email: req.body.admin.email,
       password: await bcrypt.hash(req.body.admin.password, Number(process.env.BCRYPT_SALT)),
       restaurantId: restaurantCreated.id,
@@ -41,7 +42,7 @@ export default async (req, res) => {
     restaurantCreated.qr_code = qrCodeUrl;
 
     // update restaurant
-    await Controllers.restaurant.update({
+    await updateRestaurant({
       qr_code: qrCodeUrl,
       logo: restaurantCreated.logo,
     }, restaurantCreated.id, t);

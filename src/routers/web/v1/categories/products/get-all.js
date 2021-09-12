@@ -1,14 +1,15 @@
-import { findAllOfRestaurants } from '../../../../database/services/product';
-import errors from '../../../../locales/errors.json';
-import statusCodes from '../../../utils/statusCodes';
+import { findAll } from '../../../../../database/services/product';
+import errors from '../../../../../locales/errors.json';
+import statusCodes from '../../../../utils/statusCodes';
 
-const adapter = (categories) => categories.map((element) => {
+const adapter = (products) => products.map((element) => {
   const response = {
     id: element.id,
-    categoryId: element.categoryId,
+    restaurantId: element.restaurantId,
     image: element.image,
     weight: element.weight,
     price: element.price,
+    categoryId: element.categoryId,
   };
 
   if (element.product_i18ns) {
@@ -22,7 +23,7 @@ const adapter = (categories) => categories.map((element) => {
 
 export default async (req, res) => {
   try {
-    const products = await findAllOfRestaurants(req.params.restaurantId, req.headers['accept-language']);
+    const products = await findAll(req.params.categoryId, req.headers['accept-language']);
 
     return res.status(statusCodes.OK).send(adapter(products));
   } catch (error) {

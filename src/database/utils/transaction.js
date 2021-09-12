@@ -1,4 +1,5 @@
-import dbConnection from '../models/index';
+// eslint-disable-next-line import/named
+import { sequelize } from '../models/index';
 
 /**
  * Creates a transaction
@@ -7,7 +8,7 @@ import dbConnection from '../models/index';
  */
 // eslint-disable-next-line import/prefer-default-export
 export async function transaction() {
-  return dbConnection.sequelize.transaction({
+  return sequelize.transaction({
     autocommit: false,
   });
 }

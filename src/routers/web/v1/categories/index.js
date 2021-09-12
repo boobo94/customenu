@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import subcategoriesRouter from '../subcategories';
+import productsRouter from './products';
 import webAuthorization from '../../../middleware/web-authorization';
 import getAll from './get-all';
 import getOne from './get';
@@ -15,4 +15,7 @@ export default Router({ mergeParams: true })
     getCategory,
     getOne)
 
-  .use('/:categoryId/subcategories', webAuthorization, subcategoriesRouter);
+  .use('/:categoryId/products',
+    webAuthorization,
+    getCategory,
+    productsRouter);

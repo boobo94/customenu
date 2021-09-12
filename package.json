@@ -1,53 +1,51 @@
 {
-  "name": "digital-menu-ws",
+  "name": "customenu-ws",
   "version": "1.0.0",
   "description": "",
   "main": "src/server.js",
   "scripts": {
-    "build": "babel src -d dist --copy-files",
+    "build": "babel ./src --out-dir ./dist --source-maps",
+    "start": "babel-node index.js",
+    "start:dev": "nodemon --exec babel-node ./index.js -L",
+    "test": "mocha --require @babel/register",
     "deploy": "bash ./scripts/deploy-local.sh"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/boobo94/digital-menu-ws.git"
+    "url": "git+https://github.com/boobo94/customenu-ws.git"
   },
   "author": "Bogdan Alexandru Militaru",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/boobo94/digital-menu-ws/issues"
+    "url": "https://github.com/boobo94/customenu-ws/issues"
   },
-  "homepage": "https://github.com/boobo94/digital-menu-ws#readme",
+  "homepage": "https://github.com/boobo94/customenu-ws#readme",
   "dependencies": {
-    "@babel/runtime": "^7.12.5",
     "aws-sdk": "^2.797.0",
     "bcrypt": "^5.0.0",
     "cors": "^2.8.5",
     "crypto": "^1.0.1",
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
-    "express-validator": "^6.6.1",
+    "express-validator": "^6.12.1",
     "i18n": "^0.10.0",
     "jsonwebtoken": "^8.5.1",
     "morgan": "^1.10.0",
-    "pg": "^8.4.2",
-    "pg-hstore": "^2.3.3",
+    "pg": "^8.7.1",
+    "pg-hstore": "^2.3.4",
     "qrcode": "^1.4.4",
-    "sequelize": "^5.22.3",
+    "sequelize": "^6.6.5",
     "uuid": "^8.3.1"
   },
   "devDependencies": {
-    "@babel/cli": "^7.12.1",
-    "@babel/core": "^7.12.3",
-    "@babel/node": "^7.12.6",
-    "@babel/plugin-transform-runtime": "^7.12.1",
-    "@babel/polyfill": "^7.12.1",
-    "@babel/preset-env": "^7.12.1",
-    "@babel/preset-flow": "^7.12.1",
+    "@babel/cli": "^7.14.8",
+    "@babel/core": "^7.15.0",
+    "@babel/node": "^7.14.9",
+    "@babel/preset-env": "^7.15.0",
     "@types/node": "^14.14.9",
-    "eslint": "^7.12.1",
-    "eslint-config-airbnb": "^18.2.0",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-jsx-a11y": "^6.4.1",
-    "eslint-plugin-react": "^7.21.5",
-    "sequelize-cli": "^5.5.1"
+    "eslint": "^7.31.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.23.4",
+    "sequelize-cli": "^6.2.0"
   }
 }

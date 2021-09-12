@@ -1,6 +1,6 @@
 import errors from '../../../../locales/errors.json';
 import statusCodes from '../../../utils/statusCodes';
-import { Controllers } from '../../../../database';
+import { create } from '../../../../database/services/category';
 import { uploadFile } from '../../../../services/object-storage';
 
 export default async (req, res) => {
@@ -15,7 +15,7 @@ export default async (req, res) => {
       newCategory.image = await uploadFile(req.body.file, path);
     }
 
-    const created = await Controllers.category.create(newCategory);
+    const created = await create(newCategory);
 
     return res.status(statusCodes.OK).send(created);
   } catch (error) {

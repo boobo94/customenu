@@ -1,5 +1,4 @@
 import { Router } from 'express';
-import subcategoriesRouter from '../subcategories';
 import adminAuthorization from '../../../middleware/admin-authorization';
 import * as validators from './validator';
 import * as permissions from './permissions';
@@ -38,6 +37,4 @@ export default Router({ mergeParams: true })
     adminAuthorization,
     validators.getCategory,
     permissions.checkAccessToDeleteCategory,
-    remove)
-
-  .use('/:categoryId/subcategories', subcategoriesRouter);
+    remove);
