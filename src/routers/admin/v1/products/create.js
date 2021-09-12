@@ -18,7 +18,6 @@ export default async (req, res) => {
 
     return res.status(statusCodes.OK).send(created);
   } catch (error) {
-    console.log(error);
     return res.status(statusCodes.SERVER_INTERNAL_ERROR).send({ error: errors.SERVER_ERROR });
   }
 };
