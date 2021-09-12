@@ -9,6 +9,7 @@ const adapter = (categories) => categories.map((element) => {
     image: element.image,
     weight: element.weight,
     price: element.price,
+    cookingTime: element.cookingTime,
   };
 
   if (element.product_i18ns) {
@@ -26,6 +27,7 @@ export default async (req, res) => {
 
     return res.status(statusCodes.OK).send(adapter(products));
   } catch (error) {
+    console.log(error);
     return res.status(statusCodes.SERVER_INTERNAL_ERROR).send({ error: errors.SERVER_ERROR });
   }
 };
