@@ -7,7 +7,6 @@
           :elements="elements"
           :isLoading="isLoading"
           :apiUrl="categoriesApiUrl"
-          :showSubcategoryLink="showSubcategoryLink"
         />
       </v-col>
     </v-row>
@@ -28,7 +27,6 @@ export default {
       isLoading: true,
       elements: [],
       categoriesApiUrl: '',
-      showSubcategoryLink: true,
     };
   },
 
