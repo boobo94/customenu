@@ -1,7 +1,7 @@
 import { Op } from 'sequelize';
 import {
   // eslint-disable-next-line import/named, camelcase
-  product, product_i18n, category, subcategory,
+  product, product_i18n, category,
 } from '../models';
 
 /**
@@ -45,14 +45,14 @@ export async function findById(id, language) {
 
 /**
    * Find all
-   * @param {number} subcategoryId
+   * @param {number} categoryId
    * @param {string} language
    */
-export async function findAll(subcategoryId, language) {
+export async function findAll(categoryId, language) {
   return product.findAll({
     where: {
-      subcategoryId: {
-        [Op.eq]: subcategoryId,
+      categoryId: {
+        [Op.eq]: categoryId,
       },
     },
     include: [{
@@ -96,43 +96,6 @@ export async function findAllOfRestaurants(restaurantId, language) {
     ],
     order: [
       ['id', 'ASC'],
-    ],
-  });
-}
-
-/**
-   * Find one by id and restaurant id
-   * @param {number} id
-   * @param {number} restaurantId
-   * @param {string} language
-   */
-export async function findOneOfRestaurantsById(id, restaurantId, language) {
-  return product.findOne({
-    where: {
-      id: {
-        [Op.eq]: id,
-      },
-    },
-    include: [
-      {
-        model: subcategory,
-        include: [{
-          model: category,
-          where: {
-            restaurantId: {
-              [Op.eq]: restaurantId,
-            },
-          },
-        }],
-      },
-      {
-        model: product_i18n,
-        where: {
-          lang_code: {
-            [Op.eq]: language,
-          },
-        },
-      },
     ],
   });
 }
@@ -189,11 +152,11 @@ export async function createI18n(productObj, transaction) {
   });
 }
 
-export async function updateI18n(subcategoryI18n, transaction) {
-  return product_i18n.update(subcategoryI18n, {
+export async function updateI18n(productI18n, transaction) {
+  return product_i18n.update(productI18n, {
     where: {
       id: {
-        [Op.eq]: subcategoryI18n.id,
+        [Op.eq]: productI18n.id,
       },
     },
     transaction,
