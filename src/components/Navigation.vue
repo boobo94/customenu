@@ -4,7 +4,7 @@
       <v-list>
         <v-list-item>
           <v-list-item-content>
-            <v-list-item-title class="title"> Admin </v-list-item-title>
+            <v-list-item-title class="title"> Customenu </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
 
@@ -58,7 +58,6 @@
           <v-icon color="white">mdi-arrow-left</v-icon>
         </v-btn>
       </div>
-      <v-toolbar-title class="white--text">Application</v-toolbar-title>
     </v-app-bar>
   </div>
 </template>
