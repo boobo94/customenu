@@ -3,7 +3,7 @@ import S3 from 'aws-sdk/clients/s3';
 
 const bucketKey = process.env.NODE_ENV === 'development' ? `${process.env.NODE_ENV}/` : '';
 
-const s3Client = new S3({
+const s3Client = process.env.USE_OBJECT_STORAGE === 'true' ? new S3({
   region: process.env.LINODE_OBJECT_STORAGE_REGION,
   endpoint: process.env.LINODE_OBJECT_STORAGE_ENDPOINT,
   sslEnabled: true,
@@ -12,7 +12,7 @@ const s3Client = new S3({
     accessKeyId: process.env.LINODE_OBJECT_STORAGE_ACCESS_KEY_ID,
     secretAccessKey: process.env.LINODE_OBJECT_STORAGE_SECRET_ACCESS_KEY,
   }),
-});
+}) : null;
 
 export async function uploadFileToObjectStorage(base64Data, path, fileName, fileType, extension) {
   const params = {

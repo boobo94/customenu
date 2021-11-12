@@ -8,7 +8,7 @@ export async function uploadFile(base64, path = '') {
   const [fileType, extension] = base64.split(';')[0].split(':')[1].split('/');
   const fileName = `${new Date().getTime()}.${extension}`;
 
-  if (process.env.USE_OBJECT_STORAGE) {
+  if (process.env.USE_OBJECT_STORAGE === 'true') {
     return uploadFileToObjectStorage(base64Data, path, fileName, fileType, extension);
   }
 
@@ -20,7 +20,7 @@ export async function uploadFile(base64, path = '') {
 export async function deleteFile(url) {
   if (!url) { return; }
 
-  if (process.env.USE_OBJECT_STORAGE) {
+  if (process.env.USE_OBJECT_STORAGE === 'true') {
     await deleteFileFromObjectStorage(url);
     return;
   }
