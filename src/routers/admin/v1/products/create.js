@@ -1,7 +1,7 @@
 import errors from '../../../../locales/errors.json';
 import statusCodes from '../../../utils/statusCodes';
 import { create } from '../../../../database/services/product';
-import { uploadFile } from '../../../../services/object-storage';
+import { uploadFile } from '../../../../services/storage';
 
 export default async (req, res) => {
   try {

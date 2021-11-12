@@ -1,7 +1,7 @@
 import errors from '../../../../locales/errors.json';
 import statusCodes from '../../../utils/statusCodes';
 import { findOneOfRestaurantsByIdSimple, remove } from '../../../../database/services/product';
-import { deleteFile } from '../../../../services/object-storage';
+import { deleteFile } from '../../../../services/storage';
 
 export default async (req, res) => {
   try {

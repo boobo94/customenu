@@ -1,6 +1,6 @@
 import errors from '../../../../locales/errors.json';
 import statusCodes from '../../../utils/statusCodes';
-import * as storageService from '../../../../services/object-storage';
+import * as storageService from '../../../../services/storage';
 import { findOneOfRestaurantsByIdSimple, update } from '../../../../database/services/product';
 import { transaction } from '../../../../database/utils/transaction';
 

@@ -3,7 +3,7 @@ module.exports = {
     name: 'Customenu-WS',
     script: 'src/server.js',
     exec_interpreter: './node_modules/.bin/babel-node',
-    node_args : '-r dotenv/config',
+    node_args: '-r dotenv/config',
     // Options reference: https://pm2.keymetrics.io/docs/usage/application-declaration/
     args: '',
     // instances: 1,
@@ -14,6 +14,7 @@ module.exports = {
     ignore_watch: [
       'node_modules',
       '.git',
+      'files'
     ],
     env: {
       NODE_ENV: 'development',

@@ -4,7 +4,7 @@ import StatusCodes from '../../../utils/statusCodes';
 import errors from '../../../../locales/errors.json';
 import { findByEmail, create as createAdmin } from '../../../../database/services/admin';
 import { create as createRestaurant, update as updateRestaurant } from '../../../../database/services/restaurant';
-import { uploadFile } from '../../../../services/object-storage';
+import { uploadFile } from '../../../../services/storage';
 import { transaction } from '../../../../database/utils/transaction';
 
 export default async (req, res) => {

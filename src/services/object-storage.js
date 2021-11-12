@@ -3,7 +3,7 @@ import S3 from 'aws-sdk/clients/s3';
 
 const bucketKey = process.env.NODE_ENV === 'development' ? `${process.env.NODE_ENV}/` : '';
 
-const s3Client = new S3({
+const s3Client = process.env.USE_OBJECT_STORAGE === 'true' ? new S3({
   region: process.env.LINODE_OBJECT_STORAGE_REGION,
   endpoint: process.env.LINODE_OBJECT_STORAGE_ENDPOINT,
   sslEnabled: true,
@@ -12,17 +12,12 @@ const s3Client = new S3({
     accessKeyId: process.env.LINODE_OBJECT_STORAGE_ACCESS_KEY_ID,
     secretAccessKey: process.env.LINODE_OBJECT_STORAGE_SECRET_ACCESS_KEY,
   }),
-});
+}) : null;
 
-export async function uploadFile(base64, path = '') {
-  if (!RegExp(/^data:\w+\/\w+;base64,/).test(base64)) return null;
-
-  const base64Data = Buffer.from(base64.replace(/^data:\w+\/\w+;base64,/, ''), 'base64');
-  const [fileType, extension] = base64.split(';')[0].split(':')[1].split('/');
-
+export async function uploadFileToObjectStorage(base64Data, path, fileName, fileType, extension) {
   const params = {
     Bucket: process.env.LINODE_OBJECT_BUCKET,
-    Key: `${bucketKey}${path}/${new Date().getTime()}.${extension}`,
+    Key: `${bucketKey}${path}/${fileName}`,
     Body: base64Data,
     ACL: 'public-read',
     ContentEncoding: 'base64',
@@ -34,9 +29,7 @@ export async function uploadFile(base64, path = '') {
   return Location;
 }
 
-export async function deleteFile(url) {
-  if (!url) { return; }
-
+export async function deleteFileFromObjectStorage(url) {
   const Key = url.split(`${process.env.LINODE_OBJECT_STORAGE_ENDPOINT}/`)[1];
   const params = {
     Bucket: process.env.LINODE_OBJECT_BUCKET,
@@ -44,5 +37,6 @@ export async function deleteFile(url) {
   };
 
   // see: https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#deleteObject-property
-  await s3Client.deleteObject(params).promise();
+  // eslint-disable-next-line consistent-return
+  return s3Client.deleteObject(params).promise();
 }
