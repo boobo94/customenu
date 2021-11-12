@@ -21,5 +21,8 @@
         "statusBarItem.remoteBackground": "#4df57d",
         "statusBarItem.remoteForeground": "#15202b"
     },
-    "peacock.color": "#4df57d"
+    "peacock.color": "#4df57d",
+    "cSpell.words": [
+        "qrcode"
+    ]
 }
