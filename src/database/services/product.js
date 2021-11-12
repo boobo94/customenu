@@ -108,7 +108,6 @@ export async function findAllOfRestaurants(restaurantId, language) {
    */
 export async function findOneOfRestaurantsByIdSimple(id, restaurantId) {
   return product.findOne({
-    attributes: ['id'],
     where: {
       id: {
         [Op.eq]: id,

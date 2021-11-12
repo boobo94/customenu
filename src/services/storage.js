@@ -28,7 +28,7 @@ export async function deleteFile(url) {
   const urlParams = url.split('/');
 
   // delete file
-  unlink(`${process.env.LOCAL_STORAGE_PATH}/${urlParams[urlParams.length]}`, (err) => {
+  unlink(`${process.env.LOCAL_STORAGE_PATH}/${urlParams.pop()}`, (err) => {
     if (err) throw err;
   });
 }
