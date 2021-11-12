@@ -79,17 +79,17 @@ export default {
         {
           href: 'List Categories',
           title: this.$t('CATEGORIES_TITLE'),
-          icon: 'mdi-shape',
+          icon: 'mdi-cube',
         },
         {
           href: 'List Products',
           title: this.$t('PRODUCTS_TITLE'),
-          icon: 'mdi-store',
+          icon: 'mdi-hamburger',
         },
         {
           href: 'Edit Restaurant',
           title: this.$t('RESTAURANT_TITLE'),
-          icon: 'mdi-food',
+          icon: 'mdi-store',
         },
         {
           href: 'Edit Admin',
