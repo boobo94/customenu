@@ -7,6 +7,7 @@ import getOne from './get';
 import create from './create';
 import remove from './remove';
 import update from './update';
+import search from './search';
 
 export default Router({ mergeParams: true })
   .get('/',
@@ -14,6 +15,12 @@ export default Router({ mergeParams: true })
     validators.getProducts,
     permissions.checkAccessToProductsOfRestaurant,
     getAll)
+
+  .get('/search',
+    adminAuthorization,
+    validators.searchProducts,
+    permissions.checkAccessToProductsOfRestaurant,
+    search)
 
   .get('/:productId',
     adminAuthorization,

@@ -101,6 +101,37 @@ export async function findAllOfRestaurants(restaurantId, language) {
 }
 
 /**
+   * Find all
+   * @param {number} restaurantId
+   * @param {string} language
+   */
+export async function searchProducts(restaurantId, name, language) {
+  return product.findAll({
+    include: [
+      {
+        model: category,
+        where: {
+          restaurantId: {
+            [Op.eq]: restaurantId,
+          },
+        },
+      },
+      {
+        model: product_i18n,
+        where: {
+          lang_code: {
+            [Op.eq]: language,
+          },
+          name: {
+            [Op.iLike]: `%${name}%`,
+          },
+        },
+      },
+    ],
+  });
+}
+
+/**
    * Find one by id and restaurant id simple
    * @param {number} id
    * @param {number} restaurantId
