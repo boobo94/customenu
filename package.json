@@ -22,9 +22,8 @@
   "homepage": "https://github.com/boobo94/customenu-ws#readme",
   "dependencies": {
     "aws-sdk": "^2.797.0",
-    "bcrypt": "^5.0.0",
+    "bcrypt": "^5.0.1",
     "cors": "^2.8.5",
-    "crypto": "^1.0.1",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "express-validator": "^6.13.0",
@@ -34,18 +33,18 @@
     "pg": "^8.7.1",
     "pg-hstore": "^2.3.4",
     "qrcode": "^1.4.4",
-    "sequelize": "^6.6.5",
-    "uuid": "^8.3.1"
+    "sequelize": "^6.9.0",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
-    "@babel/cli": "^7.14.8",
-    "@babel/core": "^7.15.0",
-    "@babel/node": "^7.14.9",
-    "@babel/preset-env": "^7.15.0",
-    "@types/node": "^14.14.9",
-    "eslint": "^7.31.0",
-    "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-plugin-import": "^2.23.4",
-    "sequelize-cli": "^6.2.0"
+    "@babel/cli": "^7.16.0",
+    "@babel/core": "^7.16.0",
+    "@babel/node": "^7.16.0",
+    "@babel/preset-env": "^7.16.0",
+    "@types/node": "^14.17.33",
+    "eslint": "^8.2.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.3",
+    "sequelize-cli": "^6.3.0"
   }
 }
