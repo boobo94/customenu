@@ -3,14 +3,14 @@ import checkErrors from '../../../validation/checkErrors';
 
 export const loginValidator = [
   body('email')
-    .not().isEmpty().withMessage('is required')
+    .exists().withMessage('is required')
     .isString()
     .withMessage('should be string')
     .isEmail()
     .withMessage('should have a valid email format'),
 
   body('password')
-    .not().isEmpty().withMessage('is required')
+    .exists().withMessage('is required')
     .isString()
     .withMessage('should be string'),
   checkErrors,
@@ -18,7 +18,7 @@ export const loginValidator = [
 
 export const refreshTokenValidator = [
   body('refreshToken')
-    .not().isEmpty().withMessage('is required')
+    .exists().withMessage('is required')
     .isUUID()
     .withMessage('should be valid refresh token'),
 
@@ -27,7 +27,7 @@ export const refreshTokenValidator = [
 
 export const updateAdmin = [
   body('email')
-    .not().isEmpty().withMessage('is required')
+    .exists().withMessage('is required')
     .isString()
     .withMessage('should be string')
     .isEmail()
@@ -43,19 +43,19 @@ export const updateAdmin = [
 
 export const register = [
   body('admin.email')
-    .not().isEmpty().withMessage('is required')
+    .exists().withMessage('is required')
     .isString()
     .withMessage('should be string')
     .isEmail()
     .withMessage('should have a valid email format'),
 
   body('admin.password')
-    .not().isEmpty().withMessage('is required')
+    .exists().withMessage('is required')
     .isString()
     .withMessage('should be string'),
 
   body('restaurant.shortUrl')
-    .not().isEmpty().withMessage('is required')
+    .exists().withMessage('is required')
     .isString()
     .withMessage('should be string'),
 
@@ -72,12 +72,12 @@ export const register = [
     .optional()
     .isArray().withMessage('is array'),
   body(['restaurant.languages.*'])
-    .not().isEmpty().withMessage('is required')
+    .exists().withMessage('is required')
     .isString()
     .withMessage('is string'),
 
   body(['restaurant.restaurant_i18ns.*.name', 'restaurant.restaurant_i18ns.*.description', 'restaurant.restaurant_i18ns.*.lang_code'])
-    .not().isEmpty().withMessage('is required')
+    .exists().withMessage('is required')
     .isString()
     .withMessage('is string'),
 

@@ -3,7 +3,7 @@ import checkErrors from '../../../validation/checkErrors';
 
 export const getRestaurant = [
   param(['restaurantId'])
-    .not().isEmpty().withMessage('is required')
+    .exists().withMessage('is required')
     .isInt()
     .withMessage('is int')
     .toInt(),
@@ -13,7 +13,7 @@ export const getRestaurant = [
 
 export const putValidator = [
   param(['restaurantId'])
-    .not().isEmpty().withMessage('is required')
+    .exists().withMessage('is required')
     .isInt()
     .withMessage('is int')
     .toInt(),
@@ -31,7 +31,7 @@ export const putValidator = [
     .optional()
     .isArray().withMessage('is array'),
   body(['languages.*'])
-    .not().isEmpty().withMessage('is required')
+    .exists().withMessage('is required')
     .isString()
     .withMessage('is string'),
 

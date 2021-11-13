@@ -3,7 +3,7 @@ import checkErrors from '../../../validation/checkErrors';
 
 export const getCategory = [
   param(['restaurantId', 'categoryId'])
-    .not().isEmpty().withMessage('is required')
+    .exists().withMessage('is required')
     .isInt()
     .withMessage('is int')
     .toInt(),
@@ -13,7 +13,7 @@ export const getCategory = [
 
 export const getCategories = [
   param('restaurantId')
-    .not().isEmpty().withMessage('is required')
+    .exists().withMessage('is required')
     .isInt()
     .withMessage('is int')
     .toInt(),
@@ -23,13 +23,13 @@ export const getCategories = [
 
 export const postValidator = [
   param('restaurantId')
-    .not().isEmpty().withMessage('is required')
+    .exists().withMessage('is required')
     .isInt()
     .withMessage('is int')
     .toInt(),
 
   body(['category_i18ns.*.name', 'category_i18ns.*.lang_code'])
-    .not().isEmpty().withMessage('is required')
+    .exists().withMessage('is required')
     .isString()
     .withMessage('is string'),
 
@@ -43,7 +43,7 @@ export const postValidator = [
 
 export const putValidator = [
   param('restaurantId')
-    .not().isEmpty().withMessage('is required')
+    .exists().withMessage('is required')
     .isInt()
     .withMessage('is int')
     .toInt(),

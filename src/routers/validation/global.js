@@ -3,7 +3,7 @@ import checkErrors from './checkErrors';
 
 export const checkId = [
   param('id')
-    .not().isEmpty().withMessage('is required')
+    .exists().withMessage('is required')
     .isInt()
     .toInt(),
   checkErrors,
@@ -11,7 +11,7 @@ export const checkId = [
 
 export const restaurantParam = [
   param('restaurant')
-    .not().isEmpty().withMessage('is required')
+    .exists().withMessage('is required')
     .isString(),
   checkErrors,
 ];
