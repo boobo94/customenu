@@ -2,6 +2,14 @@
   <v-container>
     <v-row>
       <v-col cols="12">
+        <v-text-field
+          v-model="search"
+          append-icon="mdi-magnify"
+          :label="$t('SEARCH_TITLE')"
+          single-line
+        >
+        </v-text-field>
+
         <TableElements
           :tableTitle="$t('PRODUCTS_TITLE')"
           :elements="elements"
@@ -27,6 +35,7 @@ export default {
       isLoading: true,
       elements: [],
       productsApiUrl: '',
+      search: '',
     };
   },
 
@@ -39,8 +48,16 @@ export default {
     this.elements = data;
   },
 
-  methods: {
+  methods: {},
 
+  watch: {
+    async search(keyword) {
+      const { data } = await axios.get(`${this.productsApiUrl}/search`, {
+        params: { keyword },
+      });
+
+      this.elements = data;
+    },
   },
 };
 </script>
