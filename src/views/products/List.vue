@@ -52,10 +52,11 @@ export default {
 
   watch: {
     async search(keyword) {
+      this.isLoading = true;
       const { data } = await axios.get(`${this.productsApiUrl}/search`, {
         params: { keyword },
       });
-
+      this.isLoading = false;
       this.elements = data;
     },
   },
