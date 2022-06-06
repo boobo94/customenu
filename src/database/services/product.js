@@ -1,13 +1,15 @@
+/* eslint-disable import/named, camelcase */
 import { Op } from 'sequelize';
 import {
-  // eslint-disable-next-line import/named, camelcase
-  product, product_i18n, category,
+  product,
+  product_i18n,
+  category,
 } from '../models';
 
 /**
-   * Find by id with i18n
-   * @param {number} id
-   */
+ * Find by id with i18n
+ * @param {number} id
+ */
 export async function findByIdWithI18n(id) {
   return product.findOne({
     where: {
@@ -22,9 +24,9 @@ export async function findByIdWithI18n(id) {
 }
 
 /**
-   * Find by id
-   * @param {number} id
-   */
+ * Find by id
+ * @param {number} id
+ */
 export async function findById(id, language) {
   return product.findOne({
     where: {
@@ -44,10 +46,10 @@ export async function findById(id, language) {
 }
 
 /**
-   * Find all
-   * @param {number} categoryId
-   * @param {string} language
-   */
+ * Find all
+ * @param {number} categoryId
+ * @param {string} language
+ */
 export async function findAll(categoryId, language) {
   return product.findAll({
     where: {
@@ -70,10 +72,10 @@ export async function findAll(categoryId, language) {
 }
 
 /**
-   * Find all
-   * @param {number} restaurantId
-   * @param {string} language
-   */
+ * Find all
+ * @param {number} restaurantId
+ * @param {string} language
+ */
 export async function findAllOfRestaurants(restaurantId, language) {
   return product.findAll({
     include: [
@@ -101,10 +103,10 @@ export async function findAllOfRestaurants(restaurantId, language) {
 }
 
 /**
-   * Find all
-   * @param {number} restaurantId
-   * @param {string} language
-   */
+ * Find all
+ * @param {number} restaurantId
+ * @param {string} language
+ */
 export async function searchProducts(restaurantId, name, language) {
   return product.findAll({
     include: [
@@ -132,11 +134,11 @@ export async function searchProducts(restaurantId, name, language) {
 }
 
 /**
-   * Find one by id and restaurant id simple
-   * @param {number} id
-   * @param {number} restaurantId
-   * @param {string} language
-   */
+ * Find one by id and restaurant id simple
+ * @param {number} id
+ * @param {number} restaurantId
+ * @param {string} language
+ */
 export async function findOneOfRestaurantsByIdSimple(id, restaurantId) {
   return product.findOne({
     where: {
@@ -158,10 +160,10 @@ export async function findOneOfRestaurantsByIdSimple(id, restaurantId) {
 }
 
 /**
-   * Create
-   * @param {object} productObj
-   * @param {*} transaction
-   */
+ * Create
+ * @param {object} productObj
+ * @param {*} transaction
+ */
 export async function create(productObj, transaction) {
   return product.create(productObj, {
     include: [{
@@ -172,10 +174,10 @@ export async function create(productObj, transaction) {
 }
 
 /**
-   * Create
-   * @param {object} productObj
-   * @param {*} transaction
-   */
+ * Create
+ * @param {object} productObj
+ * @param {*} transaction
+ */
 export async function createI18n(productObj, transaction) {
   return product_i18n.create(productObj, {
     transaction,
@@ -194,11 +196,11 @@ export async function updateI18n(productI18n, transaction) {
 }
 
 /**
-   * Update
-   * @param {object} productObj
-   * @param {number} id
-   * @param {Sequelize.Transaction} transaction
-   */
+ * Update
+ * @param {object} productObj
+ * @param {number} id
+ * @param {Sequelize.Transaction} transaction
+ */
 export async function update(productObj, id, transaction) {
   if (productObj.product_i18ns) {
     for (let index = 0; index < productObj.product_i18ns.length; index++) {
@@ -226,10 +228,10 @@ export async function update(productObj, id, transaction) {
 }
 
 /**
-   * Delete
-   * @param {number} id
-    * @param {Sequelize.Transaction} transaction
-   */
+ * Delete
+ * @param {number} id
+  * @param {Sequelize.Transaction} transaction
+  */
 export async function remove(id, transaction) {
   return product.destroy({
     where: {
