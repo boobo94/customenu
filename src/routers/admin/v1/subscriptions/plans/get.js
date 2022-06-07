@@ -7,8 +7,6 @@ export default async (req, res) => {
     const plan = await findOne(req.params.planId);
     if (!plan) {
       return res.status(statusCodes.NOT_FOUND).send({ error: errors.RESOURCE_NOT_FOUND });
-    } if (plan.restaurantId !== req.params.restaurantId) {
-      return res.status(statusCodes.FORBIDDEN).send({ error: errors.FORBIDDEN });
     }
 
     return res.status(statusCodes.OK).send(plan);
