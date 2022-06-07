@@ -34,6 +34,7 @@
     "pg-hstore": "^2.3.4",
     "qrcode": "^1.4.4",
     "sequelize": "^6.19.0",
+    "stripe": "^9.6.0",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
@@ -45,7 +46,7 @@
     "eslint": "^8.2.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.25.3",
-    "sequelize-cli": "^6.3.0",
-    "nodemon": "^2.0.12"
+    "nodemon": "^2.0.12",
+    "sequelize-cli": "^6.3.0"
   }
 }

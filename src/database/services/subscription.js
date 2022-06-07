@@ -1,13 +1,13 @@
 import { Op } from 'sequelize';
 // eslint-disable-next-line import/named
-import { admin } from '../models';
+import { admin, subscription, restaurant } from '../models';
 
 /**
  * Find by id
  * @param {number} id
  */
 export async function findOne(id) {
-  return admin.findOne({
+  return subscription.findOne({
     where: {
       id: {
         [Op.eq]: id,
@@ -16,11 +16,27 @@ export async function findOne(id) {
   });
 }
 
+export async function findOneWithDetails(id) {
+  return subscription.findOne({
+    where: {
+      id: {
+        [Op.eq]: id,
+      },
+    },
+    include: [{
+      model: admin,
+      include: [{
+        model: restaurant,
+      }],
+    }],
+  });
+}
+
 /**
  * Find all
  */
 export async function findAll() {
-  return admin.findAll();
+  return subscription.findAll();
 }
 
 /**
@@ -28,8 +44,8 @@ export async function findAll() {
  * @param {object} subscription
  * @param {Sequelize.Transaction} transaction
  */
-export async function create(subscription, transaction) {
-  return admin.create(subscription, {
+export async function create(obj, transaction) {
+  return subscription.create(obj, {
     transaction,
   });
 }
@@ -41,8 +57,8 @@ export async function create(subscription, transaction) {
  * @param {Sequelize.Transaction} transaction
 
  */
-export async function update(subscription, id, transaction) {
-  return admin.update(subscription, {
+export async function update(obj, id, transaction) {
+  return subscription.update(obj, {
     where: {
       id: {
         [Op.eq]: id,
@@ -58,7 +74,7 @@ export async function update(subscription, id, transaction) {
   * @param {Sequelize.Transaction} transaction
   */
 export async function remove(id, transaction) {
-  return admin.destroy({
+  return subscription.destroy({
     where: {
       id: {
         [Op.eq]: id,

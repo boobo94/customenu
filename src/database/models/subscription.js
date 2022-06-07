@@ -10,6 +10,14 @@ export default (sequelize) => {
       type: DataTypes.DATE,
       allowNull: false,
     },
+    refferenceId: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    canceled: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
   }, {
     underscored: true,
   });

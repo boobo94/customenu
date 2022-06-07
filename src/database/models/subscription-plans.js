@@ -18,6 +18,10 @@ export default (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    refferenceId: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
   });
 
   return model;
