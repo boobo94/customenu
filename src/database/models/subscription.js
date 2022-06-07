@@ -24,7 +24,7 @@ export default (sequelize) => {
 
   model.associate = (models) => {
     model.belongsTo(models.subscriptionPlan);
-    model.belongsTo(models.admin);
+    model.belongsTo(models.restaurant);
   };
 
   return model;

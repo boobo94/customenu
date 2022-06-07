@@ -23,8 +23,8 @@ export default (sequelize) => {
   });
 
   model.associate = (models) => {
-    model.belongsTo(models.admin);
     model.belongsTo(models.subscription);
+    model.belongsTo(models.restaurant);
   };
 
   return model;

@@ -1,13 +1,13 @@
 import { Op } from 'sequelize';
 // eslint-disable-next-line import/named
-import { card } from '../models';
+import { payment } from '../models';
 
 /**
  * Find by id
  * @param {number} id
  */
 export async function findOne(id) {
-  return card.findOne({
+  return payment.findOne({
     where: {
       id: {
         [Op.eq]: id,
@@ -19,8 +19,14 @@ export async function findOne(id) {
 /**
  * Find all
  */
-export async function findAll() {
-  return card.findAll();
+export async function findAll(restaurantId) {
+  return payment.findAll({
+    where: {
+      restaurantId: {
+        [Op.eq]: restaurantId,
+      },
+    },
+  });
 }
 
 /**
@@ -29,7 +35,7 @@ export async function findAll() {
  * @param {Sequelize.Transaction} transaction
  */
 export async function create(object, transaction) {
-  return card.create(object, {
+  return payment.create(object, {
     transaction,
   });
 }
@@ -42,7 +48,7 @@ export async function create(object, transaction) {
 
  */
 export async function update(object, id, transaction) {
-  return card.update(object, {
+  return payment.update(object, {
     where: {
       id: {
         [Op.eq]: id,
@@ -58,7 +64,7 @@ export async function update(object, id, transaction) {
   * @param {Sequelize.Transaction} transaction
   */
 export async function remove(id, transaction) {
-  return card.destroy({
+  return payment.destroy({
     where: {
       id: {
         [Op.eq]: id,
