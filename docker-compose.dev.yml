@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 9003:8080
+    networks:
+      - customenu-network
+
