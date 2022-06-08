@@ -13,7 +13,7 @@ export default async (req, res) => {
     const stripeClient = stripe(process.env.SECRET_KEY);
     await stripeClient
       .subscriptions
-      .update(subscription.refferenceId, { cancel_at_period_end: true });
+      .update(subscription.referenceId, { cancel_at_period_end: true });
 
     return res.status(statusCodes.NO_CONTENT).send();
   } catch (error) {

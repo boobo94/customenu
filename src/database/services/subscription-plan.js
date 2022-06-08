@@ -16,6 +16,16 @@ export async function findOne(id) {
   });
 }
 
+export async function findeByreference(referenceId) {
+  return subscriptionPlan.findOne({
+    where: {
+      referenceId: {
+        [Op.eq]: referenceId,
+      },
+    },
+  });
+}
+
 /**
  * Find all
  */

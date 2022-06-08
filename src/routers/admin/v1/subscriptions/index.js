@@ -23,9 +23,9 @@ export default Router({ mergeParams: true })
   )
 
   .get(
-    '/:subscriptionId',
+    '/me',
     adminAuthorization,
-    validators.getSubscription,
+    validators.getMySubscription,
     permissions.checkAccessToSubscriptions,
     getOne,
   )
@@ -33,7 +33,7 @@ export default Router({ mergeParams: true })
   .delete(
     '/:subscriptionId',
     adminAuthorization,
-    validators.getSubscription,
+    validators.deleteSubscription,
     permissions.checkAccessToDeleteSubscription,
     remove,
   );

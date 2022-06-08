@@ -10,7 +10,7 @@ export default (sequelize) => {
       type: DataTypes.DATE,
       allowNull: false,
     },
-    refferenceId: {
+    referenceId: {
       type: DataTypes.STRING,
       allowNull: false,
     },

@@ -55,6 +55,16 @@ export async function findByRestaurantAndToken(shortUrl) {
   });
 }
 
+export async function findByCustomer(customerReference) {
+  return restaurant.findOne({
+    where: {
+      customerReference: {
+        [Op.eq]: customerReference,
+      },
+    },
+  });
+}
+
 /**
  * Get languages of restaurant
  * @param {number} id

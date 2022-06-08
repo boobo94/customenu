@@ -18,7 +18,7 @@ export default (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    refferenceId: {
+    referenceId: {
       type: DataTypes.STRING,
       allowNull: false,
     },

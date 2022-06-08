@@ -16,6 +16,22 @@ export async function findOne(id) {
   });
 }
 
+export async function findActiveByRestaurant(restaurantId) {
+  return subscription.findOne({
+    where: {
+      restaurantId: {
+        [Op.eq]: restaurantId,
+      },
+      startDate: {
+        [Op.lte]: new Date(),
+      },
+      endDate: {
+        [Op.gte]: new Date(),
+      },
+    },
+  });
+}
+
 export async function findOneWithDetails(id) {
   return subscription.findOne({
     where: {
@@ -62,6 +78,24 @@ export async function update(obj, id, transaction) {
     where: {
       id: {
         [Op.eq]: id,
+      },
+    },
+    transaction,
+  });
+}
+
+/**
+ * Update
+ * @param {object} subscription
+ * @param {number} id
+ * @param {Sequelize.Transaction} transaction
+
+ */
+export async function updateByreference(obj, referenceId, transaction) {
+  return subscription.update(obj, {
+    where: {
+      referenceId: {
+        [Op.eq]: referenceId,
       },
     },
     transaction,

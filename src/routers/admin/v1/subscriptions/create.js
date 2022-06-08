@@ -1,25 +1,34 @@
 import stripe from 'stripe';
-import { findOneWithDetails } from '../../../../database/services/subscription';
+import { findOne } from '../../../../database/services/admin';
+import { findeByreference } from '../../../../database/services/subscription-plan';
 import errors from '../../../../locales/errors.json';
 import statusCodes from '../../../utils/statusCodes';
 
 export default async (req, res) => {
   try {
-    const subscription = await findOneWithDetails(req.params.subscriptionId);
+    const subscriptionPlan = await findeByreference(req.body.referenceId);
+    if (!subscriptionPlan) {
+      return res.status(statusCodes.NOT_FOUND).send({ error: errors.RESOURCE_NOT_FOUND });
+    }
+
+    const admin = await findOne(req.adminId);
 
     const stripeClient = stripe(process.env.SECRET_KEY);
     const session = await stripeClient.checkout.sessions.create({
       mode: 'subscription',
-      customer_email: subscription.admin.email,
+      customer_email: admin.email,
+      client_reference_id: req.params.restaurantId,
       line_items: [
         {
-          price: req.body.refferenceId,
+          price: req.body.referenceId,
           quantity: 1,
         },
       ],
       success_url: `${process.env.ADMIN_URL}/subscription`, // todo: update the url
       cancel_url: `${process.env.ADMIN_URL}/subscription`,
     });
+
+    console.log('session create', session);
 
     return res.status(statusCodes.OK).send({
       url: session.url,

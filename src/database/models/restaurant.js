@@ -38,6 +38,9 @@ export default (sequelize) => {
     languages: {
       type: DataTypes.ARRAY(DataTypes.STRING(2)),
     },
+    customerReference: {
+      type: DataTypes.STRING,
+    },
   }, {});
   restaurant.associate = (models) => {
     // associations can be defined here

@@ -1,7 +1,17 @@
 import { body, param } from 'express-validator';
 import checkErrors from '../../../validation/checkErrors';
 
-export const getSubscription = [
+export const getMySubscription = [
+  param(['restaurantId'])
+    .exists().withMessage('is required')
+    .isInt()
+    .withMessage('is int')
+    .toInt(),
+
+  checkErrors,
+];
+
+export const deleteSubscription = [
   param(['restaurantId', 'subscriptionId'])
     .exists().withMessage('is required')
     .isInt()
@@ -18,7 +28,7 @@ export const postValidator = [
     .withMessage('is int')
     .toInt(),
 
-  body(['refferenceId'])
+  body(['referenceId'])
     .exists().withMessage('is required')
     .isString()
     .withMessage('is string'),
