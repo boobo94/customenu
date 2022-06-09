@@ -1,19 +1,34 @@
+/* eslint-disable import/named */
 import { Op } from 'sequelize';
-// eslint-disable-next-line import/named
-import { payment } from '../models';
+import {
+  payment,
+  restaurant,
+  subscription,
+  subscriptionPlan,
+} from '../models';
 import { PAYMENT_STATUS } from '../models/payment';
 
-/**
- * Find by id
- * @param {number} id
- */
-export async function findOne(id) {
+export async function findOneByRestaurant(id, restaurantId) {
   return payment.findOne({
     where: {
       id: {
         [Op.eq]: id,
       },
+      restaurantId: {
+        [Op.eq]: restaurantId,
+      },
     },
+    include: [
+      {
+        model: restaurant,
+      },
+      {
+        model: subscription,
+        include: [{
+          model: subscriptionPlan,
+        }],
+      },
+    ],
   });
 }
 
