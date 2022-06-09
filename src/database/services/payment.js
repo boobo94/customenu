@@ -58,6 +58,17 @@ export async function update(object, id, transaction) {
   });
 }
 
+export async function updateByReferenceId(object, referenceId, transaction) {
+  return payment.update(object, {
+    where: {
+      referenceId: {
+        [Op.eq]: referenceId,
+      },
+    },
+    transaction,
+  });
+}
+
 /**
   * Delete
   * @param {number} id

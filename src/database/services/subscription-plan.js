@@ -16,7 +16,7 @@ export async function findOne(id) {
   });
 }
 
-export async function findeByreference(referenceId) {
+export async function findeByReference(referenceId) {
   return subscriptionPlan.findOne({
     where: {
       referenceId: {

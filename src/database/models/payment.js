@@ -8,8 +8,9 @@ export const PAYMENT_STATUS = {
 
 export default (sequelize) => {
   const model = sequelize.define('payment', {
-    orderId: {
+    referenceId: {
       type: DataTypes.STRING,
+      allowNull: false,
     },
     amount: {
       type: DataTypes.FLOAT,

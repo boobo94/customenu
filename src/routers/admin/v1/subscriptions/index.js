@@ -2,7 +2,7 @@ import { Router } from 'express';
 import adminAuthorization from '../../../middleware/admin-authorization';
 import * as validators from './validator';
 import * as permissions from './permissions';
-import getOne from './get';
+import getOne from './get-me';
 import create from './create';
 import remove from './remove';
 import plansRouter from './plans';

@@ -1,12 +1,12 @@
 import stripe from 'stripe';
 import { findOne } from '../../../../database/services/admin';
-import { findeByreference } from '../../../../database/services/subscription-plan';
+import { findeByReference } from '../../../../database/services/subscription-plan';
 import errors from '../../../../locales/errors.json';
 import statusCodes from '../../../utils/statusCodes';
 
 export default async (req, res) => {
   try {
-    const subscriptionPlan = await findeByreference(req.body.referenceId);
+    const subscriptionPlan = await findeByReference(req.body.referenceId);
     if (!subscriptionPlan) {
       return res.status(statusCodes.NOT_FOUND).send({ error: errors.RESOURCE_NOT_FOUND });
     }
@@ -27,8 +27,6 @@ export default async (req, res) => {
       success_url: `${process.env.ADMIN_URL}/subscription`, // todo: update the url
       cancel_url: `${process.env.ADMIN_URL}/subscription`,
     });
-
-    console.log('session create', session);
 
     return res.status(statusCodes.OK).send({
       url: session.url,

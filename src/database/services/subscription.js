@@ -48,6 +48,16 @@ export async function findOneWithDetails(id) {
   });
 }
 
+export async function findeByReference(referenceId) {
+  return subscription.findOne({
+    where: {
+      referenceId: {
+        [Op.eq]: referenceId,
+      },
+    },
+  });
+}
+
 /**
  * Find all
  */
