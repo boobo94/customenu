@@ -1,6 +1,7 @@
 import { Op } from 'sequelize';
 // eslint-disable-next-line import/named
 import { payment } from '../models';
+import { PAYMENT_STATUS } from '../models/payment';
 
 /**
  * Find by id
@@ -13,6 +14,34 @@ export async function findOne(id) {
         [Op.eq]: id,
       },
     },
+  });
+}
+
+export async function findeByReference(referenceId) {
+  return payment.findOne({
+    where: {
+      referenceId: {
+        [Op.eq]: referenceId,
+      },
+    },
+  });
+}
+
+export async function findLastInvoice(transaction) {
+  return payment.findOne({
+    where: {
+      status: {
+        [Op.eq]: PAYMENT_STATUS.paid,
+      },
+      invoiceNumber: {
+        [Op.not]: null,
+      },
+    },
+    order: [
+      ['invoiceNumber', 'DESC'],
+    ],
+  }, {
+    transaction,
   });
 }
 
@@ -52,17 +81,6 @@ export async function update(object, id, transaction) {
     where: {
       id: {
         [Op.eq]: id,
-      },
-    },
-    transaction,
-  });
-}
-
-export async function updateByReferenceId(object, referenceId, transaction) {
-  return payment.update(object, {
-    where: {
-      referenceId: {
-        [Op.eq]: referenceId,
       },
     },
     transaction,

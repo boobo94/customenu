@@ -20,6 +20,9 @@ export default (sequelize) => {
       type: DataTypes.STRING,
       defaultValue: PAYMENT_STATUS.pending,
     },
+    invoiceNumber: {
+      type: DataTypes.INTEGER,
+    },
 
   });
 

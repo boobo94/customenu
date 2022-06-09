@@ -1,4 +1,5 @@
 import Stripe from 'stripe';
+import { sequelize } from '../../../../database/models';
 import { findByEmail } from '../../../../database/services/admin';
 import * as restaurantService from '../../../../database/services/restaurant';
 import * as subscriptionService from '../../../../database/services/subscription';
@@ -74,10 +75,22 @@ async function createPayment(event) {
 async function updatePayment(event) {
   const subscription = await subscriptionService.findeByReference(event.subscription);
 
-  return paymentService.updateByReferenceId({
-    status: getInvoiceStatus(event.status),
-    subscriptionId: subscription.id,
-  }, event.id);
+  return sequelize.transaction(async (t) => {
+    const updatedPayment = {
+      status: getInvoiceStatus(event.status),
+      subscriptionId: subscription.id,
+    };
+
+    const currentPayment = await paymentService.findeByReference(event.id);
+
+    // get lastInvoice
+    const lastInvoice = await paymentService.findLastInvoice(t);
+    if (lastInvoice !== currentPayment.id) {
+      updatedPayment.invoiceNumber = lastInvoice.invoiceNumber + 1;
+    }
+
+    return paymentService.update(updatedPayment, currentPayment.id, t);
+  });
 }
 
 export default async (req, res) => {
@@ -94,6 +107,7 @@ export default async (req, res) => {
     return res.sendStatus(400);
   }
 
+  console.log('event', event);
   try {
     // Handle the event
     switch (event.type) {
