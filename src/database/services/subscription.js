@@ -1,6 +1,11 @@
+/* eslint-disable import/named */
 import { Op } from 'sequelize';
-// eslint-disable-next-line import/named
-import { admin, subscription, restaurant } from '../models';
+import {
+  admin,
+  subscription,
+  restaurant,
+  subscriptionPlan,
+} from '../models';
 
 /**
  * Find by id
@@ -55,6 +60,9 @@ export async function findeByReference(referenceId) {
         [Op.eq]: referenceId,
       },
     },
+    include: [{
+      model: subscriptionPlan,
+    }],
   });
 }
 

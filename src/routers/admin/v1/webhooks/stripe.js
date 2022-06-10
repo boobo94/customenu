@@ -85,13 +85,17 @@ async function updatePayment(event) {
     const currentPayment = await paymentService.findeByReference(event.id);
 
     // if the company is from Romania use the taxId, else use the vat number taxId
-    const withVat = currentPayment.restaurant.countryId === 182;
+    const withVat = currentPayment.restaurant.countryId !== 182;
 
     // get lastInvoice
     const lastInvoice = await paymentService.findLastInvoice(withVat, t);
 
-    if (lastInvoice !== currentPayment.id) {
+    if (updatedPayment.status === PAYMENT_STATUS.paid && lastInvoice !== currentPayment.id) {
       updatedPayment.invoiceNumber = lastInvoice.invoiceNumber + 1;
+    }
+
+    if (withVat) {
+      updatedPayment.vatAmount = subscription.subscriptionPlan.vatAmount;
     }
 
     return paymentService.update(updatedPayment, currentPayment.id, t);

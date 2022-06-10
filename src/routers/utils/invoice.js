@@ -17,16 +17,20 @@ const billingVendor = {
 
 // eslint-disable-next-line import/prefer-default-export
 export function generateInvoice(payment) {
+  const invoicePrefix = payment.vatAmount
+    ? billingVendor.invoiceVatPrefix
+    : billingVendor.invoicePrefix;
+
   const doc = new pdf.Document({
     font: Helvetica,
-    title: `${billingVendor.invoicePrefix}${payment.invoiceNumber}`,
+    title: `${invoicePrefix}${payment.invoiceNumber}`,
   });
 
   const header = doc.header().table({ widths: [null, null], paddingBottom: 1 * pdf.cm }).row();
   const logo = new pdf.Image(readFileSync(`${__dirname}/../../../public/images/cmevo-logo-black.jpg`));
   header.cell().image(logo, { height: 2 * pdf.cm });
   header.cell({ textAlign: 'right' })
-    .text(`Invoice ${billingVendor.invoicePrefix}${payment.invoiceNumber}`, { font: HelveticaBold, fontSize: 14 })
+    .text(`Invoice ${invoicePrefix}${payment.invoiceNumber}`, { font: HelveticaBold, fontSize: 14 })
     .text('Issued ').add(DateTime.fromJSDate(payment.createdAt).toFormat('dd/MM/yyyy'))
     .text('Due ')
     .add(DateTime.fromJSDate(payment.createdAt).plus({ month: 1 }).toFormat('dd/MM/yyyy'))
