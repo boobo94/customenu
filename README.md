@@ -40,3 +40,10 @@ DB_HOST='127.0.0.1' \
 DB_DIALECT='postgres' \
 npx sequelize db:seed:all
 ```
+
+
+## Stripe
+
+Integrate subscriptions: https://stripe.com/docs/billing/quickstart
+
+Testing cards: https://stripe.com/docs/testing#cards

@@ -14,7 +14,7 @@ module.exports = {
     ignore_watch: [
       'node_modules',
       '.git',
-      'files'
+      'files',
     ],
     env: {
       NODE_ENV: 'development',

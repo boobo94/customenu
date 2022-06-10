@@ -2,11 +2,11 @@
   "name": "customenu-ws",
   "version": "1.0.0",
   "description": "",
-  "main": "src/server.js",
+  "main": "src/index.js",
   "scripts": {
     "build": "babel ./src --out-dir ./dist --source-maps",
-    "start": "babel-node index.js",
-    "start:dev": "nodemon --exec babel-node ./index.js -L",
+    "start": "nodemon --exec babel-node src/index.js -L",
+    "start:prod": "babel-node src/index.js",
     "test": "mocha --require @babel/register",
     "deploy": "bash ./scripts/deploy-local.sh"
   },
@@ -29,11 +29,14 @@
     "express-validator": "^6.13.0",
     "i18n": "^0.10.0",
     "jsonwebtoken": "^8.5.1",
+    "luxon": "^2.4.0",
     "morgan": "^1.10.0",
+    "pdfjs": "^2.4.7",
     "pg": "^8.7.1",
     "pg-hstore": "^2.3.4",
     "qrcode": "^1.4.4",
-    "sequelize": "^6.9.0",
+    "sequelize": "^6.19.0",
+    "stripe": "^9.6.0",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
@@ -45,6 +48,7 @@
     "eslint": "^8.2.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.25.3",
+    "nodemon": "^2.0.12",
     "sequelize-cli": "^6.3.0"
   }
 }
