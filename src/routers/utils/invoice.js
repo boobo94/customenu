@@ -12,6 +12,7 @@ const billingVendor = {
   bank: 'ING Bank',
   IBAN: 'RO80INGB0000999910620195',
   invoicePrefix: 'CUSTOMENU-',
+  invoiceVatPrefix: 'CUSTOMENUI-',
 };
 
 // eslint-disable-next-line import/prefer-default-export
@@ -57,18 +58,19 @@ export function generateInvoice(payment) {
 
   rowTableCompanyDetails.cell()
     .text('Client')
-    .text('  ');
-  // todo: add client details
-  // .text(payment.company.name)
-  // .text(payment.company.cui)
-  // .text(payment.company.contactEmail)
-  // .text(payment.company.phone);
+    .text('  ')
+    .text(payment.restaurant.billingCompanyName)
+    .text(payment.restaurant.billingTaxId)
+    .text(payment.restaurant.billingAddress);
 
   doc.cell('  ');
   doc.cell('  ');
 
   const tableProducts = doc.table({
-    widths: [1.5 * pdf.cm, null, 2.5 * pdf.cm, 2.5 * pdf.cm],
+    widths: payment.vatAmount
+      // if has vatAmount display the vat column
+      ? [1.5 * pdf.cm, null, 2.5 * pdf.cm, 2.5 * pdf.cm, 2.5 * pdf.cm]
+      : [1.5 * pdf.cm, null, 2.5 * pdf.cm, 2.5 * pdf.cm],
     borderHorizontalWidth: 1,
     padding: 5,
   });
@@ -77,20 +79,29 @@ export function generateInvoice(payment) {
   tr.cell('#');
   tr.cell('Description');
   tr.cell('Price', { textAlign: 'right' });
+  if (payment.vatAmount) {
+    tr.cell('VAT', { textAlign: 'right' });
+  }
   tr.cell('Total', { textAlign: 'right' });
 
-  // todo: handle vat for eu
+  const priceWithoutVat = Number(payment.amount - payment.vatAmount).toFixed(2);
 
   const rowTableProducts = tableProducts.row();
   rowTableProducts.cell('1');
   rowTableProducts.cell(payment.subscription.subscriptionPlan.name);
-  rowTableProducts.cell().text(`${payment.amount} ${payment.subscription.subscriptionPlan.currency}`, { textAlign: 'right' });
+  rowTableProducts.cell().text(`${priceWithoutVat} ${payment.subscription.subscriptionPlan.currency}`, { textAlign: 'right' });
+  if (payment.vatAmount) {
+    rowTableProducts.cell().text(`${payment.vatAmount} ${payment.subscription.subscriptionPlan.currency}`, { textAlign: 'right' });
+  }
   rowTableProducts.cell().text(`${payment.amount} ${payment.subscription.subscriptionPlan.currency}`, { textAlign: 'right' });
 
   const rowFinalTableProducts = tableProducts.row();
   rowFinalTableProducts.cell();
   rowFinalTableProducts.cell();
-  rowFinalTableProducts.cell().text(`${payment.amount} ${payment.subscription.subscriptionPlan.currency}`, { textAlign: 'right', font: HelveticaBold });
+  rowFinalTableProducts.cell().text(`${priceWithoutVat} ${payment.subscription.subscriptionPlan.currency}`, { textAlign: 'right', font: HelveticaBold });
+  if (payment.vatAmount) {
+    rowFinalTableProducts.cell().text(`${payment.vatAmount} ${payment.subscription.subscriptionPlan.currency}`, { textAlign: 'right', font: HelveticaBold });
+  }
   rowFinalTableProducts.cell().text(`${payment.amount} ${payment.subscription.subscriptionPlan.currency}`, { textAlign: 'right', font: HelveticaBold });
 
   return doc.asBuffer();

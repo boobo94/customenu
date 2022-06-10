@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import { Op } from 'sequelize';
 // eslint-disable-next-line import/named, camelcase
 import { restaurant, restaurant_i18n } from '../models';

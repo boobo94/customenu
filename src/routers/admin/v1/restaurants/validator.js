@@ -23,9 +23,15 @@ export const putValidator = [
     .isString()
     .withMessage('is string'),
 
-  body(['currency', 'email', 'phone', 'address', 'instagramUrl', 'facebookUrl', 'youtubeUrl'])
+  body(['currency', 'email', 'phone', 'address', 'instagramUrl', 'facebookUrl', 'youtubeUrl', 'billingCompanyName', 'billingTaxId', 'billingVatTaxId', 'billingAddress'])
     .optional()
     .isString().withMessage('is string'),
+
+  body('countryId')
+    .optional()
+    .isInt()
+    .withMessage('is int')
+    .toInt(),
 
   body(['languages'])
     .optional()

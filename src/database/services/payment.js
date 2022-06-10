@@ -39,19 +39,30 @@ export async function findeByReference(referenceId) {
         [Op.eq]: referenceId,
       },
     },
+    include: [{
+      model: restaurant,
+    }],
   });
 }
 
-export async function findLastInvoice(transaction) {
-  return payment.findOne({
-    where: {
-      status: {
-        [Op.eq]: PAYMENT_STATUS.paid,
-      },
-      invoiceNumber: {
-        [Op.not]: null,
-      },
+export async function findLastInvoice(withVatTax, transaction) {
+  const whereCondition = {
+    status: {
+      [Op.eq]: PAYMENT_STATUS.paid,
     },
+    invoiceNumber: {
+      [Op.not]: null,
+    },
+  };
+
+  if (withVatTax) {
+    whereCondition.vatAmount = {
+      [Op.not]: 0,
+    };
+  }
+
+  return payment.findOne({
+    where: whereCondition,
     order: [
       ['invoiceNumber', 'DESC'],
     ],

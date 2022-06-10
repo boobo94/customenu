@@ -16,6 +16,10 @@ export default (sequelize) => {
       type: DataTypes.FLOAT,
       allowNull: false,
     },
+    vatAmount: {
+      type: DataTypes.FLOAT,
+      defaultValue: 0,
+    },
     status: {
       type: DataTypes.STRING,
       defaultValue: PAYMENT_STATUS.pending,

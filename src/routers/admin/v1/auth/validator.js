@@ -54,10 +54,16 @@ export const register = [
     .isString()
     .withMessage('should be string'),
 
-  body('restaurant.shortUrl')
+  body(['restaurant.shortUrl', 'restaurant.billingCompanyName', 'restaurant.billingTaxId', 'restaurant.billingVatTaxId', 'restaurant.billingAddress'])
     .exists().withMessage('is required')
     .isString()
     .withMessage('should be string'),
+
+  body('restaurant.countryId')
+    .exists().withMessage('is required')
+    .isInt()
+    .withMessage('is int')
+    .toInt(),
 
   body('restaurant.file')
     .optional()

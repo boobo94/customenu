@@ -83,8 +83,12 @@ async function updatePayment(event) {
 
     const currentPayment = await paymentService.findeByReference(event.id);
 
+    // if the company is from Romania use the taxId, else use the vat number taxId
+    const withVat = currentPayment.restaurant.countryId === 182;
+
     // get lastInvoice
-    const lastInvoice = await paymentService.findLastInvoice(t);
+    const lastInvoice = await paymentService.findLastInvoice(withVat, t);
+
     if (lastInvoice !== currentPayment.id) {
       updatedPayment.invoiceNumber = lastInvoice.invoiceNumber + 1;
     }
@@ -107,6 +111,7 @@ export default async (req, res) => {
     return res.sendStatus(400);
   }
 
+  // eslint-disable-next-line no-console
   console.log('event', event);
   try {
     // Handle the event

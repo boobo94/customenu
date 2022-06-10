@@ -41,12 +41,27 @@ export default (sequelize) => {
     customerReference: {
       type: DataTypes.STRING,
     },
+    billingCompanyName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    billingTaxId: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    billingAddress: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
   }, {});
+
   restaurant.associate = (models) => {
     // associations can be defined here
     restaurant.hasMany(models.restaurant_i18n, {
       onDelete: 'CASCADE',
     });
+    restaurant.belongsTo(models.country);
   };
+
   return restaurant;
 };

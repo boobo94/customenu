@@ -10,6 +10,10 @@ export default (sequelize) => {
       type: DataTypes.FLOAT,
       allowNull: false,
     },
+    vatAmount: {
+      type: DataTypes.FLOAT,
+      allowNull: false,
+    },
     currency: {
       type: DataTypes.STRING,
       allowNull: false,
