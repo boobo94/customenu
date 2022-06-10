@@ -1,4 +1,5 @@
 import Stripe from 'stripe';
+// eslint-disable-next-line import/named
 import { sequelize } from '../../../../database/models';
 import { findByEmail } from '../../../../database/services/admin';
 import * as restaurantService from '../../../../database/services/restaurant';
