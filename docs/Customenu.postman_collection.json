@@ -2,7 +2,8 @@
 	"info": {
 		"_postman_id": "7f4a558b-f315-44ac-939e-bac8a1058e10",
 		"name": "Customenu",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2739362"
 	},
 	"item": [
 		{
@@ -1093,6 +1094,267 @@
 							]
 						},
 						{
+							"name": "subscriptions",
+							"item": [
+								{
+									"name": "plans",
+									"item": [
+										{
+											"name": "Get one",
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "{{ADMIN_AUTH_TOKEN}}",
+															"type": "string"
+														}
+													]
+												},
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept-Language",
+														"value": "en",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{BASE_URL}}/admin/v1/restaurants/:restaurantId/subscriptions/plans/:planId",
+													"host": [
+														"{{BASE_URL}}"
+													],
+													"path": [
+														"admin",
+														"v1",
+														"restaurants",
+														":restaurantId",
+														"subscriptions",
+														"plans",
+														":planId"
+													],
+													"variable": [
+														{
+															"key": "restaurantId",
+															"value": "4",
+															"type": "string"
+														},
+														{
+															"key": "planId",
+															"value": "1"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "Get all",
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "{{ADMIN_AUTH_TOKEN}}",
+															"type": "string"
+														}
+													]
+												},
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept-Language",
+														"value": "ro",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{BASE_URL}}/admin/v1/restaurants/:restaurantId/subscriptions/plans",
+													"host": [
+														"{{BASE_URL}}"
+													],
+													"path": [
+														"admin",
+														"v1",
+														"restaurants",
+														":restaurantId",
+														"subscriptions",
+														"plans"
+													],
+													"variable": [
+														{
+															"key": "restaurantId",
+															"value": "4",
+															"type": "string"
+														}
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								},
+								{
+									"name": "Create Subscription",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{ADMIN_AUTH_TOKEN}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept-Language",
+												"type": "text",
+												"value": "en"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"referenceId\": \"price_1L889cEOKZqFShVgoUdNlf28\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{BASE_URL}}/admin/v1/restaurants/:restaurantId/subscriptions",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"admin",
+												"v1",
+												"restaurants",
+												":restaurantId",
+												"subscriptions"
+											],
+											"variable": [
+												{
+													"key": "restaurantId",
+													"value": "4",
+													"type": "string"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Cancel Subscription",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{ADMIN_AUTH_TOKEN}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept-Language",
+												"type": "text",
+												"value": "en"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"refferenceId\": \"price_1L889cEOKZqFShVgoUdNlf28\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{BASE_URL}}/admin/v1/restaurants/:restaurantId/subscriptions/:subscriptionId",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"admin",
+												"v1",
+												"restaurants",
+												":restaurantId",
+												"subscriptions",
+												":subscriptionId"
+											],
+											"variable": [
+												{
+													"key": "restaurantId",
+													"value": "4",
+													"type": "string"
+												},
+												{
+													"key": "subscriptionId",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get my active subscription",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{ADMIN_AUTH_TOKEN}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept-Language",
+												"type": "text",
+												"value": "en"
+											}
+										],
+										"url": {
+											"raw": "{{BASE_URL}}/admin/v1/restaurants/:restaurantId/subscriptions/me",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"admin",
+												"v1",
+												"restaurants",
+												":restaurantId",
+												"subscriptions",
+												"me"
+											],
+											"variable": [
+												{
+													"key": "restaurantId",
+													"value": "4",
+													"type": "string"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
 							"name": "products",
 							"item": [
 								{
@@ -1346,6 +1608,145 @@
 													"value": "9",
 													"type": "string"
 												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "payments",
+							"item": [
+								{
+									"name": "Get all",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{ADMIN_AUTH_TOKEN}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept-Language",
+												"value": "ro",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{BASE_URL}}/admin/v1/restaurants/:restaurantId/payments/me",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"admin",
+												"v1",
+												"restaurants",
+												":restaurantId",
+												"payments",
+												"me"
+											],
+											"variable": [
+												{
+													"key": "restaurantId",
+													"value": "4",
+													"type": "string"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Export invoice",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{ADMIN_AUTH_TOKEN}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept-Language",
+												"value": "ro",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{BASE_URL}}/admin/v1/restaurants/:restaurantId/payments/:paymentId/export-invoice",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"admin",
+												"v1",
+												"restaurants",
+												":restaurantId",
+												"payments",
+												":paymentId",
+												"export-invoice"
+											],
+											"variable": [
+												{
+													"key": "restaurantId",
+													"value": "4",
+													"type": "string"
+												},
+												{
+													"key": "paymentId",
+													"value": "8"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "webhooks",
+							"item": [
+								{
+									"name": "Stripe Webhook",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{ADMIN_AUTH_TOKEN}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept-Language",
+												"value": "ro",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{BASE_URL}}/webhooks/stripe",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"webhooks",
+												"stripe"
 											]
 										}
 									},
