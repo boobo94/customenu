@@ -1744,6 +1744,39 @@
 									"response": []
 								}
 							]
+						},
+						{
+							"name": "countries",
+							"item": [
+								{
+									"name": "Get all",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept-Language",
+												"value": "ro",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{BASE_URL}}/admin/v1/countries",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"admin",
+												"v1",
+												"countries"
+											]
+										}
+									},
+									"response": []
+								}
+							]
 						}
 					]
 				}
