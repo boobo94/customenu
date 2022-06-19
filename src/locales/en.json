@@ -1,0 +1,6 @@
+{
+  "NOT_ACTIVE_SUBSCRIPTION":{
+    "code": 8,
+    "message": "In order to complete the operation, a subscription will be required. Please choose one of the good plans available from the subscription menu."
+  }
+}

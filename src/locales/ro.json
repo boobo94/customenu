@@ -1,0 +1,6 @@
+{
+  "NOT_ACTIVE_SUBSCRIPTION":{
+    "code": 8,
+    "message": "Pentru a putea finaliza operațiunea, va trebui să achiziționați un abonament. Vă rugăm să alegeți unul din planurile de abonamente disponibile din meniul abonament."
+  }
+}
