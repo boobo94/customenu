@@ -6,7 +6,7 @@
       :items="categories"
       item-text="name"
       item-value="id"
-      label="Select"
+      :label="$t('SELECT_CATEGORY_LABEL')"
       persistent-hint
       return-object
       single-line
@@ -114,7 +114,7 @@ export default {
       valid: true,
       product: this.productProp,
       categories: [],
-      requiredRules: [(v) => !!v || this.$t('REQUIRED_NAME')],
+      requiredRules: [(v) => !!v || this.$t('REQUIRED_FIELD')],
     };
   },
 
