@@ -21,7 +21,7 @@
   "PRICE": "Pret",
   "COOKING_TIME": "Timp de preparare",
   "ACTIONS": "Actiuni",
-  "REQUIRED_NAME": "Numele este obligatoriu",
+  "REQUIRED_FIELD": "Campul este obligatoriu",
   "REQUIRED_EMAIL": "E-mailul este obligatoriu",
   "VALID_EMAIL": "E-mailul este valid",
   "SUBMIT": "Trimite",
@@ -45,6 +45,7 @@
   "CONTINUE_TITLE": "Continuă",
   "REGISTER_STEP_1_TITLE": "Cont",
   "REGISTER_STEP_2_TITLE": "Informații restaurant",
+  "REGISTER_STEP_3_TITLE": "Informații facturare",
   "LABEL_URL": "Link personalizat",
   "LABEL_URL_HINT": "Meniul tău va avea un link personalizat.Poți utiliza numele restaurantului.",
   "LABEL_URL_LINK": "Link-ul pentru meniul tău",
@@ -66,5 +67,10 @@
   "PAYMENT_STATUS_REJECTED": "Plată respinsă",
   "SUBSCRIPTION_BUY_BUTTON": "Cumpără abonament",
   "SUBSCRIPTION_CANCEL_BUTTON": "Inchide abonament",
-  "CANCEL_SUBSCRIPTION_CONFIRMATION_QUESTION": "Sunteți sigur că doriți să închideți abonamentul curent?"
+  "CANCEL_SUBSCRIPTION_CONFIRMATION_QUESTION": "Sunteți sigur că doriți să închideți abonamentul curent?",
+  "BILLING_COMPANY_NAME_LABEL": "Numele companiei",
+  "BILLING_COMPANY_TAXID_LABEL": "CUI",
+  "BILLING_COMPANY_ADDRESS_LABEL": "Adresa de facturare",
+  "BILLING_COMPANY_COUNTRY_LABEL": "Țara de rezidență fiscală",
+  "BILLING_COMPANY_COUNTRY_HINT": "Te rugăm să alegi țara în care este înregistrată compania ta"
 }

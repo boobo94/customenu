@@ -17,9 +17,9 @@ export default (self) => ({
       return true;
     },
   ],
-  requiredRules: [(v) => !!v || self.$t('REQUIRED_NAME')],
+  requiredRules: [(v) => !!v || self.$t('REQUIRED_FIELD')],
   shortUrlRules: [
-    (v) => !!v || self.$t('REQUIRED_NAME'),
+    (v) => !!v || self.$t('REQUIRED_FIELD'),
     (url) => {
       if (!/^[a-zA-Z0-9-]+$/.test(url)) return self.$t('URL_VALIDATOR_CHARACTERS_ALLOWED');
       return true;

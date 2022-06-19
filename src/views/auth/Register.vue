@@ -22,6 +22,12 @@
                 <v-stepper-step :complete="step > 2" step="2">
                   {{ $t("REGISTER_STEP_2_TITLE") }}
                 </v-stepper-step>
+
+                <v-divider></v-divider>
+
+                <v-stepper-step :complete="step > 3" step="3">
+                  {{ $t("REGISTER_STEP_3_TITLE") }}
+                </v-stepper-step>
               </v-stepper-header>
 
               <v-stepper-items>
@@ -169,10 +175,62 @@
                     </div>
 
                     <v-btn color="primary" @click="submit">
-                      {{ $t("REGISTER_TITLE") }}
+                      {{ $t("CONTINUE_TITLE") }}
                     </v-btn>
 
                     <v-btn text @click="step = 1">
+                      {{ $t("BACK_TITLE") }}
+                    </v-btn>
+                  </v-stepper-content>
+                </v-form>
+
+                <!-- STEP 3 ACCOUNT -->
+                <v-form ref="formStep3">
+                  <v-stepper-content step="3">
+                    <v-text-field
+                      v-model="restaurant.billingCompanyName"
+                      :rules="validators.requiredRules"
+                      @change="validators.requiredRules"
+                      :label="$t('BILLING_COMPANY_NAME_LABEL')"
+                      v-on:keyup.enter="submit"
+                    >
+                    </v-text-field>
+
+                    <v-text-field
+                      v-model="restaurant.billingTaxId"
+                      :rules="validators.requiredRules"
+                      @change="validators.requiredRules"
+                      :label="$t('BILLING_COMPANY_TAXID_LABEL')"
+                      v-on:keyup.enter="submit"
+                    >
+                    </v-text-field>
+
+                    <v-text-field
+                      v-model="restaurant.billingAddress"
+                      :rules="validators.requiredRules"
+                      @change="validators.requiredRules"
+                      :label="$t('BILLING_COMPANY_ADDRESS_LABEL')"
+                      v-on:keyup.enter="submit"
+                    >
+                    </v-text-field>
+
+                    <v-select
+                      v-model="restaurant.countryId"
+                      :items="countries"
+                      item-text="name"
+                      item-value="id"
+                      :label="$t('BILLING_COMPANY_COUNTRY_LABEL')"
+                      :hint="$t('BILLING_COMPANY_COUNTRY_HINT')"
+                      persistent-hint
+                      :rules="validators.requiredRules"
+                      @change="validators.requiredRules"
+                    ></v-select>
+
+                    <v-btn color="primary" @click="submit">
+                      {{ $t("REGISTER_TITLE") }}
+                    </v-btn>
+
+                    <v-btn text @click="step = 2">
                       {{ $t("BACK_TITLE") }}
                     </v-btn>
                   </v-stepper-content>
@@ -202,14 +260,14 @@
 </template>
 
 <script>
-import LanguageSelector from '@/components/LanguageSelector.vue';
-import axios from 'axios';
-import EventBus from '@/components/notifications/EventBus';
-import validators from './validators';
-import languages from '../../utils/languages';
+import LanguageSelector from "@/components/LanguageSelector.vue";
+import axios from "axios";
+import EventBus from "@/components/notifications/EventBus";
+import validators from "./validators";
+import languages from "../../utils/languages";
 
 export default {
-  name: 'Register',
+  name: "Register",
   components: {
     LanguageSelector,
   },
@@ -218,28 +276,34 @@ export default {
       validators: validators(this),
       step: 1,
       user: {
-        email: '',
-        password: '',
+        email: "",
+        password: "",
       },
       languages,
+      countries: [],
       restaurant: {
-        logo: '',
-        currency: 'ron',
-        email: '',
-        phone: '',
-        instagramUrl: '',
-        facebookUrl: '',
-        youtubeUrl: '',
-        languages: ['ro'],
+        logo: "",
+        currency: "ron",
+        email: "",
+        phone: "",
+        address: "",
+        instagramUrl: "",
+        facebookUrl: "",
+        youtubeUrl: "",
+        languages: ["ro"],
+        billingCompanyName: "",
+        billingTaxId: "",
+        billingAddress: "",
+        countryId: 0,
         restaurant_i18ns: [
           {
-            lang_code: 'ro', // default
-            name: '',
-            description: '',
-            allergens: '',
+            lang_code: "ro", // default
+            name: "",
+            description: "",
+            allergens: "",
           },
         ],
-        qr_code: '',
+        qr_code: "",
       },
     };
   },
@@ -248,9 +312,13 @@ export default {
     getAppLink() {
       const restaurantPath = this.restaurant.shortUrl
         ? this.restaurant.shortUrl
-        : ':link';
+        : ":link";
       return `https://app.customenu.ro/${restaurantPath}`;
     },
+  },
+
+  async created() {
+    await this.getCountries();
   },
 
   methods: {
@@ -258,12 +326,14 @@ export default {
       if (this.step === 1 && this.$refs.formStep1.validate()) {
         this.step = 2;
       } else if (this.step === 2 && this.$refs.formStep2.validate()) {
-        await axios.post('/auth/register', {
+        this.step = 3;
+      } else if (this.step === 3 && this.$refs.formStep3.validate()) {
+        await axios.post("/auth/register", {
           restaurant: this.restaurant,
           admin: this.user,
         });
-        EventBus.$emit('success', this.$t('RESTAURANT_CREATED'));
-        this.$router.push({ path: '/login' });
+        EventBus.$emit("success", this.$t("RESTAURANT_CREATED"));
+        this.$router.push({ path: "/login" });
       }
     },
 
@@ -278,24 +348,34 @@ export default {
     updateSelectedLanguages(newLanguages) {
       this.restaurant.languages = newLanguages;
       // clear elements from translations
-      this.restaurant.restaurant_i18ns = this.restaurant.restaurant_i18ns.filter(
-        (element) => newLanguages.includes(element.lang_code),
-      );
+      this.restaurant.restaurant_i18ns =
+        this.restaurant.restaurant_i18ns.filter((element) =>
+          newLanguages.includes(element.lang_code)
+        );
 
       newLanguages.forEach((language) => {
         if (
           !this.restaurant.restaurant_i18ns.some(
-            (el) => el.lang_code === language,
+            (el) => el.lang_code === language
           )
         ) {
           this.restaurant.restaurant_i18ns.push({
             lang_code: language,
-            name: '',
-            description: '',
-            allergens: '',
+            name: "",
+            description: "",
+            allergens: "",
           });
         }
       });
+    },
+
+    async getCountries() {
+      try {
+        const { data } = await axios.get(`/countries`);
+        this.countries = data;
+      } catch (e) {
+        console.error(e);
+      }
     },
   },
 };

@@ -74,6 +74,37 @@
             :label="$t('LABEL_YOUTUBE_URL')"
           ></v-text-field>
 
+          <v-text-field
+            v-model="restaurant.billingCompanyName"
+            :label="$t('BILLING_COMPANY_NAME_LABEL')"
+            v-on:keyup.enter="submit"
+          >
+          </v-text-field>
+
+          <v-text-field
+            v-model="restaurant.billingTaxId"
+            :label="$t('BILLING_COMPANY_TAXID_LABEL')"
+            v-on:keyup.enter="submit"
+          >
+          </v-text-field>
+
+          <v-text-field
+            v-model="restaurant.billingAddress"
+            :label="$t('BILLING_COMPANY_ADDRESS_LABEL')"
+            v-on:keyup.enter="submit"
+          >
+          </v-text-field>
+
+          <v-select
+            v-model="restaurant.countryId"
+            :items="countries"
+            item-text="name"
+            item-value="id"
+            :label="$t('BILLING_COMPANY_COUNTRY_LABEL')"
+            :hint="$t('BILLING_COMPANY_COUNTRY_HINT')"
+            persistent-hint
+          ></v-select>
+
           <LanguageSelector
             v-bind:languagesProp="restaurant.languages"
             v-on:update:languagesProp="restaurant.languages = $event"
@@ -147,14 +178,14 @@
 </template>
 
 <script>
-import axios from 'axios';
-import LanguageSelector from '@/components/LanguageSelector.vue';
-import { saveAs } from 'file-saver';
-import validators from './validators';
-import EventBus from '../../components/notifications/EventBus';
+import axios from "axios";
+import LanguageSelector from "@/components/LanguageSelector.vue";
+import { saveAs } from "file-saver";
+import validators from "./validators";
+import EventBus from "../../components/notifications/EventBus";
 
 export default {
-  name: 'EditRestaurant',
+  name: "EditRestaurant",
   components: {
     LanguageSelector,
   },
@@ -162,18 +193,24 @@ export default {
     return {
       valid: true,
       validators: validators(this),
+      countries: [],
       restaurant: {
-        logo: '',
-        currency: '',
-        email: '',
-        phone: '',
-        instagramUrl: '',
-        facebookUrl: '',
-        youtubeUrl: '',
+        logo: "",
+        currency: "",
+        email: "",
+        phone: "",
+        address: "",
+        instagramUrl: "",
+        facebookUrl: "",
+        youtubeUrl: "",
         restaurant_i18ns: [],
-        qr_code: '',
+        qr_code: "",
+        billingCompanyName: "",
+        billingTaxId: "",
+        billingAddress: "",
+        countryId: 0,
       },
-      apiUrl: '',
+      apiUrl: "",
     };
   },
 
@@ -185,6 +222,8 @@ export default {
 
     this.restaurant = data;
     this.populateLanguages();
+
+    this.getCountries()
   },
 
   computed: {
@@ -197,8 +236,8 @@ export default {
     async validate() {
       if (this.$refs.form.validate()) {
         await axios.put(this.apiUrl, this.restaurant);
-        EventBus.$emit('success', this.$t('SUCCESS_OPERATION'));
-        this.$store.dispatch('authModule/setLanguages');
+        EventBus.$emit("success", this.$t("SUCCESS_OPERATION"));
+        this.$store.dispatch("authModule/setLanguages");
       }
     },
 
@@ -211,7 +250,7 @@ export default {
     },
 
     downloadImage(url) {
-      const fileName = url.split('/');
+      const fileName = url.split("/");
       saveAs(url, fileName[fileName.length - 1]);
     },
 
@@ -220,17 +259,26 @@ export default {
       languages.forEach((language) => {
         if (
           !this.restaurant.restaurant_i18ns.some(
-            (el) => el.lang_code === language,
+            (el) => el.lang_code === language
           )
         ) {
           this.restaurant.restaurant_i18ns.push({
             lang_code: language,
-            name: '',
-            description: '',
-            allergens: '',
+            name: "",
+            description: "",
+            allergens: "",
           });
         }
       });
+    },
+
+      async getCountries() {
+      try {
+        const { data } = await axios.get(`/countries`);
+        this.countries = data;
+      } catch (e) {
+        console.error(e);
+      }
     },
   },
 };

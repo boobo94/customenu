@@ -21,7 +21,7 @@
   "PRICE": "Price",
   "COOKING_TIME": "Cooking Time",
   "ACTIONS": "Actions",
-  "REQUIRED_NAME": "Name is required",
+  "REQUIRED_FIELD": "The field is required",
   "REQUIRED_EMAIL": "E-mail is required",
   "VALID_EMAIL": "E-mail must be valid",
   "SUBMIT": "Submit",
@@ -45,6 +45,7 @@
   "CONTINUE_TITLE": "Continuă",
   "REGISTER_STEP_1_TITLE": "Account",
   "REGISTER_STEP_2_TITLE": "Restaurant Details",
+  "REGISTER_STEP_3_TITLE": "Billing information",
   "LABEL_URL": "Custom Link",
   "LABEL_URL_HINT": "Your menu will have a customized url. You can use the name of your restaurant.",
   "LABEL_URL_LINK": "The link of your menu: ",
@@ -66,5 +67,10 @@
   "PAYMENT_STATUS_REJECTED": "Rejected",
   "SUBSCRIPTION_BUY_BUTTON": "Buy subscription",
   "SUBSCRIPTION_CANCEL_BUTTON": "Inchide abonament",
-  "CANCEL_SUBSCRIPTION_CONFIRMATION_QUESTION": "Are you sure you want to cancel your subscription?"
+  "CANCEL_SUBSCRIPTION_CONFIRMATION_QUESTION": "Are you sure you want to cancel your subscription?",
+  "BILLING_COMPANY_NAME_LABEL": "Company Name",
+  "BILLING_COMPANY_TAXID_LABEL": "Company Tax ID",
+  "BILLING_COMPANY_ADDRESS_LABEL": "Company Billing Address",
+  "BILLING_COMPANY_COUNTRY_LABEL": "The fiscal country residence of company",
+  "BILLING_COMPANY_COUNTRY_HINT": "Please select the country where the company is registered"
 }
