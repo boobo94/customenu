@@ -1,7 +1,6 @@
 /* eslint-disable import/named */
 import { Op } from 'sequelize';
 import {
-  admin,
   subscription,
   restaurant,
   subscriptionPlan,

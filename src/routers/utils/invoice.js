@@ -93,20 +93,20 @@ export function generateInvoice(payment) {
   const rowTableProducts = tableProducts.row();
   rowTableProducts.cell('1');
   rowTableProducts.cell(payment.subscription.subscriptionPlan.name);
-  rowTableProducts.cell().text(`${priceWithoutVat} ${payment.subscription.subscriptionPlan.currency}`, { textAlign: 'right' });
+  rowTableProducts.cell().text(`${priceWithoutVat} ${payment.currency}`, { textAlign: 'right' });
   if (payment.vatAmount) {
-    rowTableProducts.cell().text(`${payment.vatAmount} ${payment.subscription.subscriptionPlan.currency}`, { textAlign: 'right' });
+    rowTableProducts.cell().text(`${payment.vatAmount} ${payment.currency}`, { textAlign: 'right' });
   }
-  rowTableProducts.cell().text(`${payment.amount} ${payment.subscription.subscriptionPlan.currency}`, { textAlign: 'right' });
+  rowTableProducts.cell().text(`${payment.amount} ${payment.currency}`, { textAlign: 'right' });
 
   const rowFinalTableProducts = tableProducts.row();
   rowFinalTableProducts.cell();
   rowFinalTableProducts.cell();
-  rowFinalTableProducts.cell().text(`${priceWithoutVat} ${payment.subscription.subscriptionPlan.currency}`, { textAlign: 'right', font: HelveticaBold });
+  rowFinalTableProducts.cell().text(`${priceWithoutVat} ${payment.currency}`, { textAlign: 'right', font: HelveticaBold });
   if (payment.vatAmount) {
-    rowFinalTableProducts.cell().text(`${payment.vatAmount} ${payment.subscription.subscriptionPlan.currency}`, { textAlign: 'right', font: HelveticaBold });
+    rowFinalTableProducts.cell().text(`${payment.vatAmount} ${payment.currency}`, { textAlign: 'right', font: HelveticaBold });
   }
-  rowFinalTableProducts.cell().text(`${payment.amount} ${payment.subscription.subscriptionPlan.currency}`, { textAlign: 'right', font: HelveticaBold });
+  rowFinalTableProducts.cell().text(`${payment.amount} ${payment.currency}`, { textAlign: 'right', font: HelveticaBold });
 
   return doc.asBuffer();
 }

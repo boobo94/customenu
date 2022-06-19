@@ -27,7 +27,10 @@ export default (sequelize) => {
     invoiceNumber: {
       type: DataTypes.INTEGER,
     },
-
+    currency: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
   });
 
   model.associate = (models) => {

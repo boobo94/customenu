@@ -24,7 +24,7 @@ export default async (req, res) => {
           quantity: 1,
         },
       ],
-      success_url: `${process.env.ADMIN_URL}/subscription`, // todo: update the url
+      success_url: `${process.env.ADMIN_URL}/subscription`,
       cancel_url: `${process.env.ADMIN_URL}/subscription`,
     });
 

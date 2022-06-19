@@ -20,7 +20,6 @@ export default async (req, res) => {
       .status(statusCodes.OK)
       .send(invoice);
   } catch (error) {
-    console.error(error);
     return res.status(statusCodes.SERVER_INTERNAL_ERROR).send({ error: errors.SERVER_ERROR });
   }
 };
