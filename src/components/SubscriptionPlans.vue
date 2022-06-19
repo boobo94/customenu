@@ -5,7 +5,7 @@
         <h2>{{ $t("SUBSCRIPTION_PLANS_LABEL") }}</h2>
       </v-col>
 
-      <v-col cols="6" v-for="plan of subscriptionPlans" :key="plan.id">
+      <v-col cols="4" v-for="plan of subscriptionPlans" :key="plan.id">
         <v-card class="mx-auto" outlined :loading="isLoading">
           <v-list-item three-line>
             <v-list-item-content>
