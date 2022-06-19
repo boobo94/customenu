@@ -51,5 +51,16 @@
   "URL_VALIDATOR_CHARACTERS_ALLOWED": "The custom link can contains only characters, numbers and/or -",
   "RESTAURANT_CREATED": "The restaurant was created, you can login now",
   "BACK_TO_WEBSITE": "Go back to the website",
-  "SEARCH_TITLE": "Search"
+  "SEARCH_TITLE": "Search",
+  "SUBSCRIPTION_TITLE": "Subscriptions",
+  "DOWNLOAD_INVOICE": "Download",
+  "SUBSCRIPTION_PAYMENTS_LABEL": "Past Payments",
+  "AMOUNT": "Amount",
+  "VAT": "VAT",
+  "INVOICE": "Invoice",
+  "DATE": "Date",
+  "STATUS": "Status",
+  "PAYMENT_STATUS_ACCEPTED": "Accepted",
+  "PAYMENT_STATUS_PENDING": "Pending",
+  "PAYMENT_STATUS_REJECTED": "Rejected"
 }
