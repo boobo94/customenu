@@ -55,6 +55,7 @@
   "SUBSCRIPTION_TITLE": "Subscriptions",
   "DOWNLOAD_INVOICE": "Download",
   "SUBSCRIPTION_PAYMENTS_LABEL": "Past Payments",
+  "SUBSCRIPTION_PLANS_LABEL": "Subscription Plans",
   "AMOUNT": "Amount",
   "VAT": "VAT",
   "INVOICE": "Invoice",
@@ -62,5 +63,8 @@
   "STATUS": "Status",
   "PAYMENT_STATUS_ACCEPTED": "Accepted",
   "PAYMENT_STATUS_PENDING": "Pending",
-  "PAYMENT_STATUS_REJECTED": "Rejected"
+  "PAYMENT_STATUS_REJECTED": "Rejected",
+  "SUBSCRIPTION_BUY_BUTTON": "Buy subscription",
+  "SUBSCRIPTION_CANCEL_BUTTON": "Inchide abonament",
+  "CANCEL_SUBSCRIPTION_CONFIRMATION_QUESTION": "Are you sure you want to cancel your subscription?"
 }

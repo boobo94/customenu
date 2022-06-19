@@ -1,16 +1,54 @@
 <template>
-  <v-container>
+  <div>
     <v-row>
-      <v-col cols="4" v-for="plan of subscriptionPlans" :key="plan.id">
-        {{ plan.name }}
-        {{ plan.amount }} {{ plan.currency }} {{ plan.recurrence }}/{{
-          plan.interval
-        }}
+      <v-col cols="12">
+        <h2>{{ $t("SUBSCRIPTION_PLANS_LABEL") }}</h2>
+      </v-col>
 
-        <v-btn @click="orderSubscription(plan)">buy</v-btn>
+      <v-col cols="6" v-for="plan of subscriptionPlans" :key="plan.id">
+        <v-card class="mx-auto" outlined :loading="isLoading">
+          <v-list-item three-line>
+            <v-list-item-content>
+              <v-list-item-title class="text-h5 mb-1">
+                {{ plan.name }}
+              </v-list-item-title>
+              <v-list-item-subtitle>
+                {{ plan.amount }} {{ plan.currency }}
+              </v-list-item-subtitle>
+              <v-list-item-subtitle>
+                {{ plan.recurrence }}/{{ plan.interval }}
+              </v-list-item-subtitle>
+            </v-list-item-content>
+          </v-list-item>
+
+          <v-card-actions>
+            <v-btn
+              v-if="activeSubscription.subscriptionPlanId !== plan.id"
+              outlined
+              rounded
+              text
+              color="primary"
+              @click="orderSubscription(plan)"
+            >
+              {{ $t("SUBSCRIPTION_BUY_BUTTON") }}
+            </v-btn>
+
+            <v-btn
+              v-if="activeSubscription.subscriptionPlanId === plan.id"
+              :disabled="activeSubscription.canceled"
+              outlined
+              rounded
+              text
+              color="red"
+              @click="closeSubscription(plan)"
+            >
+              {{ $t("SUBSCRIPTION_CANCEL_BUTTON") }}
+            </v-btn>
+          </v-card-actions>
+        </v-card>
       </v-col>
     </v-row>
-  </v-container>
+  </div>
 </template>
 
 <script>
@@ -19,21 +57,66 @@ import axios from "axios";
 export default {
   name: "SubscriptionPlans",
 
-  components: {},
-
   data: () => ({
     subscriptionPlans: [],
+    activeSubscription: {
+      id: 0,
+    },
+    isLoading: false
   }),
 
   async created() {
-    const { restaurantId } = this.$store.state.authModule;
-    const { data } = await axios.get(
-      `/restaurants/${restaurantId}/subscriptions/plans`
-    );
-    this.subscriptionPlans = data;
+    await this.getSubscriptionPlans();
+    await this.getActiveSubscription();
   },
 
   methods: {
+    async getSubscriptionPlans() {
+      const { restaurantId } = this.$store.state.authModule;
+      try {
+        const { data } = await axios.get(
+          `/restaurants/${restaurantId}/subscriptions/plans`
+        );
+        this.subscriptionPlans = data;
+      } catch (e) {
+        console.error(e);
+      }
+    },
+
+    async getActiveSubscription() {
+      const { restaurantId } = this.$store.state.authModule;
+      try {
+        const { data } = await axios.get(
+          `/restaurants/${restaurantId}/subscriptions/me`
+        );
+        this.activeSubscription = data;
+      } catch (e) {
+        console.error(e);
+      }
+    },
+
+    async closeSubscription() {
+      if (confirm(this.$t("CANCEL_SUBSCRIPTION_CONFIRMATION_QUESTION"))) {
+        this.isLoading=true
+        const { restaurantId } = this.$store.state.authModule;
+        try {
+          // cancel the subscription
+          await axios.delete(
+            `/restaurants/${restaurantId}/subscriptions/${this.activeSubscription.id}`
+          );
+
+          // get the active subscription
+          setTimeout(async() => {
+            await this.getActiveSubscription();
+          this.isLoading=false
+
+          }, 3000);
+        } catch (e) {
+          console.error(e);
+        }
+      }
+    },
+
     async orderSubscription(plan) {
       console.log(plan);
 

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p class="company-subscription-payments-title">{{ $t("SUBSCRIPTION_PAYMENTS_LABEL") }}</p>
+    <h2>{{ $t("SUBSCRIPTION_PAYMENTS_LABEL") }}</h2>
 
     <v-data-table
       :headers="headers"
@@ -153,13 +153,4 @@ export default {
 
 <style scoped lang="scss">
 
-.company-subscription-payments-title {
-  margin-bottom: 48px;
-  font-size: 16px;
-  text-transform: uppercase;
-}
-
-.company-subscription-payments-table {
-  border-radius: 8px;
-}
 </style>

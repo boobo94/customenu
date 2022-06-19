@@ -55,6 +55,7 @@
   "SUBSCRIPTION_TITLE": "Abonament",
   "DOWNLOAD_INVOICE": "Descarcă",
   "SUBSCRIPTION_PAYMENTS_LABEL": "Plăți Anterioare",
+  "SUBSCRIPTION_PLANS_LABEL": "Planuri de Abonamente",
   "AMOUNT": "Suma",
   "VAT": "TVA",
   "INVOICE": "Factură",
@@ -62,5 +63,8 @@
   "STATUS": "Status",
   "PAYMENT_STATUS_ACCEPTED": "Plată acceptată",
   "PAYMENT_STATUS_PENDING": "Plată în așteptare",
-  "PAYMENT_STATUS_REJECTED": "Plată respinsă"
+  "PAYMENT_STATUS_REJECTED": "Plată respinsă",
+  "SUBSCRIPTION_BUY_BUTTON": "Cumpără abonament",
+  "SUBSCRIPTION_CANCEL_BUTTON": "Inchide abonament",
+  "CANCEL_SUBSCRIPTION_CONFIRMATION_QUESTION": "Sunteți sigur că doriți să închideți abonamentul curent?"
 }
