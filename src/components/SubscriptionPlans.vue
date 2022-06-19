@@ -62,7 +62,7 @@ export default {
     activeSubscription: {
       id: 0,
     },
-    isLoading: false
+    isLoading: false,
   }),
 
   async created() {
@@ -97,7 +97,7 @@ export default {
 
     async closeSubscription() {
       if (confirm(this.$t("CANCEL_SUBSCRIPTION_CONFIRMATION_QUESTION"))) {
-        this.isLoading=true
+        this.isLoading = true;
         const { restaurantId } = this.$store.state.authModule;
         try {
           // cancel the subscription
@@ -106,10 +106,9 @@ export default {
           );
 
           // get the active subscription
-          setTimeout(async() => {
+          setTimeout(async () => {
             await this.getActiveSubscription();
-          this.isLoading=false
-
+            this.isLoading = false;
           }, 3000);
         } catch (e) {
           console.error(e);
@@ -118,24 +117,31 @@ export default {
     },
 
     async orderSubscription(plan) {
-      console.log(plan);
+      // check if the user has an active subscription which is not canceled yet
+      if (this.activeSubscription.id && !this.activeSubscription.canceled) {
+        alert(this.$t("SUBSCRIPTION_ALREADY_ACTIVE_ALERT"));
+      } else if (
+        // check if the user doesn't have an active subscription or the active subscription is canceled
+        !this.activeSubscription.id ||
+        (this.activeSubscription.id && this.activeSubscription.canceled)
+      ) {
+        try {
+          const { restaurantId } = this.$store.state.authModule;
+          // order this subscription
+          const { data } = await axios.post(
+            `/restaurants/${restaurantId}/subscriptions`,
+            {
+              referenceId: plan.referenceId,
+            }
+          );
 
-      try {
-        const { restaurantId } = this.$store.state.authModule;
-        // order this subscription
-        const { data } = await axios.post(
-          `/restaurants/${restaurantId}/subscriptions`,
-          {
-            referenceId: plan.referenceId,
+          // get the payment url froms stripe and create a new plan
+          if (data.url) {
+            window.open(data.url, "_self");
           }
-        );
-
-        // get the payment url froms stripe and create a new plan
-        if (data.url) {
-          window.open(data.url, "_blank");
+        } catch (e) {
+          console.error(e);
         }
-      } catch (e) {
-        console.error(e);
       }
     },
   },

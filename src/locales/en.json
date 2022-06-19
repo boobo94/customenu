@@ -72,5 +72,6 @@
   "BILLING_COMPANY_TAXID_LABEL": "Company Tax ID",
   "BILLING_COMPANY_ADDRESS_LABEL": "Company Billing Address",
   "BILLING_COMPANY_COUNTRY_LABEL": "The fiscal country residence of company",
-  "BILLING_COMPANY_COUNTRY_HINT": "Please select the country where the company is registered"
+  "BILLING_COMPANY_COUNTRY_HINT": "Please select the country where the company is registered",
+  "SUBSCRIPTION_ALREADY_ACTIVE_ALERT": "You already have an activ subscription. Please cancel it before buying a new one."
 }

@@ -72,5 +72,6 @@
   "BILLING_COMPANY_TAXID_LABEL": "CUI",
   "BILLING_COMPANY_ADDRESS_LABEL": "Adresa de facturare",
   "BILLING_COMPANY_COUNTRY_LABEL": "Țara de rezidență fiscală",
-  "BILLING_COMPANY_COUNTRY_HINT": "Te rugăm să alegi țara în care este înregistrată compania ta"
+  "BILLING_COMPANY_COUNTRY_HINT": "Te rugăm să alegi țara în care este înregistrată compania ta",
+  "SUBSCRIPTION_ALREADY_ACTIVE_ALERT": "Aveți deja un abonament activ. Închideti abonamentul curent pentru a vă putea abona la unul nou."
 }
