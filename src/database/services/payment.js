@@ -81,6 +81,9 @@ export async function findAll(restaurantId) {
         [Op.eq]: restaurantId,
       },
     },
+    order: [
+      ['id', 'DESC'],
+    ],
   });
 }
 

@@ -33,6 +33,9 @@ export async function findActiveByRestaurant(restaurantId) {
         [Op.gte]: new Date(),
       },
     },
+    order: [
+      ['id', 'DESC'],
+    ],
   });
 }
 
