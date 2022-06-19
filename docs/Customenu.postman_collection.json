@@ -1270,15 +1270,6 @@
 												"value": "en"
 											}
 										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n    \"refferenceId\": \"price_1L889cEOKZqFShVgoUdNlf28\"\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
 										"url": {
 											"raw": "{{BASE_URL}}/admin/v1/restaurants/:restaurantId/subscriptions/:subscriptionId",
 											"host": [
@@ -1300,7 +1291,7 @@
 												},
 												{
 													"key": "subscriptionId",
-													"value": "1"
+													"value": "27"
 												}
 											]
 										}
