@@ -70,6 +70,16 @@ export async function findByIdAndRestaurantId(id, restaurantId) {
   });
 }
 
+export async function countCategoriesOfRestaurant(restaurantId) {
+  return category.count({
+    where: {
+      restaurantId: {
+        [Op.eq]: restaurantId,
+      },
+    },
+  });
+}
+
 /**
  * Find all
  * @param {number} restaurantId

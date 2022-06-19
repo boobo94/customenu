@@ -7,6 +7,7 @@ export default async (req, res) => {
   try {
     const newEntry = {
       ...req.body,
+      restaurantId: req.params.restaurantId,
     };
 
     if (req.body.file) {

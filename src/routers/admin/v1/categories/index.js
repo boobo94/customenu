@@ -9,32 +9,43 @@ import remove from './remove';
 import update from './update';
 
 export default Router({ mergeParams: true })
-  .get('/',
+  .get(
+    '/',
     adminAuthorization,
     validators.getCategories,
     permissions.checkAccessToCategories,
-    getAll)
+    getAll,
+  )
 
-  .post('/',
+  .post(
+    '/',
     adminAuthorization,
     validators.postValidator,
     permissions.checkAccessToCategories,
-    create)
+    permissions.checkAccessToAddCategoryAsRestaurant,
+    create,
+  )
 
-  .put('/:categoryId',
+  .put(
+    '/:categoryId',
     adminAuthorization,
     validators.putValidator,
     permissions.checkAccessToCategories,
-    update)
+    update,
+  )
 
-  .get('/:categoryId',
+  .get(
+    '/:categoryId',
     adminAuthorization,
     validators.getCategory,
     permissions.checkAccessToCategories,
-    getOne)
+    getOne,
+  )
 
-  .delete('/:categoryId',
+  .delete(
+    '/:categoryId',
     adminAuthorization,
     validators.getCategory,
     permissions.checkAccessToDeleteCategory,
-    remove);
+    remove,
+  );

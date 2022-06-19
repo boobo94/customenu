@@ -20,6 +20,7 @@ export default (sequelize) => {
   product.associate = (models) => {
     // associations can be defined here
     product.belongsTo(models.category);
+    product.belongsTo(models.restaurant);
     product.hasMany(models.product_i18n, {
       onDelete: 'CASCADE',
     });

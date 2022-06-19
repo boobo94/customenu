@@ -30,6 +30,14 @@ export default (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    maxProducts: {
+      type: DataTypes.INTEGER,
+      defaultValue: false,
+    },
+    maxCategories: {
+      type: DataTypes.INTEGER,
+      defaultValue: false,
+    },
   });
 
   return model;

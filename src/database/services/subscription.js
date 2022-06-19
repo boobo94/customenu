@@ -39,6 +39,28 @@ export async function findActiveByRestaurant(restaurantId) {
   });
 }
 
+export async function findActiveWithPlanByRestaurant(restaurantId) {
+  return subscription.findOne({
+    where: {
+      restaurantId: {
+        [Op.eq]: restaurantId,
+      },
+      startDate: {
+        [Op.lte]: new Date(),
+      },
+      endDate: {
+        [Op.gte]: new Date(),
+      },
+    },
+    include: [{
+      model: subscriptionPlan,
+    }],
+    order: [
+      ['id', 'DESC'],
+    ],
+  });
+}
+
 export async function findOneWithDetails(id) {
   return subscription.findOne({
     where: {

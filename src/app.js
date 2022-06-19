@@ -17,9 +17,7 @@ app.use(express.json({ limit: '10mb' }));
 
 i18n.configure({
   locales: ['en', 'ro'],
-  defaultLocale: 'en',
   directory: join(__dirname, 'locales'),
-  header: 'accept-language',
 });
 app.use(i18n.init);
 
