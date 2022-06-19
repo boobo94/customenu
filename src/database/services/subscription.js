@@ -45,10 +45,7 @@ export async function findOneWithDetails(id) {
       },
     },
     include: [{
-      model: admin,
-      include: [{
-        model: restaurant,
-      }],
+      model: restaurant,
     }],
   });
 }

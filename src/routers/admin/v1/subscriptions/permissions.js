@@ -21,7 +21,7 @@ export async function checkAccessToDeleteSubscription(req, res, next) {
     const subscription = await findOneWithDetails(req.params.subscriptionId);
     if (!subscription) {
       return res.status(statusCodes.NOT_FOUND).send({ error: errors.RESOURCE_NOT_FOUND });
-    } if (subscription.admin.restaurant.id !== req.params.restaurantId) {
+    } if (subscription.restaurant.id !== req.params.restaurantId) {
       return res.status(statusCodes.FORBIDDEN).send({ error: errors.FORBIDDEN });
     }
   } catch (err) {
