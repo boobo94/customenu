@@ -74,5 +74,9 @@
   "BILLING_COMPANY_COUNTRY_LABEL": "The fiscal country residence of company",
   "BILLING_COMPANY_COUNTRY_HINT": "Please select the country where the company is registered",
   "SUBSCRIPTION_ALREADY_ACTIVE_ALERT": "You already have an activ subscription. Please cancel it before buying a new one.",
-  "SELECT_CATEGORY_LABEL": "Select Category"
+  "SELECT_CATEGORY_LABEL": "Select Category",
+  "SUBSCRIPTION_PRICE_LABEL": "Price",
+  "SUBSCRIPTION_RECURRING_LABEL": "Recurring",
+  "SUBSCRIPTION_MAX_CATEGORIES_LABEL": "Maximum number of categories",
+  "SUBSCRIPTION_MAX_PRODUCTS_LABEL": "Maximum number of products"
 }

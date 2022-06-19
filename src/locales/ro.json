@@ -74,5 +74,9 @@
   "BILLING_COMPANY_COUNTRY_LABEL": "Țara de rezidență fiscală",
   "BILLING_COMPANY_COUNTRY_HINT": "Te rugăm să alegi țara în care este înregistrată compania ta",
   "SUBSCRIPTION_ALREADY_ACTIVE_ALERT": "Aveți deja un abonament activ. Închideti abonamentul curent pentru a vă putea abona la unul nou.",
-  "SELECT_CATEGORY_LABEL": "Selectează categoria"
+  "SELECT_CATEGORY_LABEL": "Selectează categoria",
+  "SUBSCRIPTION_PRICE_LABEL": "Prețul abonamentului",
+  "SUBSCRIPTION_RECURRING_LABEL": "Abonament recurent",
+  "SUBSCRIPTION_MAX_CATEGORIES_LABEL": "Numărul maxim de categorii",
+  "SUBSCRIPTION_MAX_PRODUCTS_LABEL": "Numărul maxim de produse"
 }

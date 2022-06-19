@@ -13,10 +13,19 @@
                 {{ plan.name }}
               </v-list-item-title>
               <v-list-item-subtitle>
-                {{ plan.amount }} {{ plan.currency }}
+                {{ $t("SUBSCRIPTION_PRICE_LABEL") }} {{ plan.amount }}
+                {{ plan.currency }}
               </v-list-item-subtitle>
               <v-list-item-subtitle>
-                {{ plan.recurrence }}/{{ plan.interval }}
+                {{ $t("SUBSCRIPTION_RECURRING_LABEL") }} {{ plan.recurrence }}/{{ plan.interval }}
+              </v-list-item-subtitle>
+              <v-list-item-subtitle>
+                {{ $t("SUBSCRIPTION_MAX_CATEGORIES_LABEL") }}
+                {{ plan.maxCategories }}
+              </v-list-item-subtitle>
+              <v-list-item-subtitle>
+                {{ $t("SUBSCRIPTION_MAX_PRODUCTS_LABEL") }}
+                {{ plan.maxProducts }}
               </v-list-item-subtitle>
             </v-list-item-content>
           </v-list-item>
