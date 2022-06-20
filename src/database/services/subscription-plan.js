@@ -30,7 +30,11 @@ export async function findeByReference(referenceId) {
  * Find all
  */
 export async function findAll() {
-  return subscriptionPlan.findAll();
+  return subscriptionPlan.findAll({
+    order: [
+      ['id', 'DESC'],
+    ],
+  });
 }
 
 /**
