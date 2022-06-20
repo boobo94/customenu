@@ -100,7 +100,10 @@ export default {
         );
         this.activeSubscription = data;
       } catch (e) {
-        console.error(e);
+         if(e.code ===1) {
+          this.activeSubscription = {}
+        }
+        console.error("dsda",e);
       }
     },
 
@@ -147,6 +150,8 @@ export default {
           // get the payment url froms stripe and create a new plan
           if (data.url) {
             window.open(data.url, "_self");
+          } else if(data.id) {
+            this.activeSubscription= data
           }
         } catch (e) {
           console.error(e);
