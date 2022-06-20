@@ -33,6 +33,7 @@ Add at the end of the file the content:
 Example
 
 ```sh
+cd src/database
 DB_USERNAME='customenu_user' \
 DB_PASSWORD='Hakj5KPs' \
 DB_DATABASE='customenu_db' \

@@ -49,6 +49,6 @@
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.25.3",
     "nodemon": "^2.0.12",
-    "sequelize-cli": "^6.3.0"
+    "sequelize-cli": "^6.4.1"
   }
 }
