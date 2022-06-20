@@ -1,5 +1,5 @@
 <template>
-  <v-snackbar v-model="snackbar" :color="color" right>
+  <v-snackbar v-model="snackbar" :color="color" :timeout="timeout" right>
     {{ text }}
 
     <template v-slot:action="{ attrs }">
@@ -18,6 +18,7 @@ export default {
     snackbar: false,
     text: '',
     color: '',
+    timeout: 10000
   }),
 
   created() {

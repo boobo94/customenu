@@ -20,22 +20,21 @@
           </v-list-item-content>
         </v-list-item>
 
-        <template v-for="(item, index) in items">
-          <v-list-item
-            color="primary"
-            :key="index"
-            :href="item.href"
-            :to="{ name: item.href }"
-          >
-            <v-list-item-icon>
-              <v-icon>{{ item.icon }}</v-icon>
-            </v-list-item-icon>
+        <v-list-item
+          color="primary"
+          v-for="(item, index) in items"
+          :key="index"
+          :href="item.href"
+          :to="{ name: item.href }"
+        >
+          <v-list-item-icon>
+            <v-icon>{{ item.icon }}</v-icon>
+          </v-list-item-icon>
 
-            <v-list-item-content>
-              <v-list-item-title>{{ item.title }}</v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
-        </template>
+          <v-list-item-content>
+            <v-list-item-title>{{ item.title }}</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
       </v-list>
 
       <template v-slot:append>
@@ -63,10 +62,10 @@
 </template>
 
 <script>
-import LocaleSwitch from '@/components/LocaleSwitch.vue';
+import LocaleSwitch from "@/components/LocaleSwitch.vue";
 
 export default {
-  name: 'Navigation',
+  name: "Navigation",
   props: {},
   components: {
     LocaleSwitch,
@@ -76,24 +75,29 @@ export default {
       drawer: null,
       items: [
         {
-          href: 'List Categories',
-          title: this.$t('CATEGORIES_TITLE'),
-          icon: 'mdi-cube',
+          href: "List Categories",
+          title: this.$t("CATEGORIES_TITLE"),
+          icon: "mdi-cube",
         },
         {
-          href: 'List Products',
-          title: this.$t('PRODUCTS_TITLE'),
-          icon: 'mdi-hamburger',
+          href: "List Products",
+          title: this.$t("PRODUCTS_TITLE"),
+          icon: "mdi-hamburger",
         },
         {
-          href: 'Edit Restaurant',
-          title: this.$t('RESTAURANT_TITLE'),
-          icon: 'mdi-store',
+          href: "Edit Restaurant",
+          title: this.$t("RESTAURANT_TITLE"),
+          icon: "mdi-store",
         },
         {
-          href: 'Edit Admin',
-          title: this.$t('ADMIN_TITLE'),
-          icon: 'mdi-account-cog',
+          href: "Edit Admin",
+          title: this.$t("ADMIN_TITLE"),
+          icon: "mdi-account-cog",
+        },
+        {
+          href: "Subscription",
+          title: this.$t("SUBSCRIPTION_TITLE"),
+          icon: "mdi-credit-card-outline",
         },
       ],
     };
@@ -103,14 +107,14 @@ export default {
     goBack() {
       return window.history.length > 1
         ? this.$router.go(-1)
-        : this.$router.push('/');
+        : this.$router.push("/");
     },
     isHomePage() {
-      return this.$route.name === 'Home';
+      return this.$route.name === "Home";
     },
     logout() {
-      this.$store.dispatch('authModule/logout');
-      this.$router.push({ name: 'Login' });
+      this.$store.dispatch("authModule/logout");
+      this.$router.push({ name: "Login" });
     },
   },
 };

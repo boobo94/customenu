@@ -56,6 +56,13 @@ const routes = [
   },
 
   {
+    path: '/subscription',
+    name: 'Subscription',
+    component:  () => import('@/views/payments/SubscriptionPage.vue'),
+    beforeEnter: middlewareIsLoggedIn,
+  },
+
+  {
     path: '/categories',
     component: RouterView,
     children: [

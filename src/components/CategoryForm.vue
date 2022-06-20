@@ -66,7 +66,7 @@ export default {
     return {
       valid: true,
       category: this.categoryProp,
-      nameRules: [(v) => !!v || this.$t('REQUIRED_NAME')],
+      nameRules: [(v) => !!v || this.$t('REQUIRED_FIELD')],
     };
   },
 
