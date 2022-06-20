@@ -68,9 +68,14 @@ export async function findOneWithDetails(id) {
         [Op.eq]: id,
       },
     },
-    include: [{
-      model: restaurant,
-    }],
+    include: [
+      {
+        model: restaurant,
+      },
+      {
+        model: subscriptionPlan,
+      },
+    ],
   });
 }
 
