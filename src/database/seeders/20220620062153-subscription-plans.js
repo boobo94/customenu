@@ -8,7 +8,7 @@ module.exports = {
       vatAmount: 0,
       currency: 'RON',
       interval: 'year',
-      recurrence: 1,
+      recurrence: 100,
       referenceId: 'free',
       maxProducts: 30,
       maxCategories: 5,
