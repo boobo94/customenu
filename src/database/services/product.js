@@ -45,6 +45,16 @@ export async function findById(id, language) {
   });
 }
 
+export async function countProductsOfRestaurant(restaurantId) {
+  return product.count({
+    where: {
+      restaurantId: {
+        [Op.eq]: restaurantId,
+      },
+    },
+  });
+}
+
 /**
  * Find all
  * @param {number} categoryId

@@ -8,20 +8,26 @@ import update from './update';
 
 export default Router({ mergeParams: true })
 
-  .get('/:restaurantId',
+  .get(
+    '/:restaurantId',
     adminAuthorization,
     validators.getRestaurant,
     permissions.checkAccessToRestaurant,
-    getOne)
+    getOne,
+  )
 
-  .get('/:restaurantId/languages',
+  .get(
+    '/:restaurantId/languages',
     adminAuthorization,
     validators.getRestaurant,
     permissions.checkAccessToRestaurant,
-    getLanguages)
+    getLanguages,
+  )
 
-  .put('/:restaurantId',
+  .put(
+    '/:restaurantId',
     adminAuthorization,
     validators.putValidator,
     permissions.checkAccessToRestaurant,
-    update);
+    update,
+  );

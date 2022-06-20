@@ -54,7 +54,7 @@ export const register = [
     .isString()
     .withMessage('should be string'),
 
-  body(['restaurant.shortUrl', 'restaurant.billingCompanyName', 'restaurant.billingTaxId', 'restaurant.billingVatTaxId', 'restaurant.billingAddress'])
+  body(['restaurant.shortUrl', 'restaurant.billingCompanyName', 'restaurant.billingTaxId', 'restaurant.billingAddress'])
     .exists().withMessage('is required')
     .isString()
     .withMessage('should be string'),

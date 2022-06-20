@@ -10,38 +10,51 @@ import update from './update';
 import search from './search';
 
 export default Router({ mergeParams: true })
-  .get('/',
+  .get(
+    '/',
     adminAuthorization,
     validators.getProducts,
     permissions.checkAccessToProductsOfRestaurant,
-    getAll)
+    getAll,
+  )
 
-  .get('/search',
+  .get(
+    '/search',
     adminAuthorization,
     validators.searchProducts,
     permissions.checkAccessToProductsOfRestaurant,
-    search)
+    search,
+  )
 
-  .get('/:productId',
+  .get(
+    '/:productId',
     adminAuthorization,
     validators.getProduct,
     permissions.checkAccessToProduct,
-    getOne)
+    getOne,
+  )
 
-  .post('/',
+  .post(
+    '/',
     adminAuthorization,
     validators.postValidator,
     permissions.checkAccessToProductsOfRestaurant,
-    create)
+    permissions.checkAccessToAddProductAsRestaurant,
+    create,
+  )
 
-  .put('/:productId',
+  .put(
+    '/:productId',
     adminAuthorization,
     validators.putValidator,
     permissions.checkAccessToProduct,
-    update)
+    update,
+  )
 
-  .delete('/:productId',
+  .delete(
+    '/:productId',
     adminAuthorization,
     validators.getProduct,
     permissions.checkAccessToProduct,
-    remove);
+    remove,
+  );

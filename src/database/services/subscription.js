@@ -1,7 +1,6 @@
 /* eslint-disable import/named */
 import { Op } from 'sequelize';
 import {
-  admin,
   subscription,
   restaurant,
   subscriptionPlan,
@@ -34,6 +33,31 @@ export async function findActiveByRestaurant(restaurantId) {
         [Op.gte]: new Date(),
       },
     },
+    order: [
+      ['id', 'DESC'],
+    ],
+  });
+}
+
+export async function findActiveWithPlanByRestaurant(restaurantId) {
+  return subscription.findOne({
+    where: {
+      restaurantId: {
+        [Op.eq]: restaurantId,
+      },
+      startDate: {
+        [Op.lte]: new Date(),
+      },
+      endDate: {
+        [Op.gte]: new Date(),
+      },
+    },
+    include: [{
+      model: subscriptionPlan,
+    }],
+    order: [
+      ['id', 'DESC'],
+    ],
   });
 }
 
@@ -44,12 +68,14 @@ export async function findOneWithDetails(id) {
         [Op.eq]: id,
       },
     },
-    include: [{
-      model: admin,
-      include: [{
+    include: [
+      {
         model: restaurant,
-      }],
-    }],
+      },
+      {
+        model: subscriptionPlan,
+      },
+    ],
   });
 }
 

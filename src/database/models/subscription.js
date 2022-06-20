@@ -18,8 +18,6 @@ export default (sequelize) => {
       type: DataTypes.BOOLEAN,
       defaultValue: false,
     },
-  }, {
-    underscored: true,
   });
 
   model.associate = (models) => {

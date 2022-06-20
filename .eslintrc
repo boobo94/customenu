@@ -11,7 +11,7 @@
     "airbnb-base"
   ],
   "rules": {
-    "no-underscore-dangle": 0,
+    "no-underscore-dangle": "off",
     "no-plusplus": "off",
     "no-await-in-loop":"off"
   }

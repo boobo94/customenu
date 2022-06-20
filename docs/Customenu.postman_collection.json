@@ -1270,15 +1270,6 @@
 												"value": "en"
 											}
 										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n    \"refferenceId\": \"price_1L889cEOKZqFShVgoUdNlf28\"\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
 										"url": {
 											"raw": "{{BASE_URL}}/admin/v1/restaurants/:restaurantId/subscriptions/:subscriptionId",
 											"host": [
@@ -1300,7 +1291,7 @@
 												},
 												{
 													"key": "subscriptionId",
-													"value": "1"
+													"value": "27"
 												}
 											]
 										}
@@ -1747,6 +1738,39 @@
 											"path": [
 												"webhooks",
 												"stripe"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "countries",
+							"item": [
+								{
+									"name": "Get all",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept-Language",
+												"value": "ro",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{BASE_URL}}/admin/v1/countries",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"admin",
+												"v1",
+												"countries"
 											]
 										}
 									},

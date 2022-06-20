@@ -68,6 +68,7 @@ async function createPayment(event) {
   return paymentService.create({
     status: getInvoiceStatus(event.status),
     amount: event.total / 100, // trim the cents
+    currency: event.currency,
     referenceId: event.id,
     restaurantId: restaurant.id,
   });

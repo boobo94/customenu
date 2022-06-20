@@ -1,5 +1,7 @@
+import { DateTime } from 'luxon';
 import stripe from 'stripe';
 import { findOne } from '../../../../database/services/admin';
+import { create } from '../../../../database/services/subscription';
 import { findeByReference } from '../../../../database/services/subscription-plan';
 import errors from '../../../../locales/errors.json';
 import statusCodes from '../../../utils/statusCodes';
@@ -13,6 +15,21 @@ export default async (req, res) => {
 
     const admin = await findOne(req.adminId);
 
+    // check if is the free plan and add the subscription
+    if (subscriptionPlan.amount === 0) {
+      const newSubscription = await create({
+        startDate: DateTime.now().toJSDate(),
+        endDate: DateTime
+          .now()
+          .plus({ [subscriptionPlan.interval]: subscriptionPlan.recurrence }).toJSDate(),
+        subscriptionPlanId: subscriptionPlan.id,
+        restaurantId: req.params.restaurantId,
+        referenceId: 'free',
+      });
+      return res.status(statusCodes.OK).send(newSubscription);
+    }
+
+    // create new subscription in Stripe
     const stripeClient = stripe(process.env.SECRET_KEY);
     const session = await stripeClient.checkout.sessions.create({
       mode: 'subscription',
@@ -24,7 +41,7 @@ export default async (req, res) => {
           quantity: 1,
         },
       ],
-      success_url: `${process.env.ADMIN_URL}/subscription`, // todo: update the url
+      success_url: `${process.env.ADMIN_URL}/subscription`,
       cancel_url: `${process.env.ADMIN_URL}/subscription`,
     });
 
@@ -32,6 +49,7 @@ export default async (req, res) => {
       url: session.url,
     });
   } catch (error) {
+    console.log(error);
     return res.status(statusCodes.SERVER_INTERNAL_ERROR).send({ error: errors.SERVER_ERROR });
   }
 };

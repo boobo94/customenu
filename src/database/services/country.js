@@ -1,26 +1,16 @@
 import { Op } from 'sequelize';
 // eslint-disable-next-line import/named
-import { subscriptionPlan } from '../models';
+import { country } from '../models';
 
 /**
  * Find by id
  * @param {number} id
  */
 export async function findOne(id) {
-  return subscriptionPlan.findOne({
+  return country.findOne({
     where: {
       id: {
         [Op.eq]: id,
-      },
-    },
-  });
-}
-
-export async function findeByReference(referenceId) {
-  return subscriptionPlan.findOne({
-    where: {
-      referenceId: {
-        [Op.eq]: referenceId,
       },
     },
   });
@@ -30,33 +20,29 @@ export async function findeByReference(referenceId) {
  * Find all
  */
 export async function findAll() {
-  return subscriptionPlan.findAll({
-    order: [
-      ['id', 'DESC'],
-    ],
-  });
+  return country.findAll();
 }
 
 /**
  * Create
- * @param {object} subscription
+ * @param {object} object
  * @param {Sequelize.Transaction} transaction
  */
-export async function create(subscription, transaction) {
-  return subscriptionPlan.create(subscription, {
+export async function create(object, transaction) {
+  return country.create(object, {
     transaction,
   });
 }
 
 /**
  * Update
- * @param {object} subscription
+ * @param {object} object
  * @param {number} id
  * @param {Sequelize.Transaction} transaction
 
  */
-export async function update(subscription, id, transaction) {
-  return subscriptionPlan.update(subscription, {
+export async function update(object, id, transaction) {
+  return country.update(object, {
     where: {
       id: {
         [Op.eq]: id,
@@ -72,7 +58,7 @@ export async function update(subscription, id, transaction) {
   * @param {Sequelize.Transaction} transaction
   */
 export async function remove(id, transaction) {
-  return subscriptionPlan.destroy({
+  return country.destroy({
     where: {
       id: {
         [Op.eq]: id,
