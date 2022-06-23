@@ -31,3 +31,10 @@ Password: `changeme`
 Then you have to enter the old password and set a new email and password.
 
 For more instructions check the [official documentation](https://nginxproxymanager.com/setup/#running-the-app)
+
+3. Run the seeds
+
+```sh
+cd src/database
+npx sequelize db:seed:all --config=config/config.js
+```

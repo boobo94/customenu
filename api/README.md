@@ -35,7 +35,7 @@ Example
 ```sh
 cd src/database
 DB_USERNAME='customenu_user' \
-DB_PASSWORD='Hakj5KPs' \
+DB_PASSWORD='pass' \
 DB_DATABASE='customenu_db' \
 DB_HOST='127.0.0.1' \
 DB_DIALECT='postgres' \
