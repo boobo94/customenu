@@ -1,5 +1,5 @@
 /* eslint-disable import/first */
-require('dotenv').config();
+require('dotenv').config({ path: `${__dirname}/../../.env` });
 
 import app from './app';
 
