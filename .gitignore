@@ -109,5 +109,5 @@ db-data
 .DS_Store
 
 # others
-
+.env
 files
