@@ -32,11 +32,11 @@ export default (sequelize) => {
     },
     maxProducts: {
       type: DataTypes.INTEGER,
-      defaultValue: false,
+      allowNull: false,
     },
     maxCategories: {
       type: DataTypes.INTEGER,
-      defaultValue: false,
+      allowNull: false,
     },
   });
 
