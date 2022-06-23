@@ -6,7 +6,7 @@
           <img src="@/assets/logo.png" alt="Logo Customenu" height="140px" />
         </v-row>
         <v-row align="center" justify="center">
-          <v-col cols="12" sm="8" md="4">
+          <v-col cols="12" sm="8" md="6">
             <v-toolbar color="primary" dark flat>
               <v-toolbar-title>{{ $t("REGISTER_TITLE") }}</v-toolbar-title>
             </v-toolbar>
