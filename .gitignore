@@ -108,8 +108,9 @@ dist
 .DS_Store
 
 # Docker
-db-data
-data
+docker/db-data
+docker/data
+docker/letsencrypt
 
 # others
 .env
