@@ -35,6 +35,6 @@ For more instructions check the [official documentation](https://nginxproxymanag
 3. Run the seeds
 
 ```sh
-cd src/database
+cd api/src/database
 npx sequelize db:seed:all --config=config/config.js
 ```
