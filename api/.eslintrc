@@ -1,0 +1,18 @@
+{
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
+  },
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+  "extends": [
+    "airbnb-base"
+  ],
+  "rules": {
+    "no-underscore-dangle": "off",
+    "no-plusplus": "off",
+    "no-await-in-loop":"off"
+  }
+}

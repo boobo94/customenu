@@ -1,0 +1,54 @@
+{
+  "name": "customenu-ws",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "build": "babel ./src --out-dir ./dist --source-maps",
+    "start": "nodemon --exec babel-node src/index.js -L",
+    "start:prod": "babel-node src/index.js",
+    "test": "mocha --require @babel/register",
+    "deploy": "bash ./scripts/deploy-local.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/boobo94/customenu-ws.git"
+  },
+  "author": "Bogdan Alexandru Militaru",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/boobo94/customenu-ws/issues"
+  },
+  "homepage": "https://github.com/boobo94/customenu-ws#readme",
+  "dependencies": {
+    "aws-sdk": "^2.797.0",
+    "bcrypt": "^5.0.1",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-validator": "^6.13.0",
+    "i18n": "^0.15.0",
+    "jsonwebtoken": "^8.5.1",
+    "luxon": "^2.4.0",
+    "morgan": "^1.10.0",
+    "pdfjs": "^2.4.7",
+    "pg": "^8.7.1",
+    "pg-hstore": "^2.3.4",
+    "qrcode": "^1.4.4",
+    "sequelize": "^6.19.0",
+    "stripe": "^9.6.0",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.16.0",
+    "@babel/core": "^7.16.0",
+    "@babel/node": "^7.16.0",
+    "@babel/preset-env": "^7.16.0",
+    "@types/node": "^14.17.33",
+    "eslint": "^8.2.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.3",
+    "nodemon": "^2.0.12",
+    "sequelize-cli": "^6.4.1"
+  }
+}
