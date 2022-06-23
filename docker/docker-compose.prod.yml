@@ -12,8 +12,41 @@ services:
     restart: always
     volumes:
       - '/var/run/docker.sock:/var/run/docker.sock'
-      - './db-data:/data'
+      - './data:/data'
+
+  ngxinxproxymanager:
+    image: 'jc21/nginx-proxy-manager:latest'
+    container_name: customenu-ngxinxproxymanager
+    restart: unless-stopped
+    ports:
+      - '80:80' # Public HTTP Port
+      - '443:443' # Public HTTPS Port
+      - '81:81' # Admin Web Port
+      # Add any other Stream port you want to expose
+      # - '21:21' # FTP
+
+    networks:
+      - customenu-network
+
+    environment:
+      # the SQLite DB file within the container
+      DB_SQLITE_FILE: "/data/database.sqlite"
+
+      # Uncomment this if IPv6 is not enabled on your host
+      # DISABLE_IPV6: 'true'
+
+    volumes:
+      - ./data:/data
+      - ./letsencrypt:/etc/letsencrypt
 
 # todo: add api
 # todo: add admin
 # todo: add app
+
+volumes:
+  customenu-data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: "${PWD}/data"

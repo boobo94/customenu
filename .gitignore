@@ -99,7 +99,6 @@ dist
 
 # DB Local files
 .dynamodb/
-db-data
 .vscode/datbase-client.json
 
 # TernJS port file
@@ -107,6 +106,10 @@ db-data
 
 # Mac
 .DS_Store
+
+# Docker
+db-data
+data
 
 # others
 .env
