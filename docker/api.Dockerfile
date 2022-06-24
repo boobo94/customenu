@@ -2,7 +2,7 @@
 # Choose and name our temporary image.
 FROM alpine as intermediate
 # Add metadata identifying these images as our build containers (this will be useful later!)
-LABEL stage=intermediate
+# LABEL stage=intermediate
 
 # Take an SSH key as a build argument.
 ARG SSH_KEY
@@ -21,9 +21,9 @@ RUN chmod -R 600 /root/.ssh/
 # 4. Add github to our list of known hosts for ssh.
 RUN ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
 
-# Force to skip the cache and clone the git repo every time
-# Without this line docker use cache by default
-ARG CACHEBUST=$(date)
+# inject a datestamp arg which is treated as an environment variable and
+# will break the cache for the next RUN command
+ARG DATE_STAMP
 
 # Clone a repository
 RUN git clone git@github.com:boobo94/customenu.git

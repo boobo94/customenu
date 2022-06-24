@@ -41,6 +41,7 @@ services:
       dockerfile: api.Dockerfile
       args:
       - SSH_KEY=${SSH_KEY}
+      - DATE_STAMP=${DATE_STAMP}
     container_name: customenu-api
     restart: always
     depends_on:
