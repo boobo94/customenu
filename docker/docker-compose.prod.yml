@@ -90,7 +90,21 @@ services:
     networks:
       - customenu-network
 
-# todo: add app
+  app:
+    build:
+      context: .
+      dockerfile: app.Dockerfile
+      args:
+      - SSH_KEY=${SSH_KEY}
+      - DATE_STAMP=${DATE_STAMP}
+    container_name: customenu-app
+    restart: always
+    depends_on:
+      - postgres
+    ports:
+      - "8003:8003"
+    networks:
+      - customenu-network
 
 volumes:
   customenu-data:
