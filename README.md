@@ -11,7 +11,16 @@ docker-compose --env-file .env -p customenu -f docker/docker-compose.yml -f dock
 
 # Setup production
 
-Execute
+Be sure you have an .env file.
+
+```sh
+cp .env.example .env
+```
+
+Now modify the env file content.
+
+
+Once you finished with .env file, execute
 
 ```sh
 sh bin/run-prod.sh
@@ -36,4 +45,10 @@ For more instructions check the [official documentation](https://nginxproxymanag
 ```sh
 cd api/src/database
 npx sequelize db:seed:all --config=config/config.js
+```
+
+If you encounter issues with the current docker compose, I prepared a script to force rebuild with no cache
+
+```sh
+sh bin/force-rebuild-docker.sh
 ```

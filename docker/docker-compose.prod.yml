@@ -39,9 +39,6 @@ services:
     build:
       context: .
       dockerfile: api.Dockerfile
-      args:
-      - SSH_KEY=${SSH_KEY}
-      - DATE_STAMP=${DATE_STAMP}
     container_name: customenu-api
     restart: always
     depends_on:
@@ -78,9 +75,6 @@ services:
     build:
       context: .
       dockerfile: admin.Dockerfile
-      args:
-      - SSH_KEY=${SSH_KEY}
-      - DATE_STAMP=${DATE_STAMP}
     container_name: customenu-admin
     restart: always
     depends_on:
@@ -94,9 +88,6 @@ services:
     build:
       context: .
       dockerfile: app.Dockerfile
-      args:
-      - SSH_KEY=${SSH_KEY}
-      - DATE_STAMP=${DATE_STAMP}
     container_name: customenu-app
     restart: always
     depends_on:
