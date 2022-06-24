@@ -5,7 +5,7 @@ Customenu
 ## Run localhost
 
 ```sh
-docker-compose -p customenu -f docker/docker-compose.yml -f docker/docker-compose.dev.yml --env-file .env up 
+docker-compose --env-file .env -p customenu -f docker/docker-compose.yml -f docker/docker-compose.dev.yml up
 ```
 
 
@@ -15,7 +15,7 @@ docker-compose -p customenu -f docker/docker-compose.yml -f docker/docker-compos
 Execute
 
 ```sh
-docker-compose -p customenu -f docker/docker-compose.yml -f docker/docker-compose.prod.yml --env-file .env up 
+docker-compose --env-file .env -p customenu -f docker/docker-compose.yml -f docker/docker-compose.prod.yml up 
 ```
 
 1. Setup portainer

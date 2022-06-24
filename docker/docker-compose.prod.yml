@@ -24,22 +24,59 @@ services:
       - '81:81' # Admin Web Port
       # Add any other Stream port you want to expose
       # - '21:21' # FTP
-
     networks:
       - customenu-network
-
     environment:
       # the SQLite DB file within the container
       DB_SQLITE_FILE: "/data/database.sqlite"
-
       # Uncomment this if IPv6 is not enabled on your host
       # DISABLE_IPV6: 'true'
-
     volumes:
       - ./data:/data
       - ./letsencrypt:/etc/letsencrypt
 
-# todo: add api
+  api:
+    build:
+      context: .
+      dockerfile: api.Dockerfile
+      args:
+      - SSH_KEY=${SSH_KEY}
+    container_name: customenu-api
+    restart: always
+    depends_on:
+      - postgres
+    ports:
+      - "${API_PORT}:${API_PORT}"
+    networks:
+      - customenu-network
+    environment: 
+      - API_PORT
+      - APP_URL
+      - API_URL
+      - ADMIN_URL
+      - DB_DIALECT
+      - DB_HOST
+      - DB_PORT
+      - DB_DATABASE
+      - DB_USERNAME
+      - DB_PASSWORD
+      - SECURITY_SALT
+      - JWT_SECRET_KEY
+      - USE_OBJECT_STORAGE
+      - LOCAL_STORAGE_PATH
+      - LINODE_OBJECT_STORAGE_ENDPOINT
+      - LINODE_OBJECT_STORAGE_REGION
+      - LINODE_OBJECT_STORAGE_ACCESS_KEY_ID
+      - LINODE_OBJECT_STORAGE_SECRET_ACCESS_KEY
+      - LINODE_OBJECT_BUCKET
+      - PUBLIC_KEY
+      - SECRET_KEY
+      - WEBHOOK_SECRET_KEY
+
+    # command: sh -c "
+    #   sleep 60 &&
+    #   my_command"
+
 # todo: add admin
 # todo: add app
 
