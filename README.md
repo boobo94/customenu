@@ -24,7 +24,7 @@ Open localhost:9000 and pickup the username and password then press Create User.
 2. Setup Nginx proxy manager
 
 Open http://localhost:81 and login using the default credentials:
-Email:    `admin@example.com``
+Email:    `admin@example.com`
 Password: `changeme`
 
 Then you have to enter the old password and set a new email and password.

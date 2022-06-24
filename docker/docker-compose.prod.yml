@@ -74,11 +74,22 @@ services:
       - SECRET_KEY
       - WEBHOOK_SECRET_KEY
 
-    # command: sh -c "
-    #   sleep 60 &&
-    #   my_command"
+  admin:
+    build:
+      context: .
+      dockerfile: admin.Dockerfile
+      args:
+      - SSH_KEY=${SSH_KEY}
+      - DATE_STAMP=${DATE_STAMP}
+    container_name: customenu-admin
+    restart: always
+    depends_on:
+      - postgres
+    ports:
+      - "8002:8002"
+    networks:
+      - customenu-network
 
-# todo: add admin
 # todo: add app
 
 volumes:
