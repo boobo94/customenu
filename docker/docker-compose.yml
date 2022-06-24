@@ -1,0 +1,28 @@
+version: '3.3'
+
+services:
+  postgres:
+    image: postgres:14
+    container_name: customenu-database
+    environment:
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_DB: ${DB_DATABASE}
+    ports:
+      - "${DB_PORT}:${DB_PORT}"
+    networks:
+      - customenu-network
+    volumes:
+      - "./db-data:/var/lib/postgresql/data"
+
+networks:
+  customenu-network:
+    driver: bridge
+
+volumes:
+  customenu-db:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: "${PWD}/db-data"

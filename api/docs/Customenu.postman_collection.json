@@ -1,0 +1,1820 @@
+{
+	"info": {
+		"_postman_id": "7f4a558b-f315-44ac-939e-bac8a1058e10",
+		"name": "Customenu",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2739362"
+	},
+	"item": [
+		{
+			"name": "app",
+			"item": [
+				{
+					"name": "v1",
+					"item": [
+						{
+							"name": "restaurants",
+							"item": [
+								{
+									"name": "Get one",
+									"request": {
+										"auth": {
+											"type": "apikey",
+											"apikey": [
+												{
+													"key": "value",
+													"value": "abc",
+													"type": "string"
+												},
+												{
+													"key": "key",
+													"value": "authorization",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept-Language",
+												"value": "en",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{BASE_URL}}/web/v1/:restaurant/",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"web",
+												"v1",
+												":restaurant",
+												""
+											],
+											"variable": [
+												{
+													"key": "restaurant",
+													"value": "test",
+													"type": "string"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get simple",
+									"request": {
+										"auth": {
+											"type": "apikey",
+											"apikey": [
+												{
+													"key": "value",
+													"value": "abc",
+													"type": "string"
+												},
+												{
+													"key": "key",
+													"value": "authorization",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept-Language",
+												"value": "en",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{BASE_URL}}/web/v1/:restaurant/simple",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"web",
+												"v1",
+												":restaurant",
+												"simple"
+											],
+											"variable": [
+												{
+													"key": "restaurant",
+													"value": "test",
+													"type": "string"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "categories",
+							"item": [
+								{
+									"name": "Get all",
+									"request": {
+										"auth": {
+											"type": "apikey",
+											"apikey": [
+												{
+													"key": "value",
+													"value": "abc",
+													"type": "string"
+												},
+												{
+													"key": "key",
+													"value": "authorization",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept-Language",
+												"value": "ro",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{BASE_URL}}/web/v1/:restaurant/categories",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"web",
+												"v1",
+												":restaurant",
+												"categories"
+											],
+											"variable": [
+												{
+													"key": "restaurant",
+													"value": "test",
+													"type": "string"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get one",
+									"request": {
+										"auth": {
+											"type": "apikey",
+											"apikey": [
+												{
+													"key": "value",
+													"value": "abc",
+													"type": "string"
+												},
+												{
+													"key": "key",
+													"value": "authorization",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept-Language",
+												"value": "en",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{BASE_URL}}/web/v1/:restaurant/categories/:categoryId",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"web",
+												"v1",
+												":restaurant",
+												"categories",
+												":categoryId"
+											],
+											"variable": [
+												{
+													"key": "restaurant",
+													"value": "test",
+													"type": "string"
+												},
+												{
+													"key": "categoryId",
+													"value": "1",
+													"type": "string"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "products",
+							"item": [
+								{
+									"name": "Get all",
+									"request": {
+										"auth": {
+											"type": "apikey",
+											"apikey": [
+												{
+													"key": "value",
+													"value": "abc",
+													"type": "string"
+												},
+												{
+													"key": "key",
+													"value": "authorization",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept-Language",
+												"value": "ro",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{BASE_URL}}/web/v1/:restaurant/categories/:categoryId/products",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"web",
+												"v1",
+												":restaurant",
+												"categories",
+												":categoryId",
+												"products"
+											],
+											"variable": [
+												{
+													"key": "restaurant",
+													"value": "test",
+													"type": "string"
+												},
+												{
+													"key": "categoryId",
+													"value": "1",
+													"type": "string"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get one",
+									"request": {
+										"auth": {
+											"type": "apikey",
+											"apikey": [
+												{
+													"key": "value",
+													"value": "abc",
+													"type": "string"
+												},
+												{
+													"key": "key",
+													"value": "authorization",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept-Language",
+												"value": "ro",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{BASE_URL}}/web/v1/:restaurant/categories/:categoryId/products/:productId",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"web",
+												"v1",
+												":restaurant",
+												"categories",
+												":categoryId",
+												"products",
+												":productId"
+											],
+											"variable": [
+												{
+													"key": "restaurant",
+													"value": "test",
+													"type": "string"
+												},
+												{
+													"key": "categoryId",
+													"value": "1",
+													"type": "string"
+												},
+												{
+													"key": "productId",
+													"value": "1",
+													"type": "string"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "admin",
+			"item": [
+				{
+					"name": "v1",
+					"item": [
+						{
+							"name": "auth",
+							"item": [
+								{
+									"name": "Login",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"var data = pm.response.json();",
+													"pm.collectionVariables.set(\"ADMIN_AUTH_TOKEN\", data.token);",
+													"pm.collectionVariables.set(\"ADMIN_REFRESH_TOKEN\", data.refreshToken);"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "apikey",
+											"apikey": [
+												{
+													"key": "value",
+													"value": "abc",
+													"type": "string"
+												},
+												{
+													"key": "key",
+													"value": "authorization",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept-Language",
+												"value": "en",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"email\": \"admin@cmevo.com\",\n    \"password\": \"admin\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{BASE_URL}}/admin/v1/auth/login",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"admin",
+												"v1",
+												"auth",
+												"login"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Edit Admin",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{ADMIN_AUTH_TOKEN}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept-Language",
+												"type": "text",
+												"value": "en"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"email\": \"admin@cmevo.com\",\n    \"password\": \"admin\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{BASE_URL}}/admin/v1/auth/profile",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"admin",
+												"v1",
+												"auth",
+												"profile"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get Admin Profile",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{ADMIN_AUTH_TOKEN}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept-Language",
+												"type": "text",
+												"value": "en"
+											}
+										],
+										"url": {
+											"raw": "{{BASE_URL}}/admin/v1/auth/profile",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"admin",
+												"v1",
+												"auth",
+												"profile"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Register",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "apikey",
+											"apikey": [
+												{
+													"key": "value",
+													"value": "abc",
+													"type": "string"
+												},
+												{
+													"key": "key",
+													"value": "authorization",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept-Language",
+												"type": "text",
+												"value": "en"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"restaurant\": {\n        \"logo\": \"\",\n        \"currency\": \"ron\",\n        \"email\": \"\",\n        \"phone\": \"\",\n        \"instagramUrl\": \"\",\n        \"facebookUrl\": \"\",\n        \"youtubeUrl\": \"\",\n        \"languages\": [\n            \"ro\"\n        ],\n        \"restaurant_i18ns\": [\n            {\n                \"lang_code\": \"ro\",\n                \"name\": \"dsa\",\n                \"description\": \"dsa\",\n                \"allergens\": \"dsa\"\n            }\n        ],\n        \"qr_code\": \"\",\n        \"shortUrl\": \"test5\"\n    },\n    \"admin\": {\n        \"email\": \"test6@test.com\",\n        \"password\": \"test\"\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{BASE_URL}}/admin/v1/auth/register",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"admin",
+												"v1",
+												"auth",
+												"register"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Refresh Token",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"var data = pm.response.json();",
+													"pm.collectionVariables.set(\"ADMIN_AUTH_TOKEN\", data.token);",
+													"pm.collectionVariables.set(\"ADMIN_REFRESH_TOKEN\", data.refreshToken);"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "apikey",
+											"apikey": [
+												{
+													"key": "value",
+													"value": "abc",
+													"type": "string"
+												},
+												{
+													"key": "key",
+													"value": "authorization",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept-Language",
+												"value": "en",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"refreshToken\": \"61178d18-09c5-400d-8cc9-446ecbb0bc8d\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{BASE_URL}}/admin/v1/auth/refresh-token",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"admin",
+												"v1",
+												"auth",
+												"refresh-token"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "categories",
+							"item": [
+								{
+									"name": "Get all",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{ADMIN_AUTH_TOKEN}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept-Language",
+												"value": "ro",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{BASE_URL}}/admin/v1/restaurants/:restaurantId/categories",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"admin",
+												"v1",
+												"restaurants",
+												":restaurantId",
+												"categories"
+											],
+											"variable": [
+												{
+													"key": "restaurantId",
+													"value": "3",
+													"type": "string"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get one",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{ADMIN_AUTH_TOKEN}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept-Language",
+												"value": "en",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{BASE_URL}}/admin/v1/restaurants/:restaurantId/categories/:categoryId",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"admin",
+												"v1",
+												"restaurants",
+												":restaurantId",
+												"categories",
+												":categoryId"
+											],
+											"variable": [
+												{
+													"key": "restaurantId",
+													"value": "3",
+													"type": "string"
+												},
+												{
+													"key": "categoryId",
+													"value": "1",
+													"type": "string"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Create",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{ADMIN_AUTH_TOKEN}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept-Language",
+												"type": "text",
+												"value": "en"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"image\": \"https://image.com/dsada.jpg\",\n    \"category_i18ns\": [\n        {\n            \"name\": \"Burgers\",\n            \"lang_code\": \"en\"\n        },\n        {\n            \"name\": \"Burgeri\",\n            \"lang_code\": \"ro\"\n        }\n    ]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{BASE_URL}}/admin/v1/restaurants/:restaurantId/categories",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"admin",
+												"v1",
+												"restaurants",
+												":restaurantId",
+												"categories"
+											],
+											"variable": [
+												{
+													"key": "restaurantId",
+													"value": "3",
+													"type": "string"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Update",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{ADMIN_AUTH_TOKEN}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept-Language",
+												"type": "text",
+												"value": "en"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n   \n    \"image\": \"dsadads\",\n    \"category_i18ns\": [\n        {\n            \"id\": 1,\n            \"name\": \"Burgers update\",\n            \"lang_code\": \"en\",\n            \"categoryId\": 1,\n            \"updatedAt\": \"2020-11-17T20:21:48.741Z\",\n            \"createdAt\": \"2020-11-17T20:21:48.741Z\"\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Burgeri update\",\n            \"lang_code\": \"ro\",\n            \"categoryId\": 1,\n            \"updatedAt\": \"2020-11-17T20:21:48.741Z\",\n            \"createdAt\": \"2020-11-17T20:21:48.741Z\"\n        }\n    ]\n    \n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{BASE_URL}}/admin/v1/restaurants/:restaurantId/categories/:categoryId",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"admin",
+												"v1",
+												"restaurants",
+												":restaurantId",
+												"categories",
+												":categoryId"
+											],
+											"variable": [
+												{
+													"key": "restaurantId",
+													"value": "3",
+													"type": "string"
+												},
+												{
+													"key": "categoryId",
+													"value": "1",
+													"type": "string"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{ADMIN_AUTH_TOKEN}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept-Language",
+												"type": "text",
+												"value": "en"
+											}
+										],
+										"url": {
+											"raw": "{{BASE_URL}}/admin/v1/restaurants/:restaurantId/categories/:categoryId",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"admin",
+												"v1",
+												"restaurants",
+												":restaurantId",
+												"categories",
+												":categoryId"
+											],
+											"variable": [
+												{
+													"key": "restaurantId",
+													"value": "3",
+													"type": "string"
+												},
+												{
+													"key": "categoryId",
+													"value": "2",
+													"type": "string"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "restaurants",
+							"item": [
+								{
+									"name": "Get one",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{ADMIN_AUTH_TOKEN}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept-Language",
+												"value": "en",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{BASE_URL}}/admin/v1/restaurants/:restaurantId",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"admin",
+												"v1",
+												"restaurants",
+												":restaurantId"
+											],
+											"variable": [
+												{
+													"key": "restaurantId",
+													"value": "3",
+													"type": "string"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Update",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{ADMIN_AUTH_TOKEN}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept-Language",
+												"type": "text",
+												"value": "en"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \n    \"shortUrl\": \"test\",\n    \"currency\": \"ron1\",\n    \"email\": \"mba@cmevo.com\",\n    \"phone\": \"+40727900500\",\n    \"address\": \"bucuresti\",\n    \"instagramUrl\": \"https://www.instagram.com/cmevodigital/\",\n    \"facebookUrl\": \"https://www.facebook.com/cmevodigital\",\n    \"youtubeUrl\": \"https://youtube.com/channel/UCLx6l3AycGEPErb8ykLabyQ\",\n    \"logo\": \"https://cmevo.com/ro/\",\n    \"languages\": [\n        \"ro\",\n        \"en\"\n    ],\n    \"restaurant_i18ns\": [\n        {\n            \"id\": 2,\n            \"name\": \"Restaurant Test\",\n            \"description\": \"Established in 2008 in the heart of Bucharest, and being one of the most iconic places in Bucharest, Cmevo is a perfect combination of superbe architecture, modern design and amazing-affordable food.\",\n            \"allergens\": \"dasda,da,d,asda,sda,d,\",\n            \"lang_code\": \"en\"\n        },\n        {\n            \"id\": 1,\n            \"name\": \"Restaurant Test\",\n            \"description\": \"Înființat în 2008 în inima Bucureștiului și fiind unul dintre cele mai iconice locuri din București, Cmevo este o combinație perfectă de arhitectură superbe, design modern și mâncare uimitoare la prețuri accesibile.\",\n            \"allergens\": \"dsada,dsa,dsa,d,asa,\",\n            \"lang_code\": \"ro\"\n        }\n    ]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{BASE_URL}}/admin/v1/restaurants/:restaurantId",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"admin",
+												"v1",
+												"restaurants",
+												":restaurantId"
+											],
+											"variable": [
+												{
+													"key": "restaurantId",
+													"value": "3",
+													"type": "string"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get languages",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{ADMIN_AUTH_TOKEN}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept-Language",
+												"type": "text",
+												"value": "en"
+											}
+										],
+										"url": {
+											"raw": "{{BASE_URL}}/admin/v1/restaurants/:restaurantId/languages",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"admin",
+												"v1",
+												"restaurants",
+												":restaurantId",
+												"languages"
+											],
+											"variable": [
+												{
+													"key": "restaurantId",
+													"value": "3",
+													"type": "string"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Create",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{ADMIN_AUTH_TOKEN}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept-Language",
+												"type": "text",
+												"value": "en"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \n    \"shortUrl\": \"cmevo1\",\n    \"currency\": \"ron1\",\n    \"email\": \"mba@cmevo.com\",\n    \"phone\": \"+40727900500\",\n    \"address\": \"bucuresti\",\n    \"instagramUrl\": \"https://www.instagram.com/cmevodigital/\",\n    \"facebookUrl\": \"https://www.facebook.com/cmevodigital\",\n    \"youtubeUrl\": \"https://youtube.com/channel/UCLx6l3AycGEPErb8ykLabyQ\",\n    \"logo\": \"https://cmevo.com/ro/\",\n    \"languages\": [\n        \"ro\",\n        \"en\"\n    ],\n    \"restaurant_i18ns\": [\n        {\n            \n            \"name\": \"Restaurant Test\",\n            \"description\": \"Established in 2008 in the heart of Bucharest, and being one of the most iconic places in Bucharest, Cmevo is a perfect combination of superbe architecture, modern design and amazing-affordable food.\",\n            \"allergens\": \"dasda,da,d,asda,sda,d,\",\n            \"lang_code\": \"en\"\n        },\n        {\n           \n            \"name\": \"Restaurant Test\",\n            \"description\": \"Înființat în 2008 în inima Bucureștiului și fiind unul dintre cele mai iconice locuri din București, Cmevo este o combinație perfectă de arhitectură superbe, design modern și mâncare uimitoare la prețuri accesibile.\",\n            \"allergens\": \"dsada,dsa,dsa,d,asa,\",\n            \"lang_code\": \"ro\"\n        }\n    ]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{BASE_URL}}/admin/v1/restaurants",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"admin",
+												"v1",
+												"restaurants"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "subscriptions",
+							"item": [
+								{
+									"name": "plans",
+									"item": [
+										{
+											"name": "Get one",
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "{{ADMIN_AUTH_TOKEN}}",
+															"type": "string"
+														}
+													]
+												},
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept-Language",
+														"value": "en",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{BASE_URL}}/admin/v1/restaurants/:restaurantId/subscriptions/plans/:planId",
+													"host": [
+														"{{BASE_URL}}"
+													],
+													"path": [
+														"admin",
+														"v1",
+														"restaurants",
+														":restaurantId",
+														"subscriptions",
+														"plans",
+														":planId"
+													],
+													"variable": [
+														{
+															"key": "restaurantId",
+															"value": "4",
+															"type": "string"
+														},
+														{
+															"key": "planId",
+															"value": "1"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "Get all",
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "{{ADMIN_AUTH_TOKEN}}",
+															"type": "string"
+														}
+													]
+												},
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept-Language",
+														"value": "ro",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{BASE_URL}}/admin/v1/restaurants/:restaurantId/subscriptions/plans",
+													"host": [
+														"{{BASE_URL}}"
+													],
+													"path": [
+														"admin",
+														"v1",
+														"restaurants",
+														":restaurantId",
+														"subscriptions",
+														"plans"
+													],
+													"variable": [
+														{
+															"key": "restaurantId",
+															"value": "4",
+															"type": "string"
+														}
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								},
+								{
+									"name": "Create Subscription",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{ADMIN_AUTH_TOKEN}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept-Language",
+												"type": "text",
+												"value": "en"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"referenceId\": \"price_1L889cEOKZqFShVgoUdNlf28\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{BASE_URL}}/admin/v1/restaurants/:restaurantId/subscriptions",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"admin",
+												"v1",
+												"restaurants",
+												":restaurantId",
+												"subscriptions"
+											],
+											"variable": [
+												{
+													"key": "restaurantId",
+													"value": "4",
+													"type": "string"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Cancel Subscription",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{ADMIN_AUTH_TOKEN}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept-Language",
+												"type": "text",
+												"value": "en"
+											}
+										],
+										"url": {
+											"raw": "{{BASE_URL}}/admin/v1/restaurants/:restaurantId/subscriptions/:subscriptionId",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"admin",
+												"v1",
+												"restaurants",
+												":restaurantId",
+												"subscriptions",
+												":subscriptionId"
+											],
+											"variable": [
+												{
+													"key": "restaurantId",
+													"value": "4",
+													"type": "string"
+												},
+												{
+													"key": "subscriptionId",
+													"value": "27"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get my active subscription",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{ADMIN_AUTH_TOKEN}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept-Language",
+												"type": "text",
+												"value": "en"
+											}
+										],
+										"url": {
+											"raw": "{{BASE_URL}}/admin/v1/restaurants/:restaurantId/subscriptions/me",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"admin",
+												"v1",
+												"restaurants",
+												":restaurantId",
+												"subscriptions",
+												"me"
+											],
+											"variable": [
+												{
+													"key": "restaurantId",
+													"value": "4",
+													"type": "string"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "products",
+							"item": [
+								{
+									"name": "Get all",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{ADMIN_AUTH_TOKEN}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept-Language",
+												"value": "ro",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{BASE_URL}}/admin/v1/restaurants/:restaurantId/products",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"admin",
+												"v1",
+												"restaurants",
+												":restaurantId",
+												"products"
+											],
+											"variable": [
+												{
+													"key": "restaurantId",
+													"value": "1",
+													"type": "string"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get one",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{ADMIN_AUTH_TOKEN}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept-Language",
+												"value": "en",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{BASE_URL}}/admin/v1/restaurants/:restaurantId/products/:productId",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"admin",
+												"v1",
+												"restaurants",
+												":restaurantId",
+												"products",
+												":productId"
+											],
+											"variable": [
+												{
+													"key": "restaurantId",
+													"value": "1",
+													"type": "string"
+												},
+												{
+													"key": "productId",
+													"value": "9",
+													"type": "string"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Create",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{ADMIN_AUTH_TOKEN}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept-Language",
+												"type": "text",
+												"value": "en"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"weight\": 22.3,\n    \"price\": 5,\n    \"image\": \"https://images.immediate.co.uk/production/volatile/sites/2/2017/06/Butchies-2.jpg\",\n    \"categoryId\": 1,\n    \"product_i18ns\": [\n        {\n            \"name\": \"Chicken Burger\",\n            \"description\": \"lorem ipsum\",\n            \"lang_code\": \"en\"\n        },\n        {\n            \"name\": \"Chicken Burger\",\n            \"description\": \"lorem ipsum\",\n            \"lang_code\": \"ro\"\n        }\n    ]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{BASE_URL}}/admin/v1/restaurants/:restaurantId/products",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"admin",
+												"v1",
+												"restaurants",
+												":restaurantId",
+												"products"
+											],
+											"variable": [
+												{
+													"key": "restaurantId",
+													"value": "3",
+													"type": "string"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Update",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{ADMIN_AUTH_TOKEN}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept-Language",
+												"type": "text",
+												"value": "en"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \n    \"weight\": \"22.4\",\n    \"price\": 5,\n    \n    \"categoryId\": 1,\n    \"product_i18ns\": [\n        {\n            \"id\": 1,\n            \"name\": \"Chicken Burger 1\",\n            \"description\": \"lorem ipsum\",\n            \"lang_code\": \"en\",\n            \"productId\": 1,\n            \"updatedAt\": \"2021-09-11T17:32:50.262Z\",\n            \"createdAt\": \"2021-09-11T17:32:50.262Z\",\n            \"allergens\": \"test\"\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Chicken Burger\",\n            \"description\": \"lorem ipsum\",\n            \"lang_code\": \"ro\",\n            \"productId\": 1,\n            \"updatedAt\": \"2021-09-11T17:32:50.262Z\",\n            \"createdAt\": \"2021-09-11T17:32:50.262Z\",\n             \"allergens\": \"test\"\n           \n        }\n    ]\n   \n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{BASE_URL}}/admin/v1/restaurants/:restaurantId/products/:productId",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"admin",
+												"v1",
+												"restaurants",
+												":restaurantId",
+												"products",
+												":productId"
+											],
+											"variable": [
+												{
+													"key": "restaurantId",
+													"value": "3",
+													"type": "string"
+												},
+												{
+													"key": "productId",
+													"value": "1",
+													"type": "string"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{ADMIN_AUTH_TOKEN}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept-Language",
+												"type": "text",
+												"value": "en"
+											}
+										],
+										"url": {
+											"raw": "{{BASE_URL}}/admin/v1/restaurants/:restaurantId/products/:productId",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"admin",
+												"v1",
+												"restaurants",
+												":restaurantId",
+												"products",
+												":productId"
+											],
+											"variable": [
+												{
+													"key": "restaurantId",
+													"value": "1",
+													"type": "string"
+												},
+												{
+													"key": "productId",
+													"value": "9",
+													"type": "string"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "payments",
+							"item": [
+								{
+									"name": "Get all",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{ADMIN_AUTH_TOKEN}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept-Language",
+												"value": "ro",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{BASE_URL}}/admin/v1/restaurants/:restaurantId/payments/me",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"admin",
+												"v1",
+												"restaurants",
+												":restaurantId",
+												"payments",
+												"me"
+											],
+											"variable": [
+												{
+													"key": "restaurantId",
+													"value": "4",
+													"type": "string"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Export invoice",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{ADMIN_AUTH_TOKEN}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept-Language",
+												"value": "ro",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{BASE_URL}}/admin/v1/restaurants/:restaurantId/payments/:paymentId/export-invoice",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"admin",
+												"v1",
+												"restaurants",
+												":restaurantId",
+												"payments",
+												":paymentId",
+												"export-invoice"
+											],
+											"variable": [
+												{
+													"key": "restaurantId",
+													"value": "4",
+													"type": "string"
+												},
+												{
+													"key": "paymentId",
+													"value": "8"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "webhooks",
+							"item": [
+								{
+									"name": "Stripe Webhook",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{ADMIN_AUTH_TOKEN}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept-Language",
+												"value": "ro",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{BASE_URL}}/webhooks/stripe",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"webhooks",
+												"stripe"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "countries",
+							"item": [
+								{
+									"name": "Get all",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept-Language",
+												"value": "ro",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{BASE_URL}}/admin/v1/countries",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"admin",
+												"v1",
+												"countries"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "ADMIN_AUTH_TOKEN",
+			"value": ""
+		},
+		{
+			"key": "ADMIN_REFRESH_TOKEN",
+			"value": ""
+		},
+		{
+			"key": "BASE_URL",
+			"value": ""
+		}
+	]
+}

@@ -1,0 +1,28 @@
+# pull the Node.js Docker image
+FROM node:lts-alpine
+
+# install simple http server for serving static content
+RUN npm install -g http-server
+
+# create the directory inside the container
+WORKDIR /usr/src/admin
+
+# copy essential files to install dependencies
+COPY ./admin/package*.json .
+COPY ./admin/babel.config.js .
+COPY ./admin/vue.config.js .
+
+# run npm install in our local machine
+RUN npm install
+
+# copy the generated modules and all other files to the container
+COPY ./admin/src/ ./src
+
+# build app for production with minification
+RUN npm run build
+
+# our app is running on port 8002 within the container, so need to expose it
+EXPOSE 8002
+
+# the command that starts our app
+CMD [ "http-server", "dist", "--port","8002" ]
