@@ -34,10 +34,10 @@
 </template>
 
 <script setup>
-import LocaleSwitch from "@/components/LocaleSwitch.vue";
-import { computed, onMounted, reactive } from "vue";
-import { useRoute, useRouter } from "vue-router";
-import axios from "axios";
+import LocaleSwitch from '@/components/LocaleSwitch.vue';
+import { computed, onMounted, reactive } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
+import axios from 'axios';
 
 const router = useRouter();
 const route = useRoute();
@@ -45,8 +45,8 @@ const route = useRoute();
 const state = reactive({
   restaurant: {
     id: 0,
-    logo: "",
-    shortUrl: "",
+    logo: '',
+    shortUrl: '',
     languages: [],
   },
 });
@@ -58,10 +58,10 @@ onMounted(async () => {
   state.restaurant = data;
 });
 
-const isHomePage = computed(() => route.name === "Home");
+const isHomePage = computed(() => route.name === 'Home');
 
 function goBack() {
-  return window.history.length > 1 ? router.go(-1) : router.push("/");
+  return window.history.length > 1 ? router.go(-1) : router.push('/');
 }
 </script>
 

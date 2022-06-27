@@ -17,7 +17,7 @@
         v-for="element in state.elements"
         :key="element.id"
       >
-        <div @click="goto(element.id)">
+        <div @click="goto(element.id)" v-on:keypress="goto(element.id)">
           <SquareGridElement v-bind="element" />
         </div>
       </v-col>
@@ -26,10 +26,10 @@
 </template>
 
 <script setup>
-import SquareGridElement from "@/components/SquareGridElement.vue";
-import axios from "axios";
-import { onMounted, reactive } from "vue";
-import { useRoute, useRouter } from "vue-router";
+import axios from 'axios';
+import { onMounted, reactive } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
+import SquareGridElement from '@/components/SquareGridElement.vue';
 
 const route = useRoute();
 const router = useRouter();
@@ -49,7 +49,7 @@ onMounted(async () => {
 
 function goto(categoryId) {
   router.push({
-    name: "Products",
+    name: 'Products',
     params: { restaurantUrl, categoryId },
   });
 }

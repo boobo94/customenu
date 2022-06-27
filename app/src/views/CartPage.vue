@@ -33,10 +33,10 @@
 </template>
 
 <script setup>
-import ProductInList from "@/components/ProductInList.vue";
-import { computed } from "vue";
-import { useI18n } from "vue-i18n";
-import { useCartStore } from "@/stores/cart";
+import ProductInList from '@/components/ProductInList.vue';
+import { computed } from 'vue';
+import { useI18n } from 'vue-i18n';
+import { useCartStore } from '@/stores/cart';
 
 const { t } = useI18n();
 
@@ -44,10 +44,8 @@ const cartStore = useCartStore();
 
 const isCartEmpty = computed(() => cartStore.products.length === 0);
 
-const totalPrice = computed(() =>
-  cartStore.products.reduce(
-    (acc, product) => acc + product.quantity * product.price,
-    0
-  )
-);
+const totalPrice = computed(() => cartStore.products.reduce(
+  (acc, product) => acc + product.quantity * product.price,
+  0,
+));
 </script>

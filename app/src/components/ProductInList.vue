@@ -58,9 +58,9 @@
 </template>
 
 <script setup>
-import { useCartStore } from "@/stores/cart";
-import { computed, defineProps } from "vue";
-import { useRoute, useRouter } from "vue-router";
+import { useCartStore } from '@/stores/cart';
+import { computed, defineProps } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
 
 const props = defineProps({
   id: Number,
@@ -76,7 +76,7 @@ const props = defineProps({
 const router = useRouter();
 const route = useRoute();
 
-const isCartPage = computed(() => route.name === "Cart");
+const isCartPage = computed(() => route.name === 'Cart');
 
 const cartStoe = useCartStore();
 
@@ -95,7 +95,7 @@ function gotoProduct() {
   const { restaurantUrl, categoryId } = route.params;
 
   router.push({
-    name: "Product",
+    name: 'Product',
     params: {
       restaurantUrl,
       categoryId,

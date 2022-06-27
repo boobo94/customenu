@@ -9,8 +9,8 @@
 </template>
 
 <script setup>
-import NavigationBar from "@/components/NavigationBar.vue";
-import FooterBar from "@/components/FooterBar.vue";
+import NavigationBar from '@/components/NavigationBar.vue';
+import FooterBar from '@/components/FooterBar.vue';
 </script>
 
 <style>

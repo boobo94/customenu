@@ -47,10 +47,10 @@
 </template>
 
 <script setup>
-import {  onMounted, reactive } from "vue";
-import { useRoute } from "vue-router";
-import axios from "axios";
-import { useI18n } from "vue-i18n";
+import { onMounted, reactive } from 'vue';
+import { useRoute } from 'vue-router';
+import axios from 'axios';
+import { useI18n } from 'vue-i18n';
 
 const route = useRoute();
 const { t } = useI18n();
@@ -64,7 +64,7 @@ onMounted(async () => {
   const { restaurantUrl, categoryId, productId } = route.params;
 
   const { data } = await axios.get(
-    `/web/v1/${restaurantUrl}/categories/${categoryId}/products/${productId}`
+    `/web/v1/${restaurantUrl}/categories/${categoryId}/products/${productId}`,
   );
 
   state.isLoading = false;

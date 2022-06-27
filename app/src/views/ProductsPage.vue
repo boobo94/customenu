@@ -17,10 +17,10 @@
 </template>
 
 <script setup>
-import ProductInList from "@/components/ProductInList.vue";
-import {  onMounted, reactive } from "vue";
-import { useRoute } from "vue-router";
-import axios from "axios";
+import ProductInList from '@/components/ProductInList.vue';
+import { onMounted, reactive } from 'vue';
+import { useRoute } from 'vue-router';
+import axios from 'axios';
 
 const route = useRoute();
 
@@ -32,7 +32,7 @@ const state = reactive({
 onMounted(async () => {
   const { restaurantUrl, categoryId } = route.params;
   const { data } = await axios.get(
-    `/web/v1/${restaurantUrl}/categories/${categoryId}/products`
+    `/web/v1/${restaurantUrl}/categories/${categoryId}/products`,
   );
 
   state.isLoading = false;

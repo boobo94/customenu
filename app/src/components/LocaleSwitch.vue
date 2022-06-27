@@ -12,10 +12,12 @@
 </template>
 
 <script setup>
-import { onMounted, defineProps, watch, reactive } from "vue";
-import { useI18n } from "vue-i18n";
-import axios from "axios";
-import { useRouter } from "vue-router";
+import {
+  onMounted, defineProps, watch, reactive,
+} from 'vue';
+import { useI18n } from 'vue-i18n';
+import axios from 'axios';
+import { useRouter } from 'vue-router';
 
 const router = useRouter();
 const { locale } = useI18n();
@@ -28,22 +30,14 @@ const state = reactive({
   languages: props.languagesProp,
 });
 
-onMounted(() => {
-  setLanguage(state.languages);
-});
-
-// watch language changes from properties of components
-watch(
-  () => props.languagesProp,
-  (languages) => {
-    state.languages = languages;
-
-    setLanguage(languages);
-  }
-);
+function changeLanguage(value) {
+  axios.defaults.headers['accept-language'] = value;
+  localStorage.setItem('language', value);
+  router.go();
+}
 
 function setLanguage(languages) {
-  if (!localStorage.getItem("language") && languages.length) {
+  if (!localStorage.getItem('language') && languages.length) {
     // detect the language of browser
     const browserLanguage = (
       navigator.language || navigator.userLanguage
@@ -60,11 +54,20 @@ function setLanguage(languages) {
   }
 }
 
-function changeLanguage(value) {
-  axios.defaults.headers["accept-language"] = value;
-  localStorage.setItem("language", value);
-  router.go();
-}
+onMounted(() => {
+  setLanguage(state.languages);
+});
+
+// watch language changes from properties of components
+watch(
+  () => props.languagesProp,
+  (languages) => {
+    state.languages = languages;
+
+    setLanguage(languages);
+  },
+);
+
 </script>
 
 <style scoped>

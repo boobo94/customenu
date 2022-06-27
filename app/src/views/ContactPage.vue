@@ -68,27 +68,27 @@
 </template>
 
 <script setup>
-import axios from "axios";
-import { onMounted, reactive } from "vue";
-import { useRoute} from 'vue-router'
+import axios from 'axios';
+import { onMounted, reactive } from 'vue';
+import { useRoute } from 'vue-router';
 
-const route = useRoute()
+const route = useRoute();
 
 const state = reactive({
   isLoading: true,
   restaurant: {
     id: 0,
-    shortUrl: "",
-    currency: "",
-    email: "",
-    phone: "",
-    address: "",
-    instagramUrl: "",
-    facebookUrl: "",
-    youtubeUrl: "",
-    name: "",
-    description: "",
-    logo: "",
+    shortUrl: '',
+    currency: '',
+    email: '',
+    phone: '',
+    address: '',
+    instagramUrl: '',
+    facebookUrl: '',
+    youtubeUrl: '',
+    name: '',
+    description: '',
+    logo: '',
   },
 });
 
