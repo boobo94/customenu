@@ -19,9 +19,15 @@ function loadLocaleMessages() {
   return messages
 }
 
+// set the default language
+if(!localStorage.getItem('language')) {
+  localStorage.setItem("language", 'en');
+}
+
 export default createI18n({
   legacy: false,
-  locale: process.env.VUE_APP_I18N_LOCALE || 'en',
-  fallbackLocale: process.env.VUE_APP_I18N_FALLBACK_LOCALE || 'en',
-  messages: loadLocaleMessages()
+  locale: localStorage.getItem('language') || 'en',
+  fallbackLocale: localStorage.getItem('language') || 'en',
+  messages: loadLocaleMessages(),
+  globalInjection: true,
 })

@@ -1,3 +1,8 @@
 {
-  "message": "hello i18n !!"
+  "footer-logo": "Customenu",
+  "ALLERGENS_TITLE": "Allergens",
+  "CART_TOTAL": "Total",
+  "CART_DELETE_ALL": "Clear the cart",
+  "CART_EMPTY_MESSAGE": "The cart is empty.",
+  "QUANTITY_LABEL": "pic"
 }

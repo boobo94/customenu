@@ -11,14 +11,13 @@
   </v-card>
 </template>
 
-<script>
-export default {
-  name: 'SquareGridElement',
-  props: {
-    name: String,
-    image: String,
-  },
-};
+<script setup>
+import { defineProps } from "vue";
+
+defineProps({
+  name: String,
+  image: String,
+});
 </script>
 
 <style scoped>
