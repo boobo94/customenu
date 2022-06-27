@@ -1,64 +1,67 @@
-import Vue from 'vue';
-import VueRouter from 'vue-router';
+import { createRouter, createWebHistory } from 'vue-router'
 
-import About from '../views/About.vue';
-import Cart from '../views/Cart.vue';
-import Contact from '../views/Contact.vue';
-import RestaurantView from '../views/RestaurantView.vue';
-import Categories from '../views/Categories.vue';
-import ProductView from '../views/ProductView.vue';
-import Products from '../views/Products.vue';
-import Product from '../views/Product.vue';
-
-Vue.use(VueRouter);
+import RouterView from '@/components/RouterView.vue';
+import CategoriesPage from '@/views/CategoriesPage.vue';
+import ProductsPage from '@/views/ProductsPage.vue';
+import ProductPage from '@/views/ProductPage.vue';
+import CartPage from '@/views/CartPage.vue';
+import ContactPage from '@/views/ContactPage.vue';
 
 const routes = [
-  {
-    path: '/about',
-    name: 'About',
-    component: About,
-  },
+
   {
     path: '/:restaurantUrl',
-    component: RestaurantView,
+    component: RouterView,
+    name: "Restaurant Router",
     children: [
       {
         path: '',
         name: 'Home',
-        component: Categories,
+        component: CategoriesPage,
       },
 
       {
         path: ':categoryId/products',
-        component: ProductView,
+        component: RouterView,
         children: [
           {
             path: '',
             name: 'Products',
-            component: Products,
+            component: ProductsPage,
           },
           {
             path: ':productId',
             name: 'Product',
-            component: Product,
+            component: ProductPage,
           },
         ],
       },
       {
         path: 'contact',
         name: 'Contact',
-        component: Contact,
+        component: ContactPage,
       },
       {
         path: 'cart',
         name: 'Cart',
-        component: Cart,
+        component: CartPage,
       },
     ],
   },
-];
 
-export default new VueRouter({
-  mode: 'history',
-  routes,
-});
+  // {
+  //   path: '/about',
+  //   name: 'About',
+  // route level code-splitting
+  // this generates a separate chunk (about.[hash].js) for this route
+  // which is lazy-loaded when the route is visited.
+  //   component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+  // }
+]
+
+const router = createRouter({
+  history: createWebHistory(process.env.BASE_URL),
+  routes
+})
+
+export default router
