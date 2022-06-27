@@ -49,7 +49,7 @@
         absolute
         bottom
         right
-        @click="removeFromCart"
+        @click="cartStoe.deleteProduct(id)"
       >
         <v-icon>mdi-minus</v-icon>
       </v-btn>
@@ -57,55 +57,52 @@
   </v-card>
 </template>
 
-<script>
-export default {
-  name: 'ProductInList',
-  props: {
-    id: Number,
-    name: String,
-    image: String,
-    description: String,
-    price: Number,
-    weight: Number,
-    quantity: Number,
-    cookingTime: Number,
-  },
-  computed: {
-    isCartPage() {
-      return this.$router.currentRoute.name === 'Cart';
-    },
-  },
+<script setup>
+import { useCartStore } from "@/stores/cart";
+import { computed, defineProps } from "vue";
+import { useRoute, useRouter } from "vue-router";
 
-  methods: {
-    addToCart() {
-      this.$store.dispatch('cart/add', {
-        id: this.id,
-        name: this.name,
-        image: this.image,
-        description: this.description,
-        price: this.price,
-        weight: this.weight,
-      });
-    },
-    removeFromCart() {
-      this.$store.dispatch('cart/delete', this.id);
-      // this.elements = this.$store.state.cart.products;
-    },
+const props = defineProps({
+  id: Number,
+  name: String,
+  image: String,
+  description: String,
+  price: Number,
+  weight: String,
+  quantity: Number,
+  cookingTime: Number,
+});
 
-    gotoProduct() {
-      const { restaurantUrl, categoryId } = this.$route.params;
-      const productId = this.id;
-      this.$router.push({
-        name: 'Product',
-        params: {
-          restaurantUrl,
-          categoryId,
-          productId,
-        },
-      });
+const router = useRouter();
+const route = useRoute();
+
+const isCartPage = computed(() => route.name === "Cart");
+
+const cartStoe = useCartStore();
+
+function addToCart() {
+  cartStoe.addProduct({
+    id: props.id,
+    name: props.name,
+    image: props.image,
+    description: props.description,
+    price: props.price,
+    weight: props.weight,
+  });
+}
+
+function gotoProduct() {
+  const { restaurantUrl, categoryId } = route.params;
+
+  router.push({
+    name: "Product",
+    params: {
+      restaurantUrl,
+      categoryId,
+      productId: props.id,
     },
-  },
-};
+  });
+}
 </script>
 
 <style scoped>
