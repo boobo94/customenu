@@ -3,7 +3,6 @@ import { createRouter, createWebHistory } from 'vue-router';
 import RouterView from '@/components/RouterView.vue';
 import CategoriesPage from '@/views/CategoriesPage.vue';
 import ProductsPage from '@/views/ProductsPage.vue';
-import ProductPage from '@/views/ProductPage.vue';
 import CartPage from '@/views/CartPage.vue';
 import ContactPage from '@/views/ContactPage.vue';
 
@@ -28,11 +27,6 @@ const routes = [
             path: '',
             name: 'Products',
             component: ProductsPage,
-          },
-          {
-            path: ':productId',
-            name: 'Product',
-            component: ProductPage,
           },
         ],
       },
