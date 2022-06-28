@@ -34,10 +34,10 @@
 </template>
 
 <script setup>
-import LocaleSwitch from '@/components/LocaleSwitch.vue';
+import axios from 'axios';
 import { computed, onMounted, reactive } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-import axios from 'axios';
+import LocaleSwitch from '@/components/LocaleSwitch.vue';
 
 const router = useRouter();
 const route = useRoute();

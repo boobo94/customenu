@@ -11,7 +11,7 @@ const customenuTheme = {
   colors: {
     background: '#FFFFFF',
     surface: '#FFFFFF',
-    primary: '#ffbb66',
+    primary: '#F43E40',
     'primary-darken-1': '#3700B3',
     secondary: '#ffda99',
     'secondary-darken-1': '#018786',

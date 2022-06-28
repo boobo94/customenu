@@ -4,16 +4,18 @@
     <v-main>
       <router-view />
     </v-main>
-    <FooterBar />
+    <BottomBar />
   </v-app>
 </template>
 
 <script setup>
 import NavigationBar from '@/components/NavigationBar.vue';
-import FooterBar from '@/components/FooterBar.vue';
+import BottomBar from './components/BottomBar.vue';
 </script>
 
-<style>
+<style lang="scss">
+@import "@/styles/colors.scss";
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -33,5 +35,9 @@ nav a {
 
 nav a.router-link-exact-active {
   color: #42b983;
+}
+
+.v-main {
+  background-color: $background-color;
 }
 </style>
