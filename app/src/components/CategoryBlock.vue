@@ -18,6 +18,7 @@ defineProps({
 </script>
 
 <style scoped lang="scss">
+@import '@/styles/colors.scss';
 @import '@/styles/fonts.scss';
 
 .box-container {
@@ -39,6 +40,7 @@ defineProps({
   p {
     font-family: $popins-medium;
     font-size: 20px;
+    color: $font-color-dark;
     text-align: center;
     padding-bottom: 21px;
   }
