@@ -58,9 +58,9 @@
 </template>
 
 <script setup>
-import { useCartStore } from '@/stores/cart';
 import { computed, defineProps } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
+import { useCartStore } from '@/stores/cart';
 
 const props = defineProps({
   id: Number,

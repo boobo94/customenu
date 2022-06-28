@@ -33,10 +33,10 @@
 </template>
 
 <script setup>
-import ProductInList from '@/components/ProductInList.vue';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
-import { useCartStore } from '@/stores/cart';
+import ProductInList from '@/components/ProductInList.vue';
+import { useCartStore } from '@/stores/cart.js';
 
 const { t } = useI18n();
 

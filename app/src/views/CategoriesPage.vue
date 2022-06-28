@@ -1,12 +1,6 @@
 <template>
-  <v-container class="pb-15">
-    <v-row align="center" justify="center">
-      <v-progress-circular
-        v-if="state.isLoading"
-        indeterminate
-        color="primary"
-      ></v-progress-circular>
-    </v-row>
+  <v-container>
+    <ProgressLoader :value="state.isLoading" />
 
     <v-row v-if="!state.isLoading">
       <v-col
@@ -14,11 +8,11 @@
         sm="6"
         md="3"
         lg="2"
-        v-for="element in state.elements"
-        :key="element.id"
+        v-for="cateogry in state.categories"
+        :key="cateogry.id"
       >
-        <div @click="goto(element.id)" v-on:keypress="goto(element.id)">
-          <SquareGridElement v-bind="element" />
+        <div @click="goto(cateogry.id)" v-on:keypress="goto(cateogry.id)">
+          <CategoryBlock v-bind="cateogry" />
         </div>
       </v-col>
     </v-row>
@@ -29,7 +23,8 @@
 import axios from 'axios';
 import { onMounted, reactive } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-import SquareGridElement from '@/components/SquareGridElement.vue';
+import CategoryBlock from '@/components/CategoryBlock.vue';
+import ProgressLoader from '@/components/ProgressLoader.vue';
 
 const route = useRoute();
 const router = useRouter();
@@ -37,14 +32,14 @@ const { restaurantUrl } = route.params;
 
 const state = reactive({
   isLoading: true,
-  elements: [],
+  categories: [],
 });
 
 onMounted(async () => {
   const { data } = await axios.get(`/web/v1/${restaurantUrl}/categories`);
 
   state.isLoading = false;
-  state.elements = data;
+  state.categories = data;
 });
 
 function goto(categoryId) {
@@ -54,3 +49,6 @@ function goto(categoryId) {
   });
 }
 </script>
+
+<style scoped lang="scss">
+</style>
