@@ -1,14 +1,8 @@
 <template>
   <v-container>
-    <v-row align="center" justify="center">
-      <v-progress-circular
-        v-if="state.isLoading"
-        indeterminate
-        color="primary"
-      ></v-progress-circular>
-    </v-row>
+    <ProgressLoader v-if="state.isLoading" />
 
-    <template v-if="!state.isLoading">
+    <template v-else>
       <v-row>
         <v-col>
           <h1>{{ state.restaurant.name }}</h1>
@@ -71,6 +65,7 @@
 import axios from 'axios';
 import { onMounted, reactive } from 'vue';
 import { useRoute } from 'vue-router';
+import ProgressLoader from '@/components/ProgressLoader.vue';
 
 const route = useRoute();
 

@@ -1,7 +1,6 @@
-<template>
+<template >
   <v-container>
     <v-progress-circular
-      v-if="value"
       class="screen-center"
       indeterminate
       color="primary"
@@ -15,10 +14,6 @@
 import { defineProps } from 'vue';
 
 defineProps({
-  value: {
-    type: Boolean,
-    default: false,
-  },
   message: {
     type: String,
   },

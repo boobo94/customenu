@@ -1,26 +1,22 @@
 <template>
-  <v-container class="pb-15">
-    <v-row align="center" justify="center">
-      <v-progress-circular
-        v-if="state.isLoading"
-        indeterminate
-        color="primary"
-      ></v-progress-circular>
-    </v-row>
+  <v-container>
+    <ProgressLoader v-if="state.isLoading" />
 
-    <v-row v-if="!state.isLoading">
+    <v-row v-else>
       <v-col cols="12" v-for="element in state.elements" :key="element.id">
         <ProductInList v-bind="element" />
       </v-col>
     </v-row>
+
   </v-container>
 </template>
 
 <script setup>
-import ProductInList from '@/components/ProductInList.vue';
+import axios from 'axios';
 import { onMounted, reactive } from 'vue';
 import { useRoute } from 'vue-router';
-import axios from 'axios';
+import ProductInList from '@/components/ProductInList.vue';
+import ProgressLoader from '@/components/ProgressLoader.vue';
 
 const route = useRoute();
 

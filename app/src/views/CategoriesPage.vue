@@ -1,8 +1,8 @@
 <template>
   <v-container>
-    <ProgressLoader :value="state.isLoading" />
+    <ProgressLoader v-if="state.isLoading" />
 
-    <v-row v-if="!state.isLoading">
+    <v-row v-else>
       <v-col
         cols="6"
         sm="6"
