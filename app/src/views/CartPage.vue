@@ -7,7 +7,7 @@
     </v-row>
     <v-row>
       <v-col cols="12" v-for="element in cartStore.products" :key="element.id">
-        <ProductInList v-bind="element" />
+        <ProductCard v-bind="element" />
       </v-col>
     </v-row>
     <v-row v-if="!isCartEmpty">
@@ -35,8 +35,8 @@
 <script setup>
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
-import ProductInList from '@/components/ProductInList.vue';
 import { useCartStore } from '@/stores/cart.js';
+import ProductCard from '@/components/ProductCard.vue';
 
 const { t } = useI18n();
 

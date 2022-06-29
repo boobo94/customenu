@@ -2,12 +2,13 @@
   <v-container>
     <ProgressLoader v-if="state.isLoading" />
 
-    <v-row v-else>
-      <v-col cols="12" v-for="element in state.elements" :key="element.id">
-        <ProductInList v-bind="element" />
-      </v-col>
-    </v-row>
-
+    <div v-else>
+      <ProductCard
+        v-for="element in state.elements"
+        :key="element.id"
+        v-bind="element"
+      />
+    </div>
   </v-container>
 </template>
 
@@ -15,8 +16,8 @@
 import axios from 'axios';
 import { onMounted, reactive } from 'vue';
 import { useRoute } from 'vue-router';
-import ProductInList from '@/components/ProductInList.vue';
 import ProgressLoader from '@/components/ProgressLoader.vue';
+import ProductCard from '@/components/ProductCard.vue';
 
 const route = useRoute();
 

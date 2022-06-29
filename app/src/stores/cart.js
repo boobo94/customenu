@@ -36,5 +36,10 @@ export const useCartStore = defineStore('cartStore', {
     reset() {
       this.products = [];
     },
+
+    getQuantityOfProduct(id) {
+      const product = this.products.find((element) => element.id === id);
+      return product?.quantity || 0;
+    },
   },
 });

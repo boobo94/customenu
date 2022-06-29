@@ -1,7 +1,14 @@
 <template>
   <div class="box-container">
     <div class="image-container">
-      <img :src="image || './images/image-placeholder.jpg'" :alt="name" loading="lazy" />
+         <v-img
+          :src="image || './images/image-placeholder.jpg'"
+          :alt="name"
+          loading="lazy"
+          :aspect-ratio="1 / 1"
+          cover
+          class="product-image-container"
+        />
     </div>
 
     <p>{{ name }}</p>
@@ -31,9 +38,10 @@ defineProps({
     padding: 14px 15px 7px 15px;
     height: 120px;
 
-    img {
+    .v-img {
       border-radius: 16px;
       width: 100%;
+      max-height: 100%;
     }
   }
 
