@@ -11,50 +11,50 @@
 
       <v-row>
         <v-col>
-          <h2>{{ state.restaurant.name }}</h2>
-          <p>{{ state.restaurant.description }}</p>
+          <h2>{{ restaurantStore.restaurant.name }}</h2>
+          <p>{{ restaurantStore.restaurant.description }}</p>
 
           <div class="text-center links">
             <a
-              v-if="state.restaurant.email"
-              :href="`mailto:${state.restaurant.email}`"
+              v-if="restaurantStore.restaurant.email"
+              :href="`mailto:${restaurantStore.restaurant.email}`"
               class="mx-2"
             >
               <v-icon large color="grey darken-2"> mdi-email </v-icon>
             </a>
             <a
-              v-if="state.restaurant.phone"
-              :href="`tel:${state.restaurant.phone}`"
+              v-if="restaurantStore.restaurant.phone"
+              :href="`tel:${restaurantStore.restaurant.phone}`"
               class="mx-2"
               ><v-icon large color="green darken-2"> mdi-phone </v-icon></a
             >
             <a
-              v-if="state.restaurant.address"
-              :href="`https://maps.google.com/?q=${state.restaurant.address}`"
+              v-if="restaurantStore.restaurant.address"
+              :href="`https://maps.google.com/?q=${restaurantStore.restaurant.address}`"
               class="mx-2"
               target="_blank"
             >
               <v-icon large color="yellow darken-2"> mdi-map </v-icon></a
             >
             <a
-              v-if="state.restaurant.instagramUrl"
-              :href="state.restaurant.instagramUrl"
+              v-if="restaurantStore.restaurant.instagramUrl"
+              :href="restaurantStore.restaurant.instagramUrl"
               class="mx-2"
               target="_blank"
             >
               <v-icon large color="pink darken-2"> mdi-instagram </v-icon></a
             >
             <a
-              v-if="state.restaurant.facebookUrl"
-              :href="state.restaurant.facebookUrl"
+              v-if="restaurantStore.restaurant.facebookUrl"
+              :href="restaurantStore.restaurant.facebookUrl"
               class="mx-2"
               target="_blank"
             >
               <v-icon large color="blue darken-2"> mdi-facebook </v-icon></a
             >
             <a
-              v-if="state.restaurant.youtubeUrl"
-              :href="state.restaurant.youtubeUrl"
+              v-if="restaurantStore.restaurant.youtubeUrl"
+              :href="restaurantStore.restaurant.youtubeUrl"
               class="mx-2"
               target="_blank"
             >
@@ -68,40 +68,21 @@
 </template>
 
 <script setup>
-import axios from 'axios';
 import { onMounted, reactive } from 'vue';
-import { useRoute } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import ProgressLoader from '@/components/ProgressLoader.vue';
+import { useRestaurantStore } from '@/stores/restaurant.js';
 
-const route = useRoute();
+const restaurantStore = useRestaurantStore();
 
 const { t } = useI18n();
 
 const state = reactive({
   isLoading: true,
-  restaurant: {
-    id: 0,
-    shortUrl: '',
-    currency: '',
-    email: '',
-    phone: '',
-    address: '',
-    instagramUrl: '',
-    facebookUrl: '',
-    youtubeUrl: '',
-    name: '',
-    description: '',
-    logo: '',
-  },
 });
 
 onMounted(async () => {
-  const { restaurantUrl } = route.params;
-  const { data } = await axios.get(`/web/v1/${restaurantUrl}`);
-
   state.isLoading = false;
-  state.restaurant = data;
 });
 </script>
 

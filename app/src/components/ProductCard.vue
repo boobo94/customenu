@@ -108,7 +108,7 @@ const props = defineProps({
   description: String,
   price: Number,
   weight: String,
-  quantity: String,
+  quantity: Number,
   cookingTime: Number,
   allergens: String,
 });
