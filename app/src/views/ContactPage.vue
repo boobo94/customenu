@@ -5,37 +5,53 @@
     <template v-else>
       <v-row class="header">
         <v-col cols="12">
-          <h1>{{t("ABOUT_TITLE_PAGE")}}</h1>
+          <h1>{{ t("ABOUT_TITLE_PAGE") }}</h1>
         </v-col>
       </v-row>
 
-      <v-row>
-        <v-col>
+      <v-row class="description">
+        <v-col cols="12">
           <h2>{{ restaurantStore.restaurant.name }}</h2>
-          <p>{{ restaurantStore.restaurant.description }}</p>
 
-          <div class="text-center links">
-            <a
-              v-if="restaurantStore.restaurant.email"
-              :href="`mailto:${restaurantStore.restaurant.email}`"
-              class="mx-2"
-            >
-              <v-icon large color="grey darken-2"> mdi-email </v-icon>
-            </a>
-            <a
-              v-if="restaurantStore.restaurant.phone"
-              :href="`tel:${restaurantStore.restaurant.phone}`"
-              class="mx-2"
-              ><v-icon large color="green darken-2"> mdi-phone </v-icon></a
-            >
+          <p>
+            {{ restaurantStore.restaurant.description }}
+          </p>
+
+          <h3>{{ t("CONTACT_LABEL") }}</h3>
+
+          <p>
             <a
               v-if="restaurantStore.restaurant.address"
               :href="`https://maps.google.com/?q=${restaurantStore.restaurant.address}`"
-              class="mx-2"
               target="_blank"
             >
-              <v-icon large color="yellow darken-2"> mdi-map </v-icon></a
+              {{ restaurantStore.restaurant.address }}
+            </a>
+          </p>
+
+          <p>
+            {{ t("PHONE_LABEL") }}:
+            <a
+              v-if="restaurantStore.restaurant.phone"
+              :href="`tel:${restaurantStore.restaurant.phone}`"
             >
+              {{ restaurantStore.restaurant.phone }}
+            </a>
+          </p>
+
+          <p>
+            email:
+            <a
+              v-if="restaurantStore.restaurant.email"
+              :href="`mailto:${restaurantStore.restaurant.email}`"
+            >
+              {{ restaurantStore.restaurant.email }}
+            </a>
+          </p>
+
+          <h3>{{ t("SOCIAL_MEDIA_LABEL") }}</h3>
+
+          <div class="text-center mt-2">
             <a
               v-if="restaurantStore.restaurant.instagramUrl"
               :href="restaurantStore.restaurant.instagramUrl"
@@ -87,12 +103,8 @@ onMounted(async () => {
 </script>
 
 <style scoped lang="scss">
-@import '@/styles/colors.scss';
-@import '@/styles/fonts.scss';
-
-.links {
-  margin-top: 2rem;
-}
+@import "@/styles/colors.scss";
+@import "@/styles/fonts.scss";
 
 .header {
   margin-top: 10px;
@@ -103,5 +115,24 @@ onMounted(async () => {
     font-size: 24px;
     color: $font-color-dark;
   }
+}
+
+h2 {
+  font-family: $popins-medium;
+  font-size: 24px;
+  color: $font-color-dark;
+}
+
+h3 {
+  font-family: $popins-medium;
+  font-size: 24px;
+  color: $font-color-dark;
+  margin-top: 25px;
+}
+
+.description {
+  font-family: $popins-regular;
+  font-size: 16px;
+  color: $font-color-dark;
 }
 </style>

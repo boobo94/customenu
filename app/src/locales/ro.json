@@ -8,6 +8,8 @@
   "PRODUCT_DESCRIPTION_TITLE": "Descriere",
   "ALLERGENS_DESCRIPTION_TITLE": "Alergeni",
   "ABOUT_TITLE_PAGE": "Despre restaurant",
-  "CART_TITLE_PAGE": "Coșul meu"
-
+  "CART_TITLE_PAGE": "Coșul meu",
+  "CONTACT_LABEL": "Contact",
+  "PHONE_LABEL": "Tel. comenzi și rezervări",
+  "SOCIAL_MEDIA_LABEL": "Dă-ne Like pe social media"
 }

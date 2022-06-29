@@ -8,6 +8,8 @@
   "PRODUCT_DESCRIPTION_TITLE": "Description",
   "ALLERGENS_DESCRIPTION_TITLE": "Allergens",
   "ABOUT_TITLE_PAGE": "About restaurant",
-  "CART_TITLE_PAGE": "My cart"
-
+  "CART_TITLE_PAGE": "My cart",
+  "CONTACT_LABEL": "Contact",
+  "PHONE_LABEL": "Phone orders and reservations",
+  "SOCIAL_MEDIA_LABEL": "Like us on social media"
 }
