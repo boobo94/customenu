@@ -2,9 +2,12 @@
   "footer-logo": "Customenu",
   "ALLERGENS_TITLE": "Alergeni",
   "CART_TOTAL": "Total",
-  "CART_DELETE_ALL": "Șterge coșul",
+  "CART_DELETE_ALL": "Curăță",
   "CART_EMPTY_MESSAGE": "Coșul de cumpărături este gol.",
   "QUANTITY_LABEL": "buc",
   "PRODUCT_DESCRIPTION_TITLE": "Descriere",
-  "ALLERGENS_DESCRIPTION_TITLE": "Alergeni"
+  "ALLERGENS_DESCRIPTION_TITLE": "Alergeni",
+  "ABOUT_TITLE_PAGE": "Despre restaurant",
+  "CART_TITLE_PAGE": "Coșul meu"
+
 }

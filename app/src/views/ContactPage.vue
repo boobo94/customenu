@@ -3,9 +3,15 @@
     <ProgressLoader v-if="state.isLoading" />
 
     <template v-else>
+      <v-row class="header">
+        <v-col cols="12">
+          <h1>{{t("ABOUT_TITLE_PAGE")}}</h1>
+        </v-col>
+      </v-row>
+
       <v-row>
         <v-col>
-          <h1>{{ state.restaurant.name }}</h1>
+          <h2>{{ state.restaurant.name }}</h2>
           <p>{{ state.restaurant.description }}</p>
 
           <div class="text-center links">
@@ -65,9 +71,12 @@
 import axios from 'axios';
 import { onMounted, reactive } from 'vue';
 import { useRoute } from 'vue-router';
+import { useI18n } from 'vue-i18n';
 import ProgressLoader from '@/components/ProgressLoader.vue';
 
 const route = useRoute();
+
+const { t } = useI18n();
 
 const state = reactive({
   isLoading: true,
@@ -96,8 +105,21 @@ onMounted(async () => {
 });
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+@import '@/styles/colors.scss';
+@import '@/styles/fonts.scss';
+
 .links {
   margin-top: 2rem;
+}
+
+.header {
+  margin-bottom: 20px;
+
+  h1 {
+    font-family: $popins-medium;
+    font-size: 24px;
+    color: $font-color-dark;
+  }
 }
 </style>

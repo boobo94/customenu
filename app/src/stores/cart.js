@@ -41,5 +41,17 @@ export const useCartStore = defineStore('cartStore', {
       const product = this.products.find((element) => element.id === id);
       return product?.quantity || 0;
     },
+
+    isCartEmpty() {
+      return this.products.length === 0;
+    },
+
+    getTotalPriceOfCart() {
+      return this.products.reduce(
+        (acc, product) => acc + product.quantity * product.price,
+        0,
+      );
+    },
+
   },
 });
