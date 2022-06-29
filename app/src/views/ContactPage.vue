@@ -114,7 +114,8 @@ onMounted(async () => {
 }
 
 .header {
-  margin-bottom: 20px;
+  margin-top: 10px;
+  margin-bottom: 40px;
 
   h1 {
     font-family: $popins-medium;

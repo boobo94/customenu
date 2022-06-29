@@ -6,7 +6,7 @@
       </v-col>
       <v-col cols="4">
         <v-btn
-         v-if="!cartStore.isCartEmpty()"
+          v-if="!cartStore.isCartEmpty()"
           @click="cartStore.reset()"
           block
           color="primary"
@@ -28,7 +28,8 @@
         <ProductCard v-bind="element" />
       </v-col>
     </v-row>
-    <v-row v-if="!cartStore.isCartEmpty()">
+
+    <v-row v-if="!cartStore.isCartEmpty()" class="total-cart-box">
       <v-col cols="8">
         <p class="text-h6">{{ t("CART_TOTAL") }}</p>
       </v-col>
@@ -56,7 +57,8 @@ const cartStore = useCartStore();
 @import "@/styles/fonts.scss";
 
 .header {
-  margin-bottom: 20px;
+  margin-top: 10px;
+  margin-bottom: 40px;
 
   h1 {
     font-family: $popins-medium;
@@ -65,10 +67,24 @@ const cartStore = useCartStore();
   }
 }
 
+.total-cart-box {
+  background-color: $font-color-dark;
+  position: fixed;
+  bottom: 55px;
+  left: 0;
+  width: 100%;
+  margin: 0;
+  border-radius: 50px 50px 0 0;
+  font-family: $popins-semibold;
+  font-size: 16px;
+  color: #fff;
+  padding: 35px 55px;
+}
+
 .empty-cart {
-    font-family: $popins-light;
-    font-size: 20px;
-    color: $font-color-dark;
-    text-align: center;
+  font-family: $popins-light;
+  font-size: 20px;
+  color: $font-color-dark;
+  text-align: center;
 }
 </style>

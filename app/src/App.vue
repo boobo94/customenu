@@ -1,6 +1,5 @@
 <template>
   <v-app>
-    <NavigationBar />
     <v-main>
       <router-view />
     </v-main>
@@ -9,7 +8,6 @@
 </template>
 
 <script setup>
-import NavigationBar from '@/components/NavigationBar.vue';
 import BottomBar from './components/BottomBar.vue';
 </script>
 
