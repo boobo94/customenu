@@ -1,24 +1,47 @@
 <template>
-  <v-responsive max-width="70">
-    <v-select
-      v-model="locale"
-      :items="state.languages"
-      label="Select"
-      hide-details
-      single-line
-      v-on:update:model-value="changeLanguage"
-    ></v-select>
-  </v-responsive>
+  <v-dialog>
+    <template v-slot:activator="{ props }">
+      <div class="d-flex align-center">
+        <v-btn
+          icon="mdi-web"
+          size="small"
+          class="lang-button"
+          flat
+          v-bind="props"
+        >
+        </v-btn>
+        <span>{{ locale.toUpperCase() }}</span>
+      </div>
+    </template>
+
+    <v-card class="change-language-popup">
+      <v-card-title>{{ t("CHANGE_LANGUAGE_TITLE") }}</v-card-title>
+      <v-card-text>
+        <p
+          v-for="language in state.languages"
+          :key="language"
+          @click="changeLanguage(language)"
+          v-on:keypress="changeLanguage(language)"
+          class="language"
+          :class="{ 'active-language': language === locale }"
+        >
+          {{ language.toUpperCase() }}
+        </p>
+      </v-card-text>
+    </v-card>
+  </v-dialog>
 </template>
 
 <script setup>
-import { onMounted, defineProps, watch, reactive } from "vue";
-import { useI18n } from "vue-i18n";
-import axios from "axios";
-import { useRouter } from "vue-router";
+import {
+  onMounted, defineProps, watch, reactive,
+} from 'vue';
+import { useI18n } from 'vue-i18n';
+import axios from 'axios';
+import { useRouter } from 'vue-router';
 
 const router = useRouter();
-const { locale } = useI18n();
+const { t, locale } = useI18n();
 
 const props = defineProps({
   languagesProp: Array,
@@ -28,22 +51,14 @@ const state = reactive({
   languages: props.languagesProp,
 });
 
-onMounted(() => {
-  setLanguage(state.languages);
-});
-
-// watch language changes from properties of components
-watch(
-  () => props.languagesProp,
-  (languages) => {
-    state.languages = languages;
-
-    setLanguage(languages);
-  }
-);
+function changeLanguage(value) {
+  axios.defaults.headers['accept-language'] = value;
+  localStorage.setItem('language', value);
+  router.go();
+}
 
 function setLanguage(languages) {
-  if (!localStorage.getItem("language") && languages.length) {
+  if (!localStorage.getItem('language') && languages.length) {
     // detect the language of browser
     const browserLanguage = (
       navigator.language || navigator.userLanguage
@@ -60,12 +75,53 @@ function setLanguage(languages) {
   }
 }
 
-function changeLanguage(value) {
-  axios.defaults.headers["accept-language"] = value;
-  localStorage.setItem("language", value);
-  router.go();
-}
+onMounted(() => {
+  setLanguage(state.languages);
+});
+
+// watch language changes from properties of components
+watch(
+  () => props.languagesProp,
+  (languages) => {
+    state.languages = languages;
+
+    setLanguage(languages);
+  },
+);
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+@import "@/styles/colors.scss";
+@import "@/styles/fonts.scss";
+
+.lang-button {
+  background-color: $background-color;
+  color: $font-color-dark;
+}
+
+.change-language-popup {
+  border-radius: 20px !important;
+  padding: 10px;
+
+  .v-card-title {
+    font-family: $popins-medium;
+    font-size: 24px;
+    color: $font-color-dark;
+  }
+}
+
+.language {
+  font-family: $popins-medium;
+  font-size: 16px;
+  color: $font-color-dark;
+  line-height: 45px;
+  padding: 0 10px;
+  cursor: pointer;
+
+  &.active-language {
+    background-color: #f43e40;
+    color: white;
+    border-radius: 6px;
+  }
+}
 </style>

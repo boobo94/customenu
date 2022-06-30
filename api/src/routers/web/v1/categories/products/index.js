@@ -2,17 +2,29 @@ import { Router } from 'express';
 import webAuthorization from '../../../../middleware/web-authorization';
 import getAll from './get-all';
 import getOne from './get';
-import { getProduct } from './validator';
+import * as validators from './validator';
 import { checkAccessToProducts } from './permissions';
+import search from './search';
 
 export default Router({ mergeParams: true })
-  .get('/',
+  .get(
+    '/',
     webAuthorization,
     checkAccessToProducts,
-    getAll)
+    getAll,
+  )
 
-  .get('/:productId',
+  .get(
+    '/search',
     webAuthorization,
-    getProduct,
+    validators.searchProducts,
+    search,
+  )
+
+  .get(
+    '/:productId',
+    webAuthorization,
+    validators.getProduct,
     checkAccessToProducts,
-    getOne);
+    getOne,
+  );

@@ -1,18 +1,18 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router';
 
 import RouterView from '@/components/RouterView.vue';
 import CategoriesPage from '@/views/CategoriesPage.vue';
 import ProductsPage from '@/views/ProductsPage.vue';
-import ProductPage from '@/views/ProductPage.vue';
 import CartPage from '@/views/CartPage.vue';
 import ContactPage from '@/views/ContactPage.vue';
+import SearchPage from '@/views/SearchPage.vue';
 
 const routes = [
 
   {
     path: '/:restaurantUrl',
     component: RouterView,
-    name: "Restaurant Router",
+    name: 'Restaurant Router',
     children: [
       {
         path: '',
@@ -29,18 +29,21 @@ const routes = [
             name: 'Products',
             component: ProductsPage,
           },
-          {
-            path: ':productId',
-            name: 'Product',
-            component: ProductPage,
-          },
         ],
       },
+
+      {
+        path: 'search',
+        name: 'Search',
+        component: SearchPage,
+      },
+
       {
         path: 'contact',
         name: 'Contact',
         component: ContactPage,
       },
+
       {
         path: 'cart',
         name: 'Cart',
@@ -57,11 +60,11 @@ const routes = [
   // which is lazy-loaded when the route is visited.
   //   component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   // }
-]
+];
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  routes
-})
+  routes,
+});
 
-export default router
+export default router;

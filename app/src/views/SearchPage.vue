@@ -1,9 +1,8 @@
 <template>
-  <v-container class="products-container">
+  <v-container>
     <v-row class="header d-flex align-center">
       <v-col cols="2" sm="1">
         <v-btn
-          v-if="!isHomePage"
           icon="mdi-chevron-left"
           size="small"
           class="back-button"
@@ -13,59 +12,39 @@
         </v-btn>
       </v-col>
       <v-col cols="10" sm="11">
-        <h1>{{ productStore.category.name }}</h1>
+        <h1>{{ t("SEARCH_LABEL") }}</h1>
       </v-col>
       <v-col cols="12">
         <SearchField />
       </v-col>
     </v-row>
 
-    <ProgressLoader v-if="state.isLoading" />
+     <v-row v-if="!productStore.hasSearchResults">
+      <v-col cols="12">
+        <p class="text-center search-no-results">{{ t("SEARCH_NO_RESULTS") }}</p>
+      </v-col>
+    </v-row>
 
-    <div v-else>
-      <v-row>
-        <v-col
-          cols="12"
-          v-for="element in productStore.products"
-          :key="element.id"
-        >
-          <ProductCard v-bind="element" />
-        </v-col>
-      </v-row>
-    </div>
+    <ProductCard
+      v-for="element in productStore.products"
+      :key="element.id"
+      v-bind="element"
+    />
   </v-container>
 </template>
 
 <script setup>
-import { computed, onMounted, reactive } from 'vue';
-import { useRoute, useRouter } from 'vue-router';
-import ProgressLoader from '@/components/ProgressLoader.vue';
+import { useRouter } from 'vue-router';
+import { useI18n } from 'vue-i18n';
 import ProductCard from '@/components/ProductCard.vue';
 import SearchField from '@/components/SearchField.vue';
 import { useProductStore } from '@/stores/product.js';
 
-const {
-  params: { restaurantUrl, categoryId },
-  name,
-} = useRoute();
-
 const router = useRouter();
-
-const state = reactive({
-  isLoading: true,
-});
-
+const { t } = useI18n();
 const productStore = useProductStore();
 
-onMounted(async () => {
-  await productStore.getProducts(restaurantUrl, categoryId);
-
-  state.isLoading = false;
-});
-
 // Functions
-
-const isHomePage = computed(() => name === 'Home');
 
 function goBack() {
   return window.history.length > 1 ? router.go(-1) : router.push('/');
@@ -86,11 +65,14 @@ function goBack() {
   }
 }
 
-.products-container {
-  padding-bottom: 70px;
-}
-
 .back-button {
   background-color: $background-color;
+}
+
+.search-no-results {
+  font-family: $popins-light;
+  font-size: 20px;
+  color: $font-color-dark;
+  text-align: center;
 }
 </style>

@@ -1,4 +1,4 @@
-import { defineStore } from 'pinia'
+import { defineStore } from 'pinia';
 
 export const useCartStore = defineStore('cartStore', {
 
@@ -8,7 +8,6 @@ export const useCartStore = defineStore('cartStore', {
 
   actions: {
     addProduct(product) {
-      console.log('add')
       const productPosition = this.products.findIndex((element) => element.id === product.id);
 
       if (productPosition === -1) {
@@ -17,14 +16,9 @@ export const useCartStore = defineStore('cartStore', {
           ...product,
           quantity: 1,
         });
-
-
-
       } else { // update only quantity
         this.products[productPosition].quantity++;
       }
-
-      console.log(this.products)
     },
 
     deleteProduct(id) {
@@ -35,13 +29,29 @@ export const useCartStore = defineStore('cartStore', {
       if (productPosition === -1) { // quantity is not bigger than 1 so delete it
         this.products = this.products.filter((product) => product.id !== id);
       } else { // update only quantity
-
         this.products[productPosition].quantity--;
       }
     },
 
     reset() {
-      this.products = []
+      this.products = [];
     },
-  }
-})
+
+    getQuantityOfProduct(id) {
+      const product = this.products.find((element) => element.id === id);
+      return product?.quantity || 0;
+    },
+
+    isCartEmpty() {
+      return this.products.length === 0;
+    },
+
+    getTotalPriceOfCart() {
+      return this.products.reduce(
+        (acc, product) => acc + product.quantity * product.price,
+        0,
+      );
+    },
+
+  },
+});

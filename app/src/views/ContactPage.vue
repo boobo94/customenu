@@ -1,60 +1,76 @@
 <template>
   <v-container>
-    <v-row align="center" justify="center">
-      <v-progress-circular
-        v-if="state.isLoading"
-        indeterminate
-        color="primary"
-      ></v-progress-circular>
-    </v-row>
+    <ProgressLoader v-if="state.isLoading" />
 
-    <template v-if="!state.isLoading">
-      <v-row>
-        <v-col>
-          <h1>{{ state.restaurant.name }}</h1>
-          <p>{{ state.restaurant.description }}</p>
+    <template v-else>
+      <v-row class="header">
+        <v-col cols="12">
+          <h1>{{ t("ABOUT_TITLE_PAGE") }}</h1>
+        </v-col>
+      </v-row>
 
-          <div class="text-center links">
+      <v-row class="description">
+        <v-col cols="12">
+          <h2>{{ restaurantStore.restaurant.name }}</h2>
+
+          <p>
+            {{ restaurantStore.restaurant.description }}
+          </p>
+
+          <h3>{{ t("CONTACT_LABEL") }}</h3>
+
+          <p>
             <a
-              v-if="state.restaurant.email"
-              :href="`mailto:${state.restaurant.email}`"
-              class="mx-2"
-            >
-              <v-icon large color="grey darken-2"> mdi-email </v-icon>
-            </a>
-            <a
-              v-if="state.restaurant.phone"
-              :href="`tel:${state.restaurant.phone}`"
-              class="mx-2"
-              ><v-icon large color="green darken-2"> mdi-phone </v-icon></a
-            >
-            <a
-              v-if="state.restaurant.address"
-              :href="`https://maps.google.com/?q=${state.restaurant.address}`"
-              class="mx-2"
+              v-if="restaurantStore.restaurant.address"
+              :href="`https://maps.google.com/?q=${restaurantStore.restaurant.address}`"
               target="_blank"
             >
-              <v-icon large color="yellow darken-2"> mdi-map </v-icon></a
-            >
+              {{ restaurantStore.restaurant.address }}
+            </a>
+          </p>
+
+          <p>
+            {{ t("PHONE_LABEL") }}:
             <a
-              v-if="state.restaurant.instagramUrl"
-              :href="state.restaurant.instagramUrl"
+              v-if="restaurantStore.restaurant.phone"
+              :href="`tel:${restaurantStore.restaurant.phone}`"
+            >
+              {{ restaurantStore.restaurant.phone }}
+            </a>
+          </p>
+
+          <p>
+            email:
+            <a
+              v-if="restaurantStore.restaurant.email"
+              :href="`mailto:${restaurantStore.restaurant.email}`"
+            >
+              {{ restaurantStore.restaurant.email }}
+            </a>
+          </p>
+
+          <h3>{{ t("SOCIAL_MEDIA_LABEL") }}</h3>
+
+          <div class="text-center mt-2">
+            <a
+              v-if="restaurantStore.restaurant.instagramUrl"
+              :href="restaurantStore.restaurant.instagramUrl"
               class="mx-2"
               target="_blank"
             >
               <v-icon large color="pink darken-2"> mdi-instagram </v-icon></a
             >
             <a
-              v-if="state.restaurant.facebookUrl"
-              :href="state.restaurant.facebookUrl"
+              v-if="restaurantStore.restaurant.facebookUrl"
+              :href="restaurantStore.restaurant.facebookUrl"
               class="mx-2"
               target="_blank"
             >
               <v-icon large color="blue darken-2"> mdi-facebook </v-icon></a
             >
             <a
-              v-if="state.restaurant.youtubeUrl"
-              :href="state.restaurant.youtubeUrl"
+              v-if="restaurantStore.restaurant.youtubeUrl"
+              :href="restaurantStore.restaurant.youtubeUrl"
               class="mx-2"
               target="_blank"
             >
@@ -68,41 +84,55 @@
 </template>
 
 <script setup>
-import axios from "axios";
-import { onMounted, reactive } from "vue";
-import { useRoute} from 'vue-router'
+import { onMounted, reactive } from 'vue';
+import { useI18n } from 'vue-i18n';
+import ProgressLoader from '@/components/ProgressLoader.vue';
+import { useRestaurantStore } from '@/stores/restaurant.js';
 
-const route = useRoute()
+const restaurantStore = useRestaurantStore();
+
+const { t } = useI18n();
 
 const state = reactive({
   isLoading: true,
-  restaurant: {
-    id: 0,
-    shortUrl: "",
-    currency: "",
-    email: "",
-    phone: "",
-    address: "",
-    instagramUrl: "",
-    facebookUrl: "",
-    youtubeUrl: "",
-    name: "",
-    description: "",
-    logo: "",
-  },
 });
 
 onMounted(async () => {
-  const { restaurantUrl } = route.params;
-  const { data } = await axios.get(`/web/v1/${restaurantUrl}`);
-
   state.isLoading = false;
-  state.restaurant = data;
 });
 </script>
 
-<style scoped>
-.links {
-  margin-top: 2rem;
+<style scoped lang="scss">
+@import "@/styles/colors.scss";
+@import "@/styles/fonts.scss";
+
+.header {
+  margin-top: 10px;
+  margin-bottom: 30px;
+
+  h1 {
+    font-family: $popins-medium;
+    font-size: 24px;
+    color: $font-color-dark;
+  }
+}
+
+h2 {
+  font-family: $popins-medium;
+  font-size: 24px;
+  color: $font-color-dark;
+}
+
+h3 {
+  font-family: $popins-medium;
+  font-size: 24px;
+  color: $font-color-dark;
+  margin-top: 25px;
+}
+
+.description {
+  font-family: $popins-regular;
+  font-size: 16px;
+  color: $font-color-dark;
 }
 </style>

@@ -2,7 +2,17 @@
   "footer-logo": "Customenu",
   "ALLERGENS_TITLE": "Allergens",
   "CART_TOTAL": "Total",
-  "CART_DELETE_ALL": "Clear the cart",
+  "CART_DELETE_ALL": "Clear",
   "CART_EMPTY_MESSAGE": "The cart is empty.",
-  "QUANTITY_LABEL": "pic"
+  "QUANTITY_LABEL": "pic",
+  "PRODUCT_DESCRIPTION_TITLE": "Description",
+  "ALLERGENS_DESCRIPTION_TITLE": "Allergens",
+  "ABOUT_TITLE_PAGE": "About restaurant",
+  "CART_TITLE_PAGE": "My cart",
+  "CONTACT_LABEL": "Contact",
+  "PHONE_LABEL": "Phone orders and reservations",
+  "SOCIAL_MEDIA_LABEL": "Like us on social media",
+  "SEARCH_LABEL":"Search product",
+  "SEARCH_NO_RESULTS": "No results...",
+  "CHANGE_LANGUAGE_TITLE": "Change the language"
 }

@@ -1,0 +1,27 @@
+{
+  "root": true,
+  "env": {
+    "node": true
+  },
+  "extends": [
+    "plugin:vue/vue3-essential",
+    "eslint:recommended",
+    "@vue/airbnb"
+  ],
+  "parserOptions": {
+    "parser": "@babel/eslint-parser",
+    "requireConfigFile": false
+  },
+  "rules": {
+    "no-plusplus": 0,
+    "import/prefer-default-export" : 0,
+    "import/no-unresolved": [2, { "ignore": ["^@/"] }],
+   
+
+   "import/extensions": ["error", {
+    "js": "ignorePackages",
+    "vue": "ignorePackages"
+  }]
+
+  }
+}

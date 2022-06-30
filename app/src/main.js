@@ -1,24 +1,23 @@
-import { createApp } from 'vue'
-import { createPinia } from 'pinia'
-import App from './App.vue'
-import vuetify from './plugins/vuetify'
-import { loadFonts } from './plugins/webfontloader'
-import i18n from './i18n'
-import router from './router'
-import axios from 'axios'
+import { createApp } from 'vue';
+import { createPinia } from 'pinia';
+import axios from 'axios';
+import App from './App.vue';
+import vuetify from './plugins/vuetify';
+import { loadFonts } from './plugins/webfontloader';
+import i18n from './i18n';
+import router from './router';
 
-loadFonts()
+loadFonts();
 
 const app = createApp(App)
   .use(router)
   .use(i18n)
   .use(vuetify)
-  .use(createPinia())
+  .use(createPinia());
 
 router.isReady().then(() => {
-  app.mount('#app')
-})
-
+  app.mount('#app');
+});
 
 axios.defaults.baseURL = process.env.NODE_ENV === 'production' ? 'https://api.customenu.ro' : 'http://127.0.0.1:8001';
-axios.defaults.headers['accept-language'] = localStorage.getItem("language") || 'en';
+axios.defaults.headers['accept-language'] = localStorage.getItem('language') || 'en';

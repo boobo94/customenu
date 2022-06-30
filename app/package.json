@@ -28,25 +28,16 @@
     "@vue/cli-plugin-eslint": "~5.0.0",
     "@vue/cli-plugin-router": "~5.0.0",
     "@vue/cli-service": "~5.0.0",
+    "@vue/eslint-config-airbnb": "^6.0.0",
     "eslint": "^7.32.0",
+    "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-vue": "^8.0.3",
+    "eslint-plugin-vuejs-accessibility": "^1.1.0",
+    "node-sass": "^7.0.1",
+    "sass-loader": "^13.0.2",
     "vue-cli-plugin-i18n": "~2.3.1",
     "vue-cli-plugin-vuetify": "~2.5.1",
     "webpack-plugin-vuetify": "^2.0.0-alpha.0"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/vue3-essential",
-      "eslint:recommended"
-    ],
-    "parserOptions": {
-      "parser": "@babel/eslint-parser"
-    },
-    "rules": {}
   },
   "browserslist": [
     "> 1%",

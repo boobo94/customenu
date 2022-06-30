@@ -1,24 +1,27 @@
 <template>
-  <v-container class="pb-15">
-    <v-row align="center" justify="center">
-      <v-progress-circular
-        v-if="state.isLoading"
-        indeterminate
-        color="primary"
-      ></v-progress-circular>
+  <v-container>
+    <v-row class="header d-flex align-center">
+      <v-col cols="3">
+        <LocaleSwitch :languagesProp="restaurantStore.restaurant.languages" />
+      </v-col>
+      <v-col cols="9">
+       <SearchField />
+      </v-col>
     </v-row>
 
-    <v-row v-if="!state.isLoading">
+    <ProgressLoader v-if="state.isLoading" />
+
+    <v-row v-else>
       <v-col
         cols="6"
         sm="6"
         md="3"
         lg="2"
-        v-for="element in state.elements"
-        :key="element.id"
+        v-for="cateogry in state.categories"
+        :key="cateogry.id"
       >
-        <div @click="goto(element.id)">
-          <SquareGridElement v-bind="element" />
+        <div @click="goto(cateogry.id)" v-on:keypress="goto(cateogry.id)">
+          <CategoryBlock v-bind="cateogry" />
         </div>
       </v-col>
     </v-row>
@@ -26,31 +29,45 @@
 </template>
 
 <script setup>
-import SquareGridElement from "@/components/SquareGridElement.vue";
-import axios from "axios";
-import { onMounted, reactive } from "vue";
-import { useRoute, useRouter } from "vue-router";
+import axios from 'axios';
+import { onMounted, reactive } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
+import CategoryBlock from '@/components/CategoryBlock.vue';
+import ProgressLoader from '@/components/ProgressLoader.vue';
+import LocaleSwitch from '@/components/LocaleSwitch.vue';
+import { useRestaurantStore } from '@/stores/restaurant';
+import SearchField from '@/components/SearchField.vue';
 
 const route = useRoute();
 const router = useRouter();
+const restaurantStore = useRestaurantStore();
 const { restaurantUrl } = route.params;
 
 const state = reactive({
   isLoading: true,
-  elements: [],
+  categories: [],
 });
 
 onMounted(async () => {
   const { data } = await axios.get(`/web/v1/${restaurantUrl}/categories`);
 
   state.isLoading = false;
-  state.elements = data;
+  state.categories = data;
 });
 
 function goto(categoryId) {
   router.push({
-    name: "Products",
+    name: 'Products',
     params: { restaurantUrl, categoryId },
   });
 }
 </script>
+
+<style scoped lang="scss">
+
+.header {
+  margin-bottom: 30px;
+
+}
+
+</style>

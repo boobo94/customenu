@@ -6,16 +6,22 @@ import getOne from './get';
 import { getCategory } from './validator';
 
 export default Router({ mergeParams: true })
-  .get('/',
+  .get(
+    '/',
     webAuthorization,
-    getAll)
+    getAll,
+  )
 
-  .get('/:categoryId',
+  .get(
+    '/:categoryId',
     webAuthorization,
     getCategory,
-    getOne)
+    getOne,
+  )
 
-  .use('/:categoryId/products',
+  .use(
+    '/:categoryId/products',
     webAuthorization,
     getCategory,
-    productsRouter);
+    productsRouter,
+  );
