@@ -5,6 +5,7 @@ import CategoriesPage from '@/views/CategoriesPage.vue';
 import ProductsPage from '@/views/ProductsPage.vue';
 import CartPage from '@/views/CartPage.vue';
 import ContactPage from '@/views/ContactPage.vue';
+import SearchPage from '@/views/SearchPage.vue';
 
 const routes = [
 
@@ -30,11 +31,19 @@ const routes = [
           },
         ],
       },
+
+      {
+        path: 'search',
+        name: 'Search',
+        component: SearchPage,
+      },
+
       {
         path: 'contact',
         name: 'Contact',
         component: ContactPage,
       },
+
       {
         path: 'cart',
         name: 'Cart',

@@ -12,14 +12,16 @@
 <script setup>
 import { computed, reactive } from 'vue';
 import { useI18n } from 'vue-i18n';
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import { useProductStore } from '@/stores/product';
 
 const { t } = useI18n();
 
 const {
   params: { restaurantUrl },
+  name,
 } = useRoute();
+const router = useRouter();
 
 const scope = reactive({
   keyword: '',
@@ -27,6 +29,8 @@ const scope = reactive({
 });
 
 const productStore = useProductStore();
+
+const isSearchPage = computed(() => name === 'Search');
 
 // implement debounce to stop spamming the server with requests after any character typed
 const search = computed({
@@ -37,6 +41,11 @@ const search = computed({
     if (scope.timeout) clearTimeout(scope.timeout);
     scope.timeout = setTimeout(async () => {
       scope.keyword = await productStore.searchProduct(restaurantUrl, val);
+
+      // if not already on search page go there
+      if (!isSearchPage.value) {
+        router.push({ name: 'Search', params: { restaurantUrl } });
+      }
     }, 500);
   },
 });

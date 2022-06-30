@@ -33,5 +33,7 @@ export const useProductStore = defineStore('productStore', {
       this.products = data;
     },
 
+    hasSearchResults: () => this.products.length,
+
   },
 });
