@@ -2,7 +2,7 @@
   <div class="box-container">
     <div class="image-container">
          <v-img
-          :src="image || './images/image-placeholder.jpg'"
+          :src="image || '/images/image-placeholder.jpg'"
           :alt="name"
           loading="lazy"
           :aspect-ratio="1 / 1"

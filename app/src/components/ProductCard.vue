@@ -3,7 +3,7 @@
     <v-row class="d-flex align-center">
       <v-col cols="3">
         <v-img
-          :src="image || './images/image-placeholder.jpg'"
+          :src="image || '/images/image-placeholder.jpg'"
           :alt="name"
           loading="lazy"
           :aspect-ratio="1 / 1"
@@ -196,7 +196,7 @@ h2 {
 }
 
 .expand-button {
-  position: fixed;
+  position: absolute;
   transform: translateX(-50%);
   left: 50%;
 }

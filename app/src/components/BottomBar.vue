@@ -4,7 +4,7 @@
       <v-img :src="restaurantStore.restaurant.logo" class="home-button"></v-img>
     </router-link>
 
-    <v-bottom-navigation absolute grow>
+    <v-bottom-navigation grow>
       <v-btn :to="{ name: 'Home' }">
         <v-icon>mdi-apps</v-icon>
       </v-btn>

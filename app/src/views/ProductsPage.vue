@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container class="products-container">
     <v-row class="header d-flex align-center">
       <v-col cols="2" sm="1">
         <v-btn
@@ -23,11 +23,15 @@
     <ProgressLoader v-if="state.isLoading" />
 
     <div v-else>
-      <ProductCard
-        v-for="element in productStore.products"
-        :key="element.id"
-        v-bind="element"
-      />
+      <v-row>
+        <v-col
+          cols="12"
+          v-for="element in productStore.products"
+          :key="element.id"
+        >
+          <ProductCard v-bind="element" />
+        </v-col>
+      </v-row>
     </div>
   </v-container>
 </template>
@@ -80,6 +84,10 @@ function goBack() {
     font-size: 24px;
     color: $font-color-dark;
   }
+}
+
+.products-container {
+  padding-bottom: 70px;
 }
 
 .back-button {
