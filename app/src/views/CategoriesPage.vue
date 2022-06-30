@@ -1,5 +1,14 @@
 <template>
   <v-container>
+    <v-row class="header d-flex align-center">
+      <v-col cols="3">
+        <LocaleSwitch :languagesProp="restaurantStore.restaurant.languages" />
+      </v-col>
+      <v-col cols="9">
+       <SearchField />
+      </v-col>
+    </v-row>
+
     <ProgressLoader v-if="state.isLoading" />
 
     <v-row v-else>
@@ -25,9 +34,13 @@ import { onMounted, reactive } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import CategoryBlock from '@/components/CategoryBlock.vue';
 import ProgressLoader from '@/components/ProgressLoader.vue';
+import LocaleSwitch from '@/components/LocaleSwitch.vue';
+import { useRestaurantStore } from '@/stores/restaurant';
+import SearchField from '@/components/SearchField.vue';
 
 const route = useRoute();
 const router = useRouter();
+const restaurantStore = useRestaurantStore();
 const { restaurantUrl } = route.params;
 
 const state = reactive({
@@ -51,4 +64,10 @@ function goto(categoryId) {
 </script>
 
 <style scoped lang="scss">
+
+.header {
+  margin-bottom: 30px;
+
+}
+
 </style>

@@ -12,5 +12,6 @@
   "CONTACT_LABEL": "Contact",
   "PHONE_LABEL": "Phone orders and reservations",
   "SOCIAL_MEDIA_LABEL": "Like us on social media",
-  "SEARCH_LABEL":"Search product"
+  "SEARCH_LABEL":"Search product",
+  "CHANGE_LANGUAGE_TITLE": "Change the language"
 }

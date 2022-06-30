@@ -33,6 +33,7 @@ defineProps({
   border-radius: 16px;
   text-align: center;
   filter: drop-shadow(0 8px 5px #00000029);
+  cursor: pointer;
 
   .image-container {
     padding: 14px 15px 7px 15px;

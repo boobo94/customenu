@@ -15,16 +15,16 @@ export default Router({ mergeParams: true })
   )
 
   .get(
+    '/search',
+    webAuthorization,
+    validators.searchProducts,
+    search,
+  )
+
+  .get(
     '/:productId',
     webAuthorization,
     validators.getProduct,
     checkAccessToProducts,
     getOne,
-  )
-
-  .get(
-    '/search',
-    webAuthorization,
-    validators.searchProducts,
-    search,
   );

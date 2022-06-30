@@ -17,9 +17,20 @@ export const useProductStore = defineStore('productStore', {
       const { data } = await axios.get(
         `/web/v1/${restaurantUrl}/categories/${categoryId}/products`,
       );
-      this.restaurant = data;
       this.products = data.products;
       this.category = data.category;
+    },
+
+    async searchProduct(restaurantUrl, keyword) {
+      const { data } = await axios.get(
+        `/web/v1/${restaurantUrl}/products/search`,
+        {
+          params: {
+            keyword,
+          },
+        },
+      );
+      this.products = data;
     },
 
   },
