@@ -11,5 +11,6 @@
   "CART_TITLE_PAGE": "My cart",
   "CONTACT_LABEL": "Contact",
   "PHONE_LABEL": "Phone orders and reservations",
-  "SOCIAL_MEDIA_LABEL": "Like us on social media"
+  "SOCIAL_MEDIA_LABEL": "Like us on social media",
+  "SEARCH_LABEL":"Search product"
 }

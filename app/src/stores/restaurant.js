@@ -17,6 +17,7 @@ export const useRestaurantStore = defineStore('restaurantStore', {
       name: '',
       description: '',
       logo: '',
+      languages: [],
     },
   }),
 

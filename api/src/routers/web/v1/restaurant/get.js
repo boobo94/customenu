@@ -14,6 +14,7 @@ const adapter = (element) => {
     facebookUrl: element.facebookUrl,
     youtubeUrl: element.youtubeUrl,
     logo: element.logo,
+    languages: element.languages,
   };
 
   if (element.restaurant_i18ns) {
