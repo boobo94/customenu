@@ -21,8 +21,10 @@ export async function findOne(id) {
  */
 export async function findAll(restaurantId) {
   return table.findAll({
-    restaurantId: {
-      [Op.eq]: restaurantId,
+    where: {
+      restaurantId: {
+        [Op.eq]: restaurantId,
+      },
     },
   });
 }
