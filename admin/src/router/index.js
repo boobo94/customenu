@@ -17,6 +17,10 @@ import ListProducts from '@/views/products/List.vue';
 import CreateProduct from '@/views/products/Create.vue';
 import EditProduct from '@/views/products/Edit.vue';
 
+import ListTables from '@/views/tables/List.vue'
+import CreateTable from '@/views/tables/Create.vue';
+
+
 import middlewareIsLoggedIn from './middlewareIsLogged';
 
 Vue.use(VueRouter);
@@ -107,6 +111,25 @@ const routes = [
         path: ':productId/edit',
         name: 'Edit create',
         component: EditProduct,
+        beforeEnter: middlewareIsLoggedIn,
+      },
+    ],
+  },
+
+  {
+    path: '/tables',
+    component: RouterView,
+    children: [
+      {
+        path: '',
+        name: 'List Tables',
+        component: ListTables,
+        beforeEnter: middlewareIsLoggedIn,
+      },
+      {
+        path: 'create',
+        name: 'Create Table',
+        component: CreateTable,
         beforeEnter: middlewareIsLoggedIn,
       },
     ],
