@@ -38,7 +38,6 @@
   "SELECT_LANGUAGE_HINT": "The languages available for restaurants. The menu will support all these languages.",
   "CLOSE": "Close",
   "SUCCESS_OPERATION": "Operation succeeded",
-  "QR_CODE_LABEL": "You can download the QR Code for your restaurant by pressing the orange button below.",
   "REGISTER_TITLE": "Register",
   "LOGIN_LINK_LABEL": "If you already have an account ",
   "BACK_TITLE": "Back",
