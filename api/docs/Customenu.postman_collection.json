@@ -557,7 +557,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n    \"restaurant\": {\n        \"logo\": \"\",\n        \"currency\": \"ron\",\n        \"email\": \"\",\n        \"phone\": \"\",\n        \"instagramUrl\": \"\",\n        \"facebookUrl\": \"\",\n        \"youtubeUrl\": \"\",\n        \"languages\": [\n            \"ro\"\n        ],\n        \"restaurant_i18ns\": [\n            {\n                \"lang_code\": \"ro\",\n                \"name\": \"dsa\",\n                \"description\": \"dsa\",\n                \"allergens\": \"dsa\"\n            }\n        ],\n        \"qr_code\": \"\",\n        \"shortUrl\": \"test5\"\n    },\n    \"admin\": {\n        \"email\": \"test6@test.com\",\n        \"password\": \"test\"\n    }\n}",
+											"raw": "{\n    \"restaurant\": {\n        \"logo\": \"\",\n        \"currency\": \"ron\",\n        \"email\": \"\",\n        \"phone\": \"\",\n        \"instagramUrl\": \"\",\n        \"facebookUrl\": \"\",\n        \"youtubeUrl\": \"\",\n        \"languages\": [\n            \"ro\"\n        ],\n        \"billingCompanyName\": \"dsa\",\n        \"billingTaxId\": \"ds\",\n        \"billingAddress\": \"dsa\",\n        \"countryId\": 178,\n        \"restaurant_i18ns\": [\n            {\n                \"lang_code\": \"ro\",\n                \"name\": \"dsa\",\n                \"description\": \"dsa\",\n                \"allergens\": \"dsa\"\n            }\n        ],\n        \"qr_code\": \"\",\n        \"shortUrl\": \"test5\"\n    },\n    \"admin\": {\n        \"email\": \"test6@test.com\",\n        \"password\": \"test\"\n    }\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -906,186 +906,31 @@
 							]
 						},
 						{
-							"name": "restaurants",
+							"name": "countries",
 							"item": [
 								{
-									"name": "Get one",
+									"name": "Get all",
 									"request": {
 										"auth": {
-											"type": "bearer",
-											"bearer": [
-												{
-													"key": "token",
-													"value": "{{ADMIN_AUTH_TOKEN}}",
-													"type": "string"
-												}
-											]
+											"type": "noauth"
 										},
 										"method": "GET",
 										"header": [
 											{
 												"key": "Accept-Language",
-												"value": "en",
+												"value": "ro",
 												"type": "text"
 											}
 										],
 										"url": {
-											"raw": "{{BASE_URL}}/admin/v1/restaurants/:restaurantId",
+											"raw": "{{BASE_URL}}/admin/v1/countries",
 											"host": [
 												"{{BASE_URL}}"
 											],
 											"path": [
 												"admin",
 												"v1",
-												"restaurants",
-												":restaurantId"
-											],
-											"variable": [
-												{
-													"key": "restaurantId",
-													"value": "3",
-													"type": "string"
-												}
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "Update",
-									"request": {
-										"auth": {
-											"type": "bearer",
-											"bearer": [
-												{
-													"key": "token",
-													"value": "{{ADMIN_AUTH_TOKEN}}",
-													"type": "string"
-												}
-											]
-										},
-										"method": "PUT",
-										"header": [
-											{
-												"key": "Accept-Language",
-												"type": "text",
-												"value": "en"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n  \n    \"shortUrl\": \"test\",\n    \"currency\": \"ron1\",\n    \"email\": \"mba@cmevo.com\",\n    \"phone\": \"+40727900500\",\n    \"address\": \"bucuresti\",\n    \"instagramUrl\": \"https://www.instagram.com/cmevodigital/\",\n    \"facebookUrl\": \"https://www.facebook.com/cmevodigital\",\n    \"youtubeUrl\": \"https://youtube.com/channel/UCLx6l3AycGEPErb8ykLabyQ\",\n    \"logo\": \"https://cmevo.com/ro/\",\n    \"languages\": [\n        \"ro\",\n        \"en\"\n    ],\n    \"restaurant_i18ns\": [\n        {\n            \"id\": 2,\n            \"name\": \"Restaurant Test\",\n            \"description\": \"Established in 2008 in the heart of Bucharest, and being one of the most iconic places in Bucharest, Cmevo is a perfect combination of superbe architecture, modern design and amazing-affordable food.\",\n            \"allergens\": \"dasda,da,d,asda,sda,d,\",\n            \"lang_code\": \"en\"\n        },\n        {\n            \"id\": 1,\n            \"name\": \"Restaurant Test\",\n            \"description\": \"Înființat în 2008 în inima Bucureștiului și fiind unul dintre cele mai iconice locuri din București, Cmevo este o combinație perfectă de arhitectură superbe, design modern și mâncare uimitoare la prețuri accesibile.\",\n            \"allergens\": \"dsada,dsa,dsa,d,asa,\",\n            \"lang_code\": \"ro\"\n        }\n    ]\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{BASE_URL}}/admin/v1/restaurants/:restaurantId",
-											"host": [
-												"{{BASE_URL}}"
-											],
-											"path": [
-												"admin",
-												"v1",
-												"restaurants",
-												":restaurantId"
-											],
-											"variable": [
-												{
-													"key": "restaurantId",
-													"value": "3",
-													"type": "string"
-												}
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "Get languages",
-									"request": {
-										"auth": {
-											"type": "bearer",
-											"bearer": [
-												{
-													"key": "token",
-													"value": "{{ADMIN_AUTH_TOKEN}}",
-													"type": "string"
-												}
-											]
-										},
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept-Language",
-												"type": "text",
-												"value": "en"
-											}
-										],
-										"url": {
-											"raw": "{{BASE_URL}}/admin/v1/restaurants/:restaurantId/languages",
-											"host": [
-												"{{BASE_URL}}"
-											],
-											"path": [
-												"admin",
-												"v1",
-												"restaurants",
-												":restaurantId",
-												"languages"
-											],
-											"variable": [
-												{
-													"key": "restaurantId",
-													"value": "3",
-													"type": "string"
-												}
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "Create",
-									"request": {
-										"auth": {
-											"type": "bearer",
-											"bearer": [
-												{
-													"key": "token",
-													"value": "{{ADMIN_AUTH_TOKEN}}",
-													"type": "string"
-												}
-											]
-										},
-										"method": "POST",
-										"header": [
-											{
-												"key": "Accept-Language",
-												"type": "text",
-												"value": "en"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n  \n    \"shortUrl\": \"cmevo1\",\n    \"currency\": \"ron1\",\n    \"email\": \"mba@cmevo.com\",\n    \"phone\": \"+40727900500\",\n    \"address\": \"bucuresti\",\n    \"instagramUrl\": \"https://www.instagram.com/cmevodigital/\",\n    \"facebookUrl\": \"https://www.facebook.com/cmevodigital\",\n    \"youtubeUrl\": \"https://youtube.com/channel/UCLx6l3AycGEPErb8ykLabyQ\",\n    \"logo\": \"https://cmevo.com/ro/\",\n    \"languages\": [\n        \"ro\",\n        \"en\"\n    ],\n    \"restaurant_i18ns\": [\n        {\n            \n            \"name\": \"Restaurant Test\",\n            \"description\": \"Established in 2008 in the heart of Bucharest, and being one of the most iconic places in Bucharest, Cmevo is a perfect combination of superbe architecture, modern design and amazing-affordable food.\",\n            \"allergens\": \"dasda,da,d,asda,sda,d,\",\n            \"lang_code\": \"en\"\n        },\n        {\n           \n            \"name\": \"Restaurant Test\",\n            \"description\": \"Înființat în 2008 în inima Bucureștiului și fiind unul dintre cele mai iconice locuri din București, Cmevo este o combinație perfectă de arhitectură superbe, design modern și mâncare uimitoare la prețuri accesibile.\",\n            \"allergens\": \"dsada,dsa,dsa,d,asa,\",\n            \"lang_code\": \"ro\"\n        }\n    ]\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{BASE_URL}}/admin/v1/restaurants",
-											"host": [
-												"{{BASE_URL}}"
-											],
-											"path": [
-												"admin",
-												"v1",
-												"restaurants"
+												"countries"
 											]
 										}
 									},
@@ -1337,6 +1182,106 @@
 													"key": "restaurantId",
 													"value": "4",
 													"type": "string"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "payments",
+							"item": [
+								{
+									"name": "Get all",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{ADMIN_AUTH_TOKEN}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept-Language",
+												"value": "ro",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{BASE_URL}}/admin/v1/restaurants/:restaurantId/payments/me",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"admin",
+												"v1",
+												"restaurants",
+												":restaurantId",
+												"payments",
+												"me"
+											],
+											"variable": [
+												{
+													"key": "restaurantId",
+													"value": "4",
+													"type": "string"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Export invoice",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{ADMIN_AUTH_TOKEN}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept-Language",
+												"value": "ro",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{BASE_URL}}/admin/v1/restaurants/:restaurantId/payments/:paymentId/export-invoice",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"admin",
+												"v1",
+												"restaurants",
+												":restaurantId",
+												"payments",
+												":paymentId",
+												"export-invoice"
+											],
+											"variable": [
+												{
+													"key": "restaurantId",
+													"value": "4",
+													"type": "string"
+												},
+												{
+													"key": "paymentId",
+													"value": "8"
 												}
 											]
 										}
@@ -1607,7 +1552,195 @@
 							]
 						},
 						{
-							"name": "payments",
+							"name": "restaurants",
+							"item": [
+								{
+									"name": "Get one",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{ADMIN_AUTH_TOKEN}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept-Language",
+												"value": "en",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{BASE_URL}}/admin/v1/restaurants/:restaurantId",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"admin",
+												"v1",
+												"restaurants",
+												":restaurantId"
+											],
+											"variable": [
+												{
+													"key": "restaurantId",
+													"value": "3",
+													"type": "string"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Update",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{ADMIN_AUTH_TOKEN}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept-Language",
+												"type": "text",
+												"value": "en"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \n    \"shortUrl\": \"test\",\n    \"currency\": \"ron1\",\n    \"email\": \"mba@cmevo.com\",\n    \"phone\": \"+40727900500\",\n    \"address\": \"bucuresti\",\n    \"instagramUrl\": \"https://www.instagram.com/cmevodigital/\",\n    \"facebookUrl\": \"https://www.facebook.com/cmevodigital\",\n    \"youtubeUrl\": \"https://youtube.com/channel/UCLx6l3AycGEPErb8ykLabyQ\",\n    \"logo\": \"https://cmevo.com/ro/\",\n    \"languages\": [\n        \"ro\",\n        \"en\"\n    ],\n    \"restaurant_i18ns\": [\n        {\n            \"id\": 2,\n            \"name\": \"Restaurant Test\",\n            \"description\": \"Established in 2008 in the heart of Bucharest, and being one of the most iconic places in Bucharest, Cmevo is a perfect combination of superbe architecture, modern design and amazing-affordable food.\",\n            \"allergens\": \"dasda,da,d,asda,sda,d,\",\n            \"lang_code\": \"en\"\n        },\n        {\n            \"id\": 1,\n            \"name\": \"Restaurant Test\",\n            \"description\": \"Înființat în 2008 în inima Bucureștiului și fiind unul dintre cele mai iconice locuri din București, Cmevo este o combinație perfectă de arhitectură superbe, design modern și mâncare uimitoare la prețuri accesibile.\",\n            \"allergens\": \"dsada,dsa,dsa,d,asa,\",\n            \"lang_code\": \"ro\"\n        }\n    ]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{BASE_URL}}/admin/v1/restaurants/:restaurantId",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"admin",
+												"v1",
+												"restaurants",
+												":restaurantId"
+											],
+											"variable": [
+												{
+													"key": "restaurantId",
+													"value": "3",
+													"type": "string"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get languages",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{ADMIN_AUTH_TOKEN}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept-Language",
+												"type": "text",
+												"value": "en"
+											}
+										],
+										"url": {
+											"raw": "{{BASE_URL}}/admin/v1/restaurants/:restaurantId/languages",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"admin",
+												"v1",
+												"restaurants",
+												":restaurantId",
+												"languages"
+											],
+											"variable": [
+												{
+													"key": "restaurantId",
+													"value": "3",
+													"type": "string"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Create",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{ADMIN_AUTH_TOKEN}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept-Language",
+												"type": "text",
+												"value": "en"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \n    \"shortUrl\": \"cmevo1\",\n    \"currency\": \"ron1\",\n    \"email\": \"mba@cmevo.com\",\n    \"phone\": \"+40727900500\",\n    \"address\": \"bucuresti\",\n    \"instagramUrl\": \"https://www.instagram.com/cmevodigital/\",\n    \"facebookUrl\": \"https://www.facebook.com/cmevodigital\",\n    \"youtubeUrl\": \"https://youtube.com/channel/UCLx6l3AycGEPErb8ykLabyQ\",\n    \"logo\": \"https://cmevo.com/ro/\",\n    \"languages\": [\n        \"ro\",\n        \"en\"\n    ],\n    \"restaurant_i18ns\": [\n        {\n            \n            \"name\": \"Restaurant Test\",\n            \"description\": \"Established in 2008 in the heart of Bucharest, and being one of the most iconic places in Bucharest, Cmevo is a perfect combination of superbe architecture, modern design and amazing-affordable food.\",\n            \"allergens\": \"dasda,da,d,asda,sda,d,\",\n            \"lang_code\": \"en\"\n        },\n        {\n           \n            \"name\": \"Restaurant Test\",\n            \"description\": \"Înființat în 2008 în inima Bucureștiului și fiind unul dintre cele mai iconice locuri din București, Cmevo este o combinație perfectă de arhitectură superbe, design modern și mâncare uimitoare la prețuri accesibile.\",\n            \"allergens\": \"dsada,dsa,dsa,d,asa,\",\n            \"lang_code\": \"ro\"\n        }\n    ]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{BASE_URL}}/admin/v1/restaurants",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"admin",
+												"v1",
+												"restaurants"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "tables",
 							"item": [
 								{
 									"name": "Get all",
@@ -1631,7 +1764,7 @@
 											}
 										],
 										"url": {
-											"raw": "{{BASE_URL}}/admin/v1/restaurants/:restaurantId/payments/me",
+											"raw": "{{BASE_URL}}/admin/v1/restaurants/:restaurantId/tables",
 											"host": [
 												"{{BASE_URL}}"
 											],
@@ -1640,13 +1773,12 @@
 												"v1",
 												"restaurants",
 												":restaurantId",
-												"payments",
-												"me"
+												"tables"
 											],
 											"variable": [
 												{
 													"key": "restaurantId",
-													"value": "4",
+													"value": "7",
 													"type": "string"
 												}
 											]
@@ -1655,7 +1787,7 @@
 									"response": []
 								},
 								{
-									"name": "Export invoice",
+									"name": "Download qr code",
 									"request": {
 										"auth": {
 											"type": "bearer",
@@ -1671,12 +1803,12 @@
 										"header": [
 											{
 												"key": "Accept-Language",
-												"value": "ro",
+												"value": "en",
 												"type": "text"
 											}
 										],
 										"url": {
-											"raw": "{{BASE_URL}}/admin/v1/restaurants/:restaurantId/payments/:paymentId/export-invoice",
+											"raw": "{{BASE_URL}}/admin/v1/restaurants/:restaurantId/tables/:tableId/download",
 											"host": [
 												"{{BASE_URL}}"
 											],
@@ -1685,19 +1817,121 @@
 												"v1",
 												"restaurants",
 												":restaurantId",
-												"payments",
-												":paymentId",
-												"export-invoice"
+												"tables",
+												":tableId",
+												"download"
 											],
 											"variable": [
 												{
 													"key": "restaurantId",
-													"value": "4",
+													"value": "7",
 													"type": "string"
 												},
 												{
-													"key": "paymentId",
-													"value": "8"
+													"key": "tableId",
+													"value": "6"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Create",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{ADMIN_AUTH_TOKEN}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept-Language",
+												"type": "text",
+												"value": "en"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"image\": \"https://image.com/dsada.jpg\",\n    \"category_i18ns\": [\n        {\n            \"name\": \"Burgers\",\n            \"lang_code\": \"en\"\n        },\n        {\n            \"name\": \"Burgeri\",\n            \"lang_code\": \"ro\"\n        }\n    ]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{BASE_URL}}/admin/v1/restaurants/:restaurantId/tables",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"admin",
+												"v1",
+												"restaurants",
+												":restaurantId",
+												"tables"
+											],
+											"variable": [
+												{
+													"key": "restaurantId",
+													"value": "3",
+													"type": "string"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{ADMIN_AUTH_TOKEN}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept-Language",
+												"type": "text",
+												"value": "en"
+											}
+										],
+										"url": {
+											"raw": "{{BASE_URL}}/admin/v1/restaurants/:restaurantId/tables/:table",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"admin",
+												"v1",
+												"restaurants",
+												":restaurantId",
+												"tables",
+												":table"
+											],
+											"variable": [
+												{
+													"key": "restaurantId",
+													"value": "7",
+													"type": "string"
+												},
+												{
+													"key": "table",
+													"value": "1"
 												}
 											]
 										}
@@ -1738,39 +1972,6 @@
 											"path": [
 												"webhooks",
 												"stripe"
-											]
-										}
-									},
-									"response": []
-								}
-							]
-						},
-						{
-							"name": "countries",
-							"item": [
-								{
-									"name": "Get all",
-									"request": {
-										"auth": {
-											"type": "noauth"
-										},
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept-Language",
-												"value": "ro",
-												"type": "text"
-											}
-										],
-										"url": {
-											"raw": "{{BASE_URL}}/admin/v1/countries",
-											"host": [
-												"{{BASE_URL}}"
-											],
-											"path": [
-												"admin",
-												"v1",
-												"countries"
 											]
 										}
 									},
