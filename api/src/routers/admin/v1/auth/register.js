@@ -1,9 +1,9 @@
 import bcrypt from 'bcrypt';
-import * as qrcode from 'qrcode';
 import StatusCodes from '../../../utils/statusCodes';
 import errors from '../../../../locales/errors.json';
 import { findByEmail, create as createAdmin } from '../../../../database/services/admin';
 import { create as createRestaurant, update as updateRestaurant } from '../../../../database/services/restaurant';
+import { create as createTable } from '../../../../database/services/table';
 import { uploadFile } from '../../../../services/storage';
 import { transaction } from '../../../../database/utils/transaction';
 
@@ -33,17 +33,14 @@ export default async (req, res) => {
       restaurantCreated.logo = await uploadFile(req.body.restaurant.file, path);
     }
 
-    // upload qr code
-    const qrCodeFile = await qrcode.toDataURL(`${process.env.APP_URL}${restaurantCreated.shortUrl}`, {
-      errorCorrectionLevel: 'H',
-      width: 300,
-    });
-    const qrCodeUrl = await uploadFile(qrCodeFile, path);
-    restaurantCreated.qr_code = qrCodeUrl;
+    // add default table
+    await createTable({
+      name: 1,
+      restaurantId: restaurantCreated.id,
+    }, t);
 
     // update restaurant
     await updateRestaurant({
-      qr_code: qrCodeUrl,
       logo: restaurantCreated.logo,
     }, restaurantCreated.id, t);
 

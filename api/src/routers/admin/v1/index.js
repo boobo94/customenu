@@ -6,6 +6,7 @@ import productsRouter from './products';
 import subscriptionsRouter from './subscriptions';
 import paymentsRouter from './payments';
 import countriesRouter from './countries';
+import tablesRouter from './tables';
 
 export default Router()
   .use('/auth', authRouter)
@@ -14,4 +15,5 @@ export default Router()
   .use('/restaurants/:restaurantId/categories', categoriesRouter)
   .use('/restaurants/:restaurantId/products', productsRouter)
   .use('/restaurants/:restaurantId/subscriptions', subscriptionsRouter)
-  .use('/restaurants/:restaurantId/payments', paymentsRouter);
+  .use('/restaurants/:restaurantId/payments', paymentsRouter)
+  .use('/restaurants/:restaurantId/tables', tablesRouter);

@@ -38,7 +38,6 @@
   "SELECT_LANGUAGE_HINT": "Limbile disponibile penru restaurant. Meniul va suporta toate aceste limbi",
   "CLOSE": "Inchide",
   "SUCCESS_OPERATION": "Operatia a fost efectuata cu succes",
-  "QR_CODE_LABEL": "Puteți descărca codul QR pentru restaurantul dvs. apăsând butonul portocaliu de mai jos.",
   "REGISTER_TITLE": "Înregistrare",
   "LOGIN_LINK_LABEL": "În cazul în care aveți deja un cont",
   "BACK_TITLE": "Înapoi",
@@ -78,5 +77,6 @@
   "SUBSCRIPTION_PRICE_LABEL": "Prețul abonamentului",
   "SUBSCRIPTION_RECURRING_LABEL": "Abonament recurent",
   "SUBSCRIPTION_MAX_CATEGORIES_LABEL": "Numărul maxim de categorii",
-  "SUBSCRIPTION_MAX_PRODUCTS_LABEL": "Numărul maxim de produse"
+  "SUBSCRIPTION_MAX_PRODUCTS_LABEL": "Numărul maxim de produse",
+  "TABLES_TITLE": "Mese"
 }
