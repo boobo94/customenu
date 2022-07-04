@@ -78,5 +78,6 @@
   "SUBSCRIPTION_PRICE_LABEL": "Price",
   "SUBSCRIPTION_RECURRING_LABEL": "Recurring",
   "SUBSCRIPTION_MAX_CATEGORIES_LABEL": "Maximum number of categories",
-  "SUBSCRIPTION_MAX_PRODUCTS_LABEL": "Maximum number of products"
+  "SUBSCRIPTION_MAX_PRODUCTS_LABEL": "Maximum number of products",
+  "TABLES_TITLE": "Tables"
 }

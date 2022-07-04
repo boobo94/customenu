@@ -85,6 +85,11 @@ export default {
           icon: "mdi-hamburger",
         },
         {
+          href: "List Tables",
+          title: this.$t("TABLES_TITLE"),
+          icon: "mdi-table-furniture",
+        },
+        {
           href: "Edit Restaurant",
           title: this.$t("RESTAURANT_TITLE"),
           icon: "mdi-store",

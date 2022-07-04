@@ -78,5 +78,6 @@
   "SUBSCRIPTION_PRICE_LABEL": "Prețul abonamentului",
   "SUBSCRIPTION_RECURRING_LABEL": "Abonament recurent",
   "SUBSCRIPTION_MAX_CATEGORIES_LABEL": "Numărul maxim de categorii",
-  "SUBSCRIPTION_MAX_PRODUCTS_LABEL": "Numărul maxim de produse"
+  "SUBSCRIPTION_MAX_PRODUCTS_LABEL": "Numărul maxim de produse",
+  "TABLES_TITLE": "Mese"
 }
