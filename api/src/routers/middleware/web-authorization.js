@@ -1,13 +1,21 @@
 import statusCodes from '../utils/statusCodes';
 import errors from '../../locales/errors.json';
 import { findByRestaurantAndToken } from '../../database/services/restaurant';
+import { findActiveByRestaurant } from '../../database/services/subscription';
 
 export default async (req, res, next) => {
   try {
+    // get restaurant by url name
     const restaurant = await findByRestaurantAndToken(
       req.params.restaurant,
     );
     if (!restaurant) {
+      return res.status(statusCodes.UNAUTHORIZED).send({ error: errors.UNAUTHORIZED });
+    }
+
+    // check if the restaurant has an active subscription
+    const subscription = await findActiveByRestaurant(restaurant.id);
+    if (!subscription) {
       return res.status(statusCodes.UNAUTHORIZED).send({ error: errors.UNAUTHORIZED });
     }
 
