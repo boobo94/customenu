@@ -207,7 +207,7 @@ export default {
 
   computed: {
     getAppLink() {
-      return `https://app.customenu.ro/${this.restaurant.shortUrl}`;
+      return `https://app.customenu.net/${this.restaurant.shortUrl}`;
     },
   },
 

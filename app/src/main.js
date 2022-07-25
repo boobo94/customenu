@@ -19,5 +19,5 @@ router.isReady().then(() => {
   app.mount('#app');
 });
 
-axios.defaults.baseURL = process.env.NODE_ENV === 'production' ? 'https://api.customenu.ro' : 'http://127.0.0.1:8001';
+axios.defaults.baseURL = process.env.NODE_ENV === 'production' ? 'https://api.customenu.net' : 'http://127.0.0.1:8001';
 axios.defaults.headers['accept-language'] = localStorage.getItem('language') || 'en';

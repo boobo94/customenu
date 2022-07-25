@@ -49,7 +49,7 @@
           </v-col>
         </v-row>
         <v-row justify="center">
-          <a href="https://customenu.ro/" class="mt-5">{{
+          <a href="https://customenu.net/" class="mt-5">{{
             $t("BACK_TO_WEBSITE")
           }}</a>
         </v-row>
