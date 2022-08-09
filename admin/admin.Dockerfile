@@ -8,10 +8,10 @@ RUN npm install -g http-server
 WORKDIR /usr/src/admin
 
 # copy essential files to install dependencies
-COPY ./package*.json .
-COPY ./babel.config.js .
-COPY .eslintrc.json .
-COPY ./vue.config.js .
+COPY ./package*.json ./
+COPY ./babel.config.js ./
+COPY .eslintrc.json ./
+COPY ./vue.config.js ./
 
 # run npm install in our local machine
 RUN npm install

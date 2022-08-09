@@ -5,8 +5,8 @@ FROM node:lts
 WORKDIR /usr/src/api
 
 # copy essential files to install dependencies
-COPY package*.json .
-COPY .babelrc .
+COPY package*.json ./
+COPY .babelrc ./
 
 # run npm install in our local machine
 RUN npm install
