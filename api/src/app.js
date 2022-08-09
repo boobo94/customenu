@@ -13,7 +13,8 @@ const app = express();
 app.use('/webhooks', webhooks);
 app.use(cors({
   origin: [
-    /\.customenu\.net$/,
+    'admin.customenu.net',
+    'app.customenu.net',
   ],
 }));
 app.use(morgan('common'));
