@@ -12,10 +12,7 @@ const app = express();
 
 app.use('/webhooks', webhooks);
 app.use(cors({
-  origin: [
-    'admin.customenu.net',
-    'app.customenu.net',
-  ],
+  origin: /customenu\.net$/,
 }));
 app.use(morgan('common'));
 app.use(express.json({ limit: '10mb' }));
