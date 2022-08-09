@@ -37,7 +37,7 @@ services:
 
   api:
     build:
-      context: .
+      context: ../api
       dockerfile: api.Dockerfile
     container_name: customenu-api
     restart: always
@@ -73,7 +73,7 @@ services:
 
   admin:
     build:
-      context: .
+      context: ../admin
       dockerfile: admin.Dockerfile
     container_name: customenu-admin
     restart: always
@@ -86,7 +86,7 @@ services:
 
   app:
     build:
-      context: .
+      context: ../app
       dockerfile: app.Dockerfile
     container_name: customenu-app
     restart: always

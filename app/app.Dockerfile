@@ -8,15 +8,16 @@ RUN npm install -g http-server
 WORKDIR /usr/src/app
 
 # copy essential files to install dependencies
-COPY ./app/package*.json .
-COPY ./app/babel.config.js .
-COPY ./app/vue.config.js .
+COPY package*.json .
+COPY babel.config.js .
+COPY .eslintrc.json .
+COPY vue.config.js .
 
 # run npm install in our local machine
 RUN npm install
 
 # copy the generated modules and all other files to the container
-COPY ./app/src/ ./src
+COPY ./src/ ./src
 
 # build app for production with minification
 RUN npm run build

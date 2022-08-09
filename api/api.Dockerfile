@@ -1,18 +1,18 @@
 # pull the Node.js Docker image
-FROM node:lts-alpine
+FROM node:lts
 
 # create the directory inside the container
 WORKDIR /usr/src/api
 
 # copy essential files to install dependencies
-COPY ./api/package*.json .
-COPY ./api/.babelrc .
+COPY package*.json .
+COPY .babelrc .
 
 # run npm install in our local machine
 RUN npm install
 
 # copy the generated modules and all other files to the container
-COPY ./api/src/ ./src
+COPY ./src/ ./src
 
 # our app is running on port 5000 within the container, so need to expose it
 EXPOSE ${API_PORT}
