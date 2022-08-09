@@ -11,7 +11,11 @@ import webhooks from './routers/admin/v1/webhooks';
 const app = express();
 
 app.use('/webhooks', webhooks);
-app.use(cors());
+app.use(cors({
+  origin: [
+    /\.customenu\.net$/,
+  ],
+}));
 app.use(morgan('common'));
 app.use(express.json({ limit: '10mb' }));
 
