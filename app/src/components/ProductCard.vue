@@ -17,18 +17,18 @@
 
         <v-row class="product-details">
           <v-col cols="4">
-            <span><v-icon>mdi-cash-multiple</v-icon> {{ price }} </span>
+            <p><v-icon>mdi-cash-multiple</v-icon></p>
+            <p>{{ price }}</p>
           </v-col>
 
           <v-col cols="4">
-            <span><v-icon>mdi-weight-gram</v-icon> {{ weight }}g</span>
+            <p><v-icon>mdi-weight-gram</v-icon></p>
+            <p>{{ weight }}g</p>
           </v-col>
 
           <v-col cols="4">
-            <span
-              ><v-icon>mdi-clock-time-seven-outline</v-icon>
-              {{ cookingTime }}min</span
-            >
+            <p><v-icon>mdi-clock-time-seven-outline</v-icon></p>
+            <p>{{ cookingTime }}min</p>
           </v-col>
         </v-row>
       </v-col>
