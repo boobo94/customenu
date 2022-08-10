@@ -15,6 +15,7 @@ RUN npm install
 
 # copy the generated modules and all other files to the container
 COPY ./src/ ./src
+COPY ./public/ ./public
 
 # build app for production with minification
 RUN npm run build
