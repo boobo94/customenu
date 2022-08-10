@@ -80,7 +80,7 @@ services:
     depends_on:
       - postgres
     ports:
-      - "8002:8002"
+      - "8002:80"
     networks:
       - customenu-network
 
@@ -93,7 +93,7 @@ services:
     depends_on:
       - postgres
     ports:
-      - "8003:8003"
+      - "8003:80"
     networks:
       - customenu-network
 

@@ -1,8 +1,5 @@
 # pull the Node.js Docker image
-FROM node:lts-alpine
-
-# install simple http server for serving static content
-RUN npm install -g http-server
+FROM node:lts-alpine as build-stage
 
 # create the directory inside the container
 WORKDIR /usr/src/admin
@@ -22,8 +19,20 @@ COPY ./src/ ./src
 # build app for production with minification
 RUN npm run build
 
-# our app is running on port 8002 within the container, so need to expose it
-EXPOSE 8002
+# execute the production stage
+FROM nginx:stable-alpine as production-stage
+
+# copy the config file to the nginx config directory
+COPY ./scripts/nginx.conf /etc/nginx/nginx.conf
+
+# remove default nginx index page
+RUN rm -rf /usr/share/nginx/html/*
+
+# copy application files to the default nginx index page
+COPY --from=build-stage /usr/src/admin/dist /usr/share/nginx/html
+
+# our app is running on port 80 within the container, so need to expose it
+EXPOSE 80
 
 # the command that starts our app
-CMD [ "http-server", "dist", "--port","8002" ]
+CMD ["nginx", "-g", "daemon off;"]
