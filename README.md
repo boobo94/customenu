@@ -52,3 +52,19 @@ If you encounter issues with the current docker compose, I prepared a script to 
 ```sh
 sh bin/force-rebuild-docker.sh
 ```
+
+4. Configure the backup scripts
+
+Install [linodecli](https://www.linode.com/docs/products/storage/object-storage/guides/linode-cli#install-and-configure-the-cli) and configure the server.
+
+Setup the cronjob
+
+```sh
+crontab -e
+```
+
+add at the end of the file
+
+```sh
+0 2 * * * /bin/bash /root/customenu/bin/db-backup.sh
+```
