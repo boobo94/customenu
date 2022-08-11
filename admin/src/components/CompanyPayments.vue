@@ -2,12 +2,7 @@
   <div>
     <h2>{{ $t("SUBSCRIPTION_PAYMENTS_LABEL") }}</h2>
 
-    <v-data-table
-      :headers="headers"
-      :items="payments"
-      :items-per-page="5"
-      class="company-subscription-payments-table"
-    >
+    <v-data-table :headers="headers" :items="payments" :items-per-page="5" class="company-subscription-payments-table">
       <template v-slot:[`item.status`]="{ item }">
         <v-chip :color="getStatusChipColor(item.status)" dark>
           {{ getStatusText(item.status) }}
@@ -23,11 +18,7 @@
       </template>
 
       <template v-slot:[`item.actions`]="{ item }">
-        <v-btn
-          text
-          v-if="item.status === 'paid'"
-          @click="downloadInvoice(item.id)"
-        >
+        <v-btn text v-if="item.status === 'paid'" @click="downloadInvoice(item.id)">
           <v-icon> mdi-download </v-icon>{{ $t("DOWNLOAD_INVOICE") }}
         </v-btn>
       </template>
@@ -139,8 +130,17 @@ export default {
           `/restaurants/${restaurantId}/payments/${paymentId}/export-invoice`,
           { responseType: "blob" }
         );
-        const file = window.URL.createObjectURL(new Blob([response.data]));
-        window.open(file);
+
+        const fileURL = window.URL.createObjectURL(new Blob([response.data]));
+        const fileLink = document.createElement("a");
+        fileLink.href = fileURL;
+        const fileName = `payment-${paymentId}.pdf`;
+        fileLink.setAttribute("download", fileName);
+        fileLink.setAttribute("target", "_blank");
+        document.body.appendChild(fileLink);
+        fileLink.click();
+        fileLink.remove();
+
       } catch (e) {
         console.error(e);
       }
