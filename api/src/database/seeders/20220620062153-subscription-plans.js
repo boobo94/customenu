@@ -18,8 +18,8 @@ module.exports = {
     {
       id: 2,
       name: 'Standard',
-      amount: 35.7,
-      vatAmount: 5.7,
+      amount: 491,
+      vatAmount: 93.29,
       currency: 'RON',
       interval: 'month',
       recurrence: 1,
@@ -32,8 +32,8 @@ module.exports = {
     {
       id: 3,
       name: 'PRO',
-      amount: 119,
-      vatAmount: 19,
+      amount: 733,
+      vatAmount: 139.27,
       currency: 'RON',
       interval: 'year',
       recurrence: 1,
