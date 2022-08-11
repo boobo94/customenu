@@ -12,7 +12,7 @@
 
         <v-list-item color="primary" to="/" exact>
           <v-list-item-icon>
-            <v-icon>mdi-desktop-mac-dashboard</v-icon>
+            <v-icon>mdi-view-dashboard</v-icon>
           </v-list-item-icon>
 
           <v-list-item-content>
