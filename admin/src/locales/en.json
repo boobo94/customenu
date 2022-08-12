@@ -65,7 +65,7 @@
   "PAYMENT_STATUS_PENDING": "Pending",
   "PAYMENT_STATUS_REJECTED": "Rejected",
   "SUBSCRIPTION_BUY_BUTTON": "Buy subscription",
-  "SUBSCRIPTION_CANCEL_BUTTON": "Inchide abonament",
+  "SUBSCRIPTION_CANCEL_BUTTON": "Cancel subscription",
   "CANCEL_SUBSCRIPTION_CONFIRMATION_QUESTION": "Are you sure you want to cancel your subscription?",
   "BILLING_COMPANY_NAME_LABEL": "Company Name",
   "BILLING_COMPANY_TAXID_LABEL": "Company Tax ID",
