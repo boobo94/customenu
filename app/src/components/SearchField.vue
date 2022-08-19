@@ -46,7 +46,7 @@ const search = computed({
       if (!isSearchPage.value) {
         router.push({ name: 'Search', params: { restaurantUrl } });
       }
-    }, 500);
+    }, isSearchPage.value ? 500 : 1000);
   },
 });
 
