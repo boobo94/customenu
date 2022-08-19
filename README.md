@@ -8,8 +8,13 @@ Customenu
 docker-compose --env-file .env -p customenu -f docker/docker-compose.yml -f docker/docker-compose.dev.yml up --build
 ```
 
+## Deploy
 
-# Setup production
+```sh
+sh bin/build.sh
+```
+
+## Setup production
 
 Be sure you have an .env file.
 
@@ -18,7 +23,6 @@ cp .env.example .env
 ```
 
 Now modify the env file content.
-
 
 Once you finished with .env file, execute
 
