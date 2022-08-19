@@ -1,14 +1,8 @@
 <template>
-  <v-container>
+  <v-container class="products-container">
     <v-row class="header d-flex align-center">
       <v-col cols="2" sm="1">
-        <v-btn
-          icon="mdi-chevron-left"
-          size="small"
-          class="back-button"
-          flat
-          @click="goBack"
-        >
+        <v-btn icon="mdi-chevron-left" size="small" class="back-button" flat @click="goBack">
         </v-btn>
       </v-col>
       <v-col cols="10" sm="11">
@@ -19,17 +13,18 @@
       </v-col>
     </v-row>
 
-     <v-row v-if="!productStore.hasSearchResults">
+    <v-row v-if="!productStore.hasSearchResults">
       <v-col cols="12">
         <p class="text-center search-no-results">{{ t("SEARCH_NO_RESULTS") }}</p>
       </v-col>
     </v-row>
 
-    <ProductCard
-      v-for="element in productStore.products"
-      :key="element.id"
-      v-bind="element"
-    />
+    <v-row>
+      <v-col cols="12" v-for="element in productStore.products" :key="element.id">
+        <ProductCard v-bind="element" />
+      </v-col>
+    </v-row>
+
   </v-container>
 </template>
 
@@ -63,6 +58,10 @@ function goBack() {
     font-size: 24px;
     color: $font-color-dark;
   }
+}
+
+.products-container {
+  padding-bottom: 70px;
 }
 
 .back-button {
