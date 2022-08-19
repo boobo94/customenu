@@ -11,6 +11,7 @@ docker-compose --env-file .env -p customenu -f docker/docker-compose.yml -f dock
 ## Deploy
 
 ```sh
+cd customenu/
 sh bin/build.sh
 ```
 
