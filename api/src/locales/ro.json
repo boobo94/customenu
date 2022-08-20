@@ -1,10 +1,10 @@
 {
   "NOT_ACTIVE_SUBSCRIPTION":{
     "code": 8,
-    "message": "Pentru a putea finaliza operațiunea, va trebui să achiziționați un abonament. Vă rugăm să alegeți unul din planurile de abonamente disponibile din meniul Abonament."
+    "message": "Pentru a putea finaliza operațiunea, va trebui să achiziționezi un abonament. Alege unul din planurile de abonamente disponibile din secțiunea Abonament."
   },
   "SUBSCRIPTION_MAX_LIMIT":{
     "code": 9,
-    "message": "Ai atins limita superioara pentru planul curent. Te rugăm să achiziționați un abonament adecvat pentru nevoile tale din meniul Abonament."
+    "message": "Ai atins limita superioară pentru planul curent. Achiziționează un abonament adecvat pentru nevoile tale din secțiunea Abonament."
   }
 }
