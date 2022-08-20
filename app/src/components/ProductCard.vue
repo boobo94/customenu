@@ -123,8 +123,8 @@ const { t } = useI18n();
 const cartStoe = useCartStore();
 const restaurantStore = useRestaurantStore();
 
-const weightValue = computed(() => (props.weight ? `${props.weight} g` : 'n/a'));
-const cookingTimeValue = computed(() => (props.cookingTime ? `${props.cookingTime} min` : 'n/a'));
+const weightValue = computed(() => (props.weight ? `${props.weight}g` : 'n/a'));
+const cookingTimeValue = computed(() => (props.cookingTime ? `${props.cookingTime}m` : 'n/a'));
 
 function addToCart() {
   cartStoe.addProduct({
