@@ -1,5 +1,19 @@
 Customenu
 
+# Production utils URLs
+
+| Title               | URL                                     | Description                                                              |
+| ------------------- | --------------------------------------- | ------------------------------------------------------------------------ |
+| Website             | https://customenu.net/                  | The main website.                                                        |
+| Web App             | https://app.customenu.net               | The customenu mobile app.                                                |
+| Admin               | https://admin.customenu.net             | The admin app where the customers manage their menu.                     |
+| Proxy Manager Nginx | http://proxymanager.customenu.net/login | Used to manage subdomain, nginx configuration, redirects, 404 page, etc. |
+| Portainer           | http://portainer.customenu.net/         | Manage docker containers, statistics, processes and usage.               |
+| Linode Cloud        | https://www.linode.com/login            | The server and object storage is handled using Linode.                   |
+| Hostico Host+Domain | https://hostico.ro/client/              | The host of the website, domain, email and cPanel.                       |     
+| Instagram account   | https://www.instagram.com/customenu_net | The instagram profile.                                                   |
+| Facebook account    | https://www.facebook.com/customenu      | The Facebook profile.                                                    |
+
 # Setup or release the project
 
 ## Run localhost
