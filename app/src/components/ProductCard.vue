@@ -23,12 +23,12 @@
 
           <v-col cols="4">
             <p><v-icon>mdi-weight-gram</v-icon></p>
-            <p>{{ weight || 'n/a' }} g</p>
+            <p>{{ weightValue }}</p>
           </v-col>
 
           <v-col cols="4">
             <p><v-icon>mdi-clock-time-seven-outline</v-icon></p>
-            <p>{{ cookingTime || 'n/a' }} min</p>
+            <p>{{ cookingTimeValue }}</p>
           </v-col>
         </v-row>
       </v-col>
@@ -97,7 +97,7 @@
 </template>
 
 <script setup>
-import { defineProps, reactive } from 'vue';
+import { computed, defineProps, reactive } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useCartStore } from '@/stores/cart';
 import { useRestaurantStore } from '@/stores/restaurant';
@@ -122,6 +122,9 @@ const { t } = useI18n();
 
 const cartStoe = useCartStore();
 const restaurantStore = useRestaurantStore();
+
+const weightValue = computed(() => (props.weight ? `${props.weight} g` : 'n/a'));
+const cookingTimeValue = computed(() => (props.cookingTime ? `${props.cookingTime} min` : 'n/a'));
 
 function addToCart() {
   cartStoe.addProduct({
