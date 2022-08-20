@@ -18,17 +18,17 @@
         <v-row class="product-details">
           <v-col cols="4">
             <p><v-icon>mdi-cash-multiple</v-icon></p>
-            <p>{{ price }}</p>
+            <p>{{ price }} {{ restaurantStore.restaurant.currency.toUpperCase() }}</p>
           </v-col>
 
           <v-col cols="4">
             <p><v-icon>mdi-weight-gram</v-icon></p>
-            <p>{{ weight }}g</p>
+            <p>{{ weight || 'n/a' }} g</p>
           </v-col>
 
           <v-col cols="4">
             <p><v-icon>mdi-clock-time-seven-outline</v-icon></p>
-            <p>{{ cookingTime }}min</p>
+            <p>{{ cookingTime || 'n/a' }} min</p>
           </v-col>
         </v-row>
       </v-col>
@@ -100,6 +100,7 @@
 import { defineProps, reactive } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useCartStore } from '@/stores/cart';
+import { useRestaurantStore } from '@/stores/restaurant';
 
 const props = defineProps({
   id: Number,
@@ -113,8 +114,6 @@ const props = defineProps({
   allergens: String,
 });
 
-// const route = useRoute();
-
 const scope = reactive({
   expandCard: false,
 });
@@ -122,6 +121,7 @@ const scope = reactive({
 const { t } = useI18n();
 
 const cartStoe = useCartStore();
+const restaurantStore = useRestaurantStore();
 
 function addToCart() {
   cartStoe.addProduct({
