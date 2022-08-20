@@ -52,9 +52,10 @@ npm run serve
 ## Deploy
 
 ```sh
-ssh root@api.customenu.net
-cd customenu/
+ssh root@api.customenu.net<<'EOL'
+cd customenu/ && \
 sh bin/build.sh
+EOL
 ```
 
 ## Initial setup the production server
