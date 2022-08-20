@@ -55,6 +55,7 @@ npm run serve
 ssh root@api.customenu.net<<'EOL'
 cd customenu/ && \
 sh bin/build.sh
+exit
 EOL
 ```
 
