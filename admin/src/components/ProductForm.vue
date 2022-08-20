@@ -11,51 +11,50 @@
       return-object
       single-line
       @change="selectCategory"
-    ></v-select>
+      :rules="[requiredRules]">
+    </v-select>
 
     <v-text-field
       v-model="product.weight"
       :counter="255"
-      :label="$t('WEIGHT')"
-      :rules="requiredRules"
-      required
-    ></v-text-field>
+      :label="$t('WEIGHT_LABEL')"
+      :rules="[numberRules]"
+      required>
+    </v-text-field>
 
     <v-text-field
       v-model="product.price"
       :counter="255"
-      :label="$t('PRICE')"
-      :rules="requiredRules"
-      required
-    ></v-text-field>
+      :label="$t('PRICE_LABEL')"
+      :rules="[requiredRules, numberRules]"
+      required>
+    </v-text-field>
 
     <v-text-field
       v-model="product.cookingTime"
       :counter="255"
-      :label="$t('COOKING_TIME')"
-    ></v-text-field>
+      :label="$t('COOKING_TIME_LABEL')"
+      :rules="[numberRules]">
+    </v-text-field>
 
     <v-file-input
-      show-size
-      counter
+      show-size counter
       :label="$t('LABEL_IMAGE')"
       accept="image/png, image/jpeg, image/bmp"
       prepend-icon="mdi-camera"
-      @change="convertToBase64"
-    ></v-file-input>
+      @change="convertToBase64">
+    </v-file-input>
 
     <v-img
       v-if="product.image"
       max-height="150"
       max-width="250"
-      :src="product.image"
-    ></v-img>
+      :src="product.image">
+    </v-img>
 
-    <div
-      class="previous mt-10"
+    <div class="previous mt-10"
       v-for="(productI18n, counter) in product.product_i18ns"
-      v-bind:key="counter"
-    >
+      v-bind:key="counter">
       <v-card class="mx-auto mb-5" outlined>
         <v-card-actions>
           <div class="overline">
@@ -69,23 +68,22 @@
               <v-col cols="12">
                 <v-text-field
                   v-model="productI18n.name"
-                  :counter="255"
-                  :label="$t('NAME')"
-                  :rules="requiredRules"
-                  required
-                ></v-text-field>
+                  :counter="255" :label="$t('NAME')"
+                  :rules="[requiredRules]"
+                  required>
+                </v-text-field>
                 <v-textarea
                   v-model="productI18n.description"
                   :counter="255"
                   :label="$t('DESCRIPTION')"
-                  :rules="requiredRules"
-                  required
-                ></v-textarea>
+                  :rules="[requiredRules]"
+                  required>
+                </v-textarea>
                 <v-textarea
                   v-model="productI18n.allergens"
                   :counter="255"
-                  :label="$t('LABEL_ALLERGENS')"
-                ></v-textarea>
+                  :label="$t('LABEL_ALLERGENS')">
+                </v-textarea>
               </v-col>
             </v-row>
           </v-list-item-content>
@@ -114,7 +112,8 @@ export default {
       valid: true,
       product: this.productProp,
       categories: [],
-      requiredRules: [(v) => !!v || this.$t('REQUIRED_FIELD')],
+      requiredRules: (v) => !!v || this.$t('REQUIRED_FIELD'),
+      numberRules: (v) => v ? /^\d+(\.\d{1,2})?$/.test(v) || this.$t('NUMBER_VALIDATOR') : true,
     };
   },
 
