@@ -135,7 +135,7 @@ export async function update(obj, id, transaction) {
  * @param {Sequelize.Transaction} transaction
 
  */
-export async function updateByreference(obj, referenceId, transaction) {
+export async function updateByReference(obj, referenceId, transaction) {
   return subscription.update(obj, {
     where: {
       referenceId: {

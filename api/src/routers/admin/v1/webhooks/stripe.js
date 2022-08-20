@@ -13,8 +13,8 @@ async function createSubscription(event) {
   const restaurant = await restaurantService.findByCustomer(event.customer);
 
   return subscriptionService.create({
-    startDate: new Date(event.current_period_start * 1000),
-    endDate: new Date(event.current_period_end * 1000),
+    startDate: event.status === 'active' ? new Date(event.current_period_start * 1000) : new Date(),
+    endDate: event.status === 'active' ? new Date(event.current_period_end * 1000) : new Date(),
     referenceId: event.id,
     canceled: event.cancel_at_period_end,
     subscriptionPlanId: subscriptionPlan.id,
@@ -23,15 +23,15 @@ async function createSubscription(event) {
 }
 
 async function updateSubscription(event) {
-  return subscriptionService.updateByreference({
-    startDate: new Date(event.current_period_start * 1000),
-    endDate: new Date(event.current_period_end * 1000),
+  return subscriptionService.updateByReference({
+    startDate: event.status === 'active' ? new Date(event.current_period_start * 1000) : new Date(),
+    endDate: event.status === 'active' ? new Date(event.current_period_end * 1000) : new Date(),
     canceled: event.cancel_at_period_end,
   }, event.id);
 }
 
 async function cancelSubscription(event) {
-  return subscriptionService.updateByreference({
+  return subscriptionService.updateByReference({
     startDate: new Date(event.current_period_start * 1000),
     endDate: new Date(event.canceled_at * 1000),
     canceled: true,
@@ -117,8 +117,6 @@ export default async (req, res) => {
     return res.sendStatus(400);
   }
 
-  // eslint-disable-next-line no-console
-  console.log('event', event);
   try {
     // Handle the event
     switch (event.type) {
