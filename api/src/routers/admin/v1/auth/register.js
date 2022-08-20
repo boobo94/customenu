@@ -1,6 +1,5 @@
 import bcrypt from 'bcrypt';
 import StatusCodes from '../../../utils/statusCodes';
-import errors from '../../../../locales/errors.json';
 import { findByEmail, create as createAdmin } from '../../../../database/services/admin';
 import { create as createRestaurant, update as updateRestaurant } from '../../../../database/services/restaurant';
 import { create as createTable } from '../../../../database/services/table';
@@ -13,7 +12,7 @@ export default async (req, res) => {
   try {
     const admin = await findByEmail(req.body.admin.email);
     if (admin) {
-      return res.status(StatusCodes.CONFLICT).send({ error: errors.EMAIL_ALREADY_USED });
+      return res.status(StatusCodes.CONFLICT).send({ error: res.__('EMAIL_ALREADY_USED') });
     }
 
     // create restaurant
@@ -52,10 +51,10 @@ export default async (req, res) => {
     // eslint-disable-next-line consistent-return
     error.errors.forEach((e) => {
       if (e.type === 'unique violation' && e.path === 'shortUrl') {
-        return res.status(StatusCodes.CONFLICT).send({ error: errors.ERROR_SHORT_URL_UNIQUE });
+        return res.status(StatusCodes.CONFLICT).send({ error: res.__('ERROR_SHORT_URL_UNIQUE') });
       }
     });
 
-    return res.status(StatusCodes.SERVER_INTERNAL_ERROR).send({ error: errors.SERVER_ERROR });
+    return res.status(StatusCodes.SERVER_INTERNAL_ERROR).send({ error: res.__('SERVER_ERROR') });
   }
 };

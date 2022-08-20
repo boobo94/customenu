@@ -1,4 +1,32 @@
 {
+  "RESOURCE_NOT_FOUND": {
+    "code": 1,
+    "message": "Resursa nu a fost gasită"
+  },
+  "UNAUTHORIZED": {
+    "code": 2,
+    "message": "Username-ul sau parola nu sunt corecte, te rugăm să te autentifici."
+  },
+  "JWT_EXPIRED":  {
+    "code": 3,
+    "message": "Tokenul de autorizare JWT este invalid sau a expirat."
+  },
+  "FORBIDDEN":{
+    "code": 4,
+    "message": "Nu ai permisiunea să accesezi această resursă."
+  },
+  "SERVER_ERROR":{
+    "code": 5,
+    "message": "A aparut o eroare, încearcă din nou sau contactează echipa tehnica office@customenu.net."
+  },
+  "EMAIL_ALREADY_USED":{
+    "code": 6,
+    "message": "Emailul este utilizat de alt utilizator."
+  },
+  "ERROR_SHORT_URL_UNIQUE":{
+    "code": 7,
+    "message": "Acest url este utilizat deja, te rugăm să alegi un alt url."
+  },
   "NOT_ACTIVE_SUBSCRIPTION":{
     "code": 8,
     "message": "Pentru a putea finaliza operațiunea, va trebui să achiziționezi un abonament. Alege unul din planurile de abonamente disponibile din secțiunea Abonament."

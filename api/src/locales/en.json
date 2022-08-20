@@ -1,4 +1,32 @@
 {
+  "RESOURCE_NOT_FOUND": {
+    "code": 1,
+    "message": "Resource not found"
+  },
+  "UNAUTHORIZED": {
+    "code": 2,
+    "message": "The username or password are incorrect, please login again."
+  },
+  "JWT_EXPIRED":  {
+    "code": 3,
+    "message": "The JWT authorization token is invalid or expired"
+  },
+  "FORBIDDEN":{
+    "code": 4,
+    "message": "You don't have permission to access this resource"
+  },
+  "SERVER_ERROR":{
+    "code": 5,
+    "message": "An error occurred, please try again or contact the support team."
+  },
+  "EMAIL_ALREADY_USED":{
+    "code": 5,
+    "message": "The email is already used by another user."
+  },
+  "ERROR_SHORT_URL_UNIQUE":{
+    "code": 7,
+    "message": "This url is already used, please choose another url."
+  },
   "NOT_ACTIVE_SUBSCRIPTION":{
     "code": 8,
     "message": "In order to complete the operation, a subscription will be required. Please choose a subscription plan available in the Subscription section."

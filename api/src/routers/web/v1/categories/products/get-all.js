@@ -1,6 +1,5 @@
 import { findById as findCategoryById } from '../../../../../database/services/category';
 import { findAll } from '../../../../../database/services/product';
-import errors from '../../../../../locales/errors.json';
 import statusCodes from '../../../../utils/statusCodes';
 
 const adapter = (products) => products.map((element) => {
@@ -40,6 +39,6 @@ export default async (req, res) => {
       products: adapter(products),
     });
   } catch (error) {
-    return res.status(statusCodes.SERVER_INTERNAL_ERROR).send({ error: errors.SERVER_ERROR });
+    return res.status(statusCodes.SERVER_INTERNAL_ERROR).send({ error: res.__('SERVER_ERROR') });
   }
 };

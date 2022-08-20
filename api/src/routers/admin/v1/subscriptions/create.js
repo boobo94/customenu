@@ -3,14 +3,13 @@ import stripe from 'stripe';
 import { findOne } from '../../../../database/services/admin';
 import { create } from '../../../../database/services/subscription';
 import { findeByReference } from '../../../../database/services/subscription-plan';
-import errors from '../../../../locales/errors.json';
 import statusCodes from '../../../utils/statusCodes';
 
 export default async (req, res) => {
   try {
     const subscriptionPlan = await findeByReference(req.body.referenceId);
     if (!subscriptionPlan) {
-      return res.status(statusCodes.NOT_FOUND).send({ error: errors.RESOURCE_NOT_FOUND });
+      return res.status(statusCodes.NOT_FOUND).send({ error: res.__('RESOURCE_NOT_FOUND') });
     }
 
     const admin = await findOne(req.adminId);
@@ -49,7 +48,6 @@ export default async (req, res) => {
       url: session.url,
     });
   } catch (error) {
-    console.log(error);
-    return res.status(statusCodes.SERVER_INTERNAL_ERROR).send({ error: errors.SERVER_ERROR });
+    return res.status(statusCodes.SERVER_INTERNAL_ERROR).send({ error: res.__('SERVER_ERROR') });
   }
 };

@@ -8,18 +8,28 @@ import { checkAccessToUpdateProfile } from './permissions';
 import register from './register';
 
 export default Router()
-  .post('/login',
+  .post(
+    '/login',
     validators.loginValidator,
-    loginApi)
-  .post('/register',
+    loginApi,
+  )
+  .post(
+    '/register',
     validators.register,
-    register)
-  .post('/refresh-token',
+    register,
+  )
+  .post(
+    '/refresh-token',
     validators.refreshTokenValidator,
-    refreshToken)
-  .get('/profile',
-    get)
-  .put('/profile',
+    refreshToken,
+  )
+  .get(
+    '/profile',
+    get,
+  )
+  .put(
+    '/profile',
     validators.updateAdmin,
     checkAccessToUpdateProfile,
-    update);
+    update,
+  );

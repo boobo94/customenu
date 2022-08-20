@@ -1,5 +1,4 @@
 import jwt from 'jsonwebtoken';
-import errors from '../../locales/errors.json';
 
 /**
  * Create a new jwt
@@ -7,17 +6,19 @@ import errors from '../../locales/errors.json';
  * @returns {string}
  */
 export function GenerateJWT(userId, restaurantId) {
-  return jwt.sign({
-    userId,
-    restaurantId,
-  },
-  process.env.JWT_SECRET_KEY,
-  {
-    algorithm: 'HS256',
-    issuer: 'Customenu Menu',
-    expiresIn: '1d',
-    audience: 'ws app',
-  });
+  return jwt.sign(
+    {
+      userId,
+      restaurantId,
+    },
+    process.env.JWT_SECRET_KEY,
+    {
+      algorithm: 'HS256',
+      issuer: 'Customenu Menu',
+      expiresIn: '1d',
+      audience: 'ws app',
+    },
+  );
 }
 
 /**
@@ -28,7 +29,7 @@ export function GenerateJWT(userId, restaurantId) {
  */
 export function DecodeJWT(authorizationHeader) {
   if (!authorizationHeader || authorizationHeader.search('Bearer ') === -1) {
-    throw Error(errors.UNAUTHORIZED.message);
+    throw Error('The username or password are incorrect, please login again.');
   }
 
   // get the token from headers
