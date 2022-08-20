@@ -5,7 +5,7 @@ Customenu
 | Title               | URL                                     | Description                                                              |
 | ------------------- | --------------------------------------- | ------------------------------------------------------------------------ |
 | Website             | https://customenu.net/                  | The main website.                                                        |
-| Web App             | https://app.customenu.net               | The customenu mobile app.                                                |
+| Web App             | https://app.customenu.net/:custom-url   | The customenu mobile app.                                                |
 | Admin               | https://admin.customenu.net             | The admin app where the customers manage their menu.                     |
 | Proxy Manager Nginx | http://proxymanager.customenu.net/login | Used to manage subdomain, nginx configuration, redirects, 404 page, etc. |
 | Portainer           | http://portainer.customenu.net/         | Manage docker containers, statistics, processes and usage.               |
