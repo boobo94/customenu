@@ -41,7 +41,7 @@ export async function checkAccessToAddCategoryAsRestaurant(req, res, next) {
     }
 
     const totalProductsOfRestaurant = await countCategoriesOfRestaurant(req.params.restaurantId);
-    if (subscription.subscriptionPlan.maxProducts === totalProductsOfRestaurant) {
+    if (subscription.subscriptionPlan.maxCategories === totalProductsOfRestaurant) {
       return res.status(statusCodes.CONFLICT).send({ error: res.__('SUBSCRIPTION_MAX_LIMIT') });
     }
   } catch (err) {
