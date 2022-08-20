@@ -14,13 +14,40 @@ Customenu
 | Instagram account   | https://www.instagram.com/customenu_net | The instagram profile.                                                   |
 | Facebook account    | https://www.facebook.com/customenu      | The Facebook profile.                                                    |
 
-# Setup or release the project
+# Setup and release the project
 
-## Run localhost
+## Run the localhost orchestration
+
+Start databse within docker, don't worry data is persistent.
 
 ```sh
 docker-compose --env-file .env -p customenu -f docker/docker-compose.yml -f docker/docker-compose.dev.yml up --build
 ```
+
+Start api
+
+```sh
+cd api
+npm i
+npm start
+```
+
+Start app
+
+```sh
+cd app
+npm i
+npm run serve
+```
+
+Start admin
+
+```sh
+cd admin
+npm i
+npm run serve
+```
+
 
 ## Deploy
 
@@ -30,9 +57,9 @@ cd customenu/
 sh bin/build.sh
 ```
 
-## Setup production
+## Initial setup the production server
 
-Be sure you have an .env file.
+### 1. Be sure you have an .env file.
 
 ```sh
 cp .env.example .env
@@ -46,21 +73,23 @@ Once you finished with .env file, execute
 sh bin/run-prod.sh
 ```
 
-1. Setup portainer
+### 2. Setup portainer
 
 Open localhost:9000 and pickup the username and password then press Create User.
 
-2. Setup Nginx proxy manager
+### 3. Setup Nginx proxy manager
 
 Open http://localhost:81 and login using the default credentials:
+
 Email:    `admin@example.com`
+
 Password: `changeme`
 
 Then you have to enter the old password and set a new email and password.
 
 For more instructions check the [official documentation](https://nginxproxymanager.com/setup/#running-the-app)
 
-3. Run the seeds
+### 4. Run the seeds
 
 ```sh
 cd api/src/database
@@ -73,7 +102,7 @@ If you encounter issues with the current docker compose, I prepared a script to 
 sh bin/force-rebuild-docker.sh
 ```
 
-4. Configure the backup scripts
+### 5. Configure the backup scripts
 
 Install [linodecli](https://www.linode.com/docs/products/storage/object-storage/guides/linode-cli#install-and-configure-the-cli) and configure the server.
 
@@ -83,8 +112,10 @@ Setup the cronjob
 crontab -e
 ```
 
-add at the end of the file
+by adding at the end of the file this:
 
 ```sh
 0 2 * * * /bin/bash /root/customenu/bin/db-backup.sh
 ```
+
+This will run the script every day at 02:00 UTC.
