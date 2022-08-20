@@ -1,5 +1,4 @@
 import statusCodes from '../utils/statusCodes';
-import errors from '../../locales/errors.json';
 import { findByRestaurantAndToken } from '../../database/services/restaurant';
 import { findActiveByRestaurant } from '../../database/services/subscription';
 
@@ -10,13 +9,13 @@ export default async (req, res, next) => {
       req.params.restaurant,
     );
     if (!restaurant) {
-      return res.status(statusCodes.UNAUTHORIZED).send({ error: errors.UNAUTHORIZED });
+      return res.status(statusCodes.UNAUTHORIZED).send({ error: res.__('UNAUTHORIZED') });
     }
 
     // check if the restaurant has an active subscription
     const subscription = await findActiveByRestaurant(restaurant.id);
     if (!subscription) {
-      return res.status(statusCodes.UNAUTHORIZED).send({ error: errors.UNAUTHORIZED });
+      return res.status(statusCodes.UNAUTHORIZED).send({ error: res.__('UNAUTHORIZED') });
     }
 
     // language was not set or the language set is not available for that restaurant
@@ -27,7 +26,7 @@ export default async (req, res, next) => {
 
     req.params.restaurantId = restaurant.id; // set restaurantId on req.params
   } catch (err) {
-    return res.status(statusCodes.UNAUTHORIZED).send({ error: errors.UNAUTHORIZED });
+    return res.status(statusCodes.UNAUTHORIZED).send({ error: res.__('UNAUTHORIZED') });
   }
 
   return next();

@@ -1,5 +1,4 @@
 import { findAll } from '../../../../database/services/category';
-import errors from '../../../../locales/errors.json';
 import statusCodes from '../../../utils/statusCodes';
 
 const adapter = (categories) => categories.map((element) => {
@@ -22,6 +21,6 @@ export default async (req, res) => {
 
     return res.status(statusCodes.OK).send(adapter(categories));
   } catch (error) {
-    return res.status(statusCodes.SERVER_INTERNAL_ERROR).send({ error: errors.SERVER_ERROR });
+    return res.status(statusCodes.SERVER_INTERNAL_ERROR).send({ error: res.__('SERVER_ERROR') });
   }
 };

@@ -2,7 +2,6 @@ import * as qrcode from 'qrcode';
 import { createCanvas, loadImage } from 'canvas';
 import { getMinimal } from '../../../../database/services/restaurant';
 import { findOne } from '../../../../database/services/table';
-import errors from '../../../../locales/errors.json';
 import statusCodes from '../../../utils/statusCodes';
 
 async function generateQR(restaurantUrl, tableName) {
@@ -30,7 +29,7 @@ export default async (req, res) => {
     const restaurant = await getMinimal(req.params.restaurantId);
     const table = await findOne(req.params.tableId);
     if (!table) {
-      return res.status(statusCodes.NOT_FOUND).send({ error: errors.RESOURCE_NOT_FOUND });
+      return res.status(statusCodes.NOT_FOUND).send({ error: res.__('RESOURCE_NOT_FOUND') });
     }
 
     const qrCodeFile = await generateQR(restaurant.shortUrl, table.name);
@@ -42,6 +41,6 @@ export default async (req, res) => {
       .status(statusCodes.OK)
       .send(qrCodeFile);
   } catch (error) {
-    return res.status(statusCodes.SERVER_INTERNAL_ERROR).send({ error: errors.SERVER_ERROR });
+    return res.status(statusCodes.SERVER_INTERNAL_ERROR).send({ error: res.__('SERVER_ERROR') });
   }
 };
