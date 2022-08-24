@@ -16,7 +16,7 @@ export default async (req, res) => {
     }, admin.id);
 
     return res.status(StatusCodes.OK).send({
-      token: GenerateJWT(admin.id),
+      token: GenerateJWT(admin.id, admin.restaurantId),
       refreshToken: newRefreshToken,
       restaurantId: admin.restaurantId,
     });

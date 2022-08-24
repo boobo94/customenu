@@ -7,12 +7,12 @@ export default function axiosErrorInterceptor(store, router) {
     if (err.config && !err.config.__isRetryRequest && err.response.status === 401) {
       // when auth token is expired refresh it
       if (err.response.data.error.code === 3) {
-        store.dispatch('authModule/refreshToken')
+        return store.dispatch('authModule/refreshToken')
           .then(async () => {
-          // rewrite the current Authorization header
-            axios.defaults.headers.Authorization = `Bearer ${store.state.auth.token}`;
+            // rewrite the current Authorization header
+            axios.defaults.headers.authorization = `Bearer ${store.state.authModule.token}`;
             // eslint-disable-next-line no-param-reassign
-            err.config.headers.Authorization = axios.defaults.headers.Authorization;
+            err.config.headers.authorization = axios.defaults.headers.authorization;
 
             return axios(err.config)
               .then((response) => resolve(response))
