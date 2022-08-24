@@ -121,3 +121,13 @@ by adding at the end of the file this:
 ```
 
 This will run the script every day at 02:00 UTC.
+
+## Utils
+
+### Clean docker containers, images etc
+
+Remove all stopped containers, networks not used by at least one container, dangling images, dangling build cache
+
+```sh
+docker system prune
+```
