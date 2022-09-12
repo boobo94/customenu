@@ -34,7 +34,7 @@
 
 <script setup>
 import {
-  onMounted, defineProps, watch, reactive,
+  defineProps, watch, reactive,
 } from 'vue';
 import { useI18n } from 'vue-i18n';
 import axios from 'axios';
@@ -54,6 +54,7 @@ const state = reactive({
 function changeLanguage(value) {
   axios.defaults.headers['accept-language'] = value;
   localStorage.setItem('language', value);
+
   router.go();
 }
 
@@ -66,7 +67,6 @@ function setLanguage(languages) {
 
     // if the language of browser is in the supported list then change it
     if (languages.includes(browserLanguage)) {
-      // i18n.global.locale.value =browserLanguage
       changeLanguage(browserLanguage);
     } else {
       // if there are multiple languages pick the first one as default
@@ -75,16 +75,11 @@ function setLanguage(languages) {
   }
 }
 
-onMounted(() => {
-  setLanguage(state.languages);
-});
-
 // watch language changes from properties of components
 watch(
   () => props.languagesProp,
   (languages) => {
     state.languages = languages;
-
     setLanguage(languages);
   },
 );

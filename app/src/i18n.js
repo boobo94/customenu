@@ -20,11 +20,6 @@ function loadLocaleMessages() {
   return messages;
 }
 
-// set the default language
-if (!localStorage.getItem('language')) {
-  localStorage.setItem('language', 'en');
-}
-
 export default createI18n({
   legacy: false,
   locale: localStorage.getItem('language') || 'en',
