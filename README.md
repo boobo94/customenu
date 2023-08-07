@@ -1,5 +1,8 @@
 Customenu
 
+![meniu-digital-customenu-thumb](https://github.com/boobo94/customenu/assets/16722674/a76d73cd-432f-42ad-bf2e-b6a4fe3fab73)
+
+
 # Production utils URLs
 
 | Title               | URL                                     | Description                                                              |
