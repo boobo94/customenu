@@ -134,3 +134,10 @@ Remove all stopped containers, networks not used by at least one container, dang
 ```sh
 docker system prune
 ```
+
+![1-meniu-home-473x1024](https://github.com/boobo94/customenu/assets/16722674/f1d203d5-aebc-4f1b-a13c-ec9730a81920)
+![2-menu-change-the-language-473x1024](https://github.com/boobo94/customenu/assets/16722674/59d014b5-881b-443d-86d7-a3dc52464bd0)
+![3-menu-about-restaurant-473x1024](https://github.com/boobo94/customenu/assets/16722674/3eebdc72-c602-4593-9afd-6bb88439d479)
+![4-products-of-menu-473x1024](https://github.com/boobo94/customenu/assets/16722674/056a1583-fc6d-4349-b187-ba6b8ca04159)
+![5-menu-search-product-473x1024](https://github.com/boobo94/customenu/assets/16722674/7c61cab2-589c-4860-bbf2-1a4a7c563724)
+![6-menu-shopping-cart-473x1024](https://github.com/boobo94/customenu/assets/16722674/74b61d73-5d1e-49f9-8de6-d5c87eed1a0f)
